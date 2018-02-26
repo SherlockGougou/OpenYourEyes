@@ -1,6 +1,7 @@
 package cc.shinichi.openyoureyes.api
 
 import android.content.Context
+import cc.shinichi.openyoureyes.app.App
 
 /*
 * @author 工藤
@@ -9,9 +10,17 @@ import android.content.Context
 * description: 
 */
 
-public class Api {
+public class Api(context: Context) {
 
-    constructor(context : Context)
+    companion object {
+        fun getInstance(): Api {
+            return InnerClass.api
+        }
+    }
 
-
+    class InnerClass {
+        companion object {
+            val api: Api = Api(App.application)
+        }
+    }
 }

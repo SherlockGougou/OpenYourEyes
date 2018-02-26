@@ -10,8 +10,14 @@ import com.tencent.bugly.crashreport.CrashReport
 * description: application
 */
 class App : Application() {
+
+    companion object {
+        lateinit var application: App
+    }
+
     override fun onCreate() {
         super.onCreate()
-        CrashReport.initCrashReport(applicationContext, "7d0d52dec2", false);
+        application = this
+        CrashReport.initCrashReport(application, "7d0d52dec2", false);
     }
 }
