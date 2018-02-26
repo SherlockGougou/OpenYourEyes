@@ -53,4 +53,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     // ImmersionBar
     implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    // QMUI
+    implementation 'com.qmuiteam:qmui:1.0.6'
 }

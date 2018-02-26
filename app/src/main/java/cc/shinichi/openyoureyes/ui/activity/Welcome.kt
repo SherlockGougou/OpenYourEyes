@@ -1,5 +1,6 @@
 package cc.shinichi.openyoureyes.ui.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.widget.ImageView
@@ -8,8 +9,11 @@ import cc.shinichi.openyoureyes.api.Constant
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog.MessageDialogBuilder
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
+import com.yanzhenjie.permission.Rationale
 
 /*
 * @author 工藤
@@ -18,25 +22,65 @@ import com.yanzhenjie.permission.Permission
 * description: 欢迎界面
 */class Welcome : BaseActivity() {
 
+    private lateinit var context: Context
     private val handler: Handler = Handler()
     private lateinit var imageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
+        context = this
     }
 
     override fun onStart() {
-        super.onStart()
-        AndPermission.with(this)
+        AndPermission.with(context)
                 .permission(Permission.WRITE_EXTERNAL_STORAGE)
-                .onGranted {
+                .rationale(mRationale)
+                .onGranted { permissions ->
                     init()
                 }
-                .onDenied {
-                    byeBye()
+                .onDenied { permissions ->
+                    if (AndPermission.hasAlwaysDeniedPermission(context, permissions)) {
+                        // 这些权限被用户总是拒绝。
+                        // 这里使用一个Dialog询问用户是否继续授权。
+                        val dialog: MessageDialogBuilder = MessageDialogBuilder(context)
+                        val settingService = AndPermission.permissionSetting(context)
+                        dialog.setTitle("注意")
+                                .setMessage("您拒绝了存储权限，App将无法正常使用，是否重新授权？")
+                                .addAction("取消", QMUIDialogAction.ActionListener { d, index ->
+                                    d.dismiss()
+                                    // 如果用户不同意去设置：
+                                    settingService.cancel();
+                                })
+                                .addAction("确定", QMUIDialogAction.ActionListener { d, index ->
+                                    d.dismiss()
+                                    // 如果用户同意去设置：
+                                    settingService.execute();
+                                })
+                                .show()
+                    }
                 }
                 .start()
+        super.onStart()
+    }
+
+    private val mRationale = Rationale { context, permissions, executor ->
+        // 这里使用一个Dialog询问用户是否继续授权。
+        val dialog: MessageDialogBuilder = MessageDialogBuilder(context)
+        val settingService = AndPermission.permissionSetting(context)
+        dialog.setTitle("注意")
+                .setMessage("您拒绝了存储权限，App将无法正常使用，是否重新授权？")
+                .addAction("取消", QMUIDialogAction.ActionListener { d, index ->
+                    d.dismiss()
+                    // 如果用户中断：
+                    executor.cancel()
+                })
+                .addAction("确定", QMUIDialogAction.ActionListener { d, index ->
+                    d.dismiss()
+                    // 如果用户继续：
+                    executor.execute()
+                })
+                .show()
     }
 
     override fun onDestroy() {
@@ -61,10 +105,5 @@ import com.yanzhenjie.permission.Permission
                 finish()
             })
         }, 3000)
-    }
-
-    private fun byeBye() {
-        toast("您™必须同意！拜拜了您呐~")
-        finish()
     }
 }
