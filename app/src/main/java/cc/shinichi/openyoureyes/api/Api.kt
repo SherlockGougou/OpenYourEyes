@@ -1,7 +1,9 @@
 package cc.shinichi.openyoureyes.api
 
 import android.content.Context
+import android.os.Handler
 import cc.shinichi.openyoureyes.app.App
+import okhttp3.OkHttpClient
 
 /*
 * @author 工藤
@@ -11,6 +13,9 @@ import cc.shinichi.openyoureyes.app.App
 */
 
 public class Api(context: Context) {
+
+    private var okHttpClient: OkHttpClient = OkHttpClient()
+    private var handler: Handler = Handler()
 
     companion object {
         fun getInstance(): Api {

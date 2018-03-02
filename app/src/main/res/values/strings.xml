@@ -1,3 +1,6 @@
 <resources>
   <string name="app_name">大开眼界</string>
+  <string name="menu_home_search">搜索</string>
+  <string name="menu_home_more">更多</string>
+  <string name="author_name">工藤一号</string>
 </resources>
