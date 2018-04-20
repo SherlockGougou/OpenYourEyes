@@ -26,8 +26,7 @@ open class BaseActivity : AppCompatActivity() {
         AppManager.getInstance().addActivity(this)
         immersionBar = ImmersionBar.with(this)
         immersionBar.statusBarColor(R.color.white)
-                .statusBarDarkFont(true)
-        immersionBar.init()
+                .statusBarDarkFont(true).init()
     }
 
     override fun onDestroy() {

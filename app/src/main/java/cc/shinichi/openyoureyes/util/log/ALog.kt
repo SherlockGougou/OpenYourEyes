@@ -1,6 +1,6 @@
 package cc.shinichi.openyoureyes.util.log
 
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.Config
 
 /*
 * @author 工藤
@@ -10,10 +10,10 @@ import cc.shinichi.openyoureyes.constant.Constant
 */
 class ALog {
     companion object {
-        fun Log(TAG: String? = "Gougou.logDebug", msg: String) {
+        fun Log(TAG: String? = "Shinichi.Log", msg: String) {
             // 规定每段显示的长度
             val LOG_MAXLENGTH = 2000
-            if (Constant.是否打印日志) {
+            if (Config.是否打印日志) {
                 val strLength = msg.length
                 var start = 0
                 var end = LOG_MAXLENGTH

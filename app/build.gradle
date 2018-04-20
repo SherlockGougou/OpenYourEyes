@@ -46,8 +46,8 @@ dependencies {
     }
     // bugly
     implementation 'com.tencent.bugly:crashreport:2.6.6.1'
-    // okhttp
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    // okgo
+    implementation 'com.lzy.net:okgo:3.0.4'
     // AndPermission
     implementation 'com.yanzhenjie:permission:2.0.0-rc2'
     // gson

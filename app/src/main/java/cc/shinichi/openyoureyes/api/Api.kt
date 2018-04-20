@@ -1,9 +1,10 @@
 package cc.shinichi.openyoureyes.api
 
 import android.content.Context
-import android.os.Handler
 import cc.shinichi.openyoureyes.app.App
-import okhttp3.OkHttpClient
+import com.lzy.okgo.OkGo
+import com.lzy.okgo.callback.StringCallback
+import okhttp3.Response
 
 /*
 * @author 工藤
@@ -13,9 +14,6 @@ import okhttp3.OkHttpClient
 */
 
 public class Api(context: Context) {
-
-    private var okHttpClient: OkHttpClient = OkHttpClient()
-    private var handler: Handler = Handler()
 
     companion object {
         fun getInstance(): Api {
@@ -27,5 +25,28 @@ public class Api(context: Context) {
         companion object {
             val api: Api = Api(App.application)
         }
+    }
+
+    fun GetSync(context: Context, url: String): String? {
+        val response : Response? = OkGo.get<String>(url).tag(context).execute()
+        return response?.body()?.string()
+    }
+
+    fun GetAsync(context: Context, url: String, listener: ApiListener?) {
+        OkGo.get<String>(url).tag(context).execute(object : StringCallback() {
+            override fun onSuccess(response: com.lzy.okgo.model.Response<String>?) {
+                if (listener == null) {
+                    return
+                }
+                listener.success(response?.body()?.toString())
+            }
+            override fun onError(response: com.lzy.okgo.model.Response<String>?) {
+                super.onError(response)
+                if (listener == null) {
+                    return
+                }
+                listener.error(response)
+            }
+        })
     }
 }

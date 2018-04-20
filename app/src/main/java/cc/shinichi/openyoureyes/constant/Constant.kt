@@ -8,6 +8,9 @@ package cc.shinichi.openyoureyes.constant
 */
 open class Constant {
     companion object {
+        // 作者主页
+        const val 作者主页 = "https://github.com/SherlockGougou"
+
         // 接口
         const val 类别列表 = "http://baobab.kaiyanapp.com/api/v5/index/tab/list"
         const val 发现 = "http://baobab.kaiyanapp.com/api/v5/index/tab/discovery"
@@ -30,8 +33,6 @@ open class Constant {
                 酷安图片5,
                 酷安图片6)
 
-        // 是否打印日志
-        const val 是否打印日志 = true
-//        const val 是否打印日志 = false
+        const val 刀剑神域壁纸1 = "http://i2.hdslb.com/bfs/archive/b6d24805ce3d81982bbf66f9f186affc5bc493b5.jpg"
     }
 }
