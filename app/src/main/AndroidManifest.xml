@@ -6,9 +6,7 @@
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-  <uses-permission android:name="android.permission.READ_LOGS"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
 
   <application
       android:name=".app.App"
@@ -30,7 +28,8 @@
     </activity>
     <activity
         android:name="cc.shinichi.openyoureyes.ui.activity.Home"
-        android:screenOrientation="portrait">
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
     </activity>
   </application>
 </manifest>

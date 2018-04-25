@@ -35,6 +35,9 @@ class AppManager {
         if (!activityStack.empty()) {
             activity = activityStack.lastElement()
         }
+        if (activity == null) {
+            exit()
+        }
         return activity
     }
 

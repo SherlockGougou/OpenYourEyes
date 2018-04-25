@@ -143,10 +143,8 @@ class Home : BaseActivity(), Handler.Callback, OnNavigationItemSelectedListener,
     }
 
     override fun onDrawerClosed(drawerView: View) {
-//        immersionBar.statusBarColor(R.color.white).statusBarDarkFont(true).init()
     }
 
     override fun onDrawerOpened(drawerView: View) {
-//        immersionBar.transparentStatusBar().statusBarDarkFont(false).init()
     }
 }

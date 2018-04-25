@@ -8,7 +8,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "cc.shinichi.openyoureyes"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -35,25 +35,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    // butterknife
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
     // glide
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     kapt 'com.github.bumptech.glide:compiler:4.6.1'
     implementation('jp.wasabeef:glide-transformations:3.1.1') {
         exclude group: 'com.bumptech.glide'
     }
-    // bugly
-    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
     // okgo
     implementation 'com.lzy.net:okgo:3.0.4'
     // AndPermission
     implementation 'com.yanzhenjie:permission:2.0.0-rc2'
     // gson
     implementation 'com.google.code.gson:gson:2.8.2'
-    // ImmersionBar
-    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
     // QMUI
     implementation 'com.qmuiteam:qmui:1.0.6'
     // BRVAH

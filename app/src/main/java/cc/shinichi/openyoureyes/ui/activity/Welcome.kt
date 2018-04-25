@@ -39,11 +39,12 @@ import java.util.Random
     }
 
     override fun onStart() {
+        loadImage()
         AndPermission.with(context)
                 .permission(Permission.WRITE_EXTERNAL_STORAGE)
                 .rationale(mRationale)
                 .onGranted {
-                    init()
+                    intentToHome()
                 }
                 .onDenied { permissions ->
                     if (AndPermission.hasAlwaysDeniedPermission(context, permissions)) {
@@ -100,12 +101,15 @@ import java.util.Random
         finish()
     }
 
-    private fun init() {
+    private fun loadImage() {
         // 加载每日美图，动画时长2秒
         val index = Random().nextInt(6)
         val imagePath = Constant.酷安图片列表[index]
         ALog.Log(TAG, imagePath)
         ImageLoader.load(this, imagePath, img_day_picture, true)
+    }
+
+    private fun intentToHome() {
         // 延时3秒打开主页
         handler.postDelayed({
             runOnUiThread({
