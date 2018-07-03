@@ -28,6 +28,7 @@ class App : Application() {
         builder.readTimeout(10, SECONDS)
         OkGo.getInstance()
                 .setCacheMode(CacheMode.REQUEST_FAILED_READ_CACHE)
+                .setCacheTime(3600000)// 缓存1小时
                 .setRetryCount(2)
                 .setOkHttpClient(builder.build())
                 .init(application)

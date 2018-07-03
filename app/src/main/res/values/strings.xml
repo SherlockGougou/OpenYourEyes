@@ -3,4 +3,5 @@
   <string name="menu_home_search">搜索</string>
   <string name="menu_home_more">更多</string>
   <string name="author_name">工藤一号</string>
+  <string name="text_click_retry">点击重试</string>
 </resources>
