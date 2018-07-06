@@ -13,29 +13,42 @@
       android:layout_height="match_parent"
       android:orientation="vertical"
       >
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_home"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:navigationIcon="@drawable/ic_action_category"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_height="48dp"
         >
-    </android.support.v7.widget.Toolbar>
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar_home"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+          app:navigationIcon="@drawable/ic_action_category"
+          app:popupTheme="@style/Theme.AppCompat.Light"
+          app:title="发现"
+          app:titleTextColor="@color/black"
+          >
+      </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_data_list_home"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:attr/selectableItemBackground"
-        />
+        >
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/recycler_data_list_home"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="?android:attr/selectableItemBackground"
+          />
+    </android.support.v4.widget.SwipeRefreshLayout>
   </LinearLayout>
 
-  <android.support.design.widget.NavigationView
-      android:id="@+id/design_navigation_view"
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/recycler_category_list"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_gravity="start"
-      app:itemBackground="?android:attr/selectableItemBackground"
+      android:background="@color/white"
       />
 </android.support.v4.widget.DrawerLayout>

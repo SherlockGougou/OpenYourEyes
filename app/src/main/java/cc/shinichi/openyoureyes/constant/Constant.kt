@@ -1,38 +1,27 @@
 package cc.shinichi.openyoureyes.constant
 
-/*
-* @author 工藤
-* @emil gougou@16fan.com
-* create at 2018/2/23  16:38
-* description: 开眼视频部分接口
-*/
-open class Constant {
-    companion object {
-        // 作者主页
-        const val 作者主页 = "https://github.com/SherlockGougou"
+/**
+ * @author 工藤
+ * @email gougou@16fan.com
+ * create at 2018/2/23  16:38
+ * description: 开眼视频部分接口
+ */
+object Constant {
+  // 作者主页
+  const val 作者主页 = "https://github.com/SherlockGougou"
 
-        // 接口
-        const val 类别列表 = "http://baobab.kaiyanapp.com/api/v5/index/tab/list"
-        const val 发现 = "http://baobab.kaiyanapp.com/api/v5/index/tab/discovery"
-        const val 推荐 = "http://baobab.kaiyanapp.com/api/v5/index/tab/allRec"
-        const val 日报 = "http://baobab.kaiyanapp.com/api/v5/index/tab/feed"
+  // 接口
+  const val 配置文件接口 = "http://baobab.kaiyanapp.com/api/v2/configs?model=Android&vc=352&vn=4.0"
+  const val 索引列表 = "http://baobab.kaiyanapp.com/api/v5/category/list"
+  const val 接口前缀 = "http://baobab.kaiyanapp.com/api/v5/index/tab/"
 
-        // 酷安图片
-        private val 酷安图片0 = "http://image.coolapk.com/picture/2018/0222/1282852_1519258611_1707@1080x1920.jpg"
-        private val 酷安图片1 = "http://image.coolapk.com/picture/2018/0227/844681_1519742056_1754@1080x2160.png"
-        private val 酷安图片2 = "http://image.coolapk.com/picture/2018/0227/716123_1519746286_5343@1440x2560.jpg"
-        private val 酷安图片3 = "http://image.coolapk.com/picture/2018/0225/807832_1519517357_7577@1440x2560.jpg"
-        private val 酷安图片4 = "http://image.coolapk.com/picture/2018/0227/473142_1519740815_0371@1080x2160.jpg"
-        private val 酷安图片5 = "http://image.coolapk.com/picture/2018/0226/486655_1519638285_2885@1080x1920.jpg"
-        private val 酷安图片6 = "http://image.coolapk.com/picture/2018/0131/606004_1517401329_8016@1080x1920.png"
-        val 酷安图片列表 = listOf<String>(酷安图片0,
-                酷安图片1,
-                酷安图片2,
-                酷安图片3,
-                酷安图片4,
-                酷安图片5,
-                酷安图片6)
+  const val 发现 = "http://baobab.kaiyanapp.com/api/v5/index/tab/discovery"
+  const val 推荐 = "http://baobab.kaiyanapp.com/api/v5/index/tab/allRec"
+  const val 日报 = "http://baobab.kaiyanapp.com/api/v5/index/tab/feed"
 
-        const val 刀剑神域壁纸1 = "http://i2.hdslb.com/bfs/archive/b6d24805ce3d81982bbf66f9f186affc5bc493b5.jpg"
-    }
+  // 必应每日壁纸
+  const val 必应每日壁纸 = "https://open.saintic.com/api/bingPic?"
+
+  // 作者信息背景图
+  const val 刀剑神域壁纸1 = "http://i2.hdslb.com/bfs/archive/b6d24805ce3d81982bbf66f9f186affc5bc493b5.jpg"
 }

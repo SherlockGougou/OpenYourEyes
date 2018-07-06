@@ -4,20 +4,37 @@
     android:layout_height="match_parent"
     >
 
-  <ImageView
-      android:id="@+id/img_no_net"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:layout_centerInParent="true"
-      android:src="@drawable/load_failed"
-      />
-
-  <TextView
+  <LinearLayout
+      android:id="@+id/ll_retry_container"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/img_no_net"
       android:layout_centerInParent="true"
-      android:layout_marginTop="10dp"
-      android:text="@string/text_click_retry"
+      android:orientation="vertical"
+      android:gravity="center"
+      >
+    <ImageView
+        android:id="@+id/img_error"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/load_failed"
+        />
+
+    <TextView
+        android:id="@+id/tv_click_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_error"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_click_retry"
+        android:textColor="@color/black"
+        />
+  </LinearLayout>
+
+  <ProgressBar
+      android:id="@+id/progress_loading"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_centerInParent="true"
+      android:visibility="gone"
       />
 </RelativeLayout>

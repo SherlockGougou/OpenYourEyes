@@ -1,7 +1,9 @@
 <resources>
-  <string name="app_name">大开眼界</string>
+  <string name="app_name">开眼Kotlin</string>
   <string name="menu_home_search">搜索</string>
   <string name="menu_home_more">更多</string>
   <string name="author_name">工藤一号</string>
   <string name="text_click_retry">点击重试</string>
+  <string name="category_default_title">这里是标题</string>
+  <string name="category_default_des">这里是描述</string>
 </resources>
