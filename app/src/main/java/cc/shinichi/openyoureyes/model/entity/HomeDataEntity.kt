@@ -21,8 +21,8 @@ class HomeDataEntity : MultiItemEntity {
     var TYPE_videoCollectionWithBrief = 7
     var TYPE_DynamicInfoCard = 8
   }
+
   private var itemType: Int = 0
-//  private var Home
 
   override fun getItemType(): Int {
     return itemType

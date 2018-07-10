@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_item_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/gray_e5"
+    android:foreground="?android:attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:minHeight="40dp"
     android:padding="10dp"
-    android:foreground="?android:attr/selectableItemBackground"
     >
   <ImageView
       android:id="@+id/img_category_icon"
@@ -35,7 +37,7 @@
       android:ellipsize="end"
       android:maxLines="1"
       android:text="@string/category_default_des"
-      android:textColor="@color/gray_8f"
+      android:textColor="@color/gray"
       android:textSize="12sp"
       />
 </RelativeLayout>

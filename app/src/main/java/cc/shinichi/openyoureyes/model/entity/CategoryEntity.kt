@@ -1,9 +1,9 @@
 package cc.shinichi.openyoureyes.model.entity
 
-import cc.shinichi.openyoureyes.model.bean.CategoryData
+import cc.shinichi.openyoureyes.model.bean.CategoryListBean
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
-public class CategoryEntity : MultiItemEntity {
+class CategoryEntity : MultiItemEntity {
 
   companion object {
     var TYPE_HEADER = 0
@@ -12,11 +12,11 @@ public class CategoryEntity : MultiItemEntity {
   }
 
   private var itemType: Int = 0
-  var info: CategoryData? = null
+  var info: CategoryListBean.Item? = null
 
   constructor(
     itemType: Int,
-    info: CategoryData?
+    info: CategoryListBean.Item?
   ) {
     this
         .itemType = itemType

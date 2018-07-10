@@ -29,7 +29,7 @@ object ImageLoader {
 
   fun loadRound(
     context: Context,
-    url: String? = "",
+    url: Any? = null,
     imageView: ImageView,
     radius: Int
   ) {

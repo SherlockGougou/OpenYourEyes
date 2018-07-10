@@ -11,13 +11,12 @@ import cc.shinichi.openyoureyes.constant.Config
 object ALog {
   fun log(
     TAG: String? = "Shinichi.log",
-    msg: String
+    msg: String? = "null"
   ) {
     // 规定每段显示的长度
     val LOG_MAXLENGTH = 2000
     if (Config.是否打印日志) {
-      val strLength = msg
-          .length
+      val strLength = msg?.length ?: 0
       var start = 0
       var end = LOG_MAXLENGTH
       for (i in 0..99) {
@@ -26,14 +25,14 @@ object ALog {
           android
               .util
               .Log
-              .d(TAG + i, msg.substring(start, end))
+              .d(TAG + i, msg?.substring(start, end))
           start = end
           end += LOG_MAXLENGTH
         } else {
           android
               .util
               .Log
-              .d(TAG, msg.substring(start, strLength))
+              .d(TAG, msg?.substring(start, strLength))
           break
         }
       }

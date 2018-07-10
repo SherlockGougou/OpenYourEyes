@@ -7,6 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.base.BaseActivity
+import cc.shinichi.openyoureyes.constant.Constant
 import cc.shinichi.openyoureyes.constant.SpTag
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
@@ -61,23 +62,22 @@ class Welcome : BaseActivity(), Callback {
     // 加载每日美图，动画时长2秒
     var imagePath = getSp().getString(SpTag.启动图链接, "")
     if (isNull(imagePath)) {
-      imagePath = "https://up.enterdesk.com/edpic_source/c8/07/79/c807795393ebd8d509d39cce70567e2c.jpg"
+      imagePath = Constant.默认启动图
     }
     ALog
         .log(TAG, imagePath)
     ImageLoader
         .loadSplash(this, imagePath, img_day_picture)
     var scaleAnimation = ScaleAnimation(
-        1.0f, 2.0f, 1.0f, 2.0f,
+        1.0f, 1.1f, 1.0f, 1.1f,
         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
     )
-    scaleAnimation.duration = 2000
+    scaleAnimation.duration = 3000
+    scaleAnimation.fillAfter = true
     img_day_picture.startAnimation(scaleAnimation)
-    img_day_picture.postOnAnimation {
-      // 延时3秒打开主页
-      handler
-          ?.sendEmptyMessageDelayed(1, 500)
-    }
+    // 延时3秒打开主页
+    handler
+        ?.sendEmptyMessageDelayed(1, 3500)
   }
 
   override fun handleMessage(msg: Message?): Boolean {

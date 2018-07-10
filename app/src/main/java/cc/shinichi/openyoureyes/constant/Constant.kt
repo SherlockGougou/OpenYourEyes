@@ -19,9 +19,10 @@ object Constant {
   const val 推荐 = "http://baobab.kaiyanapp.com/api/v5/index/tab/allRec"
   const val 日报 = "http://baobab.kaiyanapp.com/api/v5/index/tab/feed"
 
-  // 必应每日壁纸
-  const val 必应每日壁纸 = "https://open.saintic.com/api/bingPic?"
+  // 默认启动图
+  const val 默认启动图 =
+    "http://huafans.dbankcloud.com/pic/2017/02/24/b84c5ff63f91986dc95b9890df26a9a0_bigpicture_01_52.jpg"
 
   // 作者信息背景图
-  const val 刀剑神域壁纸1 = "http://i2.hdslb.com/bfs/archive/b6d24805ce3d81982bbf66f9f186affc5bc493b5.jpg"
+  const val 作者信息背景图 = "http://e.hiphotos.baidu.com/baike/c0%3Dbaike60%2C5%2C5%2C60%2C20%3Bt%3Dgif/sign=37e4fa2fca8065386fe7ac41f6b4ca21/d043ad4bd11373f026f510fea40f4bfbfaed048c.jpg"
 }

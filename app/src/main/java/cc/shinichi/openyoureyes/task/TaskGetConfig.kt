@@ -5,35 +5,38 @@ import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.constant.Constant
 import cc.shinichi.openyoureyes.constant.SpTag
-import cc.shinichi.openyoureyes.model.bean.Config
+import cc.shinichi.openyoureyes.model.bean.ConfigBean
 import cc.shinichi.openyoureyes.util.log.ALog
 import com.lzy.okgo.model.Response
-import kotlin.concurrent.thread
 
 class TaskGetConfig : BaseTask() {
 
   companion object {
     fun getConfig() {
-      thread {
-        Api.getInstance()
-            .GetAsync(App.application, Constant.配置文件接口, object : ApiListener {
-              override fun success(string: String?) {
-                var config: Config? = getGson().fromJson(string, Config::class.javaObjectType)
+      Api.getInstance()
+          .getAsync(App.application, Constant.配置文件接口, object : ApiListener() {
+
+            override fun success(string: String?) {
+              try {
+                val config: ConfigBean? =
+                  getGson().fromJson(string, ConfigBean::class.javaObjectType)
                 if (config != null) {
-                  val nextStartPageUrl = config.startPage.imageUrl
+                  val nextStartPageUrl = config.startPage?.imageUrl
                   if (!isNull(nextStartPageUrl)) {
-                    getSp().edit().putString(SpTag.启动图链接, nextStartPageUrl).apply()
-                    ALog.log(TAG, nextStartPageUrl)
+                    getSp().edit()
+                        .putString(SpTag.启动图链接, nextStartPageUrl)
+                        .apply()
+                    ALog.log(TAG, "sp put nextStartPageUrl: = $nextStartPageUrl")
                   }
-                  config = null
                 }
+              } catch (e: Exception) {
               }
+            }
 
-              override fun error(response: Response<String>?) {
+            override fun error(response: Response<String>?) {
 
-              }
-            })
-      }
+            }
+          })
     }
   }
 }

@@ -24,7 +24,7 @@
           android:theme="@style/Theme.AppCompat.Light.NoActionBar"
           app:navigationIcon="@drawable/ic_action_category"
           app:popupTheme="@style/Theme.AppCompat.Light"
-          app:title="发现"
+          app:title="#发现"
           app:titleTextColor="@color/black"
           >
       </android.support.v7.widget.Toolbar>

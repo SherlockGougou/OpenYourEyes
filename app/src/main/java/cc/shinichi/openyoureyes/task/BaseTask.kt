@@ -16,7 +16,7 @@ open class BaseTask {
     private var gson: Gson? = null
     private var sp: SharedPreferences? = null
 
-    fun isNull(string: String): Boolean {
+    fun isNull(string: String?): Boolean {
       if (TextUtils.isEmpty(string)) {
         return true
       }

@@ -11,11 +11,12 @@ object Code {
   const val Fail = 0x00002
 
   const val Refreshing = 0x00003
-  const val RefreshFinish = 0x00004
+  const val RefreshFail = 0x00004
+  const val RefreshFinish = 0x00005
 
-  const val LoadMoreSuccess = 0x00005
-  const val LoadMoreFail = 0x00006
-  const val LoadMoreEnd = 0x00007
+  const val LoadMoreSuccess = 0x00006
+  const val LoadMoreFail = 0x00007
+  const val LoadMoreEnd = 0x00008
 
-  const val NotifyDataChanged = 0x00008
+  const val NotifyDataChanged = 0x00009
 }

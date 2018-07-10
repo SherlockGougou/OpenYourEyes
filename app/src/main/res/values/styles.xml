@@ -3,37 +3,26 @@
   <!-- Base application theme. -->
   <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
     <!-- Customize your theme here. -->
-    <entity name="colorPrimary">@color/white</entity>
-    <entity name="colorPrimaryDark">@color/white</entity>
-    <entity name="colorAccent">@color/deepskyblue</entity>
-    <entity name="windowNoTitle">true</entity>
-    <entity name="android:windowLightStatusBar">true</entity>
-    <entity name="android:colorBackground">@color/white</entity>
-    <entity name="android:statusBarColor">@color/white</entity>
-    <entity name="android:textColorPrimary">@color/black</entity>
-    <entity name="android:textColorSecondary">@color/deepskyblue</entity>
-    <entity name="android:navigationBarColor">@color/black</entity>
-    <entity name="android:textColorSecondaryInverse">@color/black</entity>
-    <entity name="android:windowBackground">@color/white</entity>
-    <entity name="android:textColorPrimaryInverse">@color/black</entity>
-    <entity name="android:colorForeground">@color/black</entity>
+    <item name="colorPrimary">@color/white</item>
+    <item name="colorPrimaryDark">@color/white</item>
+    <item name="colorAccent">@color/deepskyblue</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowLightStatusBar">true</item>
+    <item name="android:colorBackground">@color/white</item>
+    <item name="android:statusBarColor">@color/white</item>
+    <item name="android:textColorPrimary">@color/black</item>
+    <item name="android:textColorSecondary">@color/deepskyblue</item>
+    <item name="android:navigationBarColor">@color/black</item>
+    <item name="android:textColorSecondaryInverse">@color/black</item>
+    <item name="android:windowBackground">@color/white</item>
+    <item name="android:textColorPrimaryInverse">@color/black</item>
+    <item name="android:colorForeground">@color/black</item>
   </style>
 
   <!-- welcome theme. -->
   <style name="WelcomeTheme" parent="Theme.AppCompat.NoActionBar">
     <!-- Customize your theme here. -->
-    <entity name="windowNoTitle">true</entity>
-    <entity name="android:windowFullscreen">true</entity>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
   </style>
-
-  <style name="nav_style">
-    <entity name="android:layout_width">0dp</entity>
-    <entity name="android:layout_height">wrap_content</entity>
-    <entity name="android:layout_weight">1</entity>
-    <entity name="android:button">@null</entity>
-    <entity name="android:drawablePadding">2dp</entity>
-    <entity name="android:gravity">center</entity>
-    <entity name="android:textSize">11sp</entity>
-  </style>
-
 </resources>

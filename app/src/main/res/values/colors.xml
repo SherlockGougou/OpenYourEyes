@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#3F51B5</color>
-  <color name="colorPrimaryDark">#303F9F</color>
-  <color name="colorAccent">#FF4081</color>
-
   <!--透明色 -->
   <color name="transparent">#00000000</color>
   <!--白色 -->
@@ -286,6 +282,8 @@
   <color name="grassgreen">#99cc33</color>
   <!--灰色cc -->
   <color name="gray_cc">#cccccc</color>
+  <!--灰色e5 -->
+  <color name="gray_e5">#e5e5e5</color>
   <!--灰色8f -->
   <color name="gray_8f">#8f8f8f</color>
 </resources>

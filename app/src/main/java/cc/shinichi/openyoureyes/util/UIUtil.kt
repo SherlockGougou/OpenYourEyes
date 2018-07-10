@@ -2,6 +2,7 @@ package cc.shinichi.openyoureyes.util
 
 import android.content.Context
 import android.graphics.Point
+import android.text.TextUtils
 import android.view.WindowManager
 import cc.shinichi.openyoureyes.app.App
 
@@ -40,5 +41,12 @@ object UIUtil {
 
   fun px2dp(): Float {
     return 1f
+  }
+
+  fun isNull(string: String?): Boolean {
+    if (TextUtils.isEmpty(string)) {
+      return true
+    }
+    return false
   }
 }

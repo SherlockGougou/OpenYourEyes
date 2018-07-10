@@ -1,10 +1,14 @@
 package cc.shinichi.openyoureyes.app
 
 import android.app.Application
+import cc.shinichi.openyoureyes.constant.Config
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheMode
+import com.lzy.okgo.interceptor.HttpLoggingInterceptor
+import com.lzy.okgo.interceptor.HttpLoggingInterceptor.Level.BODY
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit.SECONDS
+import java.util.logging.Level
 
 /**
  * @author 工藤
@@ -32,10 +36,16 @@ class App : Application() {
         .writeTimeout(10, SECONDS)
     builder
         .readTimeout(10, SECONDS)
+    val httpLog = HttpLoggingInterceptor("shinichi")
+    httpLog.setColorLevel(Level.INFO)
+    httpLog.setPrintLevel(BODY)
+    if (Config.是否打印日志) {
+      builder.addInterceptor(httpLog)
+    }
     OkGo
         .getInstance()
         .setCacheMode(CacheMode.REQUEST_FAILED_READ_CACHE)
-        .setCacheTime(3600000) // 缓存1小时
+        .setCacheTime(3600000 * 2) // 缓存2小时
         .setRetryCount(2)
         .setOkHttpClient(builder.build())
         .init(application)
