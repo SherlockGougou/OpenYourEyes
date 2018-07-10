@@ -6,4 +6,5 @@
   <string name="text_click_retry">点击重试</string>
   <string name="category_default_title">这里是标题</string>
   <string name="category_default_des">这里是描述</string>
+  <string name="tv_TextCard_default">本周排行</string>
 </resources>

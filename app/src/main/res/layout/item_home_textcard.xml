@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+  <TextView
+      android:id="@+id/tv_TextCard"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:drawableRight="@drawable/ic_action_choose_right"
+      android:paddingLeft="@dimen/default_padding"
+      android:paddingTop="@dimen/default_padding"
+      android:text="@string/tv_TextCard_default"
+      android:textColor="@color/black"
+      android:textSize="@dimen/tv_TextCard_size"
+      android:textStyle="bold"
+      />
+</LinearLayout>

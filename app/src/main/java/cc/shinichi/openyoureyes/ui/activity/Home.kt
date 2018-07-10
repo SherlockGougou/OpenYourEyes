@@ -24,8 +24,11 @@ import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.Constant
 import cc.shinichi.openyoureyes.model.bean.CategoryListBean
+import cc.shinichi.openyoureyes.model.bean.CommonBean
+import cc.shinichi.openyoureyes.model.bean.DailyBean
 import cc.shinichi.openyoureyes.model.bean.DiscoveryBean
 import cc.shinichi.openyoureyes.model.bean.DiscoveryBean.Item
+import cc.shinichi.openyoureyes.model.bean.RecommendBean
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.task.TaskGetConfig
 import cc.shinichi.openyoureyes.ui.adapter.CategoryAdapter
@@ -243,10 +246,10 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
                 ?.sendEmptyMessageDelayed(Code.RefreshFinish, 500)
             when (itemType) {
               "发现" -> setDiscoveryList(string)
-              "推荐" -> setCommentList(string)
+              "推荐" -> setRecommendList(string)
               "日报" -> setDailyList(string)
               else -> {
-                setDefaultList(string)
+                setCommonBeanList(string)
               }
             }
           }
@@ -268,25 +271,37 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     }
   }
 
-  private fun setCommentList(string: String?) {
-    //        val bean = gson.fromJson(string, DiscoveryBean::class.java)
-    //        if (bean != null) {
-    //
-    //        }
+  private fun setRecommendList(string: String?) {
+    val bean: RecommendBean? = getGson().fromJson(string, RecommendBean::class.javaObjectType)
+    if (bean?.itemList != null) {
+      val size = bean.itemList.size
+      ALog.log(TAG, "bean.itemList?.size = $size")
+      for ((index, item: RecommendBean.Item?) in bean.itemList.withIndex()) {
+        ALog.log(TAG, "item type in index = $index = " + item?.type)
+      }
+    }
   }
 
   private fun setDailyList(string: String?) {
-    //        val bean = gson.fromJson(string, DiscoveryBean::class.java)
-    //        if (bean != null) {
-    //
-    //        }
+    val bean: DailyBean? = getGson().fromJson(string, DailyBean::class.javaObjectType)
+    if (bean?.itemList != null) {
+      val size = bean.itemList.size
+      ALog.log(TAG, "bean.itemList?.size = $size")
+      for ((index, item: DailyBean.Item?) in bean.itemList.withIndex()) {
+        ALog.log(TAG, "item type in index = $index = " + item?.type)
+      }
+    }
   }
 
-  private fun setDefaultList(string: String?) {
-    //        val bean = gson.fromJson(string, DiscoveryBean::class.java)
-    //        if (bean != null) {
-    //
-    //        }
+  private fun setCommonBeanList(string: String?) {
+    val bean: CommonBean? = getGson().fromJson(string, CommonBean::class.javaObjectType)
+    if (bean?.itemList != null) {
+      val size = bean.itemList.size
+      ALog.log(TAG, "bean.itemList?.size = $size")
+      for ((index, item: CommonBean.Item?) in bean.itemList.withIndex()) {
+        ALog.log(TAG, "item type in index = $index = " + item?.type)
+      }
+    }
   }
 
   override fun onBackPressed() {
