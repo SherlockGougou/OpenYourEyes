@@ -28,7 +28,7 @@
         android:src="@drawable/ic_author"
         />
 
-    <TextView
+    <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
         android:id="@+id/tv_author_name"
         android:layout_width="100dp"
         android:layout_height="wrap_content"

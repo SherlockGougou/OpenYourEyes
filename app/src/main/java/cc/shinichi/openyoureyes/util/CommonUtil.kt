@@ -18,7 +18,10 @@ object CommonUtil {
         activeNetwork.isConnectedOrConnecting
   }
 
-  fun getStringFromAssets(subdirectory: String, fileName: String): String {
+  fun getStringFromAssets(
+    subdirectory: String,
+    fileName: String
+  ): String {
     return app.assets.fileAsString(subdirectory, fileName)
   }
 

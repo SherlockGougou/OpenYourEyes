@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/default_padding"
+    android:paddingRight="@dimen/default_padding"
+    android:paddingTop="@dimen/default_margin"
+    >
+  <ImageView
+      android:id="@+id/img_videoSmallCard_img"
+      android:layout_width="@dimen/img_videoSmallCard_w"
+      android:layout_height="@dimen/img_videoSmallCard_h"
+      android:src="@color/gray_e5"
+      />
+
+  <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignBottom="@+id/img_videoSmallCard_img"
+      android:layout_alignRight="@+id/img_videoSmallCard_img"
+      android:layout_marginBottom="@dimen/margin_5dp"
+      android:layout_marginRight="@dimen/margin_5dp"
+      android:background="@drawable/video_length_text_back"
+      android:text="07:46"
+      android:textColor="@color/white"
+      android:textSize="10sp"
+      />
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_videosmallcard_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/default_margin"
+      android:layout_marginTop="@dimen/default_margin"
+      android:layout_toRightOf="@+id/img_videoSmallCard_img"
+      android:maxLines="2"
+      android:text="这里是小视频标题"
+      android:textColor="@color/black"
+      android:textSize="14sp"
+      />
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+      android:id="@+id/tv_videosmallcard_des"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignBottom="@+id/img_videoSmallCard_img"
+      android:layout_marginBottom="@dimen/default_margin"
+      android:layout_marginLeft="@dimen/default_margin"
+      android:layout_toRightOf="@+id/img_videoSmallCard_img"
+      android:maxLines="1"
+      android:text="这里是小视频描述"
+      android:textColor="@color/gray"
+      android:textSize="12sp"
+      />
+
+</RelativeLayout>

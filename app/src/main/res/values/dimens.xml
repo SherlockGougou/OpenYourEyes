@@ -3,8 +3,18 @@
   <dimen name="horizontalScrollCard_height">200dp</dimen>
   <dimen name="default_padding">10dp</dimen>
   <dimen name="default_margin">10dp</dimen>
+  <dimen name="margin_5dp">5dp</dimen>
+  <dimen name="margin_3dp">3dp</dimen>
+  <dimen name="padding_20dp">20dp</dimen>
   <dimen name="default_toolbar_height">48dp</dimen>
-  <dimen name="tv_TextCard_size">24sp</dimen>
+  <dimen name="tv_TextCard_header5_size">24sp</dimen>
+  <dimen name="tv_TextCard_footer2_size">14sp</dimen>
+  <dimen name="tv_TextCard_h">48dp</dimen>
+  <dimen name="tv_user_des_h">60dp</dimen>
   <dimen name="progress_loading_w_h">60dp</dimen>
   <dimen name="img_category_icon_w_h">50dp</dimen>
+  <dimen name="img_videoSmallCard_w">150dp</dimen>
+  <dimen name="img_videoSmallCard_h">100dp</dimen>
+  <dimen name="squareCardCollection_h">180dp</dimen>
+  <dimen name="divider_h">0.1dp</dimen>
 </resources>

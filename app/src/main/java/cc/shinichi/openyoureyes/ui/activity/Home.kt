@@ -24,14 +24,19 @@ import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.Constant
 import cc.shinichi.openyoureyes.model.bean.CategoryListBean
-import cc.shinichi.openyoureyes.model.bean.CommonBean
-import cc.shinichi.openyoureyes.model.bean.DailyBean
-import cc.shinichi.openyoureyes.model.bean.DiscoveryBean
-import cc.shinichi.openyoureyes.model.bean.DiscoveryBean.Item
-import cc.shinichi.openyoureyes.model.bean.RecommendBean
+import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
+import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.briefCard
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.followCard
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.horizontalScrollCard
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.squareCardCollection
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.textCard
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.videoSmallCard
 import cc.shinichi.openyoureyes.task.TaskGetConfig
 import cc.shinichi.openyoureyes.ui.adapter.CategoryAdapter
+import cc.shinichi.openyoureyes.ui.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyes.util.CommonUtil
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
@@ -41,6 +46,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter.OnItemClickListener
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
 import kotlinx.android.synthetic.main.activity_home.recycler_category_list
+import kotlinx.android.synthetic.main.activity_home.recycler_data_list_home
 import kotlinx.android.synthetic.main.activity_home.swipe_refresh
 import kotlinx.android.synthetic.main.activity_home.toolbar_home
 
@@ -55,12 +61,18 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
   private var progress_loading: ProgressBar? = null
 
   // data
-  private var categoryListBean: CategoryListBean? = null
   private var clickTime = 0L
+
+  // category data
+  private var categoryListBean: CategoryListBean? = null
   private var currentCategoryIndex = 1
   private var currentCategoryBean: CategoryListBean.Item? = null
-  private var allEntity: MutableList<CategoryEntity> = ArrayList()
+  private var allCategoryEntity: MutableList<CategoryEntity> = ArrayList()
   private var categoryAdapter: CategoryAdapter? = null
+
+  // home data
+  private var allHomeDataEntity: MutableList<HomeDataEntity> = ArrayList()
+  private var homeDataAdapter: HomeDataAdapter? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super
@@ -81,7 +93,9 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
       actionBar
           ?.setHomeAsUpIndicator(R.drawable.ic_action_category)
     }
-    categoryAdapter = CategoryAdapter(this, allEntity)
+
+    // category view
+    categoryAdapter = CategoryAdapter(this, allCategoryEntity)
     categoryAdapter
         ?.onItemClickListener = this
     recycler_category_list
@@ -89,6 +103,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     recycler_category_list
         .adapter = categoryAdapter
 
+    // home view
     emptyView = layoutInflater
         .inflate(R.layout.item_empty_view, null)
     ll_retry_container = emptyView
@@ -97,6 +112,10 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
         ?.setOnClickListener(this)
     progress_loading = emptyView
         ?.findViewById(R.id.progress_loading)
+    homeDataAdapter = HomeDataAdapter(this, allHomeDataEntity)
+    homeDataAdapter?.setEnableLoadMore(false)
+    recycler_data_list_home.layoutManager = LinearLayoutManager(this)
+    recycler_data_list_home.adapter = homeDataAdapter
 
     swipe_refresh
         .setOnRefreshListener {
@@ -161,21 +180,21 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     ALog.log(TAG, "setCategoryList")
     val tabLists = categoryListBean
         ?.itemList
-    allEntity
+    allCategoryEntity
         .clear()
-    allEntity
+    allCategoryEntity
         .add(0, CategoryEntity(CategoryEntity.TYPE_HEADER, null))
-    allEntity
+    allCategoryEntity
         .add(1, CategoryEntity(CategoryEntity.TYPE_ITEM, null))
-    allEntity
+    allCategoryEntity
         .add(2, CategoryEntity(CategoryEntity.TYPE_ITEM, null))
-    allEntity
+    allCategoryEntity
         .add(3, CategoryEntity(CategoryEntity.TYPE_ITEM, null))
-    allEntity
+    allCategoryEntity
         .add(4, CategoryEntity(CategoryEntity.TYPE_ITEM_DIVIDER, null))
     if (tabLists != null) {
       for (value in tabLists) {
-        allEntity
+        allCategoryEntity
             .add(CategoryEntity(CategoryEntity.TYPE_ITEM, value))
       }
     }
@@ -244,14 +263,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
           override fun success(string: String?) {
             handler
                 ?.sendEmptyMessageDelayed(Code.RefreshFinish, 500)
-            when (itemType) {
-              "发现" -> setDiscoveryList(string)
-              "推荐" -> setRecommendList(string)
-              "日报" -> setDailyList(string)
-              else -> {
-                setCommonBeanList(string)
-              }
-            }
+            getEntityList(string)
           }
 
           override fun error(response: Response<String>?) {
@@ -260,46 +272,41 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
         })
   }
 
-  private fun setDiscoveryList(string: String?) {
-    val bean: DiscoveryBean? = getGson().fromJson(string, DiscoveryBean::class.javaObjectType)
+  private fun getEntityList(string: String?) {
+    val bean: HomeDataBean? = getGson().fromJson(string, HomeDataBean::class.javaObjectType)
     if (bean?.itemList != null) {
       val size = bean.itemList.size
       ALog.log(TAG, "bean.itemList?.size = $size")
+      allHomeDataEntity.clear()
       for ((index, item: Item?) in bean.itemList.withIndex()) {
         ALog.log(TAG, "item type in index = $index = " + item?.type)
-      }
-    }
-  }
-
-  private fun setRecommendList(string: String?) {
-    val bean: RecommendBean? = getGson().fromJson(string, RecommendBean::class.javaObjectType)
-    if (bean?.itemList != null) {
-      val size = bean.itemList.size
-      ALog.log(TAG, "bean.itemList?.size = $size")
-      for ((index, item: RecommendBean.Item?) in bean.itemList.withIndex()) {
-        ALog.log(TAG, "item type in index = $index = " + item?.type)
-      }
-    }
-  }
-
-  private fun setDailyList(string: String?) {
-    val bean: DailyBean? = getGson().fromJson(string, DailyBean::class.javaObjectType)
-    if (bean?.itemList != null) {
-      val size = bean.itemList.size
-      ALog.log(TAG, "bean.itemList?.size = $size")
-      for ((index, item: DailyBean.Item?) in bean.itemList.withIndex()) {
-        ALog.log(TAG, "item type in index = $index = " + item?.type)
-      }
-    }
-  }
-
-  private fun setCommonBeanList(string: String?) {
-    val bean: CommonBean? = getGson().fromJson(string, CommonBean::class.javaObjectType)
-    if (bean?.itemList != null) {
-      val size = bean.itemList.size
-      ALog.log(TAG, "bean.itemList?.size = $size")
-      for ((index, item: CommonBean.Item?) in bean.itemList.withIndex()) {
-        ALog.log(TAG, "item type in index = $index = " + item?.type)
+        when (item?.type) {
+          horizontalScrollCard -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_horizontalScrollCard, item))
+          }
+          textCard -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_textCard, item))
+          }
+          followCard -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_followCard, item))
+          }
+          videoSmallCard -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoSmallCard, item))
+          }
+          briefCard -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_briefCard, item))
+          }
+          squareCardCollection -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_squareCardCollection, item))
+          }
+//          videoCollectionWithBrief -> {
+//            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoCollectionWithBrief, item))
+//          }
+//          DynamicInfoCard -> {
+//            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))
+//          }
+        }
+        homeDataAdapter?.notifyDataSetChanged()
       }
     }
   }

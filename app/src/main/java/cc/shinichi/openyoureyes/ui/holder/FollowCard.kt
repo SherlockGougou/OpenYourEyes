@@ -1,11 +1,9 @@
 package cc.shinichi.openyoureyes.ui.holder
 
-import android.support.v7.widget.RecyclerView
-import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import com.chad.library.adapter.base.BaseViewHolder
 
-class HorizontalScrollCard {
+class FollowCard {
 
   private var helper: BaseViewHolder
   private var entity: HomeDataEntity
@@ -20,7 +18,6 @@ class HorizontalScrollCard {
   }
 
   private fun setData() {
-    val recyclerView = helper.getView<RecyclerView>(R.id.rv_horizontalScrollCard)
 
   }
 }

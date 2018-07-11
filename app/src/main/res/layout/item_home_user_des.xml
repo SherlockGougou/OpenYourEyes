@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="@dimen/default_padding"
+    >
+
+  <ImageView
+      android:id="@+id/img_user_icon"
+      android:layout_width="@dimen/default_toolbar_height"
+      android:layout_height="@dimen/default_toolbar_height"
+      android:src="@color/gray_e5"
+      />
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_user_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/default_margin"
+      android:layout_toRightOf="@+id/img_user_icon"
+      android:maxLines="1"
+      android:text="这里是用户名"
+      android:textColor="@color/black"
+      android:textSize="14sp"
+      />
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+      android:id="@+id/tv_user_des"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignBottom="@+id/img_user_icon"
+      android:layout_marginLeft="@dimen/default_margin"
+      android:layout_toRightOf="@+id/img_user_icon"
+      android:maxLines="1"
+      android:text="这里是用户描述"
+      android:textColor="@color/gray"
+      android:textSize="13sp"
+      />
+</RelativeLayout>

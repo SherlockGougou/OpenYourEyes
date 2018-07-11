@@ -2,17 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     >
-  <TextView
-      android:id="@+id/tv_TextCard"
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_TextCard_header5"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:drawableRight="@drawable/ic_action_choose_right"
       android:paddingLeft="@dimen/default_padding"
-      android:paddingTop="@dimen/default_padding"
+      android:paddingTop="@dimen/padding_20dp"
       android:text="@string/tv_TextCard_default"
       android:textColor="@color/black"
-      android:textSize="@dimen/tv_TextCard_size"
-      android:textStyle="bold"
+      android:textSize="@dimen/tv_TextCard_header5_size"
+      />
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_TextCard_footer2"
+      android:layout_width="wrap_content"
+      android:layout_height="@dimen/default_toolbar_height"
+      android:layout_gravity="right"
+      android:drawableRight="@drawable/ic_action_choose_right"
+      android:gravity="center_vertical"
+      android:text="@string/tv_TextCard_default"
+      android:textColor="@color/black"
+      android:textSize="@dimen/tv_TextCard_footer2_size"
+      android:visibility="gone"
       />
 </LinearLayout>

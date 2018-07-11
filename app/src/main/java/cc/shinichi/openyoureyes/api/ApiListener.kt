@@ -2,7 +2,7 @@ package cc.shinichi.openyoureyes.api
 
 import com.lzy.okgo.model.Response
 
-abstract class ApiListener: IApiListener {
+abstract class ApiListener : IApiListener {
   override fun start() {
   }
 

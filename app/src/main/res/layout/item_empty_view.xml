@@ -19,7 +19,7 @@
         android:src="@drawable/load_failed"
         />
 
-    <TextView
+    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
         android:id="@+id/tv_click_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
