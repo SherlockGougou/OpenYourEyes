@@ -35,12 +35,20 @@ object UIUtil {
         .y
   }
 
-  fun dp2px(): Float {
-    return 1f
+  fun px2dp(pxValue: Int): Int {
+    val scale = App.application
+        .resources
+        .displayMetrics
+        .density
+    return (pxValue / scale + 0.5f).toInt()
   }
 
-  fun px2dp(): Float {
-    return 1f
+  fun dp2px(dipValue: Int): Int {
+    val scale = App.application
+        .resources
+        .displayMetrics
+        .density
+    return (dipValue * scale + 0.5f).toInt()
   }
 
   fun isNull(string: String?): Boolean {
@@ -48,5 +56,16 @@ object UIUtil {
       return true
     }
     return false
+  }
+
+  fun getDurationText(duration: Int?): String {
+    if (duration == null) {
+      return ""
+    }
+    var 分钟: String = ""
+    var 秒钟: String = ""
+    分钟 = (duration / 60).toString()
+    秒钟 = (duration % 60).toString()
+    return 分钟 + ":" + 秒钟
   }
 }

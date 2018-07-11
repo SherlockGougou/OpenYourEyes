@@ -14,9 +14,33 @@
 
   <ImageView
       android:id="@+id/img_eye_loading_icon"
-      android:layout_width="120dp"
+      android:layout_width="200dp"
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
+      android:padding="@dimen/padding_20dp"
+      android:scaleType="centerCrop"
       android:src="@drawable/eye_loading_icon"
+      />
+
+  <cc.shinichi.openyoureyes.widget.LobsterTextView
+      android:id="@+id/tv_welcome_english"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/tv_welcome_chinese"
+      android:layout_marginBottom="@dimen/default_margin"
+      android:gravity="center"
+      android:text="@string/tv_welcome_english"
+      android:textColor="@color/white"
+      android:textSize="16sp"
+      />
+  <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+      android:id="@+id/tv_welcome_chinese"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="@dimen/default_toolbar_height"
+      android:gravity="center"
+      android:text="@string/tv_welcome_chinese"
+      android:textSize="18sp"
       />
 </RelativeLayout>

@@ -36,8 +36,7 @@ object ImageLoader {
     GlideApp
         .with(context)
         .load(url)
-        .transform(CenterCrop())
-        .transform(RoundedCorners(radius))
+        .transforms(CenterCrop(), RoundedCorners(radius))
         .into(imageView)
   }
 

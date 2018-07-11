@@ -8,8 +8,6 @@
       android:id="@+id/rv_horizontalScrollCard"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_marginLeft="@dimen/default_margin"
-      android:layout_marginRight="@dimen/default_margin"
       android:clipChildren="false"
       />
 </RelativeLayout>

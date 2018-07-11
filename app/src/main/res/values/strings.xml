@@ -7,4 +7,6 @@
   <string name="category_default_title">这里是标题</string>
   <string name="category_default_des">这里是描述</string>
   <string name="tv_TextCard_default">本周排行</string>
+  <string name="tv_welcome_english">Daily appetizers for your eyes, Bon eyepetit</string>
+  <string name="tv_welcome_chinese">每日精选视频推介，让你大开眼界</string>
 </resources>

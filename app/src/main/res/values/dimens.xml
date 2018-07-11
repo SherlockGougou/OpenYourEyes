@@ -5,6 +5,7 @@
   <dimen name="default_margin">10dp</dimen>
   <dimen name="margin_5dp">5dp</dimen>
   <dimen name="margin_3dp">3dp</dimen>
+  <dimen name="margin_20dp">20dp</dimen>
   <dimen name="padding_20dp">20dp</dimen>
   <dimen name="default_toolbar_height">48dp</dimen>
   <dimen name="tv_TextCard_header5_size">24sp</dimen>

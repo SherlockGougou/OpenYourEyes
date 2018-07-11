@@ -42,7 +42,7 @@ class HomeDataAdapter(
     val item: Item = entity.getData() ?: return
     when (item.type) {
       HomeDataEntity.horizontalScrollCard -> {
-        HorizontalScrollCard(helper, entity)
+        HorizontalScrollCard(super.mContext, helper, entity)
       }
       HomeDataEntity.textCard -> {
         TextCard(helper, entity)

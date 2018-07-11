@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_hor_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/default_padding"
@@ -10,9 +11,11 @@
       android:layout_width="match_parent"
       android:layout_height="@dimen/horizontalScrollCard_height"
       android:src="@color/gray_e5"
+      android:scaleType="centerCrop"
       />
 
   <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
+      android:id="@+id/tv_follow_time_length"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignBottom="@+id/img_follow_card_img"
@@ -30,6 +33,7 @@
       android:layout_width="@dimen/img_category_icon_w_h"
       android:layout_height="@dimen/img_category_icon_w_h"
       android:layout_below="@+id/img_follow_card_img"
+      android:layout_marginRight="@dimen/default_margin"
       android:layout_marginTop="@dimen/default_margin"
       android:src="@color/gray_e5"
       />
@@ -40,7 +44,6 @@
       android:layout_height="wrap_content"
       android:layout_alignTop="@+id/img_follow_card_user_icon"
       android:layout_below="@+id/img_follow_card_img"
-      android:layout_marginLeft="@dimen/default_margin"
       android:layout_marginTop="@dimen/margin_3dp"
       android:layout_toRightOf="@+id/img_follow_card_user_icon"
       android:maxLines="1"
@@ -54,7 +57,6 @@
       android:layout_height="wrap_content"
       android:layout_alignBottom="@+id/img_follow_card_user_icon"
       android:layout_marginBottom="@dimen/margin_3dp"
-      android:layout_marginLeft="@dimen/default_margin"
       android:layout_toRightOf="@+id/img_follow_card_user_icon"
       android:maxLines="1"
       android:text="这里是作者名和视频分类"

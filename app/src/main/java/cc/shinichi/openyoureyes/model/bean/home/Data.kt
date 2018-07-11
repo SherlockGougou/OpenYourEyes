@@ -3,6 +3,7 @@ package cc.shinichi.openyoureyes.model.bean.home
 import com.google.gson.annotations.SerializedName
 
 data class Data(
+  @SerializedName("itemList") val itemList: List<ItemX?>? = listOf(),
   @SerializedName("dynamicType") val dynamicType: String? = "",
   @SerializedName("user") val user: User? = User(),
   @SerializedName("mergeNickName") val mergeNickName: Any? = Any(),
@@ -14,6 +15,7 @@ data class Data(
   @SerializedName("id") val id: Int? = 0,
   @SerializedName("text") val text: String? = "",
   @SerializedName("subTitle") val subTitle: Any? = Any(),
+  @SerializedName("image") val image: String? = "",
   @SerializedName("actionUrl") val actionUrl: String? = "",
   @SerializedName("follow") val follow: Any? = Any(),
   @SerializedName("header") val header: Header? = Header(),
