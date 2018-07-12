@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:padding="@dimen/default_padding"
     >
 
-  <ImageView
+  <com.facebook.drawee.view.SimpleDraweeView
       android:id="@+id/img_user_icon"
       android:layout_width="@dimen/default_toolbar_height"
       android:layout_height="@dimen/default_toolbar_height"
-      android:src="@color/gray_e5"
+      app:actualImageScaleType="centerCrop"
+      app:placeholderImage="@color/gray_e5"
+      app:placeholderImageScaleType="centerCrop"
+      app:roundAsCircle="true"
       />
 
   <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView

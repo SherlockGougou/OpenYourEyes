@@ -5,7 +5,6 @@ import cc.shinichi.openyoureyes.util.CommonUtil
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.callback.StringCallback
 import com.lzy.okgo.request.base.Request
-import okhttp3.Response
 
 /**
  * @author 工藤
@@ -29,22 +28,13 @@ open class Api {
     }
   }
 
-  fun getSync(
-    context: Context,
-    url: String
-  ): String? {
-    val response: Response? = OkGo
-        .get<String>(url)
-        .tag(context)
-        .execute()
-    return response
-        ?.body()
-        ?.string()
+  fun cancelAll() {
+    OkGo.cancelAll(OkGo.getInstance().okHttpClient)
   }
 
   fun getAsync(
     context: Context,
-    url: String,
+    url: String?,
     listenerI: IApiListener?
   ) {
     if (!CommonUtil.isConnected()) {
@@ -53,6 +43,9 @@ open class Api {
     }
     OkGo
         .get<String>(url)
+        .params("udid", "23074f87cfef48bd9a52b3ad1c054dada94e999e")
+        .params("vc", "352")
+        .params("vn", "4.0")
         .tag(context)
         .execute(object : StringCallback() {
 

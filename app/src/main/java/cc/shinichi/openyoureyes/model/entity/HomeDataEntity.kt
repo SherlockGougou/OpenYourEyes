@@ -20,6 +20,7 @@ class HomeDataEntity : MultiItemEntity {
     var TYPE_squareCardCollection = 5
     var TYPE_videoCollectionWithBrief = 6
     var TYPE_DynamicInfoCard = 7
+    var TYPE_autoPlayFollowCard = 8
 
     var horizontalScrollCard = "horizontalScrollCard"
     var textCard = "textCard"
@@ -29,6 +30,7 @@ class HomeDataEntity : MultiItemEntity {
     var squareCardCollection = "squareCardCollection"
     var videoCollectionWithBrief = "videoCollectionWithBrief"
     var DynamicInfoCard = "DynamicInfoCard"
+    var autoPlayFollowCard = "autoPlayFollowCard"
   }
 
   private var itemType: Int = 0

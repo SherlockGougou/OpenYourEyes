@@ -16,6 +16,7 @@ data class Data(
   @SerializedName("text") val text: String? = "",
   @SerializedName("subTitle") val subTitle: Any? = Any(),
   @SerializedName("image") val image: String? = "",
+  @SerializedName("icon") val icon: String? = "",
   @SerializedName("actionUrl") val actionUrl: String? = "",
   @SerializedName("follow") val follow: Any? = Any(),
   @SerializedName("header") val header: Header? = Header(),

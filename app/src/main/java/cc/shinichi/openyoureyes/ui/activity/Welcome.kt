@@ -67,7 +67,7 @@ class Welcome : BaseActivity(), Callback {
     ALog
         .log(TAG, imagePath)
     ImageLoader
-        .loadSplash(this, imagePath, img_day_picture)
+        .load(imagePath, img_day_picture)
     var scaleAnimation = ScaleAnimation(
         1.0f, 1.1f, 1.0f, 1.1f,
         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f

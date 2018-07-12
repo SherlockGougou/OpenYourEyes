@@ -1,11 +1,9 @@
 package cc.shinichi.openyoureyes.util.image
 
-import android.content.Context
-import android.widget.ImageView
-import cc.shinichi.openyoureyes.util.UIUtil
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import android.net.Uri
+import cc.shinichi.openyoureyes.app.App
+import com.facebook.drawee.backends.pipeline.Fresco
+import com.facebook.drawee.view.SimpleDraweeView
 
 /**
  * @author 工藤
@@ -16,79 +14,37 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 object ImageLoader {
 
   fun load(
-    context: Context,
     url: String? = "",
-    imageView: ImageView
+    imageView: SimpleDraweeView
   ) {
-    GlideApp
-        .with(context)
-        .load(url)
-        .transform(CenterCrop())
-        .into(imageView)
-  }
-
-  fun loadRound(
-    context: Context,
-    url: Any? = null,
-    imageView: ImageView,
-    radius: Int
-  ) {
-    GlideApp
-        .with(context)
-        .load(url)
-        .transforms(CenterCrop(), RoundedCorners(radius))
-        .into(imageView)
-  }
-
-  fun loadSplash(
-    context: Context,
-    url: String? = "",
-    imageView: ImageView
-  ) {
-    GlideApp
-        .with(context)
-        .load(url)
-        .override(UIUtil.getPhoneWidth(), UIUtil.getPhoneHeight())
-        .transform(CenterCrop())
-        .into(imageView)
-  }
-
-  fun loadAvatarResource(
-    context: Context,
-    resId: Int,
-    imageView: ImageView
-  ) {
-    GlideApp
-        .with(context)
-        .load(resId)
-        .transform(CircleCrop())
-        .skipMemoryCache(true)
-        .into(imageView)
+    imageView.setImageURI(url)
   }
 
   fun loadResource(
-    context: Context,
     resId: Int,
-    imageView: ImageView,
-    useCenterCrop: Boolean = false
+    imageView: SimpleDraweeView
   ) {
-    if (useCenterCrop) {
-      GlideApp
-          .with(context)
-          .load(resId)
-          .transform(CircleCrop())
-          .into(imageView)
-    } else {
-      GlideApp
-          .with(context)
-          .load(resId)
-          .into(imageView)
-    }
+    val uri = Uri.parse("res://" + App.application.packageName + "/" + resId)
+    imageView.setImageURI(uri, null)
   }
 
-  fun clearGlideMemoryCache(context: Context) {
-    GlideApp
-        .get(context)
-        .clearMemory()
+  fun pause() {
+    Fresco.getImagePipeline()
+        .pause()
+  }
+
+  fun resume() {
+    Fresco.getImagePipeline()
+        .resume()
+  }
+
+  fun clearImageMemoryCache() {
+    Fresco.getImagePipeline()
+        .clearMemoryCaches()
+  }
+
+  fun clearImageDiskCache() {
+    Fresco.getImagePipeline()
+        .clearDiskCaches()
   }
 }

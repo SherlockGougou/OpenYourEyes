@@ -2,6 +2,7 @@ package cc.shinichi.openyoureyes.app
 
 import android.app.Application
 import cc.shinichi.openyoureyes.constant.Config
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheMode
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor
@@ -26,6 +27,9 @@ class App : Application() {
     super
         .onCreate()
     application = this
+
+    // fresco
+    Fresco.initialize(application)
 
     // okgo
     val builder = OkHttpClient

@@ -19,4 +19,6 @@ object Code {
   const val LoadMoreEnd = 0x00008
 
   const val NotifyDataChanged = 0x00009
+
+  const val ScrollToTop = 0x00010
 }

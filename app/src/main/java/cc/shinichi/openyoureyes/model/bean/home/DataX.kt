@@ -24,7 +24,7 @@ data class DataX(
   @SerializedName("tags") val tags: List<Tag?>? = listOf(),
   @SerializedName("consumption") val consumption: Consumption? = Consumption(),
   @SerializedName("resourceType") val resourceType: String? = "",
-  @SerializedName("slogan") val slogan: Any? = Any(),
+  @SerializedName("slogan") val slogan: String? = "",
   @SerializedName("provider") val provider: Provider? = Provider(),
   @SerializedName("category") val category: String? = "",
   @SerializedName("author") val author: Author? = Author(),

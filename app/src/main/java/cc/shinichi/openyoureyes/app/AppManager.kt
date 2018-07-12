@@ -47,7 +47,7 @@ class AppManager {
   fun exit() {
     try {
       ImageLoader
-          .clearGlideMemoryCache(App.application)
+          .clearImageMemoryCache()
     } catch (e: Exception) {
 
     }

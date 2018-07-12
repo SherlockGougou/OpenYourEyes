@@ -33,16 +33,20 @@ import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.followCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.horizontalScrollCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.squareCardCollection
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.textCard
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.videoCollectionWithBrief
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.videoSmallCard
 import cc.shinichi.openyoureyes.task.TaskGetConfig
 import cc.shinichi.openyoureyes.ui.adapter.CategoryAdapter
 import cc.shinichi.openyoureyes.ui.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyes.util.CommonUtil
 import cc.shinichi.openyoureyes.util.IntentUtil
+import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.log.ALog
+import cc.shinichi.openyoureyes.widget.MyLoadMoreView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter.OnItemClickListener
+import com.chad.library.adapter.base.BaseQuickAdapter.RequestLoadMoreListener
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
 import kotlinx.android.synthetic.main.activity_home.recycler_category_list
@@ -50,7 +54,8 @@ import kotlinx.android.synthetic.main.activity_home.recycler_data_list_home
 import kotlinx.android.synthetic.main.activity_home.swipe_refresh
 import kotlinx.android.synthetic.main.activity_home.toolbar_home
 
-class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListener {
+class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListener,
+    RequestLoadMoreListener {
 
   private var handler: HandlerUtil.HandlerHolder? = null
 
@@ -72,7 +77,9 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
 
   // home data
   private var allHomeDataEntity: MutableList<HomeDataEntity> = ArrayList()
+  private var allHomeDataEntityTemp: MutableList<HomeDataEntity> = ArrayList()
   private var homeDataAdapter: HomeDataAdapter? = null
+  private var nextPageUrl: String? = ""
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super
@@ -113,7 +120,9 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     progress_loading = emptyView
         ?.findViewById(R.id.progress_loading)
     homeDataAdapter = HomeDataAdapter(this, allHomeDataEntity)
-    homeDataAdapter?.setEnableLoadMore(false)
+    homeDataAdapter?.setEnableLoadMore(true)
+    homeDataAdapter?.setOnLoadMoreListener(this, recycler_data_list_home)
+    homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
     recycler_data_list_home.layoutManager = LinearLayoutManager(this)
     recycler_data_list_home.adapter = homeDataAdapter
 
@@ -245,6 +254,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
       return
     }
     ALog.log(TAG, "load url = $url")
+    Api.getInstance().cancelAll()
     Api
         .getInstance()
         .getAsync(this, url, object : ApiListener() {
@@ -261,9 +271,9 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
           }
 
           override fun success(string: String?) {
+            getEntityList(string, true)
             handler
                 ?.sendEmptyMessageDelayed(Code.RefreshFinish, 500)
-            getEntityList(string)
           }
 
           override fun error(response: Response<String>?) {
@@ -272,41 +282,47 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
         })
   }
 
-  private fun getEntityList(string: String?) {
+  private fun getEntityList(string: String?, isRefresh: Boolean = false) {
     val bean: HomeDataBean? = getGson().fromJson(string, HomeDataBean::class.javaObjectType)
+    nextPageUrl = bean?.nextPageUrl
+
     if (bean?.itemList != null) {
-      val size = bean.itemList.size
-      ALog.log(TAG, "bean.itemList?.size = $size")
-      allHomeDataEntity.clear()
-      for ((index, item: Item?) in bean.itemList.withIndex()) {
-        ALog.log(TAG, "item type in index = $index = " + item?.type)
+      allHomeDataEntityTemp.clear()
+      for (item: Item? in bean.itemList) {
         when (item?.type) {
           horizontalScrollCard -> {
-            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_horizontalScrollCard, item))
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_horizontalScrollCard, item))
           }
           textCard -> {
-            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_textCard, item))
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_textCard, item))
           }
           followCard -> {
-            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_followCard, item))
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_followCard, item))
           }
           videoSmallCard -> {
-            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoSmallCard, item))
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_videoSmallCard, item))
           }
           briefCard -> {
-            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_briefCard, item))
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_briefCard, item))
           }
           squareCardCollection -> {
-            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_squareCardCollection, item))
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_squareCardCollection, item))
           }
-//          videoCollectionWithBrief -> {
-//            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoCollectionWithBrief, item))
-//          }
+          videoCollectionWithBrief -> {
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_videoCollectionWithBrief, item))
+          }
 //          DynamicInfoCard -> {
-//            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))
+//            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))
 //          }
         }
-        homeDataAdapter?.notifyDataSetChanged()
+      }
+      if (isRefresh) {
+        handler?.sendEmptyMessage(Code.ScrollToTop)
+        allHomeDataEntity.clear()
+        allHomeDataEntity.addAll(allHomeDataEntityTemp)
+        homeDataAdapter?.setNewData(allHomeDataEntity)
+      } else {
+        handler?.sendEmptyMessage(Code.LoadMoreSuccess)
       }
     }
   }
@@ -366,6 +382,20 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
       Code.RefreshFinish -> {
         swipe_refresh
             .isRefreshing = false
+        homeDataAdapter?.setEnableLoadMore(true)
+      }
+      Code.ScrollToTop -> {
+        UIUtil.scrollToTop(recycler_data_list_home)
+      }
+      Code.LoadMoreFail -> {
+        homeDataAdapter?.loadMoreFail()
+      }
+      Code.LoadMoreSuccess -> {
+        homeDataAdapter?.loadMoreComplete()
+        homeDataAdapter?.addData(allHomeDataEntityTemp)
+      }
+      Code.LoadMoreEnd -> {
+        homeDataAdapter?.loadMoreEnd()
       }
       else -> toast("暂无数据")
     }
@@ -403,5 +433,26 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
         }
       }
     }
+  }
+
+  override fun onLoadMoreRequested() {
+    if (isNull(nextPageUrl)) {
+      handler?.sendEmptyMessage(Code.LoadMoreEnd)
+      return
+    }
+    Api.getInstance().getAsync(this, nextPageUrl, object : ApiListener() {
+
+      override fun noNet() {
+        handler?.sendEmptyMessage(Code.LoadMoreFail)
+      }
+
+      override fun success(string: String?) {
+        getEntityList(string, false)
+      }
+
+      override fun error(response: Response<String>?) {
+        handler?.sendEmptyMessage(Code.LoadMoreFail)
+      }
+    })
   }
 }

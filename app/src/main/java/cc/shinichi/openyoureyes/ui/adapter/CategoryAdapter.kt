@@ -2,7 +2,6 @@ package cc.shinichi.openyoureyes.ui.adapter
 
 import android.content.Context
 import android.view.View
-import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
@@ -11,6 +10,7 @@ import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.facebook.drawee.view.SimpleDraweeView
 
 class CategoryAdapter(
   context: Context,
@@ -37,47 +37,53 @@ class CategoryAdapter(
     when (item?.itemType) {
       CategoryEntity.TYPE_HEADER -> {
         val img_author = helper
-            ?.getView<ImageView>(R.id.img_author)
+            ?.getView<SimpleDraweeView>(R.id.img_author)
         val img_author_back = helper
-            ?.getView<ImageView>(R.id.img_author_back)
+            ?.getView<SimpleDraweeView>(R.id.img_author_back)
         if (img_author != null) {
           ImageLoader
-              .loadAvatarResource(super.mContext, R.drawable.ic_author, img_author)
+              .loadResource(R.drawable.ic_author, img_author)
         }
         if (img_author_back != null) {
           ImageLoader
-              .load(super.mContext, Constant.作者信息背景图, img_author_back)
+              .load(Constant.作者信息背景图, img_author_back)
         }
       }
       CategoryEntity.TYPE_ITEM -> {
-        var img_category_icon = helper
-            ?.getView<ImageView>(R.id.img_category_icon)
-        var tv_category_name = helper
+        val img_category_icon = helper
+            ?.getView<SimpleDraweeView>(R.id.img_category_icon)
+        val tv_category_name = helper
             ?.getView<TextView>(R.id.tv_category_name)
-        var tv_category_des = helper
+        val tv_category_des = helper
             ?.getView<TextView>(R.id.tv_category_des)
-        var position = helper
+        val position = helper
             ?.adapterPosition
         when (position) {
           1 -> {
-            ImageLoader
-                .loadRound(super.mContext, R.mipmap.ic_launcher, img_category_icon!!, 10)
+            if (img_category_icon != null) {
+              ImageLoader
+                  .loadResource(R.drawable.ic_launcher, img_category_icon)
+            }
             tv_category_name
                 ?.text = "#发现"
             tv_category_des
                 ?.text = "发现精彩瞬间"
           }
           2 -> {
-            ImageLoader
-                .loadRound(super.mContext, R.mipmap.ic_launcher, img_category_icon!!, 10)
+            if (img_category_icon != null) {
+              ImageLoader
+                  .loadResource(R.drawable.ic_launcher, img_category_icon)
+            }
             tv_category_name
                 ?.text = "#推荐"
             tv_category_des
                 ?.text = "编辑推荐"
           }
           3 -> {
-            ImageLoader
-                .loadRound(super.mContext, R.mipmap.ic_launcher, img_category_icon!!, 10)
+            if (img_category_icon != null) {
+              ImageLoader
+                  .loadResource(R.drawable.ic_launcher, img_category_icon)
+            }
             tv_category_name
                 ?.text = "#日报"
             tv_category_des
@@ -87,8 +93,10 @@ class CategoryAdapter(
             tv_category_des
                 ?.visibility = View
                 .VISIBLE
-            ImageLoader
-                .loadRound(super.mContext, item.info?.data?.icon, img_category_icon!!, 10)
+            if (img_category_icon != null) {
+              ImageLoader
+                  .load(item.info?.data?.icon, img_category_icon)
+            }
             tv_category_name
                 ?.text = item
                 .info

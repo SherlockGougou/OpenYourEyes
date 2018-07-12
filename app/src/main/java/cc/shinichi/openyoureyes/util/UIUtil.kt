@@ -2,11 +2,16 @@ package cc.shinichi.openyoureyes.util
 
 import android.content.Context
 import android.graphics.Point
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.WindowManager
 import cc.shinichi.openyoureyes.app.App
 
 object UIUtil {
+
+  private val HOUR_SECOND = 60 * 60
+  private val MINUTE_SECOND = 60
 
   fun getAppContext(): Context {
     return App
@@ -52,20 +57,46 @@ object UIUtil {
   }
 
   fun isNull(string: String?): Boolean {
-    if (TextUtils.isEmpty(string)) {
+    if (TextUtils.isEmpty(string) || "null" == string || " " == string) {
       return true
     }
     return false
   }
 
-  fun getDurationText(duration: Int?): String {
-    if (duration == null) {
-      return ""
+  fun scrollToTop(recyclerView: RecyclerView) {
+    if (recyclerView.layoutManager is LinearLayoutManager) {
+      recyclerView.layoutManager.scrollToPosition(0)
     }
-    var 分钟: String = ""
-    var 秒钟: String = ""
-    分钟 = (duration / 60).toString()
-    秒钟 = (duration % 60).toString()
-    return 分钟 + ":" + 秒钟
+  }
+
+  fun getDurationText(second: Int?): String {
+    var seconds = second
+    if (seconds == null || seconds <= 0) {
+      return "00:00"
+    }
+
+    val hours = seconds / HOUR_SECOND
+    if (hours > 0) {
+      seconds -= hours * HOUR_SECOND
+    }
+
+    val minutes = seconds / MINUTE_SECOND
+    if (minutes > 0) {
+      seconds -= minutes * MINUTE_SECOND
+    }
+    return if (hours > 0) {
+      (if (hours > 10) {
+        (hours).toString() + ""
+      } else {
+        "0$hours:"
+      } + (if (minutes > 10) (minutes).toString() + "" else "0$minutes") + ":"
+          + if (seconds > 10) (seconds).toString() + "" else "0$seconds")
+    } else {
+      if (minutes > 10) {
+        (minutes).toString() + ""
+      } else {
+        "0$minutes"
+      } + ":" + (if (seconds > 10) (seconds).toString() + "" else "0$seconds")
+    }
   }
 }

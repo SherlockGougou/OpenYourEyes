@@ -9,15 +9,27 @@
       android:id="@+id/ll_square_collection_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:orientation="vertical"
       >
+
+    <cc.shinichi.openyoureyes.widget.LobsterTextView
+        android:id="@+id/tv_square_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:text="THURSDAY, JULY 12"
+        android:textColor="@color/gray_8f"
+        android:textSize="@dimen/tv_TextCard_header5_subtitle_size"
+        android:textStyle="bold"
+        />
 
     <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
         android:id="@+id/tv_TextCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_margin"
         android:drawableRight="@drawable/ic_action_choose_right"
-        android:paddingLeft="@dimen/default_padding"
-        android:paddingTop="@dimen/default_padding"
         android:text="@string/tv_TextCard_default"
         android:textColor="@color/black"
         android:textSize="@dimen/tv_TextCard_header5_size"

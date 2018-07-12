@@ -286,4 +286,7 @@
   <color name="gray_e5">#e5e5e5</color>
   <!--灰色8f -->
   <color name="gray_8f">#8f8f8f</color>
+
+  <color name="blue_ecf3fb">#ecf3fb</color>
+  <color name="blue_2772d0">#2772d0</color>
 </resources>

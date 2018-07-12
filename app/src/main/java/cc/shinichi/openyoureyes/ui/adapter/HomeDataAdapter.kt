@@ -4,6 +4,7 @@ import android.content.Context
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.ui.holder.AutoPlayFollowCard
 import cc.shinichi.openyoureyes.ui.holder.BriefCard
 import cc.shinichi.openyoureyes.ui.holder.DynamicInfoCard
 import cc.shinichi.openyoureyes.ui.holder.FollowCard
@@ -33,6 +34,8 @@ class HomeDataAdapter(
     addItemType(HomeDataEntity.TYPE_videoSmallCard, R.layout.item_home_videosmallcard)
     addItemType(HomeDataEntity.TYPE_briefCard, R.layout.item_home_briefcard)
     addItemType(HomeDataEntity.TYPE_squareCardCollection, R.layout.item_home_squarecardcollection)
+    addItemType(HomeDataEntity.TYPE_videoCollectionWithBrief, R.layout.item_home_videocollectionwithbriefcard)
+    addItemType(HomeDataEntity.TYPE_autoPlayFollowCard, R.layout.item_home_autoplay_followcard)
   }
 
   override fun convert(
@@ -64,6 +67,9 @@ class HomeDataAdapter(
       }
       HomeDataEntity.DynamicInfoCard -> {
         DynamicInfoCard(helper, entity)
+      }
+      HomeDataEntity.autoPlayFollowCard -> {
+        AutoPlayFollowCard(super.mContext, helper, entity)
       }
     }
   }

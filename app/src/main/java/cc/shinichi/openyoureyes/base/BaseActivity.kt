@@ -56,8 +56,8 @@ abstract class BaseActivity : AppCompatActivity() {
     }
   }
 
-  open fun isNull(string: String): Boolean {
-    if (TextUtils.isEmpty(string)) {
+  open fun isNull(string: String?): Boolean {
+    if (TextUtils.isEmpty(string) || "null" == string || " " == string) {
       return true
     }
     return false
