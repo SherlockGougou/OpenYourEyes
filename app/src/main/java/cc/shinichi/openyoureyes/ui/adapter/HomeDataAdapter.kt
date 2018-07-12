@@ -36,6 +36,7 @@ class HomeDataAdapter(
     addItemType(HomeDataEntity.TYPE_squareCardCollection, R.layout.item_home_squarecardcollection)
     addItemType(HomeDataEntity.TYPE_videoCollectionWithBrief, R.layout.item_home_videocollectionwithbriefcard)
     addItemType(HomeDataEntity.TYPE_autoPlayFollowCard, R.layout.item_home_autoplay_followcard)
+    addItemType(HomeDataEntity.TYPE_pictureFollowCard, R.layout.item_home_picturefollowcard)
   }
 
   override fun convert(
@@ -70,6 +71,9 @@ class HomeDataAdapter(
       }
       HomeDataEntity.autoPlayFollowCard -> {
         AutoPlayFollowCard(super.mContext, helper, entity)
+      }
+      HomeDataEntity.pictureFollowCard -> {
+
       }
     }
   }

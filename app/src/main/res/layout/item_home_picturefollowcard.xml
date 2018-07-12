@@ -88,19 +88,25 @@
       app:tag_gravity="left"
       />
 
-  <cc.shinichi.openyoureyes.widget.video.SampleCoverVideo
-      android:id="@+id/gsy_list_auto_player"
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/img_follow_card_img"
       android:layout_width="match_parent"
       android:layout_height="@dimen/horizontalScrollCard_height"
       android:layout_below="@+id/tag_flowlayout"
       android:layout_marginTop="@dimen/default_margin"
+      app:actualImageScaleType="centerCrop"
+      app:backgroundImage="@color/gray_e5"
+      app:fadeDuration="500"
+      app:placeholderImage="@color/gray_e5"
+      app:placeholderImageScaleType="centerCrop"
+      app:roundedCornerRadius="6dp"
       />
 
   <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
       android:id="@+id/tv_follow_time_length"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignBottom="@+id/gsy_list_auto_player"
+      android:layout_alignBottom="@+id/img_follow_card_img"
       android:layout_alignParentRight="true"
       android:layout_marginBottom="@dimen/margin_5dp"
       android:layout_marginRight="@dimen/margin_5dp"
@@ -113,7 +119,7 @@
   <TextView
       android:layout_width="match_parent"
       android:layout_height="@dimen/divider_h"
-      android:layout_below="@+id/gsy_list_auto_player"
+      android:layout_below="@+id/img_follow_card_img"
       android:layout_marginTop="@dimen/default_margin"
       android:background="@color/gray_e5"
       />

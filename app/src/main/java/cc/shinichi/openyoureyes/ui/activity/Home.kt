@@ -1,11 +1,15 @@
 package cc.shinichi.openyoureyes.ui.activity
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.OnScrollListener
 import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
@@ -28,6 +32,7 @@ import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.autoPlayFollowCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.briefCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.followCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.horizontalScrollCard
@@ -38,6 +43,7 @@ import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.videoSmall
 import cc.shinichi.openyoureyes.task.TaskGetConfig
 import cc.shinichi.openyoureyes.ui.adapter.CategoryAdapter
 import cc.shinichi.openyoureyes.ui.adapter.HomeDataAdapter
+import cc.shinichi.openyoureyes.ui.holder.AutoPlayFollowCard
 import cc.shinichi.openyoureyes.util.CommonUtil
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
@@ -53,6 +59,8 @@ import kotlinx.android.synthetic.main.activity_home.recycler_category_list
 import kotlinx.android.synthetic.main.activity_home.recycler_data_list_home
 import kotlinx.android.synthetic.main.activity_home.swipe_refresh
 import kotlinx.android.synthetic.main.activity_home.toolbar_home
+import com.shuyu.gsyvideoplayer.GSYVideoManager
+import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
 
 class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListener,
     RequestLoadMoreListener {
@@ -67,6 +75,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
 
   // data
   private var clickTime = 0L
+  private lateinit var context: Context
 
   // category data
   private var categoryListBean: CategoryListBean? = null
@@ -85,6 +94,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     super
         .onCreate(savedInstanceState)
     setContentView(layout.activity_home)
+    context = this
 
     initView()
     initUtil()
@@ -102,11 +112,11 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     }
 
     // category view
-    categoryAdapter = CategoryAdapter(this, allCategoryEntity)
+    categoryAdapter = CategoryAdapter(context, allCategoryEntity)
     categoryAdapter
         ?.onItemClickListener = this
     recycler_category_list
-        .layoutManager = LinearLayoutManager(this)
+        .layoutManager = LinearLayoutManager(context)
     recycler_category_list
         .adapter = categoryAdapter
 
@@ -119,12 +129,50 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
         ?.setOnClickListener(this)
     progress_loading = emptyView
         ?.findViewById(R.id.progress_loading)
-    homeDataAdapter = HomeDataAdapter(this, allHomeDataEntity)
+    homeDataAdapter = HomeDataAdapter(context, allHomeDataEntity)
     homeDataAdapter?.setEnableLoadMore(true)
     homeDataAdapter?.setOnLoadMoreListener(this, recycler_data_list_home)
     homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
-    recycler_data_list_home.layoutManager = LinearLayoutManager(this)
+    recycler_data_list_home.layoutManager = LinearLayoutManager(context)
     recycler_data_list_home.adapter = homeDataAdapter
+    recycler_data_list_home.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+      override fun onScrolled(
+        recyclerView: RecyclerView?,
+        dx: Int,
+        dy: Int
+      ) {
+        super.onScrolled(recyclerView, dx, dy)
+        var firstVisibleItem = 0
+        var lastVisibleItem = 0
+        if (recyclerView?.layoutManager is LinearLayoutManager) {
+          firstVisibleItem = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+          lastVisibleItem = (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+
+          //大于0说明有播放
+          if (GSYVideoManager.instance().playPosition >= 0) {
+            //当前播放的位置
+            val position = GSYVideoManager.instance()
+                .playPosition
+            //对应的播放列表TAG
+            if (GSYVideoManager.instance().playTag == AutoPlayFollowCard.TAG && (position < firstVisibleItem || position > lastVisibleItem)) {
+              if (GSYVideoManager.isFullState(context as Activity)) {
+                return
+              }
+              //如果滑出去了上面和下面就是否，和今日头条一样
+              GSYVideoManager.releaseAllVideos()
+              recyclerView.adapter.notifyDataSetChanged()
+            }
+          }
+        }
+      }
+
+      override fun onScrollStateChanged(
+        recyclerView: RecyclerView?,
+        newState: Int
+      ) {
+        super.onScrollStateChanged(recyclerView, newState)
+      }
+    })
 
     swipe_refresh
         .setOnRefreshListener {
@@ -311,6 +359,9 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
           videoCollectionWithBrief -> {
             allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_videoCollectionWithBrief, item))
           }
+          autoPlayFollowCard -> {
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_autoPlayFollowCard, item))
+          }
 //          DynamicInfoCard -> {
 //            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))
 //          }
@@ -328,6 +379,9 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
   }
 
   override fun onBackPressed() {
+    if (GSYVideoManager.backFromWindowFull(this)) {
+      return
+    }
     if (drawable_layout_home.isDrawerOpen(GravityCompat.START)) {
       drawable_layout_home
           .closeDrawer(GravityCompat.START)
@@ -342,6 +396,21 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
             .exit()
       }
     }
+  }
+
+  override fun onPause() {
+    super.onPause()
+    GSYVideoManager.onPause()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    GSYVideoManager.onResume()
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    GSYVideoManager.releaseAllVideos()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {

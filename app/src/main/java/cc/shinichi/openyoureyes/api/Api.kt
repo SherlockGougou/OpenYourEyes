@@ -47,6 +47,7 @@ open class Api {
         .params("vc", "352")
         .params("vn", "4.0")
         .tag(context)
+        .headers("Connection", "close")
         .execute(object : StringCallback() {
 
           override fun onStart(request: Request<String, out Request<Any, Request<*, *>>>?) {

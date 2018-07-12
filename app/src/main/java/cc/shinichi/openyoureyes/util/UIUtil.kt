@@ -85,18 +85,18 @@ object UIUtil {
       seconds -= minutes * MINUTE_SECOND
     }
     return if (hours > 0) {
-      (if (hours > 10) {
+      (if (hours >= 10) {
         (hours).toString() + ""
       } else {
         "0$hours:"
-      } + (if (minutes > 10) (minutes).toString() + "" else "0$minutes") + ":"
-          + if (seconds > 10) (seconds).toString() + "" else "0$seconds")
+      } + (if (minutes >= 10) (minutes).toString() + "" else "0$minutes") + ":"
+          + if (seconds >= 10) (seconds).toString() + "" else "0$seconds")
     } else {
-      if (minutes > 10) {
+      if (minutes >= 10) {
         (minutes).toString() + ""
       } else {
         "0$minutes"
-      } + ":" + (if (seconds > 10) (seconds).toString() + "" else "0$seconds")
+      } + ":" + (if (seconds >= 10) (seconds).toString() + "" else "0$seconds")
     }
   }
 }

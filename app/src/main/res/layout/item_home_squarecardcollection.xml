@@ -12,7 +12,7 @@
       android:orientation="vertical"
       >
 
-    <cc.shinichi.openyoureyes.widget.LobsterTextView
+    <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
         android:id="@+id/tv_square_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
