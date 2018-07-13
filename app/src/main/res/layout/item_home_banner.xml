@@ -2,18 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/default_padding"
+    android:background="?android:attr/selectableItemBackground"
     >
 
   <com.facebook.drawee.view.SimpleDraweeView
-      android:id="@+id/img_follow_card_img"
+      android:id="@+id/img_banner"
       android:layout_width="match_parent"
       android:layout_height="@dimen/horizontalScrollCard_height"
       app:actualImageScaleType="centerCrop"
       app:backgroundImage="@color/gray_e5"
-      app:fadeDuration="500"
+      app:fadeDuration="300"
       app:placeholderImage="@color/gray_e5"
       app:placeholderImageScaleType="centerCrop"
       app:roundedCornerRadius="6dp"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/divider_h"
+      android:layout_marginTop="@dimen/default_margin"
+      android:background="@color/gray_e5"
       />
 </LinearLayout>

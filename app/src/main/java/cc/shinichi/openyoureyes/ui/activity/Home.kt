@@ -32,9 +32,11 @@ import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.autoPlayFollowCard
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.banner
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.briefCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.followCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.horizontalScrollCard
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.pictureFollowCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.squareCardCollection
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.textCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.videoCollectionWithBrief
@@ -359,6 +361,12 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
           }
           autoPlayFollowCard -> {
             allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_autoPlayFollowCard, item))
+          }
+          pictureFollowCard -> {
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_pictureFollowCard, item))
+          }
+          banner -> {
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_banner, item))
           }
 //          DynamicInfoCard -> {
 //            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))

@@ -6,7 +6,7 @@ data class CategoryListBean(
   @SerializedName("itemList") val itemList: List<Item?>? = listOf(),
   @SerializedName("count") val count: Int? = 0,
   @SerializedName("total") val total: Int? = 0,
-  @SerializedName("nextPageUrl") val nextPageUrl: Any? = Any(),
+  @SerializedName("nextPageUrl") val nextPageUrl: String? = "",
   @SerializedName("adExist") val adExist: Boolean? = false
 ) {
 
@@ -24,10 +24,10 @@ data class CategoryListBean(
       @SerializedName("icon") val icon: String? = "",
       @SerializedName("iconType") val iconType: String? = "",
       @SerializedName("title") val title: String? = "",
-      @SerializedName("subTitle") val subTitle: Any? = Any(),
+      @SerializedName("subTitle") val subTitle: String? = "",
       @SerializedName("description") val description: String? = "",
       @SerializedName("actionUrl") val actionUrl: String? = "",
-      @SerializedName("adTrack") val adTrack: Any? = Any(),
+      @SerializedName("adTrack") val adTrack: List<Any?>? = listOf(),
       @SerializedName("follow") val follow: Follow? = Follow(),
       @SerializedName("ifPgc") val ifPgc: Boolean? = false
     ) {

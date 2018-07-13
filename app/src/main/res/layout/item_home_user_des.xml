@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:padding="@dimen/default_padding"
+    android:background="?android:attr/selectableItemBackground"
     >
 
   <com.facebook.drawee.view.SimpleDraweeView
@@ -21,8 +22,8 @@
       android:id="@+id/tv_user_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="@dimen/default_margin"
-      android:layout_toRightOf="@+id/img_user_icon"
+      android:layout_marginStart="@dimen/default_margin"
+      android:layout_toEndOf="@+id/img_user_icon"
       android:maxLines="1"
       android:text="这里是用户名"
       android:textColor="@color/black"
@@ -34,8 +35,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignBottom="@+id/img_user_icon"
-      android:layout_marginLeft="@dimen/default_margin"
-      android:layout_toRightOf="@+id/img_user_icon"
+      android:layout_marginStart="@dimen/default_margin"
+      android:layout_toEndOf="@+id/img_user_icon"
       android:maxLines="1"
       android:text="这里是用户描述"
       android:textColor="@color/gray"

@@ -7,6 +7,7 @@
     android:gravity="center_vertical"
     android:minHeight="40dp"
     android:padding="@dimen/default_padding"
+    android:background="?android:attr/selectableItemBackground"
     >
   <com.facebook.drawee.view.SimpleDraweeView
       android:id="@+id/img_category_icon"

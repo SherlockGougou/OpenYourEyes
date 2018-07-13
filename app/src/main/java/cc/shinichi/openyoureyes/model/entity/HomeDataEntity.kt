@@ -22,6 +22,7 @@ class HomeDataEntity : MultiItemEntity {
     var TYPE_DynamicInfoCard = 7
     var TYPE_autoPlayFollowCard = 8
     var TYPE_pictureFollowCard = 9
+    var TYPE_banner = 10
 
     var horizontalScrollCard = "horizontalScrollCard"
     var textCard = "textCard"
@@ -33,6 +34,7 @@ class HomeDataEntity : MultiItemEntity {
     var DynamicInfoCard = "DynamicInfoCard"
     var autoPlayFollowCard = "autoPlayFollowCard"
     var pictureFollowCard = "pictureFollowCard"
+    var banner = "banner"
   }
 
   private var itemType: Int = 0

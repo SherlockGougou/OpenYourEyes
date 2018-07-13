@@ -5,10 +5,12 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.ui.holder.AutoPlayFollowCard
+import cc.shinichi.openyoureyes.ui.holder.Banner
 import cc.shinichi.openyoureyes.ui.holder.BriefCard
 import cc.shinichi.openyoureyes.ui.holder.DynamicInfoCard
 import cc.shinichi.openyoureyes.ui.holder.FollowCard
 import cc.shinichi.openyoureyes.ui.holder.HorizontalScrollCard
+import cc.shinichi.openyoureyes.ui.holder.PictureFollowCard
 import cc.shinichi.openyoureyes.ui.holder.SquareCardCollection
 import cc.shinichi.openyoureyes.ui.holder.TextCard
 import cc.shinichi.openyoureyes.ui.holder.VideoCollectionWithBrief
@@ -37,6 +39,7 @@ class HomeDataAdapter(
     addItemType(HomeDataEntity.TYPE_videoCollectionWithBrief, R.layout.item_home_videocollectionwithbriefcard)
     addItemType(HomeDataEntity.TYPE_autoPlayFollowCard, R.layout.item_home_autoplay_followcard)
     addItemType(HomeDataEntity.TYPE_pictureFollowCard, R.layout.item_home_picturefollowcard)
+    addItemType(HomeDataEntity.TYPE_banner, R.layout.item_home_banner)
   }
 
   override fun convert(
@@ -73,7 +76,10 @@ class HomeDataAdapter(
         AutoPlayFollowCard(super.mContext, helper, entity)
       }
       HomeDataEntity.pictureFollowCard -> {
-
+        PictureFollowCard(super.mContext, helper, entity)
+      }
+      HomeDataEntity.banner -> {
+        Banner(helper, entity)
       }
     }
   }

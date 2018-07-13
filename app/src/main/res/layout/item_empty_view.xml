@@ -23,7 +23,6 @@
         android:id="@+id/tv_click_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/img_error"
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/text_click_retry"
         android:textColor="@color/black"

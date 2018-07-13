@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
@@ -62,6 +63,7 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         holder.tv_follow_time_length.visibility = View.GONE
         holder.rl_follow_author_container.visibility = View.GONE
         holder.img_follow_card_user_icon.visibility = View.GONE
+        holder.img_daily_label.visibility = View.GONE
         ImageLoader.load(item.data?.image, holder.img_follow_card_img)
       }
       "video" -> {
@@ -72,11 +74,17 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         holder.tv_follow_card_title.text = item.data?.title
         holder.tv_follow_card_des.text = "#" + item.data?.category
         holder.tv_follow_time_length.text = UIUtil.getDurationText(item.data?.duration)
+        if ("DAILY" == item.data?.library) {
+          holder.img_daily_label.visibility = View.VISIBLE
+        } else {
+          holder.img_daily_label.visibility = View.GONE
+        }
       }
       "banner" -> {
         holder.tv_follow_time_length.visibility = View.GONE
         holder.rl_follow_author_container.visibility = View.GONE
         holder.img_follow_card_user_icon.visibility = View.GONE
+        holder.img_daily_label.visibility = View.GONE
         ImageLoader.load(item.data?.image, holder.img_follow_card_img)
       }
       "followCard" -> {
@@ -88,6 +96,11 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         holder.tv_follow_card_title.text = item.data?.content?.data?.title
         holder.tv_follow_card_des.text = item.data?.content?.data?.slogan
         holder.tv_follow_time_length.text = UIUtil.getDurationText(item.data?.content?.data?.duration)
+        if ("DAILY" == item.data?.content?.data?.library) {
+          holder.img_daily_label.visibility = View.VISIBLE
+        } else {
+          holder.img_daily_label.visibility = View.GONE
+        }
       }
     }
   }
@@ -95,6 +108,7 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
   class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var rl_hor_root: RelativeLayout = itemView.findViewById(R.id.rl_hor_root)
     var img_follow_card_img: SimpleDraweeView = itemView.findViewById(R.id.img_follow_card_img)
+    var img_daily_label: ImageView = itemView.findViewById(R.id.img_daily_label)
     var tv_follow_time_length: TextView = itemView.findViewById(R.id.tv_follow_time_length)
     var img_follow_card_user_icon: SimpleDraweeView = itemView.findViewById(R.id.img_follow_card_user_icon)
     var tv_follow_card_title: TextView = itemView.findViewById(R.id.tv_follow_card_title)

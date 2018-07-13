@@ -2,7 +2,10 @@ package cc.shinichi.openyoureyes.util.image
 
 import android.net.Uri
 import cc.shinichi.openyoureyes.app.App
+import cc.shinichi.openyoureyes.util.UIUtil
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.facebook.drawee.drawable.ScalingUtils.ScaleType
+import com.facebook.drawee.generic.RoundingParams
 import com.facebook.drawee.view.SimpleDraweeView
 
 /**
@@ -17,6 +20,17 @@ object ImageLoader {
     url: String? = "",
     imageView: SimpleDraweeView
   ) {
+    imageView.setImageURI(url)
+  }
+
+  fun loadVideoCover(
+    url: String? = "",
+    imageView: SimpleDraweeView
+  ) {
+    val hierarchy = imageView.hierarchy
+    hierarchy.actualImageScaleType = ScaleType.CENTER_CROP
+    hierarchy.fadeDuration = 300
+    hierarchy.roundingParams = RoundingParams().setCornersRadius(UIUtil.dp2px(6).toFloat())
     imageView.setImageURI(url)
   }
 

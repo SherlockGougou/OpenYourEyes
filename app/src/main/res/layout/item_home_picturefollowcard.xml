@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/default_padding"
+    android:background="?android:attr/selectableItemBackground"
     >
 
   <com.facebook.drawee.view.SimpleDraweeView
       android:id="@+id/img_follow_card_user_icon"
       android:layout_width="@dimen/img_category_icon_w_h"
       android:layout_height="@dimen/img_category_icon_w_h"
-      android:layout_marginRight="@dimen/default_margin"
+      android:layout_marginEnd="@dimen/default_margin"
       android:layout_marginTop="@dimen/default_margin"
       app:actualImageScaleType="centerCrop"
       app:placeholderImage="@color/gray_e5"
@@ -26,7 +27,7 @@
       android:layout_width="match_parent"
       android:layout_height="@dimen/img_category_icon_w_h"
       android:layout_marginTop="@dimen/default_margin"
-      android:layout_toRightOf="@+id/img_follow_card_user_icon"
+      android:layout_toEndOf="@+id/img_follow_card_user_icon"
       android:orientation="vertical"
       >
 
@@ -58,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/margin_3dp"
-        android:layout_toRightOf="@+id/tv_follow_card_des"
+        android:layout_toEndOf="@+id/tv_follow_card_des"
         android:maxLines="1"
         android:text="这里是作者名和视频分类"
         android:textColor="@color/black"
@@ -72,10 +73,11 @@
       android:layout_height="wrap_content"
       android:layout_below="@+id/rl_follow_author_container"
       android:layout_marginTop="@dimen/default_margin"
+      android:ellipsize="end"
       android:maxLines="4"
       android:text="LAIRT_XUAN"
       android:textColor="@color/black"
-      android:textSize="12sp"
+      android:textSize="13sp"
       />
 
   <com.zhy.view.flowlayout.TagFlowLayout
@@ -96,7 +98,7 @@
       android:layout_marginTop="@dimen/default_margin"
       app:actualImageScaleType="centerCrop"
       app:backgroundImage="@color/gray_e5"
-      app:fadeDuration="500"
+      app:fadeDuration="300"
       app:placeholderImage="@color/gray_e5"
       app:placeholderImageScaleType="centerCrop"
       app:roundedCornerRadius="6dp"
@@ -107,9 +109,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignBottom="@+id/img_follow_card_img"
-      android:layout_alignParentRight="true"
+      android:layout_alignParentEnd="true"
       android:layout_marginBottom="@dimen/margin_5dp"
-      android:layout_marginRight="@dimen/margin_5dp"
+      android:layout_marginEnd="@dimen/margin_5dp"
       android:background="@drawable/video_length_text_back"
       android:text="07:46"
       android:textColor="@color/white"

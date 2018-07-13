@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipChildren="false"
+    android:background="?android:attr/selectableItemBackground"
     >
 
   <LinearLayout
@@ -16,7 +17,7 @@
         android:id="@+id/tv_square_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
         android:layout_marginTop="@dimen/margin_20dp"
         android:text="THURSDAY, JULY 12"
         android:textColor="@color/gray_8f"
@@ -28,8 +29,8 @@
         android:id="@+id/tv_TextCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:drawableRight="@drawable/ic_action_choose_right"
+        android:layout_marginStart="@dimen/default_margin"
+        android:drawableEnd="@drawable/ic_action_choose_right"
         android:text="@string/tv_TextCard_default"
         android:textColor="@color/black"
         android:textSize="@dimen/tv_TextCard_header5_size"
@@ -41,7 +42,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@+id/ll_square_collection_title"
-      android:layout_marginTop="@dimen/default_margin"
       >
     <include
         layout="@layout/item_home_horizontalscrollcard"

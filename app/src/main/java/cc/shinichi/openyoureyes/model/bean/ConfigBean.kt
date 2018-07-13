@@ -175,6 +175,6 @@ data class ConfigBean(
 
   data class Launch(
     @SerializedName("version") val version: String? = "",
-    @SerializedName("adTrack") val adTrack: Any? = Any()
+    @SerializedName("adTrack") val adTrack: List<Any?>? = listOf()
   )
 }
