@@ -39,7 +39,6 @@
           android:id="@+id/recycler_data_list_home"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:background="?android:attr/selectableItemBackground"
           />
     </android.support.v4.widget.SwipeRefreshLayout>
   </LinearLayout>
@@ -49,6 +48,5 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_gravity="start"
-      android:background="@color/white"
       />
 </android.support.v4.widget.DrawerLayout>

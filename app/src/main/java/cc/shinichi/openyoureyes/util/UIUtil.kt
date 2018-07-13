@@ -86,17 +86,28 @@ object UIUtil {
     }
     return if (hours > 0) {
       (if (hours >= 10) {
-        (hours).toString() + ""
+        (hours).toString() + ":"
       } else {
         "0$hours:"
-      } + (if (minutes >= 10) (minutes).toString() + "" else "0$minutes") + ":"
-          + if (seconds >= 10) (seconds).toString() + "" else "0$seconds")
+      } + (if (minutes >= 10) {
+        (minutes).toString() + ":"
+      } else {
+        "0$minutes:"
+      }) + if (seconds >= 10) {
+        (seconds).toString() + ":"
+      } else {
+        "0$seconds"
+      })
     } else {
       if (minutes >= 10) {
-        (minutes).toString() + ""
+        (minutes).toString() + ":"
       } else {
-        "0$minutes"
-      } + ":" + (if (seconds >= 10) (seconds).toString() + "" else "0$seconds")
+        "0$minutes:"
+      } + (if (seconds >= 10) {
+        (seconds).toString() + ""
+      } else {
+        "0$seconds"
+      })
     }
   }
 }

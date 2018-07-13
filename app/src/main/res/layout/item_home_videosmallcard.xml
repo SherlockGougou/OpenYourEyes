@@ -12,9 +12,9 @@
       android:layout_width="@dimen/img_videoSmallCard_w"
       android:layout_height="@dimen/img_videoSmallCard_h"
       app:actualImageScaleType="centerCrop"
+      app:backgroundImage="@color/gray_e5"
       app:placeholderImage="@color/gray_e5"
       app:placeholderImageScaleType="centerCrop"
-      app:backgroundImage="@color/gray_e5"
       app:roundedCornerRadius="6dp"
       />
 

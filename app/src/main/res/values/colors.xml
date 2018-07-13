@@ -289,4 +289,5 @@
 
   <color name="blue_ecf3fb">#ecf3fb</color>
   <color name="blue_2772d0">#2772d0</color>
+  <color name="ripple_light">#1f000000</color>
 </resources>

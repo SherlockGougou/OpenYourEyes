@@ -4,7 +4,6 @@
     android:id="@+id/rl_item_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="?android:attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:minHeight="40dp"
     android:padding="@dimen/default_padding"
@@ -17,8 +16,8 @@
       app:placeholderImage="@color/gray_e5"
       app:placeholderImageScaleType="centerCrop"
       app:roundedCornerRadius="3dp"
-      app:roundingBorderWidth="0.1dp"
       app:roundingBorderColor="@color/gray_cc"
+      app:roundingBorderWidth="0.1dp"
       />
   <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
       android:id="@+id/tv_category_name"

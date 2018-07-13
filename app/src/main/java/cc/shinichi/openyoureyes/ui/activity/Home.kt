@@ -9,7 +9,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.OnScrollListener
 import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
@@ -54,13 +53,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter.OnItemClickListener
 import com.chad.library.adapter.base.BaseQuickAdapter.RequestLoadMoreListener
 import com.lzy.okgo.model.Response
+import com.shuyu.gsyvideoplayer.GSYVideoManager
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
 import kotlinx.android.synthetic.main.activity_home.recycler_category_list
 import kotlinx.android.synthetic.main.activity_home.recycler_data_list_home
 import kotlinx.android.synthetic.main.activity_home.swipe_refresh
 import kotlinx.android.synthetic.main.activity_home.toolbar_home
-import com.shuyu.gsyvideoplayer.GSYVideoManager
-import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
 
 class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListener,
     RequestLoadMoreListener {
@@ -108,7 +106,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_category)
+          ?.setHomeAsUpIndicator(R.drawable.all_category_img)
     }
 
     // category view
@@ -415,7 +413,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater
-        .inflate(R.menu.menu_home, menu)
+        .inflate(R.menu.menu_home_toolbar, menu)
     return true
   }
 
@@ -425,8 +423,8 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
         drawable_layout_home
             .openDrawer(GravityCompat.START)
       }
-      R.id.action_search -> ""
-      R.id.action_more -> ""
+      R.id.menu_search -> ""
+      R.id.menu_more -> ""
       else -> ""
     }
     return true
