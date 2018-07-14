@@ -1,10 +1,12 @@
 package cc.shinichi.openyoureyes.ui.holder
 
+import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyes.model.bean.home.ItemX
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.ui.adapter.HorRvAdapter
 import cc.shinichi.openyoureyes.util.image.ImageLoader
@@ -14,13 +16,19 @@ import com.facebook.drawee.view.SimpleDraweeView
 
 class VideoCollectionWithBrief {
 
+  private var context: Context
   private var helper: BaseViewHolder
   private var entity: HomeDataEntity
 
+  private var list: MutableList<ItemX?> = mutableListOf()
+  private var adapter: HorRvAdapter? = null
+
   constructor(
+    context: Context,
     helper: BaseViewHolder,
     entity: HomeDataEntity
   ) {
+    this.context = context
     this.entity = entity
     this.helper = helper
     setData()
@@ -44,9 +52,17 @@ class VideoCollectionWithBrief {
     recyclerView.onFlingListener = null
     val snapHelper = PagerSnapHelper()
     snapHelper.attachToRecyclerView(recyclerView)
-    val adapter = HorRvAdapter(recyclerView.context, entity.getData()?.data?.itemList)
+    if (list.size > 0) {
+      list.clear()
+    }
+    list.addAll(entity.getData()?.data?.itemList!!)
+    if (adapter == null) {
+      adapter = HorRvAdapter(context, list)
+    } else {
+      adapter?.notifyDataSetChanged()
+    }
     recyclerView.adapter = adapter
-    val decoration = HorRvDecoration(adapter.itemCount)
+    val decoration = HorRvDecoration(adapter!!.itemCount)
     val decorationCount = recyclerView.itemDecorationCount
     if (decorationCount > 0) {
       for (i in 0 until decorationCount) {

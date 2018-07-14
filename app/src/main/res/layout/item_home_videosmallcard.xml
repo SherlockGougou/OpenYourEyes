@@ -6,7 +6,6 @@
     android:paddingLeft="@dimen/default_padding"
     android:paddingRight="@dimen/default_padding"
     android:paddingTop="@dimen/default_margin"
-    android:background="?android:attr/selectableItemBackground"
     >
   <com.facebook.drawee.view.SimpleDraweeView
       android:id="@+id/img_videoSmallCard_img"

@@ -64,10 +64,10 @@ class HomeDataAdapter(
         BriefCard(helper, entity)
       }
       HomeDataEntity.squareCardCollection -> {
-        SquareCardCollection(helper, entity)
+        SquareCardCollection(super.mContext, helper, entity)
       }
       HomeDataEntity.videoCollectionWithBrief -> {
-        VideoCollectionWithBrief(helper, entity)
+        VideoCollectionWithBrief(super.mContext, helper, entity)
       }
       HomeDataEntity.DynamicInfoCard -> {
         DynamicInfoCard(helper, entity)

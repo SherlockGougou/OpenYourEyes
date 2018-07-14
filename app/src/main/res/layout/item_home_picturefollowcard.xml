@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/default_padding"
-    android:background="?android:attr/selectableItemBackground"
     >
 
   <com.facebook.drawee.view.SimpleDraweeView

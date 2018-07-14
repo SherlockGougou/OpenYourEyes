@@ -9,9 +9,9 @@ import cc.shinichi.openyoureyes.model.bean.home.Tag
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.widget.video.SampleCoverVideo
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
-import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
@@ -50,7 +50,7 @@ open class AutoPlayFollowCard {
     val tv_follow_time_length = helper.getView<TextView>(R.id.tv_follow_time_length)
     val tv_content_des = helper.getView<TextView>(R.id.tv_content_des)
     val tag_flowlayout = helper.getView<TagFlowLayout>(R.id.tag_flowlayout)
-    val gsy_list_auto_player = helper.getView<StandardGSYVideoPlayer>(R.id.gsy_list_auto_player)
+    val gsy_list_auto_player = helper.getView<SampleCoverVideo>(R.id.gsy_list_auto_player)
 
     ImageLoader.load(data.header?.icon, img_follow_card_user_icon)
     tv_follow_card_title.text = data.header?.issuerName
@@ -75,19 +75,13 @@ open class AutoPlayFollowCard {
       }
     }
 
-    val simpleDraweeView = SimpleDraweeView(context)
-    ImageLoader.loadVideoCover(data.content?.data?.cover?.feed, simpleDraweeView)
-
-    gsy_list_auto_player.thumbImageView = simpleDraweeView
+    gsy_list_auto_player.loadCoverImage(data.content?.data?.cover?.feed, R.color.gray_e5)
     gsy_list_auto_player.setUpLazy(data.content?.data?.playUrl, true, null, null, "")
-    gsy_list_auto_player.backButton.visibility = View.GONE
-    gsy_list_auto_player.titleTextView.visibility = View.GONE
+//    gsy_list_auto_player.backButton.visibility = View.GONE
+//    gsy_list_auto_player.titleTextView.visibility = View.GONE
     gsy_list_auto_player.playTag = TAG
     gsy_list_auto_player.playPosition = position
     gsy_list_auto_player.isShowPauseCover = true
     gsy_list_auto_player.setIsTouchWiget(true)
-    gsy_list_auto_player.startPlayLogic()
-
-
   }
 }
