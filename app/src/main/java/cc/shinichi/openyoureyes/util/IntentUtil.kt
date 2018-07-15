@@ -3,6 +3,7 @@ package cc.shinichi.openyoureyes.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import cc.shinichi.openyoureyes.ui.activity.Browser
 import cc.shinichi.openyoureyes.ui.activity.Home
 
 /**
@@ -30,5 +31,12 @@ object IntentUtil {
     val intent = Intent(Intent.ACTION_VIEW, uri)
     context
         .startActivity(intent)
+  }
+
+  fun intent2InnerBrowser(
+    context: Context,
+    url: String
+  ) {
+    Browser.activityStart(context, url)
   }
 }

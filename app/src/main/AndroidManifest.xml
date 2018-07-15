@@ -14,7 +14,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity
-        android:name="cc.shinichi.openyoureyes.ui.activity.Welcome"
+        android:name=".ui.activity.Welcome"
         android:screenOrientation="portrait"
         android:theme="@style/WelcomeTheme">
       <intent-filter>
@@ -24,9 +24,15 @@
       </intent-filter>
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyes.ui.activity.Home"
+        android:name=".ui.activity.Home"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+    </activity>
+    <activity
+        android:name=".ui.activity.Browser"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
     </activity>
   </application>
+
 </manifest>
