@@ -12,6 +12,9 @@ import cc.shinichi.openyoureyes.util.image.ImageLoader
 import cc.shinichi.openyoureyes.widget.video.SampleCoverVideo
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
+import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack
+import com.shuyu.gsyvideoplayer.utils.GSYVideoHelper
+import com.shuyu.gsyvideoplayer.utils.GSYVideoHelper.GSYVideoHelperBuilder
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout

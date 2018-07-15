@@ -26,6 +26,7 @@
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/text_click_retry"
         android:textColor="@color/black"
+        android:textStyle="bold"
         />
   </LinearLayout>
 

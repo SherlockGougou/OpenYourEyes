@@ -28,6 +28,7 @@
       android:layout_toEndOf="@+id/img_category_icon"
       android:text="@string/category_default_title"
       android:textColor="@color/black"
+      android:textStyle="bold"
       />
   <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
       android:id="@+id/tv_category_des"

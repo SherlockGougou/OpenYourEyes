@@ -77,6 +77,7 @@
         android:text="这里是视频标题"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:textStyle="bold"
         />
     <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
         android:id="@+id/tv_follow_card_des"

@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.WindowManager
 import cc.shinichi.openyoureyes.app.App
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 object UIUtil {
 
@@ -67,6 +69,13 @@ object UIUtil {
     if (recyclerView.layoutManager is LinearLayoutManager) {
       recyclerView.layoutManager.scrollToPosition(0)
     }
+  }
+
+  fun formatDate(
+    milliseconds: Long?
+  ): String {
+    val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.CHINESE)
+    return sdf.format(milliseconds)
   }
 
   fun getDurationText(second: Int?): String {

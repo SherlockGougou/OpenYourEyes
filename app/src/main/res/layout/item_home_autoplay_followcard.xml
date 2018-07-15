@@ -4,9 +4,9 @@
     android:id="@+id/rl_hor_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/default_padding"
     android:paddingLeft="@dimen/default_padding"
     android:paddingRight="@dimen/default_padding"
-    android:paddingBottom="@dimen/default_padding"
     >
 
   <com.facebook.drawee.view.SimpleDraweeView
@@ -42,6 +42,7 @@
         android:text="这里是视频标题"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:textStyle="bold"
         />
     <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
         android:id="@+id/tv_follow_card_des"
@@ -74,9 +75,9 @@
       android:layout_height="wrap_content"
       android:layout_below="@+id/rl_follow_author_container"
       android:layout_marginTop="@dimen/default_margin"
+      android:ellipsize="end"
       android:maxLines="4"
       android:text="LAIRT_XUAN"
-      android:ellipsize="end"
       android:textColor="@color/black"
       android:textSize="13sp"
       />
@@ -97,6 +98,17 @@
       android:layout_height="@dimen/horizontalScrollCard_height"
       android:layout_below="@+id/tag_flowlayout"
       android:layout_marginTop="@dimen/default_margin"
+      />
+
+  <ImageView
+      android:id="@+id/list_item_btn"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_alignBottom="@+id/gsy_list_auto_player"
+      android:layout_alignTop="@+id/gsy_list_auto_player"
+      android:layout_centerHorizontal="true"
+      android:layout_gravity="center_vertical"
+      android:src="@drawable/video_click_play_selector"
       />
 
   <cc.shinichi.openyoureyes.widget.CondensedBoldTextView

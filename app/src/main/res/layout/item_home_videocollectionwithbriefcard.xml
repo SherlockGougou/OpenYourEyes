@@ -31,6 +31,7 @@
       android:maxLines="1"
       android:text="@string/category_default_title"
       android:textColor="@color/black"
+      android:textStyle="bold"
       />
   <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
       android:id="@+id/tv_category_des"

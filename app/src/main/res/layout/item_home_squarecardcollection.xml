@@ -33,6 +33,7 @@
         android:text="@string/tv_TextCard_default"
         android:textColor="@color/black"
         android:textSize="@dimen/tv_TextCard_header5_size"
+        android:textStyle="bold"
         />
   </LinearLayout>
 

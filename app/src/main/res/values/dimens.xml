@@ -19,4 +19,9 @@
   <dimen name="img_videoSmallCard_h">100dp</dimen>
   <dimen name="squareCardCollection_h">180dp</dimen>
   <dimen name="divider_h">0.1dp</dimen>
+  <dimen name="dp_10">10dp</dimen>
+  <dimen name="dp_4">4dp</dimen>
+  <dimen name="dp_2">2dp</dimen>
+  <dimen name="dp_58">58dp</dimen>
+  <dimen name="dp_20">20dp</dimen>
 </resources>

@@ -31,6 +31,7 @@ import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.DynamicInfoCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.autoPlayFollowCard
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.banner
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity.Companion.briefCard
@@ -368,9 +369,9 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
           banner -> {
             allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_banner, item))
           }
-//          DynamicInfoCard -> {
-//            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))
-//          }
+          DynamicInfoCard -> {
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))
+          }
         }
       }
       if (isRefresh) {

@@ -39,6 +39,7 @@ class HomeDataAdapter(
     addItemType(HomeDataEntity.TYPE_videoCollectionWithBrief, R.layout.item_home_videocollectionwithbriefcard)
     addItemType(HomeDataEntity.TYPE_autoPlayFollowCard, R.layout.item_home_autoplay_followcard)
     addItemType(HomeDataEntity.TYPE_pictureFollowCard, R.layout.item_home_picturefollowcard)
+    addItemType(HomeDataEntity.TYPE_DynamicInfoCard, R.layout.item_home_dynamicinfocard)
     addItemType(HomeDataEntity.TYPE_banner, R.layout.item_home_banner)
   }
 
@@ -70,7 +71,7 @@ class HomeDataAdapter(
         VideoCollectionWithBrief(super.mContext, helper, entity)
       }
       HomeDataEntity.DynamicInfoCard -> {
-        DynamicInfoCard(helper, entity)
+        DynamicInfoCard(super.mContext, helper, entity)
       }
       HomeDataEntity.autoPlayFollowCard -> {
         AutoPlayFollowCard(super.mContext, helper, entity)
