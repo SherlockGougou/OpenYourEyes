@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.WindowManager
 import cc.shinichi.openyoureyes.app.App
+import java.net.URLDecoder
+import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -76,6 +78,16 @@ object UIUtil {
   ): String {
     val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.CHINESE)
     return sdf.format(milliseconds)
+  }
+
+  fun urlEncode(string: String?): String {
+    if (isNull(string)) return ""
+    return URLEncoder.encode(string, "utf-8")
+  }
+
+  fun urlDecode(string: String?): String {
+    if (isNull(string)) return ""
+    return URLDecoder.decode(string, "utf-8")
   }
 
   fun getDurationText(second: Int?): String {

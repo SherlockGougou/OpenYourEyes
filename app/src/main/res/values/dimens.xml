@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <dimen name="horizontalScrollCard_height">220dp</dimen>
+  <dimen name="horizontalScrollCard_height">200dp</dimen>
   <dimen name="default_padding">10dp</dimen>
   <dimen name="default_margin">10dp</dimen>
   <dimen name="margin_5dp">5dp</dimen>

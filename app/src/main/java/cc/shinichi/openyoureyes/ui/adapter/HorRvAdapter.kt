@@ -12,6 +12,7 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.ItemX
 import cc.shinichi.openyoureyes.ui.adapter.HorRvAdapter.Holder
 import cc.shinichi.openyoureyes.util.UIUtil
+import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.facebook.drawee.view.SimpleDraweeView
 
@@ -65,6 +66,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         holder.img_follow_card_user_icon.visibility = View.GONE
         holder.img_daily_label.visibility = View.GONE
         ImageLoader.load(item.data?.image, holder.img_follow_card_img)
+
+        holder.rl_hor_root.setOnClickListener {
+          ActionUrlUtil.jump(context, item.data?.actionUrl)
+        }
       }
       "video" -> {
         holder.tv_follow_time_length.visibility = View.VISIBLE
@@ -79,6 +84,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         } else {
           holder.img_daily_label.visibility = View.GONE
         }
+
+        holder.rl_hor_root.setOnClickListener {
+
+        }
       }
       "banner" -> {
         holder.tv_follow_time_length.visibility = View.GONE
@@ -86,6 +95,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         holder.img_follow_card_user_icon.visibility = View.GONE
         holder.img_daily_label.visibility = View.GONE
         ImageLoader.load(item.data?.image, holder.img_follow_card_img)
+
+        holder.rl_hor_root.setOnClickListener {
+          ActionUrlUtil.jump(context, item.data?.actionUrl)
+        }
       }
       "followCard" -> {
         holder.tv_follow_time_length.visibility = View.VISIBLE
@@ -100,6 +113,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
           holder.img_daily_label.visibility = View.VISIBLE
         } else {
           holder.img_daily_label.visibility = View.GONE
+        }
+
+        holder.rl_hor_root.setOnClickListener {
+
         }
       }
     }

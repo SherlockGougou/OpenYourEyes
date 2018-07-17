@@ -80,21 +80,21 @@
       android:textSize="13sp"
       />
 
-  <com.zhy.view.flowlayout.TagFlowLayout
-      android:id="@+id/tag_flowlayout"
+  <com.google.android.flexbox.FlexboxLayout
+      android:id="@+id/flexbox"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/tv_content_des"
       android:layout_marginTop="@dimen/default_margin"
-      app:max_select="0"
-      app:tag_gravity="left"
-      />
+      android:layout_below="@+id/tv_content_des"
+      app:flexWrap="wrap"
+      app:alignItems="stretch"
+      app:alignContent="stretch" />
 
   <com.facebook.drawee.view.SimpleDraweeView
       android:id="@+id/img_follow_card_img"
       android:layout_width="match_parent"
       android:layout_height="@dimen/horizontalScrollCard_height"
-      android:layout_below="@+id/tag_flowlayout"
+      android:layout_below="@+id/flexbox"
       android:layout_marginTop="@dimen/default_margin"
       app:actualImageScaleType="centerCrop"
       app:backgroundImage="@color/gray_e5"

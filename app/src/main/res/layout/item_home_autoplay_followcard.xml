@@ -82,40 +82,35 @@
       android:textSize="13sp"
       />
 
-  <com.zhy.view.flowlayout.TagFlowLayout
-      android:id="@+id/tag_flowlayout"
+  <com.google.android.flexbox.FlexboxLayout
+      android:id="@+id/flexbox"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/tv_content_des"
       android:layout_marginTop="@dimen/default_margin"
-      app:max_select="0"
-      app:tag_gravity="left"
-      />
+      android:layout_below="@+id/tv_content_des"
+      app:flexWrap="wrap"
+      app:alignItems="stretch"
+      app:alignContent="stretch" />
 
-  <cc.shinichi.openyoureyes.widget.video.SampleCoverVideo
-      android:id="@+id/gsy_list_auto_player"
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/img_follow_card_img"
       android:layout_width="match_parent"
       android:layout_height="@dimen/horizontalScrollCard_height"
-      android:layout_below="@+id/tag_flowlayout"
+      android:layout_below="@+id/flexbox"
       android:layout_marginTop="@dimen/default_margin"
-      />
-
-  <ImageView
-      android:id="@+id/list_item_btn"
-      android:layout_width="60dp"
-      android:layout_height="60dp"
-      android:layout_alignBottom="@+id/gsy_list_auto_player"
-      android:layout_alignTop="@+id/gsy_list_auto_player"
-      android:layout_centerHorizontal="true"
-      android:layout_gravity="center_vertical"
-      android:src="@drawable/video_click_play_selector"
+      app:actualImageScaleType="centerCrop"
+      app:backgroundImage="@color/gray_e5"
+      app:fadeDuration="300"
+      app:placeholderImage="@color/gray_e5"
+      app:placeholderImageScaleType="centerCrop"
+      app:roundedCornerRadius="6dp"
       />
 
   <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
       android:id="@+id/tv_follow_time_length"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignBottom="@+id/gsy_list_auto_player"
+      android:layout_alignBottom="@+id/img_follow_card_img"
       android:layout_alignParentEnd="true"
       android:layout_marginBottom="@dimen/margin_5dp"
       android:layout_marginEnd="@dimen/margin_5dp"

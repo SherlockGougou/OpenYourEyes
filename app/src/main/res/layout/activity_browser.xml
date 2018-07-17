@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_browser_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     >
 
-  <RelativeLayout
-      android:id="@+id/rl_toolbar_container"
+  <android.support.design.widget.AppBarLayout
+      android:id="@+id/appbar_layout"
       android:layout_width="match_parent"
       android:layout_height="@dimen/default_toolbar_height"
       >
-
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_home"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_action_back"
-        />
-
-    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:ellipsize="middle"
-        android:singleLine="true"
-        android:text="这里是标题"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_action_more"
-        />
-  </RelativeLayout>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        app:navigationIcon="@drawable/ic_action_back"
+        app:popupTheme="@style/Theme.AppCompat.Light"
+        app:titleTextColor="@color/black"
+        >
+      <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+          android:id="@+id/tv_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:singleLine="true"
+          android:text="标题"
+          android:textColor="@color/black"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          />
+    </android.support.v7.widget.Toolbar>
+  </android.support.design.widget.AppBarLayout>
 
   <WebView
       android:id="@+id/web_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_below="@+id/rl_toolbar_container"
+      android:layout_below="@+id/appbar_layout"
       />
 
   <ProgressBar

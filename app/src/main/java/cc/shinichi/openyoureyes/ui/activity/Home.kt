@@ -115,7 +115,22 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     // category view
     categoryAdapter = CategoryAdapter(context, allCategoryEntity)
     categoryAdapter
-        ?.onItemClickListener = this
+        ?.onItemClickListener = OnItemClickListener { adapter, view, position ->
+      when (position) {
+        0 -> IntentUtil.intent2Browser(this, Constant.作者主页)
+        else -> {
+          if (adapter?.getItemViewType(position) == CategoryEntity.TYPE_ITEM) {
+            currentCategoryIndex = position
+            if (drawable_layout_home.isDrawerOpen(GravityCompat.START)) {
+              drawable_layout_home
+                  .closeDrawer(GravityCompat.START)
+            }
+            categoryAdapter?.setSelected(currentCategoryIndex)
+            getHomeNewData()
+          }
+        }
+      }
+    }
     recycler_category_list
         .layoutManager = LinearLayoutManager(context)
     recycler_category_list
@@ -134,6 +149,7 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     homeDataAdapter?.setEnableLoadMore(true)
     homeDataAdapter?.setOnLoadMoreListener(this, recycler_data_list_home)
     homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
+    homeDataAdapter?.onItemClickListener = this
     recycler_data_list_home.layoutManager = LinearLayoutManager(context)
     recycler_data_list_home.adapter = homeDataAdapter
     recycler_data_list_home.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -495,20 +511,6 @@ class Home : BaseActivity(), Handler.Callback, OnClickListener, OnItemClickListe
     view: View?,
     position: Int
   ) {
-    when (position) {
-      0 -> IntentUtil.intent2Browser(this, Constant.作者主页)
-      else -> {
-        if (adapter?.getItemViewType(position) == CategoryEntity.TYPE_ITEM) {
-          currentCategoryIndex = position
-          if (drawable_layout_home.isDrawerOpen(GravityCompat.START)) {
-            drawable_layout_home
-                .closeDrawer(GravityCompat.START)
-          }
-          categoryAdapter?.setSelected(currentCategoryIndex)
-          getHomeNewData()
-        }
-      }
-    }
   }
 
   override fun onLoadMoreRequested() {

@@ -1,37 +1,34 @@
 package cc.shinichi.openyoureyes.ui.holder
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.PagerSnapHelper
-import android.support.v7.widget.RecyclerView
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Tag
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
-import cc.shinichi.openyoureyes.ui.adapter.HorRvAdapter
 import cc.shinichi.openyoureyes.util.image.ImageLoader
-import cc.shinichi.openyoureyes.widget.decoration.HorRvDecoration
+import cc.shinichi.openyoureyes.widget.FZLanTingLTextView
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
-import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
-import com.zhy.view.flowlayout.FlowLayout
-import com.zhy.view.flowlayout.TagAdapter
-import com.zhy.view.flowlayout.TagFlowLayout
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayout
 
 class PictureFollowCard {
 
+  private var context: Context
   private var helper: BaseViewHolder
   private var entity: HomeDataEntity
   private var inflater: LayoutInflater
 
   constructor(
-    context:Context,
+    context: Context,
     helper: BaseViewHolder,
     entity: HomeDataEntity
   ) {
+    this.context = context
     this.entity = entity
     this.helper = helper
     this.inflater = LayoutInflater.from(context)
@@ -46,7 +43,7 @@ class PictureFollowCard {
     val tv_follow_card_des_right = helper.getView<TextView>(R.id.tv_follow_card_des_right)
     val tv_content_des = helper.getView<TextView>(R.id.tv_content_des)
     val tv_follow_time_length = helper.getView<TextView>(R.id.tv_follow_time_length)
-    val tag_flowlayout = helper.getView<TagFlowLayout>(R.id.tag_flowlayout)
+    val flexbox = helper.getView<FlexboxLayout>(R.id.flexbox)
     val img_follow_card_img = helper.getView<SimpleDraweeView>(R.id.img_follow_card_img)
 
     tv_follow_time_length.visibility = View.GONE
@@ -56,21 +53,32 @@ class PictureFollowCard {
     tv_follow_card_des_right.text = data.content?.data?.title
     tv_content_des.text = data.content?.data?.description
 
-    if (data.content?.tag == null) {
-      tag_flowlayout.visibility = View.GONE
+    val tags: List<Tag?>? = data.content?.data?.tags
+    if (tags == null) {
+      flexbox.visibility = View.GONE
     } else {
-      tag_flowlayout.visibility = View.VISIBLE
-      tag_flowlayout.adapter = object : TagAdapter<Tag>(data.content.tag) {
-        override fun getView(
-          parent: FlowLayout?,
-          position: Int,
-          t: Tag?
-        ): View {
-          val tv = inflater.inflate(R.layout.item_tag_item, tag_flowlayout, false) as TextView
-          tv.text = t?.name
-          return tv
-        }
+      flexbox.visibility = View.VISIBLE
+      flexbox.flexDirection = FlexDirection.ROW
+      flexbox.removeAllViews()
+      val lp = FlexboxLayout.LayoutParams(
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT)
+      for (item in tags) {
+        val textView = createTextView(item?.name)
+        lp.rightMargin = 10
+        textView.layoutParams = lp
+        flexbox.addView(textView)
       }
+    }
+  }
+
+  private fun createTextView(str: String?): TextView {
+    return FZLanTingLTextView(context).apply {
+      text = str
+      setBackgroundResource(R.drawable.tag_item_text_back)
+      gravity = Gravity.CENTER
+      textSize = 12f
+      setTextColor(context.resources.getColor(R.color.blue_2772d0))
     }
   }
 }

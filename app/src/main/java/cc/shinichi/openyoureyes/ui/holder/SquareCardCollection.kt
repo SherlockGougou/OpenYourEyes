@@ -23,7 +23,9 @@ class SquareCardCollection {
   private lateinit var drawable: Drawable
 
   private var list: MutableList<ItemX?> = mutableListOf()
-  private var adapter: HorRvAdapter? = null
+  private lateinit var adapter: HorRvAdapter
+  private lateinit var manager: LinearLayoutManager
+  private lateinit var snapHelper: PagerSnapHelper
 
   constructor(
     context: Context,
@@ -52,23 +54,19 @@ class SquareCardCollection {
     }
 
     val recyclerView = helper.getView<RecyclerView>(R.id.rv_horizontalScrollCard)
-    val manager = LinearLayoutManager(recyclerView.context)
+    manager = LinearLayoutManager(recyclerView.context)
     manager.orientation = LinearLayoutManager.HORIZONTAL
     recyclerView.layoutManager = manager
     recyclerView.onFlingListener = null
-    val snapHelper = PagerSnapHelper()
+    snapHelper = PagerSnapHelper()
     snapHelper.attachToRecyclerView(recyclerView)
     if (list.size > 0) {
       list.clear()
     }
     list.addAll(entity.getData()?.data?.itemList!!)
-    if (adapter == null) {
-      adapter = HorRvAdapter(context, list)
-    } else {
-      adapter?.notifyDataSetChanged()
-    }
+    adapter = HorRvAdapter(context, list)
     recyclerView.adapter = adapter
-    val decoration = HorRvDecoration(adapter!!.itemCount)
+    val decoration = HorRvDecoration(adapter.itemCount)
     val decorationCount = recyclerView.itemDecorationCount
     if (decorationCount > 0) {
       for (i in 0 until decorationCount) {

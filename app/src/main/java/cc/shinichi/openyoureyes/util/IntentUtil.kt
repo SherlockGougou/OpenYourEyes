@@ -35,8 +35,9 @@ object IntentUtil {
 
   fun intent2InnerBrowser(
     context: Context,
-    url: String
+    url: String,
+    title: String
   ) {
-    Browser.activityStart(context, url)
+    Browser.activityStart(context, url, title)
   }
 }
