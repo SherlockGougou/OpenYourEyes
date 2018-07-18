@@ -123,7 +123,7 @@
   <TextView
       android:layout_width="match_parent"
       android:layout_height="@dimen/divider_h"
-      android:layout_below="@+id/gsy_list_auto_player"
+      android:layout_below="@+id/img_follow_card_img"
       android:layout_marginTop="@dimen/default_margin"
       android:background="@color/gray_e5"
       />

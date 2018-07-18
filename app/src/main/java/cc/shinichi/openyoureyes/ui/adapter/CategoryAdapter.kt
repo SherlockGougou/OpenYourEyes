@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyes.constant.Constant
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
@@ -46,7 +45,7 @@ class CategoryAdapter(
         }
         if (img_author_back != null) {
           ImageLoader
-              .load(Constant.作者信息背景图, img_author_back)
+              .loadResource(R.drawable.author_bg, img_author_back)
         }
       }
       CategoryEntity.TYPE_ITEM -> {
@@ -108,11 +107,11 @@ class CategoryAdapter(
           }
         }
         if (selestedIndex == position) {
-          helper?.getView<RelativeLayout>(R.id.rl_item_root)
-              ?.setBackgroundColor(super.mContext.getColor(R.color.gray_e5))
+          helper.getView<RelativeLayout>(R.id.rl_item_root)
+              ?.setBackgroundColor(super.mContext.resources.getColor(R.color.gray_e5))
         } else {
           helper?.getView<RelativeLayout>(R.id.rl_item_root)
-              ?.setBackgroundColor(super.mContext.getColor(R.color.white))
+              ?.setBackgroundColor(super.mContext.resources.getColor(R.color.white))
         }
       }
     }

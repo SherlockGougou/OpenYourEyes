@@ -28,8 +28,8 @@ object ActionUrlUtil {
       title = action.substring(action.indexOf("title=") + "title=".length, action.indexOf("&url="))
       IntentUtil.intent2InnerBrowser(context, url, title)
       //
-    } else if (action.startsWith("")) {
-
+    } else if (action.startsWith("eyepetizer://ranklist/")) {
+      IntentUtil.intent2RankList(context)
     }
   }
 }

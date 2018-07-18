@@ -7,6 +7,6 @@ package cc.shinichi.openyoureyes.constant
  * description:
  */
 object SpTag {
-  const val 默认文件名 = "sp_file_name"
-  const val 启动图链接 = "next_start_page_url"
+  const val defaultSpName = "sp_file_name"
+  const val splashNextPageUrl = "next_start_page_url"
 }

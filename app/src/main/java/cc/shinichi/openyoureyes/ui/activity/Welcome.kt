@@ -31,8 +31,11 @@ class Welcome : BaseActivity(), Callback {
     setContentView(R.layout.activity_welcome)
     initUtil()
   }
+  override fun initData() {}
 
-  fun initUtil() {
+  override fun initView() {}
+
+  override fun initUtil() {
     handler = HandlerUtil
         .HandlerHolder(this)
   }
@@ -60,9 +63,9 @@ class Welcome : BaseActivity(), Callback {
 
   private fun loadImage() {
     // 加载每日美图，动画时长2秒
-    var imagePath = getSp().getString(SpTag.启动图链接, "")
+    var imagePath = getSp().getString(SpTag.splashNextPageUrl, "")
     if (isNull(imagePath)) {
-      imagePath = Constant.默认启动图
+      imagePath = Constant.defaultSplashImage
     }
     ALog
         .log(TAG, imagePath)

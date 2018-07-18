@@ -33,6 +33,11 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
     </activity>
+    <activity
+        android:name=".ui.activity.RankList"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+    </activity>
   </application>
 
 </manifest>

@@ -14,7 +14,7 @@ class TaskGetConfig : BaseTask() {
   companion object {
     fun getConfig() {
       Api.getInstance()
-          .getAsync(App.application, Constant.配置文件接口, object : ApiListener() {
+          .getAsync(App.application, Constant.configUrl, object : ApiListener() {
 
             override fun success(string: String?) {
               try {
@@ -24,7 +24,7 @@ class TaskGetConfig : BaseTask() {
                   val nextStartPageUrl = config.startPage?.imageUrl
                   if (!isNull(nextStartPageUrl)) {
                     getSp().edit()
-                        .putString(SpTag.启动图链接, nextStartPageUrl)
+                        .putString(SpTag.splashNextPageUrl, nextStartPageUrl)
                         .apply()
                     ALog.log(TAG, "sp put nextStartPageUrl: = $nextStartPageUrl")
                   }

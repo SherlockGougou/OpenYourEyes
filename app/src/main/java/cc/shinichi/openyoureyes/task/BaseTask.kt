@@ -32,7 +32,7 @@ open class BaseTask {
 
     fun getSp(): SharedPreferences {
       if (sp == null) {
-        sp = App.application.getSharedPreferences(SpTag.默认文件名, Context.MODE_PRIVATE)
+        sp = App.application.getSharedPreferences(SpTag.defaultSpName, Context.MODE_PRIVATE)
       }
       return sp as SharedPreferences
     }

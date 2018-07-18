@@ -15,7 +15,7 @@ object ALog {
   ) {
     // 规定每段显示的长度
     val LOG_MAXLENGTH = 2000
-    if (Config.是否打印日志) {
+    if (Config.isPrintLog) {
       val strLength = msg?.length ?: 0
       var start = 0
       var end = LOG_MAXLENGTH

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import cc.shinichi.openyoureyes.ui.activity.Browser
 import cc.shinichi.openyoureyes.ui.activity.Home
+import cc.shinichi.openyoureyes.ui.activity.RankList
 
 /**
  * @author 工藤
@@ -39,5 +40,11 @@ object IntentUtil {
     title: String
   ) {
     Browser.activityStart(context, url, title)
+  }
+
+  fun intent2RankList(
+    context: Context
+  ) {
+    context.startActivity(Intent(context, RankList::class.java))
   }
 }

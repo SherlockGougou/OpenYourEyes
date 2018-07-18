@@ -43,7 +43,7 @@ class App : Application() {
     val httpLog = HttpLoggingInterceptor("shinichi")
     httpLog.setColorLevel(Level.INFO)
     httpLog.setPrintLevel(BODY)
-    if (Config.是否打印日志) {
+    if (Config.isPrintLog) {
       builder.addInterceptor(httpLog)
     }
     OkGo

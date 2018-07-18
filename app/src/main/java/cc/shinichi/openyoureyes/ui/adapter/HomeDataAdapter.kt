@@ -53,7 +53,7 @@ class HomeDataAdapter(
         HorizontalScrollCard(super.mContext, helper, entity)
       }
       HomeDataEntity.textCard -> {
-        TextCard(helper, entity)
+        TextCard(super.mContext, helper, entity)
       }
       HomeDataEntity.followCard -> {
         FollowCard(helper, entity)
@@ -80,7 +80,7 @@ class HomeDataAdapter(
         PictureFollowCard(super.mContext, helper, entity)
       }
       HomeDataEntity.banner -> {
-        Banner(helper, entity)
+        Banner(super.mContext, helper, entity)
       }
     }
   }

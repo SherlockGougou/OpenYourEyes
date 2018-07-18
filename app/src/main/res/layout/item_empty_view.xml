@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     >
 
   <LinearLayout
       android:id="@+id/ll_retry_container"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
       android:gravity="center"
       android:orientation="vertical"
+      android:visibility="gone"
       >
     <ImageView
         android:id="@+id/img_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/load_failed"
+        android:src="@drawable/no_net"
         />
 
     <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -34,7 +35,6 @@
       android:id="@+id/progress_loading"
       android:layout_width="@dimen/progress_loading_w_h"
       android:layout_height="@dimen/progress_loading_w_h"
-      android:layout_centerInParent="true"
       android:visibility="gone"
       />
 </RelativeLayout>

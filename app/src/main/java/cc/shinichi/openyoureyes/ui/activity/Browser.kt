@@ -67,7 +67,7 @@ class Browser : BaseActivity(), Callback {
   }
 
   @SuppressLint("SetJavaScriptEnabled")
-  private fun initView() {
+  override fun initView() {
     setSupportActionBar(toolbar_home)
     actionBar = supportActionBar
     if (actionBar != null) {
@@ -132,11 +132,11 @@ class Browser : BaseActivity(), Callback {
     }
   }
 
-  private fun initUtil() {
+  override fun initUtil() {
     handler = HandlerUtil.HandlerHolder(this)
   }
 
-  private fun initData() {
+  override fun initData() {
     val intent = intent
     if (intent == null) {
       finish()

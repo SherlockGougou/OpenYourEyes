@@ -25,6 +25,10 @@ abstract class BaseActivity : AppCompatActivity() {
   private var gson: Gson? = null
   private var sp: SharedPreferences? = null
 
+  abstract fun initView()
+  abstract fun initUtil()
+  abstract fun initData()
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super
         .onCreate(savedInstanceState)
@@ -72,7 +76,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
   open fun getSp(): SharedPreferences {
     if (sp == null) {
-      sp = App.application.getSharedPreferences(SpTag.默认文件名, Context.MODE_PRIVATE)
+      sp = App.application.getSharedPreferences(SpTag.defaultSpName, Context.MODE_PRIVATE)
     }
     return sp as SharedPreferences
   }

@@ -1,6 +1,7 @@
 package cc.shinichi.openyoureyes.api
 
 import android.content.Context
+import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.util.CommonUtil
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.callback.StringCallback
@@ -33,7 +34,7 @@ open class Api {
   }
 
   fun getAsync(
-    context: Context,
+    context: Context?,
     url: String?,
     listenerI: IApiListener?
   ) {
@@ -46,7 +47,7 @@ open class Api {
         .params("udid", "23074f87cfef48bd9a52b3ad1c054dada94e999e")
         .params("vc", "352")
         .params("vn", "4.0")
-        .tag(context)
+        .tag(context ?: App.application)
         .headers("Connection", "close")
         .execute(object : StringCallback() {
 

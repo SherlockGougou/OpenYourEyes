@@ -8,7 +8,7 @@ package cc.shinichi.openyoureyes.constant
  * description:
  */
 object Config {
-  // 是否打印日志
-  const val 是否打印日志 = true
-  //  const val 是否打印日志 = false
+  // isPrintLog
+  const val isPrintLog = true
+  //  const val isPrintLog = false
 }
