@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        app:itemIconTint="@color/black"
         app:navigationIcon="@drawable/ic_action_back"
         app:popupTheme="@style/Theme.AppCompat.Light"
         app:titleTextColor="@color/black"

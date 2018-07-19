@@ -3,9 +3,11 @@ package cc.shinichi.openyoureyes.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.ui.activity.Browser
 import cc.shinichi.openyoureyes.ui.activity.Home
 import cc.shinichi.openyoureyes.ui.activity.RankList
+import cc.shinichi.openyoureyes.ui.activity.VideoDetail
 
 /**
  * @author 工藤
@@ -45,6 +47,13 @@ object IntentUtil {
   fun intent2RankList(
     context: Context
   ) {
-    context.startActivity(Intent(context, RankList::class.java))
+    RankList.activityStart(context)
+  }
+
+  fun intent2VideoDetail(
+    context: Context,
+      data: Data
+  ) {
+    VideoDetail.activityStart(context, data)
   }
 }

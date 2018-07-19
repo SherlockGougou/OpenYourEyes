@@ -1,12 +1,14 @@
 package cc.shinichi.openyoureyes.ui.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler.Callback
 import android.os.Message
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.ActionBar
+import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.LinearLayout
@@ -19,10 +21,12 @@ import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.Constant
 import cc.shinichi.openyoureyes.model.bean.RankTabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
+import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_rank_list.tab_layout
 import kotlinx.android.synthetic.main.activity_rank_list.toolbar
+import kotlinx.android.synthetic.main.activity_rank_list.tv_title
 import kotlinx.android.synthetic.main.activity_rank_list.view_pager
 
 class RankList : BaseActivity(), Callback, OnClickListener {
@@ -48,6 +52,14 @@ class RankList : BaseActivity(), Callback, OnClickListener {
     initData()
   }
 
+  companion object {
+    fun activityStart(context: Context) {
+      val intent = Intent()
+      intent.setClass(context, RankList::class.java)
+      context.startActivity(intent)
+    }
+  }
+
   override fun initView() {
     setSupportActionBar(toolbar)
     actionBar = supportActionBar
@@ -58,6 +70,8 @@ class RankList : BaseActivity(), Callback, OnClickListener {
           ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
       actionBar?.title = ""
     }
+
+    tv_title.setOnClickListener(this)
 
     emptyView = layoutInflater
         .inflate(R.layout.item_empty_view, null)
@@ -107,7 +121,7 @@ class RankList : BaseActivity(), Callback, OnClickListener {
 
   class MyPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
 
-    private var fragments: MutableList<Fragment> = mutableListOf()
+    private var fragments: MutableList<CommonListFragment> = mutableListOf()
 
     fun setData(list: List<RankTabBean.TabInfo.Tab?>?) {
       fragments.clear()
@@ -115,11 +129,10 @@ class RankList : BaseActivity(), Callback, OnClickListener {
         for (item in list) {
           fragments.add(CommonListFragment.newInstance(item?.apiUrl))
         }
-        notifyDataSetChanged()
       }
     }
 
-    override fun getItem(position: Int): Fragment {
+    override fun getItem(position: Int): CommonListFragment {
       if (fragments.size == 0) return CommonListFragment.newInstance(Constant.rankListConfigUrl)
       return fragments[position]
     }
@@ -138,9 +151,20 @@ class RankList : BaseActivity(), Callback, OnClickListener {
     }
   }
 
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item?.itemId) {
+      android.R.id.home -> {
+        onBackPressed()
+      }
+    }
+    return true
+  }
+
   override fun onClick(v: View?) {
     when(v?.id) {
-
+      R.id.tv_title -> {
+        UIUtil.scrollToTop(pagerAdapter.getItem(view_pager.currentItem).getRecyclerView())
+      }
     }
   }
 

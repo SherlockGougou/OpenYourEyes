@@ -1,5 +1,6 @@
 package cc.shinichi.openyoureyes.model.entity
 
+import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
@@ -23,6 +24,8 @@ class HomeDataEntity : MultiItemEntity {
     var TYPE_autoPlayFollowCard = 8
     var TYPE_pictureFollowCard = 9
     var TYPE_banner = 10
+    var TYPE_videoDetailHeader = 11
+    var TYPE_videoDetailTextCardHeader = 12
 
     var horizontalScrollCard = "horizontalScrollCard"
     var textCard = "textCard"
@@ -35,10 +38,15 @@ class HomeDataEntity : MultiItemEntity {
     var autoPlayFollowCard = "autoPlayFollowCard"
     var pictureFollowCard = "pictureFollowCard"
     var banner = "banner"
+
+    // 自定义类型
+    var videoDetailHeader = "videoDetailHeader"
+    var videoDetailTextCardHeader = "videoDetailTextCardHeader"
   }
 
   private var itemType: Int = 0
   private var data: Item? = null
+  private var dataData: Data? = null
 
   constructor(
     itemType: Int,
@@ -48,11 +56,23 @@ class HomeDataEntity : MultiItemEntity {
     this.data = data
   }
 
+  constructor(
+    itemType: Int,
+    data: Data?
+  ) {
+    this.itemType = itemType
+    this.dataData = data
+  }
+
   override fun getItemType(): Int {
     return itemType
   }
 
   fun getData(): Item? {
     return data
+  }
+
+  fun getDataData(): Data? {
+    return dataData
   }
 }

@@ -23,4 +23,12 @@
     <item name="windowNoTitle">true</item>
     <item name="android:windowFullscreen">true</item>
   </style>
+
+  <!-- video detail full screen theme. -->
+  <style name="FullScreenTheme" parent="Theme.AppCompat.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
 </resources>

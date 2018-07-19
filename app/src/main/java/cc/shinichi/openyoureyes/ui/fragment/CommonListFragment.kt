@@ -36,33 +36,6 @@ import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
 
 class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener,
     RequestLoadMoreListener {
-  override fun initVariables(bundle: Bundle) {
-    TODO(
-        "not implemented"
-    ) //To change body of created functions use File | Settings | File Templates.
-  }
-
-  override fun initTools() {
-    TODO(
-        "not implemented"
-    ) //To change body of created functions use File | Settings | File Templates.
-  }
-
-  override fun initViews(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    TODO(
-        "not implemented"
-    ) //To change body of created functions use File | Settings | File Templates.
-  }
-
-  override fun setDefaultFragmentTitle(title: String?) {
-    TODO(
-        "not implemented"
-    ) //To change body of created functions use File | Settings | File Templates.
-  }
 
   private var handler: HandlerUtil.HandlerHolder? = null
 
@@ -84,34 +57,28 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
   companion object {
     fun newInstance(url: String?): CommonListFragment {
       return CommonListFragment().apply {
-        var bundle = Bundle()
+        val bundle = Bundle()
         bundle.putString("url", url)
         arguments = bundle
       }
     }
   }
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-
+  override fun initVariables(bundle: Bundle) {
     url = arguments?.getString("url")
   }
 
-  override fun onCreateView(
+  override fun initTools() {
+    handler = HandlerUtil
+        .HandlerHolder(this)
+  }
+
+  override fun initViews(
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?
-  ): View? {
+  ): View {
     rootView = inflater.inflate(R.layout.fragment_common_list, container, false)
-
-    initView()
-    initUtil()
-    initData()
-
-    return rootView
-  }
-
-  private fun initView() {
     emptyView = layoutInflater
         .inflate(R.layout.item_empty_view, null)
     ll_retry_container = emptyView
@@ -168,11 +135,10 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
         .setOnRefreshListener {
           getHomeNewData()
         }
+    return rootView
   }
 
-  private fun initUtil() {
-    handler = HandlerUtil
-        .HandlerHolder(this)
+  override fun setDefaultFragmentTitle(title: String?) {
   }
 
   override fun initData() {
@@ -183,6 +149,10 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
   fun setUrl(url: String) {
     this.url = url
     getHomeNewData()
+  }
+
+  fun getRecyclerView(): RecyclerView {
+    return recycler_data_list_home
   }
 
   private fun getHomeNewData() {
@@ -288,9 +258,6 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
         drawable_layout_home
             .openDrawer(GravityCompat.START)
       }
-      R.id.menu_search -> ""
-      R.id.menu_more -> ""
-      else -> ""
     }
     return true
   }
@@ -345,6 +312,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
       handler?.sendEmptyMessage(Code.LoadMoreEnd)
       return
     }
+    recycler_data_list_home.stopScroll()
     Api.getInstance()
         .getAsync(context, nextPageUrl, object : ApiListener() {
 

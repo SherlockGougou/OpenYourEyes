@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
-      android:id="@+id/menu_more"
+      android:id="@+id/menu_copy"
       android:icon="@drawable/ic_action_more"
-      android:title="@string/menu_home_more"
-      app:showAsAction="ifRoom"/>
+      android:title="复制链接"
+      app:showAsAction="never"/>
+  <item
+      android:id="@+id/menu_open_by_outside"
+      android:icon="@drawable/ic_action_share"
+      android:title="浏览器打开"
+      app:showAsAction="never"/>
 </menu>

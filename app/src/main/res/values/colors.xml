@@ -294,4 +294,8 @@
   <color name="blue_4687D7">#4687D7</color>
   <color name="gray_888888">#888888</color>
   <color name="gray_f6f6f6">#f6f6f6</color>
+
+  <color name="video_detail_gray_text">#D4D5D6</color>
+  <color name="video_detail_deep_gray_text">#555C60</color>
+
 </resources>

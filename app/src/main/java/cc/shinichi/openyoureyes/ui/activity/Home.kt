@@ -75,7 +75,8 @@ class Home : BaseActivity(), Handler.Callback {
     val fragmentManager = supportFragmentManager
     val fragmentTransaction = fragmentManager.beginTransaction()
     commonListFragment = CommonListFragment.newInstance(Constant.discoveryUrl)
-    fragmentTransaction.add(R.id.fm_container, commonListFragment)
+    commonListFragment.setUrl(Constant.discoveryUrl)
+    fragmentTransaction.replace(R.id.fm_container, commonListFragment)
     fragmentTransaction.commit()
 
     // category view
@@ -242,7 +243,6 @@ class Home : BaseActivity(), Handler.Callback {
             .openDrawer(GravityCompat.START)
       }
       R.id.menu_search -> ""
-      R.id.menu_more -> ""
     }
     return true
   }

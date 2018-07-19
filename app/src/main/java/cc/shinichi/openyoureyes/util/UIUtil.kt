@@ -1,5 +1,7 @@
 package cc.shinichi.openyoureyes.util
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.Point
 import android.support.v7.widget.LinearLayoutManager
@@ -42,6 +44,14 @@ object UIUtil {
         .getSize(outSize)
     return outSize
         .y
+  }
+
+  fun copy(data: String, hint: String = "复制成功") {
+    val clipboardManager: ClipboardManager =
+      App.application.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clipData = ClipData.newPlainText("OpenYourEyes", data)
+    clipboardManager.primaryClip = clipData
+    ToastUtil._short(hint)
   }
 
   fun px2dp(pxValue: Int): Int {

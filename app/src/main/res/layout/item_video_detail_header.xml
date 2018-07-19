@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/default_padding"
+    >
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_video_detail_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:text="这里是视频标题"
+      android:textColor="@color/white"
+      android:textSize="16sp"
+      android:textStyle="bold"
+      />
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+      android:id="@+id/tv_video_detail_des"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dp_4"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:text="这里是视频分类"
+      android:textColor="@color/video_detail_gray_text"
+      android:textSize="14sp"
+      />
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+      android:id="@+id/tv_video_detail_content"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/default_margin"
+      android:text="这里是视频内容"
+      android:textColor="@color/video_detail_gray_text"
+      android:textSize="14sp"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/dp_20"
+      android:layout_marginTop="@dimen/dp_20"
+      android:orientation="horizontal"
+      android:weightSum="4"
+      >
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+        android:id="@+id/tv_video_action_like"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_action_favorites_without_padding"
+        android:drawablePadding="@dimen/dp_4"
+        android:gravity="center_vertical"
+        android:text="354"
+        android:textColor="@color/video_detail_gray_text"
+        />
+
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+        android:id="@+id/tv_video_action_share"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_action_share_without_padding"
+        android:drawablePadding="@dimen/dp_4"
+        android:gravity="center_vertical"
+        android:text="142"
+        android:textColor="@color/video_detail_gray_text"
+        />
+
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+        android:id="@+id/tv_video_action_reply"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_action_reply_without_padding"
+        android:drawablePadding="@dimen/dp_4"
+        android:gravity="center_vertical"
+        android:text="354"
+        android:textColor="@color/video_detail_gray_text"
+        />
+
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+        android:id="@+id/tv_video_action_offline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_action_offline_without_padding"
+        android:drawablePadding="@dimen/dp_4"
+        android:gravity="center_vertical"
+        android:text="缓存"
+        android:textColor="@color/video_detail_gray_text"
+        />
+
+  </LinearLayout>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/divider_h"
+      android:background="@color/gray_e5"
+      />
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:padding="@dimen/default_padding"
+      android:weightSum="3"
+      >
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_2"
+        android:layout_marginRight="@dimen/dp_2"
+        android:layout_weight="1"
+        >
+      <com.facebook.drawee.view.SimpleDraweeView
+          android:id="@+id/img_tag_1"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/default_toolbar_height"
+          app:actualImageScaleType="centerCrop"
+          app:backgroundImage="@color/gray_e5"
+          app:placeholderImage="@color/gray_e5"
+          app:placeholderImageScaleType="centerCrop"
+          app:roundedCornerRadius="6dp"
+          />
+
+      <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+          android:id="@+id/tv_tag_1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:text="#生活"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_2"
+        android:layout_marginRight="@dimen/dp_2"
+        android:layout_weight="1"
+        >
+      <com.facebook.drawee.view.SimpleDraweeView
+          android:id="@+id/img_tag_2"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/default_toolbar_height"
+          app:actualImageScaleType="centerCrop"
+          app:backgroundImage="@color/gray_e5"
+          app:placeholderImage="@color/gray_e5"
+          app:placeholderImageScaleType="centerCrop"
+          app:roundedCornerRadius="6dp"
+          />
+
+      <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+          android:id="@+id/tv_tag_2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:text="#生活"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_tag_root"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_2"
+        android:layout_marginRight="@dimen/dp_2"
+        android:layout_weight="1"
+        >
+      <com.facebook.drawee.view.SimpleDraweeView
+          android:id="@+id/img_tag_3"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/default_toolbar_height"
+          app:actualImageScaleType="centerCrop"
+          app:backgroundImage="@color/gray_e5"
+          app:placeholderImage="@color/gray_e5"
+          app:placeholderImageScaleType="centerCrop"
+          app:roundedCornerRadius="6dp"
+          />
+
+      <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+          android:id="@+id/tv_tag_3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:text="#生活"
+          />
+    </RelativeLayout>
+
+  </LinearLayout>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/divider_h"
+      android:background="@color/gray_e5"
+      />
+
+  <RelativeLayout
+      android:id="@+id/layout_root_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_vertical"
+      android:padding="@dimen/default_padding"
+      >
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img_user_icon"
+        android:layout_width="@dimen/default_toolbar_height"
+        android:layout_height="@dimen/default_toolbar_height"
+        app:actualImageScaleType="centerCrop"
+        app:placeholderImage="@color/gray_e5"
+        app:placeholderImageScaleType="centerCrop"
+        app:roundAsCircle="true"
+        />
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_toEndOf="@+id/img_user_icon"
+        android:maxLines="1"
+        android:text="这里是用户名"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        />
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+        android:id="@+id/tv_user_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_user_icon"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_toEndOf="@+id/img_user_icon"
+        android:maxLines="1"
+        android:text="这里是用户描述"
+        android:textColor="@color/video_detail_deep_gray_text"
+        android:textSize="13sp"
+        />
+  </RelativeLayout>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/divider_h"
+      android:background="@color/gray_e5"
+      />
+</LinearLayout>

@@ -1,6 +1,7 @@
 package cc.shinichi.openyoureyes.ui.adapter
 
 import android.content.Context
+import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
@@ -14,6 +15,7 @@ import cc.shinichi.openyoureyes.ui.holder.PictureFollowCard
 import cc.shinichi.openyoureyes.ui.holder.SquareCardCollection
 import cc.shinichi.openyoureyes.ui.holder.TextCard
 import cc.shinichi.openyoureyes.ui.holder.VideoCollectionWithBrief
+import cc.shinichi.openyoureyes.ui.holder.VideoDetailHeader
 import cc.shinichi.openyoureyes.ui.holder.VideoSmallCard
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -36,11 +38,18 @@ class HomeDataAdapter(
     addItemType(HomeDataEntity.TYPE_videoSmallCard, R.layout.item_home_videosmallcard)
     addItemType(HomeDataEntity.TYPE_briefCard, R.layout.item_home_briefcard)
     addItemType(HomeDataEntity.TYPE_squareCardCollection, R.layout.item_home_squarecardcollection)
-    addItemType(HomeDataEntity.TYPE_videoCollectionWithBrief, R.layout.item_home_videocollectionwithbriefcard)
+    addItemType(
+        HomeDataEntity.TYPE_videoCollectionWithBrief,
+        R.layout.item_home_videocollectionwithbriefcard
+    )
     addItemType(HomeDataEntity.TYPE_autoPlayFollowCard, R.layout.item_home_autoplay_followcard)
     addItemType(HomeDataEntity.TYPE_pictureFollowCard, R.layout.item_home_picturefollowcard)
     addItemType(HomeDataEntity.TYPE_DynamicInfoCard, R.layout.item_home_dynamicinfocard)
     addItemType(HomeDataEntity.TYPE_banner, R.layout.item_home_banner)
+
+    // video detail
+    addItemType(HomeDataEntity.TYPE_horizontalScrollCard, R.layout.item_video_detail_header)
+    addItemType(HomeDataEntity.TYPE_horizontalScrollCard, R.layout.item_video_detail_textcard)
   }
 
   override fun convert(
@@ -48,39 +57,45 @@ class HomeDataAdapter(
     entity: HomeDataEntity
   ) {
     val item: Item = entity.getData() ?: return
-    when (item.type) {
-      HomeDataEntity.horizontalScrollCard -> {
+    when (entity.itemType) {
+      HomeDataEntity.TYPE_horizontalScrollCard -> {
         HorizontalScrollCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.textCard -> {
+      HomeDataEntity.TYPE_textCard -> {
         TextCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.followCard -> {
-        FollowCard(helper, entity)
+      HomeDataEntity.TYPE_followCard -> {
+        FollowCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.videoSmallCard -> {
-        VideoSmallCard(helper, entity)
+      HomeDataEntity.TYPE_videoSmallCard -> {
+        VideoSmallCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.briefCard -> {
-        BriefCard(helper, entity)
+      HomeDataEntity.TYPE_briefCard -> {
+        BriefCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.squareCardCollection -> {
+      HomeDataEntity.TYPE_squareCardCollection -> {
         SquareCardCollection(super.mContext, helper, entity)
       }
-      HomeDataEntity.videoCollectionWithBrief -> {
+      HomeDataEntity.TYPE_videoCollectionWithBrief -> {
         VideoCollectionWithBrief(super.mContext, helper, entity)
       }
-      HomeDataEntity.DynamicInfoCard -> {
+      HomeDataEntity.TYPE_DynamicInfoCard -> {
         DynamicInfoCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.autoPlayFollowCard -> {
+      HomeDataEntity.TYPE_autoPlayFollowCard -> {
         AutoPlayFollowCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.pictureFollowCard -> {
+      HomeDataEntity.TYPE_pictureFollowCard -> {
         PictureFollowCard(super.mContext, helper, entity)
       }
-      HomeDataEntity.banner -> {
+      HomeDataEntity.TYPE_banner -> {
         Banner(super.mContext, helper, entity)
+      }
+      HomeDataEntity.TYPE_videoDetailHeader -> {
+        VideoDetailHeader(super.mContext, helper, entity)
+      }
+      HomeDataEntity.TYPE_videoDetailTextCardHeader -> {
+        helper.getView<TextView>(R.id.tv_TextCard_video_header).text = item.data?.text
       }
     }
   }

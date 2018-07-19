@@ -1,5 +1,6 @@
 package cc.shinichi.openyoureyes.ui.holder
 
+import android.content.Context
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
@@ -10,13 +11,16 @@ import com.facebook.drawee.view.SimpleDraweeView
 
 class VideoSmallCard {
 
+  private lateinit var context: Context
   private var helper: BaseViewHolder
   private var entity: HomeDataEntity
 
   constructor(
+    context: Context,
     helper: BaseViewHolder,
     entity: HomeDataEntity
   ) {
+    this.context = context
     this.entity = entity
     this.helper = helper
     setData()

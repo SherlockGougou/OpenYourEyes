@@ -25,6 +25,7 @@
           android:layout_height="@dimen/default_toolbar_height"
           android:layout_below="@+id/appbar_layout"
           android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+          app:itemIconTint="@color/black"
           app:layout_scrollFlags="scroll|enterAlways"
           app:navigationIcon="@drawable/ic_action_back"
           app:popupTheme="@style/Theme.AppCompat.Light"
@@ -33,14 +34,15 @@
         <cc.shinichi.openyoureyes.widget.LobsterTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:ellipsize="end"
+            android:gravity="center"
             android:maxLines="1"
             android:singleLine="true"
             android:text="Eyepetizer"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             />
       </android.support.v7.widget.Toolbar>

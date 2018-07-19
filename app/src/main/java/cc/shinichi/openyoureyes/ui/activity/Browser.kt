@@ -21,6 +21,8 @@ import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.base.BaseActivity
+import cc.shinichi.openyoureyes.util.IntentUtil
+import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.log.ALog
 import kotlinx.android.synthetic.main.activity_browser.tv_title
@@ -179,7 +181,8 @@ class Browser : BaseActivity(), Callback {
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
       android.R.id.home -> onBackPressed()
-      R.id.menu_more -> ""
+      R.id.menu_copy -> UIUtil.copy(webview.url)
+      R.id.menu_open_by_outside -> IntentUtil.intent2Browser(context, webview.url)
     }
     return true
   }

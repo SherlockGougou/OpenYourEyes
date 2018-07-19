@@ -194,7 +194,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_action_like_added"
+        android:src="@drawable/ic_action_like"
         />
 
     <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -203,6 +203,7 @@
         android:layout_height="wrap_content"
         android:layout_toStartOf="@+id/img_like"
         android:text="233"
+        android:layout_centerVertical="true"
         android:textColor="@color/black"
         android:textSize="12sp"
         android:textStyle="bold"
