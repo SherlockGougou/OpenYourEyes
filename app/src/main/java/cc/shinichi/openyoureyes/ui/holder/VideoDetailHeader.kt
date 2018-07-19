@@ -27,7 +27,7 @@ class VideoDetailHeader {
   }
 
   private fun setData() {
-    val data = entity.getDataData() ?: return
+    val item = entity.getData() ?: return
 
     val tv_video_detail_title = helper.getView<TextView>(R.id.tv_video_detail_title)
     val tv_video_detail_des = helper.getView<TextView>(R.id.tv_video_detail_des)
@@ -53,17 +53,17 @@ class VideoDetailHeader {
     val tv_user_name = helper.getView<TextView>(R.id.tv_user_name)
     val tv_user_des = helper.getView<TextView>(R.id.tv_user_des)
 
-    tv_video_detail_title.text = data.header?.title
-    tv_video_detail_des.text = data.header?.description
+    tv_video_detail_title.text = item.data?.header?.title
+    tv_video_detail_des.text = item.data?.header?.description
 
-    tv_video_detail_content.text = data.content?.data?.description
+    tv_video_detail_content.text = item.data?.content?.data?.description
 
-    tv_video_action_like.text = data.content?.data?.consumption?.collectionCount.toString()
-    tv_video_action_share.text = data.content?.data?.consumption?.shareCount.toString()
-    tv_video_action_reply.text = data.content?.data?.consumption?.replyCount.toString()
+    tv_video_action_like.text = item.data?.content?.data?.consumption?.collectionCount.toString()
+    tv_video_action_share.text = item.data?.content?.data?.consumption?.shareCount.toString()
+    tv_video_action_reply.text = item.data?.content?.data?.consumption?.replyCount.toString()
     tv_video_action_offline.text = "缓存"
 
-    val tagCount = data.content?.data?.tags?.size
+    val tagCount = item.data?.content?.data?.tags?.size
     if (tagCount != null && tagCount > 0) {
       rl_tag_root.visibility = View.VISIBLE
       when(tagCount) {
@@ -71,8 +71,8 @@ class VideoDetailHeader {
           img_tag_1.visibility = View.VISIBLE
           tv_tag_1.visibility = View.VISIBLE
 
-          ImageLoader.load(data.content.data.tags[0]?.bgPicture, img_tag_1)
-          tv_tag_1.text = data.content.data.tags[0]?.name
+          ImageLoader.load(item.data.content.data.tags[0]?.bgPicture, img_tag_1)
+          tv_tag_1.text = item.data.content.data.tags[0]?.name
 
           img_tag_2.visibility = View.GONE
           tv_tag_2.visibility = View.GONE
@@ -84,14 +84,14 @@ class VideoDetailHeader {
           img_tag_1.visibility = View.VISIBLE
           tv_tag_1.visibility = View.VISIBLE
 
-          ImageLoader.load(data.content.data.tags[0]?.bgPicture, img_tag_1)
-          tv_tag_1.text = data.content.data.tags[0]?.name
+          ImageLoader.load(item.data.content.data.tags[0]?.bgPicture, img_tag_1)
+          tv_tag_1.text = item.data.content.data.tags[0]?.name
 
           img_tag_2.visibility = View.VISIBLE
           tv_tag_2.visibility = View.VISIBLE
 
-          ImageLoader.load(data.content.data.tags[1]?.bgPicture, img_tag_2)
-          tv_tag_2.text = data.content.data.tags[1]?.name
+          ImageLoader.load(item.data.content.data.tags[1]?.bgPicture, img_tag_2)
+          tv_tag_2.text = item.data.content.data.tags[1]?.name
 
           img_tag_3.visibility = View.GONE
           tv_tag_3.visibility = View.GONE
@@ -100,28 +100,28 @@ class VideoDetailHeader {
           img_tag_1.visibility = View.VISIBLE
           tv_tag_1.visibility = View.VISIBLE
 
-          ImageLoader.load(data.content.data.tags[0]?.bgPicture, img_tag_1)
-          tv_tag_1.text = data.content.data.tags[0]?.name
+          ImageLoader.load(item.data.content.data.tags[0]?.bgPicture, img_tag_1)
+          tv_tag_1.text = item.data.content.data.tags[0]?.name
 
           img_tag_2.visibility = View.VISIBLE
           tv_tag_2.visibility = View.VISIBLE
 
-          ImageLoader.load(data.content.data.tags[1]?.bgPicture, img_tag_2)
-          tv_tag_2.text = data.content.data.tags[1]?.name
+          ImageLoader.load(item.data.content.data.tags[1]?.bgPicture, img_tag_2)
+          tv_tag_2.text = item.data.content.data.tags[1]?.name
 
           img_tag_3.visibility = View.VISIBLE
           tv_tag_3.visibility = View.VISIBLE
 
-          ImageLoader.load(data.content.data.tags[2]?.bgPicture, img_tag_3)
-          tv_tag_3.text = data.content.data.tags[2]?.name
+          ImageLoader.load(item.data.content.data.tags[2]?.bgPicture, img_tag_3)
+          tv_tag_3.text = item.data.content.data.tags[2]?.name
         }
       }
     } else {
       rl_tag_root.visibility = View.GONE
     }
 
-    ImageLoader.load(data.content?.data?.author?.icon, img_user_icon)
-    tv_user_name.text = data.content?.data?.author?.name
-    tv_user_des.text = data.content?.data?.author?.description
+    ImageLoader.load(item.data?.content?.data?.author?.icon, img_user_icon)
+    tv_user_name.text = item.data?.content?.data?.author?.name
+    tv_user_des.text = item.data?.content?.data?.author?.description
   }
 }

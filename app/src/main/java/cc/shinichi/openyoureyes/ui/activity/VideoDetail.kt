@@ -2,32 +2,53 @@ package cc.shinichi.openyoureyes.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler.Callback
 import android.os.Message
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyes.api.Api
+import cc.shinichi.openyoureyes.api.ApiListener
+import cc.shinichi.openyoureyes.app.App
+import cc.shinichi.openyoureyes.constant.Code
+import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.SpTag
 import cc.shinichi.openyoureyes.datapool.VideoDataPool
 import cc.shinichi.openyoureyes.model.bean.home.Data
+import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
+import cc.shinichi.openyoureyes.model.bean.home.Item
+import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.ui.adapter.HomeDataAdapter
+import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.widget.MyLoadMoreView
 import com.facebook.drawee.view.SimpleDraweeView
+import com.google.gson.Gson
 import com.shuyu.gsyvideoplayer.GSYBaseActivityDetail
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import kotlinx.android.synthetic.main.activity_video_detail.imageVideoDetailBg
+import kotlinx.android.synthetic.main.activity_video_detail.rv_video_detail
 
 class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
 
   private lateinit var context: Context
   private var handler: HandlerUtil.HandlerHolder? = null
+  private val TAG: String = javaClass.simpleName
+  private var gson: Gson? = null
+  private var sp: SharedPreferences? = null
 
   // view
   private lateinit var detailVideo: StandardGSYVideoPlayer
 
-  // data
-  private lateinit var data: Data
+  // item
+  private lateinit var item: Item
+  private var allHomeDataEntity: MutableList<HomeDataEntity> = ArrayList()
+  private var homeDataAdapter: HomeDataAdapter? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -43,9 +64,9 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   companion object {
     fun activityStart(
       context: Context,
-      data: Data
+      item: Item
     ) {
-      VideoDataPool.setDataBean(data)
+      VideoDataPool.setDataBean(item)
       val intent = Intent()
       intent.setClass(context, VideoDetail::class.java)
       context.startActivity(intent)
@@ -64,22 +85,73 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
     detailVideo.backButton.setOnClickListener {
       onBackPressed()
     }
+    detailVideo.layoutParams.height = (((UIUtil.getPhoneWidth().toFloat()) / 16) * 9).toInt()
 
     // recyclerview
-//    rv_video_detail.
+    homeDataAdapter = HomeDataAdapter(context, allHomeDataEntity)
+    homeDataAdapter?.setEnableLoadMore(false)
+    homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
+    rv_video_detail.layoutManager = LinearLayoutManager(context)
+    rv_video_detail.adapter = homeDataAdapter
   }
 
   private fun initData() {
-    data = VideoDataPool.getDataBean()
-
+    item = VideoDataPool.getDataBean()
     // video
     detailVideo.startAfterPrepared()
-
     // title
-    detailVideo.titleTextView.text = data.content?.data?.title
-
+    detailVideo.titleTextView.text = item.data?.content?.data?.title
     // background
-    ImageLoader.load(data.content?.data?.cover?.blurred, imageVideoDetailBg)
+    ImageLoader.load(item.data?.content?.data?.cover?.blurred, imageVideoDetailBg)
+
+    // 相关视频
+    getRelateData()
+  }
+
+  private fun getRelateData() {
+    Api.getInstance().getAsync(context, Constant.videoDetailRelateUrl + item.data?.content?.data?.id, object : ApiListener() {
+      override fun success(string: String?) {
+        super.success(string)
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+        getEntityList(string)
+      }
+    })
+  }
+  
+  private fun getEntityList(
+    string: String?
+  ) {
+    val bean: HomeDataBean? = getGson().fromJson(string, HomeDataBean::class.javaObjectType)
+
+    if (bean?.itemList != null) {
+      allHomeDataEntity.clear()
+      allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoDetailHeader, item))
+      for (item: Item? in bean.itemList) {
+        when (item?.type) {
+          HomeDataEntity.textCard -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoDetailTextCardHeader, item))
+          }
+          HomeDataEntity.videoSmallCard -> {
+            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoDetailSmallVideo, item))
+          }
+        }
+      }
+      homeDataAdapter?.setNewData(allHomeDataEntity)
+    }
+  }
+
+  private fun getGson(): Gson {
+    if (gson == null) {
+      gson = Gson()
+    }
+    return gson as Gson
+  }
+
+  private fun getSp(): SharedPreferences {
+    if (sp == null) {
+      sp = App.application.getSharedPreferences(SpTag.defaultSpName, Context.MODE_PRIVATE)
+    }
+    return sp as SharedPreferences
   }
 
   override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -96,6 +168,11 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   }
 
   override fun handleMessage(msg: Message?): Boolean {
+    when(msg?.what) {
+      Code.RefreshFinish -> {
+
+      }
+    }
     return true
   }
 
@@ -113,10 +190,10 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   override fun getGSYVideoOptionBuilder(): GSYVideoOptionBuilder {
     //内置封面可参考SampleCoverVideo
     val imageView = SimpleDraweeView(this)
-    ImageLoader.load(data.content?.data?.cover?.feed, imageView)
+    ImageLoader.load(item.data?.content?.data?.cover?.feed, imageView)
     return GSYVideoOptionBuilder()
         .setThumbImageView(imageView)
-        .setUrl(data.content?.data?.playUrl)
+        .setUrl(item.data?.content?.data?.playUrl)
         .setCacheWithPlay(true)
         .setVideoTitle(" ")
         .setIsTouchWiget(true)

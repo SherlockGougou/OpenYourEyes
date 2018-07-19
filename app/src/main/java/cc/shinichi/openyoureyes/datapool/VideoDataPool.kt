@@ -1,16 +1,16 @@
 package cc.shinichi.openyoureyes.datapool
 
-import cc.shinichi.openyoureyes.model.bean.home.Data
+import cc.shinichi.openyoureyes.model.bean.home.Item
 
 object VideoDataPool {
 
-  private lateinit var data: Data
+  private lateinit var item: Item
 
-  fun setDataBean(data: Data) {
-    this.data = data
+  fun setDataBean(item: Item) {
+    this.item = item
   }
 
-  fun getDataBean(): Data {
-    return data
+  fun getDataBean(): Item {
+    return item
   }
 }

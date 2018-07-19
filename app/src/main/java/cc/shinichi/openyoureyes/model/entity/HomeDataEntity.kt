@@ -26,6 +26,7 @@ class HomeDataEntity : MultiItemEntity {
     var TYPE_banner = 10
     var TYPE_videoDetailHeader = 11
     var TYPE_videoDetailTextCardHeader = 12
+    var TYPE_videoDetailSmallVideo = 13
 
     var horizontalScrollCard = "horizontalScrollCard"
     var textCard = "textCard"
@@ -42,11 +43,11 @@ class HomeDataEntity : MultiItemEntity {
     // 自定义类型
     var videoDetailHeader = "videoDetailHeader"
     var videoDetailTextCardHeader = "videoDetailTextCardHeader"
+    var videoDetailSmallVideo = "videoDetailSmallVideo"
   }
 
   private var itemType: Int = 0
   private var data: Item? = null
-  private var dataData: Data? = null
 
   constructor(
     itemType: Int,
@@ -56,23 +57,11 @@ class HomeDataEntity : MultiItemEntity {
     this.data = data
   }
 
-  constructor(
-    itemType: Int,
-    data: Data?
-  ) {
-    this.itemType = itemType
-    this.dataData = data
-  }
-
   override fun getItemType(): Int {
     return itemType
   }
 
   fun getData(): Item? {
     return data
-  }
-
-  fun getDataData(): Data? {
-    return dataData
   }
 }

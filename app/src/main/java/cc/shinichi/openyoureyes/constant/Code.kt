@@ -21,4 +21,6 @@ object Code {
   const val NotifyDataChanged = 0x00009
 
   const val ScrollToTop = 0x00010
+
+  const val NoNet = 0x00011
 }

@@ -9,6 +9,7 @@ import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Tag
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import cc.shinichi.openyoureyes.widget.FZLanTingLTextView
@@ -77,7 +78,7 @@ open class AutoPlayFollowCard {
     }
 
     helper.getView<View>(R.id.rl_hor_root).setOnClickListener {
-
+      IntentUtil.intent2VideoDetail(context, entity.getData()!!)
     }
   }
 

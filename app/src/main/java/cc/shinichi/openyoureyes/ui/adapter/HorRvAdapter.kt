@@ -9,8 +9,9 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyes.model.bean.home.ItemX
+import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.ui.adapter.HorRvAdapter.Holder
+import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
@@ -19,12 +20,12 @@ import com.facebook.drawee.view.SimpleDraweeView
 class HorRvAdapter : RecyclerView.Adapter<Holder> {
 
   private var context: Context
-  private var list: List<ItemX?>? = null
+  private var list: List<Item?>? = null
   private var inflater: LayoutInflater
 
   constructor(
     context: Context,
-    list: List<ItemX?>?
+    list: List<Item?>?
   ) : super() {
     this.context = context
     this.list = list
@@ -86,7 +87,7 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         }
 
         holder.rl_hor_root.setOnClickListener {
-
+          IntentUtil.intent2VideoDetail(context, item)
         }
       }
       "banner" -> {
@@ -116,7 +117,7 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         }
 
         holder.rl_hor_root.setOnClickListener {
-
+          IntentUtil.intent2VideoDetail(context, item)
         }
       }
     }

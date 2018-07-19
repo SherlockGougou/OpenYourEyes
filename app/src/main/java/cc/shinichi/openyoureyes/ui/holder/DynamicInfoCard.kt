@@ -7,6 +7,7 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.R.id.img_user_icon
 import cc.shinichi.openyoureyes.R.id.tv_content_des
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.chad.library.adapter.base.BaseViewHolder
@@ -14,6 +15,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 
 class DynamicInfoCard {
 
+  private var context: Context
   private var helper: BaseViewHolder
   private var entity: HomeDataEntity
 
@@ -22,6 +24,7 @@ class DynamicInfoCard {
     helper: BaseViewHolder,
     entity: HomeDataEntity
   ) {
+    this.context = context
     this.entity = entity
     this.helper = helper
     setData()
@@ -55,5 +58,9 @@ class DynamicInfoCard {
     tv_videosmallcard_time_length.text = UIUtil.getDurationText(data.simpleVideo?.duration)
     tv_reply_time.text = UIUtil.formatDate(data.createDate)
     tv_like_count.text = "" + data.reply?.likeCount
+
+    img_videoSmallCard_img.setOnClickListener {
+      IntentUtil.intent2VideoDetail(context, entity.getData()!!)
+    }
   }
 }

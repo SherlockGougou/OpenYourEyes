@@ -47,7 +47,7 @@ class FollowCard {
     tv_follow_card_des.text = data?.header?.description
 
     img_follow_card_img.setOnClickListener {
-      IntentUtil.intent2VideoDetail(context, data!!)
+      IntentUtil.intent2VideoDetail(context, entity.getData()!!)
     }
   }
 }

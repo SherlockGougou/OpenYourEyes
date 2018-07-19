@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.app.App
-import cc.shinichi.openyoureyes.model.bean.home.ItemX
+import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.ui.adapter.HorRvAdapter
 import cc.shinichi.openyoureyes.util.UIUtil
@@ -22,7 +22,7 @@ class SquareCardCollection {
   private var entity: HomeDataEntity
   private lateinit var drawable: Drawable
 
-  private var list: MutableList<ItemX?> = mutableListOf()
+  private var list: MutableList<Item?> = mutableListOf()
   private lateinit var adapter: HorRvAdapter
   private lateinit var manager: LinearLayoutManager
   private lateinit var snapHelper: PagerSnapHelper

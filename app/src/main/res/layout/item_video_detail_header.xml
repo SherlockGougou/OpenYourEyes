@@ -105,14 +105,15 @@
 
   <TextView
       android:layout_width="match_parent"
-      android:layout_height="@dimen/divider_h"
-      android:background="@color/gray_e5"
+      android:layout_height="1px"
+      android:background="@color/video_detail_gray_text"
       />
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
-      android:padding="@dimen/default_padding"
+      android:paddingBottom="@dimen/default_padding"
+      android:paddingTop="@dimen/default_padding"
       android:weightSum="3"
       >
 
@@ -132,6 +133,8 @@
           app:placeholderImage="@color/gray_e5"
           app:placeholderImageScaleType="centerCrop"
           app:roundedCornerRadius="6dp"
+          app:roundingBorderColor="@color/video_detail_deep_gray_text"
+          app:roundingBorderWidth="0.1dp"
           />
 
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -140,6 +143,7 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:text="#生活"
+          android:textColor="@color/white"
           />
     </RelativeLayout>
 
@@ -159,6 +163,8 @@
           app:placeholderImage="@color/gray_e5"
           app:placeholderImageScaleType="centerCrop"
           app:roundedCornerRadius="6dp"
+          app:roundingBorderColor="@color/video_detail_deep_gray_text"
+          app:roundingBorderWidth="0.1dp"
           />
 
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -167,6 +173,7 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:text="#生活"
+          android:textColor="@color/white"
           />
     </RelativeLayout>
 
@@ -187,6 +194,8 @@
           app:placeholderImage="@color/gray_e5"
           app:placeholderImageScaleType="centerCrop"
           app:roundedCornerRadius="6dp"
+          app:roundingBorderColor="@color/video_detail_deep_gray_text"
+          app:roundingBorderWidth="0.1dp"
           />
 
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -195,15 +204,15 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:text="#生活"
+          android:textColor="@color/white"
           />
     </RelativeLayout>
-
   </LinearLayout>
 
   <TextView
       android:layout_width="match_parent"
-      android:layout_height="@dimen/divider_h"
-      android:background="@color/gray_e5"
+      android:layout_height="1px"
+      android:background="@color/video_detail_gray_text"
       />
 
   <RelativeLayout
@@ -246,14 +255,14 @@
         android:layout_toEndOf="@+id/img_user_icon"
         android:maxLines="1"
         android:text="这里是用户描述"
-        android:textColor="@color/video_detail_deep_gray_text"
+        android:textColor="@color/video_detail_gray_text"
         android:textSize="13sp"
         />
   </RelativeLayout>
 
   <TextView
       android:layout_width="match_parent"
-      android:layout_height="@dimen/divider_h"
-      android:background="@color/gray_e5"
+      android:layout_height="1px"
+      android:background="@color/video_detail_gray_text"
       />
 </LinearLayout>
