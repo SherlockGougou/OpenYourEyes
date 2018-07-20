@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.AllCategory"
+    >
+  <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/default_toolbar_height"
+      android:layout_below="@+id/appbar_layout"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+      app:itemIconTint="@color/black"
+      app:layout_scrollFlags="scroll|enterAlways"
+      app:navigationIcon="@drawable/ic_action_back"
+      app:popupTheme="@style/Theme.AppCompat.Light"
+      app:titleTextColor="@color/black"
+      >
+    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/all_category_title"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+  </android.support.v7.widget.Toolbar>
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/rvAllCategory"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      />
+</LinearLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/imgAllCategory"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:actualImageScaleType="centerCrop"
+      app:placeholderImage="@color/gray_e5"
+      app:placeholderImageScaleType="centerCrop"
+      app:overlayImage="@color/all_category_item_bg"
+      />
+
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:textColor="@color/white"
+      android:textSize="18sp"
+      android:textStyle="bold"
+      />
+</RelativeLayout>

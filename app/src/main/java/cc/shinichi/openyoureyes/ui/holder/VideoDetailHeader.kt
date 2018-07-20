@@ -6,11 +6,13 @@ import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.util.log.ALog
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 
 class VideoDetailHeader {
 
+  private val TAG = "VideoDetailHeader"
   private var context: Context
   private var helper: BaseViewHolder
   private var entity: HomeDataEntity
@@ -63,6 +65,7 @@ class VideoDetailHeader {
     tv_video_action_offline.text = "缓存"
 
     val tagCount: Int? = data.tags?.size
+    ALog.log(TAG, "tagCount = $tagCount")
     if (tagCount != null && tagCount > 0) {
       rl_tag_root.visibility = View.VISIBLE
       when (tagCount) {

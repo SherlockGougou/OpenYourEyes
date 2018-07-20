@@ -25,7 +25,7 @@ object ImageLoader {
   fun loadBlur(
     url: String? = "",
     imageView: SimpleDraweeView,
-    iterations: Int = 10,
+    iterations: Int = 100,
     blurRadius: Int = 100
   ) {
     val imageRequest = ImageRequestBuilder.newBuilderWithSource(Uri.parse(url))

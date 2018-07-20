@@ -123,7 +123,7 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
             val data: Data? = getGson().fromJson(string, Data::class.javaObjectType)
             if (data != null) {
               // title
-              detailVideo.titleTextView.textSize = 16f
+              detailVideo.titleTextView.textSize = 14f
               detailVideo.titleTextView.text = data.title
               // background
               ImageLoader.loadBlur(data.cover?.blurred, imageVideoDetailBg)

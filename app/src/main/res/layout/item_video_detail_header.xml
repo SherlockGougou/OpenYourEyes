@@ -11,6 +11,7 @@
       android:id="@+id/tv_video_detail_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/default_margin"
       android:ellipsize="end"
       android:maxLines="1"
       android:text="这里是视频标题"
@@ -28,7 +29,7 @@
       android:maxLines="1"
       android:text="这里是视频分类"
       android:textColor="@color/video_detail_gray_text"
-      android:textSize="14sp"
+      android:textSize="12sp"
       />
 
   <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
@@ -38,14 +39,14 @@
       android:layout_marginTop="@dimen/default_margin"
       android:text="这里是视频内容"
       android:textColor="@color/video_detail_gray_text"
-      android:textSize="12sp"
+      android:textSize="13sp"
       />
 
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/dp_20"
-      android:layout_marginTop="@dimen/dp_20"
+      android:layout_marginBottom="@dimen/default_margin"
+      android:layout_marginTop="@dimen/default_margin"
       android:orientation="horizontal"
       android:weightSum="4"
       >
@@ -59,8 +60,8 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="354"
-        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
+        android:textSize="12sp"
         />
 
 
@@ -73,8 +74,8 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="142"
-        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
+        android:textSize="12sp"
         />
 
     <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
@@ -86,8 +87,8 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="354"
-        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
+        android:textSize="12sp"
         />
 
     <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
@@ -99,14 +100,14 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="缓存"
-        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
+        android:textSize="12sp"
         />
   </LinearLayout>
 
   <TextView
       android:layout_width="match_parent"
-      android:layout_height="1px"
+      android:layout_height="0.01dp"
       android:background="@color/video_detail_gray_text"
       />
 
@@ -130,14 +131,14 @@
           android:id="@+id/img_tag_1"
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
-          android:alpha=".75"
           app:actualImageScaleType="centerCrop"
           app:backgroundImage="@color/gray_e5"
+          app:overlayImage="@color/all_category_item_bg"
           app:placeholderImage="@color/gray_e5"
           app:placeholderImageScaleType="centerCrop"
-          app:roundedCornerRadius="6dp"
-          app:roundingBorderColor="@color/video_detail_deep_gray_text"
-          app:roundingBorderWidth="0.1dp"
+          app:roundedCornerRadius="3dp"
+          app:roundingBorderColor="@color/video_detail_gray_text"
+          app:roundingBorderWidth="0.01dp"
           />
 
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -146,6 +147,7 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:textColor="@color/white"
+          android:textSize="12sp"
           />
     </RelativeLayout>
 
@@ -160,14 +162,14 @@
           android:id="@+id/img_tag_2"
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
-          android:alpha=".75"
           app:actualImageScaleType="centerCrop"
           app:backgroundImage="@color/gray_e5"
+          app:overlayImage="@color/all_category_item_bg"
           app:placeholderImage="@color/gray_e5"
           app:placeholderImageScaleType="centerCrop"
-          app:roundedCornerRadius="6dp"
-          app:roundingBorderColor="@color/video_detail_deep_gray_text"
-          app:roundingBorderWidth="0.1dp"
+          app:roundedCornerRadius="3dp"
+          app:roundingBorderColor="@color/video_detail_gray_text"
+          app:roundingBorderWidth="0.01dp"
           />
 
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -176,6 +178,7 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:textColor="@color/white"
+          android:textSize="12sp"
           />
     </RelativeLayout>
 
@@ -191,14 +194,14 @@
           android:id="@+id/img_tag_3"
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
-          android:alpha=".75"
           app:actualImageScaleType="centerCrop"
           app:backgroundImage="@color/gray_e5"
+          app:overlayImage="@color/all_category_item_bg"
           app:placeholderImage="@color/gray_e5"
           app:placeholderImageScaleType="centerCrop"
-          app:roundedCornerRadius="6dp"
-          app:roundingBorderColor="@color/video_detail_deep_gray_text"
-          app:roundingBorderWidth="0.1dp"
+          app:roundedCornerRadius="3dp"
+          app:roundingBorderColor="@color/video_detail_gray_text"
+          app:roundingBorderWidth="0.01dp"
           />
 
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -207,13 +210,14 @@
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
           android:textColor="@color/white"
+          android:textSize="12sp"
           />
     </RelativeLayout>
   </LinearLayout>
 
   <TextView
       android:layout_width="match_parent"
-      android:layout_height="1px"
+      android:layout_height="0.01dp"
       android:background="@color/video_detail_gray_text"
       />
 
@@ -266,7 +270,7 @@
 
   <TextView
       android:layout_width="match_parent"
-      android:layout_height="1px"
+      android:layout_height="0.01dp"
       android:background="@color/video_detail_gray_text"
       />
 </LinearLayout>
