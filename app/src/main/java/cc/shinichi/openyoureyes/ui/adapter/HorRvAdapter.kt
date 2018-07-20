@@ -87,7 +87,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         }
 
         holder.rl_hor_root.setOnClickListener {
-          IntentUtil.intent2VideoDetail(context, item)
+          IntentUtil.intent2VideoDetail(
+              context, item.data?.playUrl, item.data?.id.toString(),
+              item.data?.cover?.feed
+          )
         }
       }
       "banner" -> {
@@ -109,7 +112,8 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         ImageLoader.load(item.data?.content?.data?.author?.icon, holder.img_follow_card_user_icon)
         holder.tv_follow_card_title.text = item.data?.content?.data?.title
         holder.tv_follow_card_des.text = item.data?.content?.data?.slogan
-        holder.tv_follow_time_length.text = UIUtil.getDurationText(item.data?.content?.data?.duration)
+        holder.tv_follow_time_length.text =
+            UIUtil.getDurationText(item.data?.content?.data?.duration)
         if ("DAILY" == item.data?.content?.data?.library) {
           holder.img_daily_label.visibility = View.VISIBLE
         } else {
@@ -117,7 +121,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         }
 
         holder.rl_hor_root.setOnClickListener {
-          IntentUtil.intent2VideoDetail(context, item)
+          IntentUtil.intent2VideoDetail(
+              context, item.data?.content?.data?.playUrl, item.data?.content?.data?.id.toString(),
+              item.data?.content?.data?.cover?.feed
+          )
         }
       }
     }
@@ -128,9 +135,11 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
     var img_follow_card_img: SimpleDraweeView = itemView.findViewById(R.id.img_follow_card_img)
     var img_daily_label: ImageView = itemView.findViewById(R.id.img_daily_label)
     var tv_follow_time_length: TextView = itemView.findViewById(R.id.tv_follow_time_length)
-    var img_follow_card_user_icon: SimpleDraweeView = itemView.findViewById(R.id.img_follow_card_user_icon)
+    var img_follow_card_user_icon: SimpleDraweeView =
+      itemView.findViewById(R.id.img_follow_card_user_icon)
     var tv_follow_card_title: TextView = itemView.findViewById(R.id.tv_follow_card_title)
     var tv_follow_card_des: TextView = itemView.findViewById(R.id.tv_follow_card_des)
-    var rl_follow_author_container = itemView.findViewById<RelativeLayout>(R.id.rl_follow_author_container)
+    var rl_follow_author_container =
+      itemView.findViewById<RelativeLayout>(R.id.rl_follow_author_container)
   }
 }

@@ -36,7 +36,7 @@ class PictureFollowCard {
   }
 
   private fun setData() {
-    val data = entity.getData()?.data ?: return
+    val data = entity.getItem()?.data ?: return
 
     val img_follow_card_user_icon = helper.getView<SimpleDraweeView>(R.id.img_follow_card_user_icon)
     val tv_follow_card_title = helper.getView<TextView>(R.id.tv_follow_card_title)
@@ -62,7 +62,8 @@ class PictureFollowCard {
       flexbox.removeAllViews()
       val lp = FlexboxLayout.LayoutParams(
           ViewGroup.LayoutParams.WRAP_CONTENT,
-          ViewGroup.LayoutParams.WRAP_CONTENT)
+          ViewGroup.LayoutParams.WRAP_CONTENT
+      )
       for (item in tags) {
         val textView = createTextView(item?.name)
         lp.rightMargin = 10

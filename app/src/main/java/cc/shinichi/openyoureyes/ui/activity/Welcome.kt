@@ -31,6 +31,7 @@ class Welcome : BaseActivity(), Callback {
     setContentView(R.layout.activity_welcome)
     initUtil()
   }
+
   override fun initData() {}
 
   override fun initView() {}

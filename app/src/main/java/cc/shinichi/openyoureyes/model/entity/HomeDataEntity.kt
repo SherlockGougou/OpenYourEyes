@@ -1,6 +1,5 @@
 package cc.shinichi.openyoureyes.model.entity
 
-import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
@@ -27,6 +26,7 @@ class HomeDataEntity : MultiItemEntity {
     var TYPE_videoDetailHeader = 11
     var TYPE_videoDetailTextCardHeader = 12
     var TYPE_videoDetailSmallVideo = 13
+    var TYPE_videoDetailEnd = 14
 
     var horizontalScrollCard = "horizontalScrollCard"
     var textCard = "textCard"
@@ -44,24 +44,25 @@ class HomeDataEntity : MultiItemEntity {
     var videoDetailHeader = "videoDetailHeader"
     var videoDetailTextCardHeader = "videoDetailTextCardHeader"
     var videoDetailSmallVideo = "videoDetailSmallVideo"
+    var videoDetailEnd = "videoDetailEnd"
   }
 
   private var itemType: Int = 0
-  private var data: Item? = null
+  private var item: Item? = null
 
   constructor(
     itemType: Int,
     data: Item?
   ) {
     this.itemType = itemType
-    this.data = data
+    this.item = data
   }
 
   override fun getItemType(): Int {
     return itemType
   }
 
-  fun getData(): Item? {
-    return data
+  fun getItem(): Item? {
+    return item
   }
 }

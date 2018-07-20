@@ -46,7 +46,10 @@ object UIUtil {
         .y
   }
 
-  fun copy(data: String, hint: String = "复制成功") {
+  fun copy(
+    data: String,
+    hint: String = "复制成功"
+  ) {
     val clipboardManager: ClipboardManager =
       App.application.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clipData = ClipData.newPlainText("OpenYourEyes", data)

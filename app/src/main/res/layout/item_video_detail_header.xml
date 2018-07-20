@@ -38,7 +38,7 @@
       android:layout_marginTop="@dimen/default_margin"
       android:text="这里是视频内容"
       android:textColor="@color/video_detail_gray_text"
-      android:textSize="14sp"
+      android:textSize="12sp"
       />
 
   <LinearLayout
@@ -59,6 +59,7 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="354"
+        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
         />
 
@@ -72,9 +73,9 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="142"
+        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
         />
-
 
     <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
         android:id="@+id/tv_video_action_reply"
@@ -85,9 +86,9 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="354"
+        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
         />
-
 
     <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
         android:id="@+id/tv_video_action_offline"
@@ -98,9 +99,9 @@
         android:drawablePadding="@dimen/dp_4"
         android:gravity="center_vertical"
         android:text="缓存"
+        android:textSize="12sp"
         android:textColor="@color/video_detail_gray_text"
         />
-
   </LinearLayout>
 
   <TextView
@@ -108,6 +109,7 @@
       android:layout_height="1px"
       android:background="@color/video_detail_gray_text"
       />
+
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -128,6 +130,7 @@
           android:id="@+id/img_tag_1"
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
+          android:alpha=".75"
           app:actualImageScaleType="centerCrop"
           app:backgroundImage="@color/gray_e5"
           app:placeholderImage="@color/gray_e5"
@@ -142,7 +145,6 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
-          android:text="#生活"
           android:textColor="@color/white"
           />
     </RelativeLayout>
@@ -158,6 +160,7 @@
           android:id="@+id/img_tag_2"
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
+          android:alpha=".75"
           app:actualImageScaleType="centerCrop"
           app:backgroundImage="@color/gray_e5"
           app:placeholderImage="@color/gray_e5"
@@ -172,7 +175,6 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
-          android:text="#生活"
           android:textColor="@color/white"
           />
     </RelativeLayout>
@@ -189,6 +191,7 @@
           android:id="@+id/img_tag_3"
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
+          android:alpha=".75"
           app:actualImageScaleType="centerCrop"
           app:backgroundImage="@color/gray_e5"
           app:placeholderImage="@color/gray_e5"
@@ -203,7 +206,6 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
-          android:text="#生活"
           android:textColor="@color/white"
           />
     </RelativeLayout>
@@ -238,6 +240,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/dp_4"
         android:layout_toEndOf="@+id/img_user_icon"
         android:maxLines="1"
         android:text="这里是用户名"
@@ -251,6 +254,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/img_user_icon"
+        android:layout_marginBottom="@dimen/dp_4"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_toEndOf="@+id/img_user_icon"
         android:maxLines="1"

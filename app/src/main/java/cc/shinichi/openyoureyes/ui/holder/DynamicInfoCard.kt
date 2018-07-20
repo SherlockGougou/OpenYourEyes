@@ -4,8 +4,6 @@ import android.content.Context
 import android.widget.ImageView
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyes.R.id.img_user_icon
-import cc.shinichi.openyoureyes.R.id.tv_content_des
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
@@ -31,7 +29,7 @@ class DynamicInfoCard {
   }
 
   private fun setData() {
-    val data = entity.getData()?.data ?: return
+    val data = entity.getItem()?.data ?: return
 
     val img_user_icon = helper.getView<SimpleDraweeView>(R.id.img_user_icon)
     val img_action_next_grey = helper.getView<ImageView>(R.id.img_action_next_grey)
@@ -60,7 +58,11 @@ class DynamicInfoCard {
     tv_like_count.text = "" + data.reply?.likeCount
 
     img_videoSmallCard_img.setOnClickListener {
-      IntentUtil.intent2VideoDetail(context, entity.getData()!!)
+      IntentUtil.intent2VideoDetail(
+          context, entity.getItem()?.data?.simpleVideo?.playUrl,
+          entity.getItem()?.data?.simpleVideo?.id.toString(),
+          data.simpleVideo?.cover?.feed
+      )
     }
   }
 }

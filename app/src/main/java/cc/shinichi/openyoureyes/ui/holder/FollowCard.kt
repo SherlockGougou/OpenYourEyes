@@ -30,7 +30,7 @@ class FollowCard {
   }
 
   private fun setData() {
-    val data: Data? = entity.getData()?.data ?: return
+    val data: Data? = entity.getItem()?.data ?: return
 
     val rl_hor_root = helper.getView<View>(R.id.rl_hor_root)
     val img_follow_card_img: SimpleDraweeView = helper.getView(R.id.img_follow_card_img)
@@ -47,7 +47,11 @@ class FollowCard {
     tv_follow_card_des.text = data?.header?.description
 
     img_follow_card_img.setOnClickListener {
-      IntentUtil.intent2VideoDetail(context, entity.getData()!!)
+      IntentUtil.intent2VideoDetail(
+          context, entity.getItem()?.data?.content?.data?.playUrl,
+          entity.getItem()?.data?.content?.data?.id.toString(),
+          data?.content?.data?.cover?.feed
+      )
     }
   }
 }

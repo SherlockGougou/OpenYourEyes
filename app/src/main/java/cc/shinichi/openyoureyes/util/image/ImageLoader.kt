@@ -4,6 +4,8 @@ import android.net.Uri
 import cc.shinichi.openyoureyes.app.App
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
+import com.facebook.imagepipeline.postprocessors.IterativeBoxBlurPostProcessor
+import com.facebook.imagepipeline.request.ImageRequestBuilder
 
 /**
  * @author 工藤
@@ -17,6 +19,23 @@ object ImageLoader {
     url: String? = "",
     imageView: SimpleDraweeView
   ) {
+    imageView.setImageURI(url)
+  }
+
+  fun loadBlur(
+    url: String? = "",
+    imageView: SimpleDraweeView,
+    iterations: Int = 10,
+    blurRadius: Int = 100
+  ) {
+    val imageRequest = ImageRequestBuilder.newBuilderWithSource(Uri.parse(url))
+        .setPostprocessor(IterativeBoxBlurPostProcessor(iterations, blurRadius))
+        .build()
+    val controller = Fresco.newDraweeControllerBuilder()
+        .setOldController(imageView.controller)
+        .setImageRequest(imageRequest)
+        .build()
+    imageView.controller = controller
     imageView.setImageURI(url)
   }
 

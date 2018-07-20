@@ -26,7 +26,7 @@ class BriefCard {
   }
 
   private fun setData() {
-    val data = entity.getData()?.data ?: return
+    val data = entity.getItem()?.data ?: return
 
     val img_category_icon = helper.getView<SimpleDraweeView>(R.id.img_category_icon)
     val tv_category_name = helper.getView<TextView>(R.id.tv_category_name)

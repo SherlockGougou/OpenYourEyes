@@ -161,7 +161,7 @@ class RankList : BaseActivity(), Callback, OnClickListener {
   }
 
   override fun onClick(v: View?) {
-    when(v?.id) {
+    when (v?.id) {
       R.id.tv_title -> {
         UIUtil.scrollToTop(pagerAdapter.getItem(view_pager.currentItem).getRecyclerView())
       }

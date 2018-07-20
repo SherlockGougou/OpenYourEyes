@@ -7,7 +7,10 @@ import java.util.regex.Pattern
 
 object ActionUrlUtil {
 
-  fun jump(context: Context, actionUrl: String?) {
+  fun jump(
+    context: Context,
+    actionUrl: String?
+  ) {
     var action = UIUtil.urlDecode(actionUrl)
     if (UIUtil.isNull(action)) return
 

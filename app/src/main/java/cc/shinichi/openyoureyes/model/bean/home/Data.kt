@@ -1,8 +1,13 @@
 package cc.shinichi.openyoureyes.model.bean.home
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Data(
+  @SerializedName("header") val header: Header? = Header(),
+  @SerializedName("content") val content: Content? = Content(),
   @SerializedName("itemList") val itemList: List<Item?>? = listOf(),
   @SerializedName("dynamicType") val dynamicType: String? = "",
   @SerializedName("user") val user: User? = User(),
@@ -18,10 +23,6 @@ data class Data(
   @SerializedName("image") val image: String? = "",
   @SerializedName("icon") val icon: String? = "",
   @SerializedName("actionUrl") val actionUrl: String? = "",
-  @SerializedName("follow") val follow: Any? = Any(),
-  @SerializedName("header") val header: Header? = Header(),
-  @SerializedName("content") val content: Content? = Content(),
-  @SerializedName("dataType") val dataType: String? = "",
   @SerializedName("title") val title: String? = "",
   @SerializedName("description") val description: String? = "",
   @SerializedName("library") val library: String? = "",
@@ -39,9 +40,6 @@ data class Data(
   @SerializedName("webUrl") val webUrl: WebUrl? = WebUrl(),
   @SerializedName("releaseTime") val releaseTime: Long? = 0,
   @SerializedName("playInfo") val playInfo: List<PlayInfo?>? = listOf(),
-  @SerializedName("campaign") val campaign: Any? = Any(),
-  @SerializedName("waterMarks") val waterMarks: Any? = Any(),
-  @SerializedName("adTrack") val adTrack: List<Any?>? = listOf(),
   @SerializedName("type") val type: String? = "",
   @SerializedName("titlePgc") val titlePgc: String? = "",
   @SerializedName("descriptionPgc") val descriptionPgc: String? = "",
@@ -53,14 +51,8 @@ data class Data(
   @SerializedName("favoriteAdTrack") val favoriteAdTrack: String? = "",
   @SerializedName("webAdTrack") val webAdTrack: String? = "",
   @SerializedName("date") val date: Long? = 0,
-  @SerializedName("promotion") val promotion: Any? = Any(),
-  @SerializedName("label") val label: Any? = Any(),
-  @SerializedName("labelList") val labelList: List<Any?>? = listOf(),
   @SerializedName("descriptionEditor") val descriptionEditor: String? = "",
   @SerializedName("collected") val collected: Boolean? = false,
   @SerializedName("played") val played: Boolean? = false,
-  @SerializedName("subtitles") val subtitles: List<Any?>? = listOf(),
-  @SerializedName("lastViewTime") val lastViewTime: String? = "",
-  @SerializedName("playlists") val playlists: Any? = Any(),
-  @SerializedName("src") val src: Any? = Any()
-)
+  @SerializedName("lastViewTime") val lastViewTime: String? = ""
+) : Parcelable

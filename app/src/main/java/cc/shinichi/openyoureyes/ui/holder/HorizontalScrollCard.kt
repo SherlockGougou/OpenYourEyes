@@ -34,7 +34,7 @@ class HorizontalScrollCard {
   }
 
   private fun setData() {
-    if (entity.getData()?.data?.itemList == null) {
+    if (entity.getItem()?.data?.itemList == null) {
       return
     }
     val recyclerView = helper.getView<RecyclerView>(R.id.rv_horizontalScrollCard)
@@ -47,7 +47,7 @@ class HorizontalScrollCard {
     if (list.size > 0) {
       list.clear()
     }
-    list.addAll(entity.getData()?.data?.itemList!!)
+    list.addAll(entity.getItem()?.data?.itemList!!)
     adapter = HorRvAdapter(context, list)
     recyclerView.adapter = adapter
     val decoration = HorRvDecoration(adapter.itemCount)

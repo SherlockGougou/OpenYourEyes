@@ -21,7 +21,8 @@ object Constant {
 
   const val rankListConfigUrl = "http://baobab.kaiyanapp.com/api/v4/rankList"
 
-  // video detail relate video
+  // video detail
+  const val videoDetailUrl = "http://baobab.kaiyanapp.com/api/v2/video/"
   const val videoDetailRelateUrl = "http://baobab.kaiyanapp.com/api/v4/video/related?id="
 
   // defaultSplashImage

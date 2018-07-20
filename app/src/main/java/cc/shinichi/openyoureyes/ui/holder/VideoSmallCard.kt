@@ -29,7 +29,7 @@ class VideoSmallCard {
   }
 
   private fun setData() {
-    val data = entity.getData()?.data ?: return
+    val data = entity.getItem()?.data ?: return
 
     val layout_root_container = helper.getView<View>(R.id.layout_root_container)
     val img_videoSmallCard_img = helper.getView<SimpleDraweeView>(R.id.img_videoSmallCard_img)
@@ -44,7 +44,10 @@ class VideoSmallCard {
     tv_videosmallcard_des.text = "#" + data.category + " / " + data.author?.name
 
     layout_root_container.setOnClickListener {
-      IntentUtil.intent2VideoDetail(context, entity.getData()!!)
+      IntentUtil.intent2VideoDetail(
+          context, entity.getItem()?.data?.playUrl, entity.getItem()?.data?.id.toString(),
+          data.cover?.feed
+      )
     }
   }
 }

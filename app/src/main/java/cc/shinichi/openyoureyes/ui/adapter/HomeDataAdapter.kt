@@ -52,14 +52,17 @@ class HomeDataAdapter(
     // video detail
     addItemType(HomeDataEntity.TYPE_videoDetailHeader, R.layout.item_video_detail_header)
     addItemType(HomeDataEntity.TYPE_videoDetailTextCardHeader, R.layout.item_video_detail_textcard)
-    addItemType(HomeDataEntity.TYPE_videoDetailSmallVideo, R.layout.item_video_detail_videosmallcard)
+    addItemType(
+        HomeDataEntity.TYPE_videoDetailSmallVideo, R.layout.item_video_detail_videosmallcard
+    )
+    addItemType(HomeDataEntity.TYPE_videoDetailEnd, R.layout.item_video_detail_end)
   }
 
   override fun convert(
     helper: BaseViewHolder,
     entity: HomeDataEntity
   ) {
-    val item: Item = entity.getData() ?: return
+    val item: Item = entity.getItem() ?: return
     ALog.log(BaseQuickAdapter.TAG, "itemType=${entity.itemType}")
     when (entity.itemType) {
       HomeDataEntity.TYPE_horizontalScrollCard -> {
@@ -99,7 +102,11 @@ class HomeDataAdapter(
         VideoDetailHeader(super.mContext, helper, entity)
       }
       HomeDataEntity.TYPE_videoDetailTextCardHeader -> {
-        helper.getView<TextView>(R.id.tv_TextCard_video_header).text = item.data?.text
+        helper.getView<TextView>(R.id.tv_TextCard_video_header)
+            .text = item.data?.text
+      }
+      HomeDataEntity.TYPE_videoDetailEnd -> {
+
       }
     }
   }

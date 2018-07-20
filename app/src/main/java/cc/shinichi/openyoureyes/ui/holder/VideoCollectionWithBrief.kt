@@ -37,7 +37,7 @@ class VideoCollectionWithBrief {
   }
 
   private fun setData() {
-    val data = entity.getData()?.data ?: return
+    val data = entity.getItem()?.data ?: return
 
     val img_category_icon = helper.getView<SimpleDraweeView>(R.id.img_category_icon)
     val tv_category_name = helper.getView<TextView>(R.id.tv_category_name)
@@ -57,7 +57,7 @@ class VideoCollectionWithBrief {
     if (list.size > 0) {
       list.clear()
     }
-    list.addAll(entity.getData()?.data?.itemList!!)
+    list.addAll(entity.getItem()?.data?.itemList!!)
     adapter = HorRvAdapter(context, list)
     recyclerView.adapter = adapter
     val decoration = HorRvDecoration(adapter.itemCount)

@@ -12,9 +12,9 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       app:actualImageScaleType="centerCrop"
-      app:backgroundImage="@color/gray_e5"
+      app:backgroundImage="@color/black"
       app:fadeDuration="300"
-      app:placeholderImage="@color/gray_e5"
+      app:placeholderImage="@color/black"
       app:placeholderImageScaleType="centerCrop"
       />
 
@@ -29,5 +29,14 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_below="@+id/detailVideo"
+      />
+
+  <ProgressBar
+      android:id="@+id/progressBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignBottom="@+id/rv_video_detail"
+      android:layout_alignTop="@+id/rv_video_detail"
+      android:layout_centerInParent="true"
       />
 </RelativeLayout>

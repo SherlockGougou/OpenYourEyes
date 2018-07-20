@@ -16,7 +16,6 @@ import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.Constant
 import cc.shinichi.openyoureyes.constant.SpTag
-import cc.shinichi.openyoureyes.datapool.VideoDataPool
 import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
 import cc.shinichi.openyoureyes.model.bean.home.Item
@@ -28,10 +27,12 @@ import cc.shinichi.openyoureyes.util.image.ImageLoader
 import cc.shinichi.openyoureyes.widget.MyLoadMoreView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.gson.Gson
+import com.lzy.okgo.model.Response
 import com.shuyu.gsyvideoplayer.GSYBaseActivityDetail
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import kotlinx.android.synthetic.main.activity_video_detail.imageVideoDetailBg
+import kotlinx.android.synthetic.main.activity_video_detail.progressBar
 import kotlinx.android.synthetic.main.activity_video_detail.rv_video_detail
 
 class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
@@ -46,7 +47,9 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   private lateinit var detailVideo: StandardGSYVideoPlayer
 
   // item
-  private lateinit var item: Item
+  private lateinit var playUrl: String
+  private lateinit var videoId: String
+  private lateinit var videoCover: String
   private var allHomeDataEntity: MutableList<HomeDataEntity> = ArrayList()
   private var homeDataAdapter: HomeDataAdapter? = null
 
@@ -64,10 +67,14 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   companion object {
     fun activityStart(
       context: Context,
-      item: Item
+      playUrl: String?,
+      videoId: String?,
+      videoCover: String?
     ) {
-      VideoDataPool.setDataBean(item)
       val intent = Intent()
+      intent.putExtra("playUrl", playUrl)
+      intent.putExtra("videoId", videoId)
+      intent.putExtra("videoCover", videoCover)
       intent.setClass(context, VideoDetail::class.java)
       context.startActivity(intent)
     }
@@ -87,7 +94,7 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
     }
     detailVideo.layoutParams.height = (((UIUtil.getPhoneWidth().toFloat()) / 16) * 9).toInt()
 
-    // recyclerview
+    // recyclerView
     homeDataAdapter = HomeDataAdapter(context, allHomeDataEntity)
     homeDataAdapter?.setEnableLoadMore(false)
     homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
@@ -96,47 +103,74 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   }
 
   private fun initData() {
-    item = VideoDataPool.getDataBean()
+    playUrl = intent.getStringExtra("playUrl")
+    videoId = intent.getStringExtra("videoId")
+    videoCover = intent.getStringExtra("videoCover")
+
     // video
     detailVideo.startAfterPrepared()
-    // title
-    detailVideo.titleTextView.text = item.data?.content?.data?.title
-    // background
-    ImageLoader.load(item.data?.content?.data?.cover?.blurred, imageVideoDetailBg)
 
-    // 相关视频
-    getRelateData()
+    // 详情内容 和 相关视频
+    handler?.sendEmptyMessage(Code.Refreshing)
+    getVideoDetailData()
   }
 
-  private fun getRelateData() {
-    Api.getInstance().getAsync(context, Constant.videoDetailRelateUrl + item.data?.content?.data?.id, object : ApiListener() {
-      override fun success(string: String?) {
-        super.success(string)
-        handler?.sendEmptyMessage(Code.RefreshFinish)
-        getEntityList(string)
-      }
-    })
+  private fun getVideoDetailData() {
+    Api.getInstance()
+        .getAsync(context, Constant.videoDetailUrl + videoId, object : ApiListener() {
+          override fun success(string: String?) {
+            super.success(string)
+            val data: Data? = getGson().fromJson(string, Data::class.javaObjectType)
+            if (data != null) {
+              // title
+              detailVideo.titleTextView.textSize = 16f
+              detailVideo.titleTextView.text = data.title
+              // background
+              ImageLoader.loadBlur(data.cover?.blurred, imageVideoDetailBg)
+              allHomeDataEntity.add(0, HomeDataEntity(HomeDataEntity.TYPE_videoDetailHeader, Item().apply {
+                this.data = data
+              }))
+              Api.getInstance()
+                  .getAsync(context, Constant.videoDetailRelateUrl + videoId, object : ApiListener() {
+                    override fun success(string: String?) {
+                      super.success(string)
+                      getRelateEntityList(string)
+                    }
+
+                    override fun error(response: Response<String>?) {
+                      super.error(response)
+                      handler?.sendEmptyMessage(Code.RefreshFail)
+                    }
+                  })
+            }
+          }
+
+          override fun error(response: Response<String>?) {
+            super.error(response)
+            handler?.sendEmptyMessage(Code.RefreshFail)
+          }
+        })
   }
-  
-  private fun getEntityList(
+
+  private fun getRelateEntityList(
     string: String?
   ) {
     val bean: HomeDataBean? = getGson().fromJson(string, HomeDataBean::class.javaObjectType)
-
     if (bean?.itemList != null) {
-      allHomeDataEntity.clear()
-      allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoDetailHeader, item))
       for (item: Item? in bean.itemList) {
         when (item?.type) {
           HomeDataEntity.textCard -> {
-            allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoDetailTextCardHeader, item))
+            allHomeDataEntity.add(
+                HomeDataEntity(HomeDataEntity.TYPE_videoDetailTextCardHeader, item)
+            )
           }
           HomeDataEntity.videoSmallCard -> {
             allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoDetailSmallVideo, item))
           }
         }
       }
-      homeDataAdapter?.setNewData(allHomeDataEntity)
+      allHomeDataEntity.add(HomeDataEntity(HomeDataEntity.TYPE_videoDetailEnd, null))
+      handler?.sendEmptyMessage(Code.RefreshFinish)
     }
   }
 
@@ -168,9 +202,16 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   }
 
   override fun handleMessage(msg: Message?): Boolean {
-    when(msg?.what) {
+    when (msg?.what) {
+      Code.RefreshFail -> {
+        progressBar.visibility = View.GONE
+      }
+      Code.Refreshing -> {
+        progressBar.visibility = View.VISIBLE
+      }
       Code.RefreshFinish -> {
-
+        progressBar.visibility = View.GONE
+        homeDataAdapter?.setNewData(allHomeDataEntity)
       }
     }
     return true
@@ -190,10 +231,10 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   override fun getGSYVideoOptionBuilder(): GSYVideoOptionBuilder {
     //内置封面可参考SampleCoverVideo
     val imageView = SimpleDraweeView(this)
-    ImageLoader.load(item.data?.content?.data?.cover?.feed, imageView)
+    ImageLoader.load(videoCover, imageView)
     return GSYVideoOptionBuilder()
         .setThumbImageView(imageView)
-        .setUrl(item.data?.content?.data?.playUrl)
+        .setUrl(playUrl)
         .setCacheWithPlay(true)
         .setVideoTitle(" ")
         .setIsTouchWiget(true)

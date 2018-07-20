@@ -28,12 +28,13 @@ class Banner {
   }
 
   private fun setData() {
-    val data: Data? = entity.getData()?.data ?: return
+    val data: Data? = entity.getItem()?.data ?: return
     val img_banner: SimpleDraweeView = helper.getView(R.id.img_banner)
     ImageLoader.load(data?.image, img_banner)
 
-    helper.getView<View>(R.id.layout_root_container).setOnClickListener {
-      ActionUrlUtil.jump(context, data?.actionUrl)
-    }
+    helper.getView<View>(R.id.layout_root_container)
+        .setOnClickListener {
+          ActionUrlUtil.jump(context, data?.actionUrl)
+        }
   }
 }

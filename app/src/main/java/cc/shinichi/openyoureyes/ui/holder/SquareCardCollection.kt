@@ -39,7 +39,7 @@ class SquareCardCollection {
   }
 
   private fun setData() {
-    val data = entity.getData()?.data ?: return
+    val data = entity.getItem()?.data ?: return
 
     val tv_TextCard = helper.getView<TextView>(R.id.tv_TextCard)
     val tv_square_subtitle = helper.getView<TextView>(R.id.tv_square_subtitle)
@@ -63,7 +63,7 @@ class SquareCardCollection {
     if (list.size > 0) {
       list.clear()
     }
-    list.addAll(entity.getData()?.data?.itemList!!)
+    list.addAll(entity.getItem()?.data?.itemList!!)
     adapter = HorRvAdapter(context, list)
     recyclerView.adapter = adapter
     val decoration = HorRvDecoration(adapter.itemCount)

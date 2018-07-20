@@ -20,7 +20,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyes.R.id.toolbar_home
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil

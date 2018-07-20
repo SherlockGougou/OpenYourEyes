@@ -1,7 +1,10 @@
 package cc.shinichi.openyoureyes.model.bean.home
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Header(
   @SerializedName("id") val id: Int? = 0,
   @SerializedName("title") val title: String? = "",
@@ -10,13 +13,10 @@ data class Header(
   @SerializedName("subTitle") val subTitle: String? = "",
   @SerializedName("subTitleFont") val subTitleFont: String? = "",
   @SerializedName("textAlign") val textAlign: String? = "",
-  @SerializedName("cover") val cover: Any? = Any(),
-  @SerializedName("label") val label: Any? = Any(),
   @SerializedName("actionUrl") val actionUrl: String? = "",
-  @SerializedName("labelList") val labelList: Any? = Any(),
   @SerializedName("icon") val icon: String? = "",
   @SerializedName("iconType") val iconType: String? = "",
   @SerializedName("description") val description: String? = "",
   @SerializedName("time") val time: Long? = 0,
   @SerializedName("showHateVideo") val showHateVideo: Boolean? = false
-)
+) : Parcelable

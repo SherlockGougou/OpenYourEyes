@@ -31,7 +31,7 @@ class TextCard {
   }
 
   private fun setData() {
-    val data: Data = entity.getData()?.data ?: return
+    val data: Data = entity.getItem()?.data ?: return
 
     drawable = App.application.resources.getDrawable(R.drawable.ic_action_choose_right)
     val tv_TextCard_header5 = helper.getView<TextView>(R.id.tv_TextCard_header5)

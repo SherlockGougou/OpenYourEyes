@@ -1,7 +1,10 @@
 package cc.shinichi.openyoureyes.model.bean.home
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Reply(
   @SerializedName("id") val id: Long? = 0,
   @SerializedName("videoId") val videoId: Int? = 0,
@@ -13,6 +16,5 @@ data class Reply(
   @SerializedName("rootReplyId") val rootReplyId: Long? = 0,
   @SerializedName("ifHotReply") val ifHotReply: Boolean? = false,
   @SerializedName("liked") val liked: Boolean? = false,
-  @SerializedName("parentReply") val parentReply: Any? = Any(),
   @SerializedName("user") val user: User? = User()
-)
+) : Parcelable
