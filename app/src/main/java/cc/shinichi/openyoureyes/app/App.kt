@@ -6,6 +6,7 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheMode
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor
+import com.lzy.okgo.interceptor.HttpLoggingInterceptor.Level.BASIC
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor.Level.BODY
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit.SECONDS
@@ -42,7 +43,7 @@ class App : Application() {
         .readTimeout(10, SECONDS)
     val httpLog = HttpLoggingInterceptor("shinichi")
     httpLog.setColorLevel(Level.INFO)
-    httpLog.setPrintLevel(BODY)
+    httpLog.setPrintLevel(BASIC)
     if (Config.isPrintLog) {
       builder.addInterceptor(httpLog)
     }

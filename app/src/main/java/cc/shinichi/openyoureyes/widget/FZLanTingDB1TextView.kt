@@ -2,6 +2,8 @@ package cc.shinichi.openyoureyes.widget
 
 import android.content.Context
 import android.graphics.Typeface
+import android.os.Build.VERSION_CODES
+import android.support.annotation.RequiresApi
 import android.util.AttributeSet
 import android.widget.TextView
 import cc.shinichi.openyoureyes.app.App
@@ -27,6 +29,7 @@ class FZLanTingDB1TextView : TextView {
     init()
   }
 
+  @RequiresApi(VERSION_CODES.LOLLIPOP)
   constructor(
     context: Context?,
     attrs: AttributeSet?,

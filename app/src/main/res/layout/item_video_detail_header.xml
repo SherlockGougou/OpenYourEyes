@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/default_padding"
+    android:layout_marginTop="@dimen/default_padding"
     android:orientation="vertical"
-    android:padding="@dimen/default_padding"
     >
 
   <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
       android:id="@+id/tv_video_detail_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:layout_marginTop="@dimen/default_margin"
       android:ellipsize="end"
       android:maxLines="1"
@@ -24,6 +27,8 @@
       android:id="@+id/tv_video_detail_des"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:layout_marginTop="@dimen/dp_4"
       android:ellipsize="end"
       android:maxLines="1"
@@ -36,6 +41,8 @@
       android:id="@+id/tv_video_detail_content"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:layout_marginTop="@dimen/default_margin"
       android:text="这里是视频内容"
       android:textColor="@color/video_detail_gray_text"
@@ -46,6 +53,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginBottom="@dimen/default_margin"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:layout_marginTop="@dimen/default_margin"
       android:orientation="horizontal"
       android:weightSum="4"
@@ -106,118 +115,38 @@
   </LinearLayout>
 
   <TextView
+      android:id="@+id/tvDividerAboveTagList"
       android:layout_width="match_parent"
       android:layout_height="0.01dp"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:background="@color/video_detail_gray_text"
       />
 
   <LinearLayout
+      android:id="@+id/llTagListContainer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:clipChildren="false"
       android:orientation="horizontal"
       android:paddingBottom="@dimen/default_padding"
       android:paddingTop="@dimen/default_padding"
-      android:weightSum="3"
       >
 
-    <RelativeLayout
-        android:layout_width="0dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvVideoTagList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_2"
-        android:layout_marginRight="@dimen/dp_2"
-        android:layout_weight="1"
-        >
-      <com.facebook.drawee.view.SimpleDraweeView
-          android:id="@+id/img_tag_1"
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/default_toolbar_height"
-          app:actualImageScaleType="centerCrop"
-          app:backgroundImage="@color/gray_e5"
-          app:overlayImage="@color/all_category_item_bg"
-          app:placeholderImage="@color/gray_e5"
-          app:placeholderImageScaleType="centerCrop"
-          app:roundedCornerRadius="3dp"
-          app:roundingBorderColor="@color/video_detail_gray_text"
-          app:roundingBorderWidth="0.01dp"
-          />
-
-      <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
-          android:id="@+id/tv_tag_1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerInParent="true"
-          android:textColor="@color/white"
-          android:textSize="12sp"
-          />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_2"
-        android:layout_marginRight="@dimen/dp_2"
-        android:layout_weight="1"
-        >
-      <com.facebook.drawee.view.SimpleDraweeView
-          android:id="@+id/img_tag_2"
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/default_toolbar_height"
-          app:actualImageScaleType="centerCrop"
-          app:backgroundImage="@color/gray_e5"
-          app:overlayImage="@color/all_category_item_bg"
-          app:placeholderImage="@color/gray_e5"
-          app:placeholderImageScaleType="centerCrop"
-          app:roundedCornerRadius="3dp"
-          app:roundingBorderColor="@color/video_detail_gray_text"
-          app:roundingBorderWidth="0.01dp"
-          />
-
-      <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
-          android:id="@+id/tv_tag_2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerInParent="true"
-          android:textColor="@color/white"
-          android:textSize="12sp"
-          />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_tag_root"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_2"
-        android:layout_marginRight="@dimen/dp_2"
-        android:layout_weight="1"
-        >
-      <com.facebook.drawee.view.SimpleDraweeView
-          android:id="@+id/img_tag_3"
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/default_toolbar_height"
-          app:actualImageScaleType="centerCrop"
-          app:backgroundImage="@color/gray_e5"
-          app:overlayImage="@color/all_category_item_bg"
-          app:placeholderImage="@color/gray_e5"
-          app:placeholderImageScaleType="centerCrop"
-          app:roundedCornerRadius="3dp"
-          app:roundingBorderColor="@color/video_detail_gray_text"
-          app:roundingBorderWidth="0.01dp"
-          />
-
-      <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
-          android:id="@+id/tv_tag_3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerInParent="true"
-          android:textColor="@color/white"
-          android:textSize="12sp"
-          />
-    </RelativeLayout>
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        />
   </LinearLayout>
 
   <TextView
       android:layout_width="match_parent"
       android:layout_height="0.01dp"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:background="@color/video_detail_gray_text"
       />
 
@@ -225,6 +154,8 @@
       android:id="@+id/layout_root_container"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:gravity="center_vertical"
       android:padding="@dimen/default_padding"
       >
@@ -271,6 +202,8 @@
   <TextView
       android:layout_width="match_parent"
       android:layout_height="0.01dp"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:layout_marginStart="@dimen/default_margin"
       android:background="@color/video_detail_gray_text"
       />
 </LinearLayout>

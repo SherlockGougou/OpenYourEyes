@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlTagItemContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dp_1"
+    android:layout_marginRight="@dimen/default_margin"
     >
 
   <com.facebook.drawee.view.SimpleDraweeView
-      android:id="@+id/imgAllCategory"
+      android:id="@+id/imgTag"
       android:layout_width="match_parent"
-      android:layout_height="150dp"
+      android:layout_height="@dimen/default_toolbar_height"
       app:actualImageScaleType="centerCrop"
+      app:backgroundImage="@color/gray_e5"
       app:overlayImage="@color/all_category_item_bg"
       app:placeholderImage="@color/gray_e5"
       app:placeholderImageScaleType="centerCrop"
+      app:roundedCornerRadius="3dp"
+      app:roundingBorderColor="@color/video_detail_gray_text"
+      app:roundingBorderWidth="0.01dp"
       />
 
   <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
-      android:id="@+id/tvAllCategory"
+      android:id="@+id/tvTag"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
       android:textColor="@color/white"
-      android:textSize="16sp"
-      android:textStyle="bold"
+      android:textSize="12sp"
       />
 </RelativeLayout>

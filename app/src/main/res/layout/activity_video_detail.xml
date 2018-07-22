@@ -14,6 +14,7 @@
       app:actualImageScaleType="centerCrop"
       app:backgroundImage="@color/black"
       app:fadeDuration="300"
+      app:overlayImage="@color/all_category_item_bg"
       app:placeholderImage="@color/black"
       app:placeholderImageScaleType="centerCrop"
       />

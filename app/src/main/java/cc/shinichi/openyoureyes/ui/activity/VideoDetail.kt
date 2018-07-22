@@ -52,6 +52,7 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   private lateinit var videoCover: String
   private var allHomeDataEntity: MutableList<HomeDataEntity> = ArrayList()
   private var homeDataAdapter: HomeDataAdapter? = null
+  private var seek: Long = 0
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -60,8 +61,6 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
     initTool()
     initView()
     initData()
-
-    initVideoBuilderMode()
   }
 
   companion object {
@@ -108,7 +107,9 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
     videoCover = intent.getStringExtra("videoCover")
 
     // video
-    detailVideo.startAfterPrepared()
+    detailVideo.seekOnStart = seek
+    initVideoBuilderMode()
+    detailVideo.startPlayLogic()
 
     // 详情内容 和 相关视频
     handler?.sendEmptyMessage(Code.Refreshing)
@@ -229,19 +230,28 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   }
 
   override fun getGSYVideoOptionBuilder(): GSYVideoOptionBuilder {
-    //内置封面可参考SampleCoverVideo
     val imageView = SimpleDraweeView(this)
     ImageLoader.load(videoCover, imageView)
     return GSYVideoOptionBuilder()
         .setThumbImageView(imageView)
         .setUrl(playUrl)
         .setCacheWithPlay(true)
-        .setVideoTitle(" ")
         .setIsTouchWiget(true)
         .setRotateViewAuto(false)
         .setLockLand(false)
         .setShowFullAnimation(false)
         .setNeedLockFull(true)
         .setSeekRatio(1f)
+  }
+
+  override fun onPause() {
+    super.onPause()
+    seek = detailVideo.currentPositionWhenPlaying.toLong()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    detailVideo.seekOnStart = seek
+    detailVideo.startPlayLogic()
   }
 }

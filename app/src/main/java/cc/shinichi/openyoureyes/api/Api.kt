@@ -4,7 +4,10 @@ import android.content.Context
 import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.util.CommonUtil
 import com.lzy.okgo.OkGo
+import com.lzy.okgo.callback.AbsCallback
 import com.lzy.okgo.callback.StringCallback
+import com.lzy.okgo.model.Progress
+import com.lzy.okgo.model.Response
 import com.lzy.okgo.request.base.Request
 
 /**
@@ -45,10 +48,11 @@ open class Api {
     OkGo
         .get<String>(url)
         .params("udid", "23074f87cfef48bd9a52b3ad1c054dada94e999e")
-        .params("vc", "352")
-        .params("vn", "4.0")
+        .params("vc", "376")
+        .params("vn", "4.2.2")
+        .params("deviceModel", "DE106")
+        .params("system_version_code", "27")
         .tag(context ?: App.application)
-        .headers("Connection", "close")
         .execute(object : StringCallback() {
 
           override fun onStart(request: Request<String, out Request<Any, Request<*, *>>>?) {
@@ -57,6 +61,11 @@ open class Api {
           }
 
           override fun onSuccess(response: com.lzy.okgo.model.Response<String>?) {
+            listenerI
+                ?.success(response?.body()?.toString())
+          }
+
+          override fun onCacheSuccess(response: Response<String>?) {
             listenerI
                 ?.success(response?.body()?.toString())
           }

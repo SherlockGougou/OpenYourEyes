@@ -7,6 +7,7 @@ class AllCategoryEntity : MultiItemEntity {
 
   companion object {
     var TYPE_Item = 0
+    var TYPE_ItemEnd = 1
   }
 
   private var itemType: Int = 0

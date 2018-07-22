@@ -33,6 +33,8 @@ object ActionUrlUtil {
       //
     } else if (action.startsWith("eyepetizer://ranklist/")) {
       IntentUtil.intent2RankList(context)
+    } else if (action.startsWith("eyepetizer://categories/all")) {
+      IntentUtil.intent2AllCategoryList(context)
     }
   }
 }

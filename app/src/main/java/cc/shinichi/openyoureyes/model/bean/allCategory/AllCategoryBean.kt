@@ -10,7 +10,7 @@ data class AllCategoryBean(
 ) {
 
   data class Item(
-    @SerializedName("type") val type: String? = "",
+    @SerializedName("type") var type: String? = "",
     @SerializedName("data") val data: Data? = Data(),
     @SerializedName("id") val id: Int? = 0,
     @SerializedName("adIndex") val adIndex: Int? = 0

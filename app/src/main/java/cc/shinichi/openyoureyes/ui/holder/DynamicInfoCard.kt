@@ -1,6 +1,7 @@
 package cc.shinichi.openyoureyes.ui.holder
 
 import android.content.Context
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
@@ -43,6 +44,7 @@ class DynamicInfoCard {
     val tv_reply_button = helper.getView<TextView>(R.id.tv_reply_button)
     val tv_reply_time = helper.getView<TextView>(R.id.tv_reply_time)
     val tv_like_count = helper.getView<TextView>(R.id.tv_like_count)
+    val rl_relate_video_info = helper.getView<View>(R.id.rl_relate_video_info)
 
     tv_user_des.text = data.text
     tv_user_name.text = data.user?.nickname
@@ -57,7 +59,7 @@ class DynamicInfoCard {
     tv_reply_time.text = UIUtil.formatDate(data.createDate)
     tv_like_count.text = "" + data.reply?.likeCount
 
-    img_videoSmallCard_img.setOnClickListener {
+    rl_relate_video_info.setOnClickListener {
       IntentUtil.intent2VideoDetail(
           context, entity.getItem()?.data?.simpleVideo?.playUrl,
           entity.getItem()?.data?.simpleVideo?.id.toString(),

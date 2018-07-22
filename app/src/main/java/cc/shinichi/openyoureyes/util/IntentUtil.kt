@@ -3,6 +3,7 @@ package cc.shinichi.openyoureyes.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import cc.shinichi.openyoureyes.ui.activity.AllCategory
 import cc.shinichi.openyoureyes.ui.activity.Browser
 import cc.shinichi.openyoureyes.ui.activity.Home
 import cc.shinichi.openyoureyes.ui.activity.RankList
@@ -47,6 +48,12 @@ object IntentUtil {
     context: Context
   ) {
     RankList.activityStart(context)
+  }
+
+  fun intent2AllCategoryList(
+    context: Context
+  ) {
+    AllCategory.activityStart(context)
   }
 
   fun intent2VideoDetail(

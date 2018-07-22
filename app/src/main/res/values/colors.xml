@@ -298,6 +298,6 @@
   <color name="video_detail_gray_text">#D4D5D6</color>
   <color name="video_detail_deep_gray_text">#555C60</color>
 
-  <color name="all_category_item_bg">#3f000000</color>
+  <color name="all_category_item_bg">#66000000</color>
 
 </resources>

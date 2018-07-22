@@ -179,8 +179,6 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
 
           override fun success(string: String?) {
             getEntityList(string, true)
-            handler
-                ?.sendEmptyMessageDelayed(Code.RefreshFinish, 500)
           }
 
           override fun error(response: Response<String>?) {
@@ -195,6 +193,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
   ) {
     val bean: HomeDataBean? = getGson().fromJson(string, HomeDataBean::class.javaObjectType)
     nextPageUrl = bean?.nextPageUrl
+    ALog.log(TAG, "getEntityList nextPageUrl = $nextPageUrl")
 
     if (bean?.itemList != null) {
       allHomeDataEntityTemp.clear()
@@ -246,6 +245,8 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
         allHomeDataEntity.clear()
         allHomeDataEntity.addAll(allHomeDataEntityTemp)
         homeDataAdapter?.setNewData(allHomeDataEntity)
+        handler
+            ?.sendEmptyMessageDelayed(Code.RefreshFinish, 500)
       } else {
         handler?.sendEmptyMessage(Code.LoadMoreSuccess)
       }
