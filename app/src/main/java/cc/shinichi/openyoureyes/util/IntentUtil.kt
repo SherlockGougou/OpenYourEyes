@@ -4,9 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import cc.shinichi.openyoureyes.ui.activity.AllCategory
+import cc.shinichi.openyoureyes.ui.activity.AllPgcs
 import cc.shinichi.openyoureyes.ui.activity.Browser
+import cc.shinichi.openyoureyes.ui.activity.CampaignList
 import cc.shinichi.openyoureyes.ui.activity.Home
 import cc.shinichi.openyoureyes.ui.activity.RankList
+import cc.shinichi.openyoureyes.ui.activity.TagCategory
 import cc.shinichi.openyoureyes.ui.activity.VideoDetail
 
 /**
@@ -56,6 +59,18 @@ object IntentUtil {
     AllCategory.activityStart(context)
   }
 
+  fun intent2CampaignList(
+    context: Context
+  ) {
+    CampaignList.activityStart(context)
+  }
+
+  fun intent2AllPgcs(
+    context: Context
+  ) {
+    AllPgcs.activityStart(context)
+  }
+
   fun intent2VideoDetail(
     context: Context,
     playUrl: String?,
@@ -63,5 +78,14 @@ object IntentUtil {
     videoCover: String?
   ) {
     VideoDetail.activityStart(context, playUrl, videoId, videoCover)
+  }
+
+  fun intent2TagCategory(
+    context: Context,
+    tabUrl: String,
+    id: String,
+    index: Int
+  ) {
+    TagCategory.activityStart(context, tabUrl, id, index)
   }
 }

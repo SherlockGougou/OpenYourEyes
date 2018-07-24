@@ -15,12 +15,11 @@ import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.Constant
-import cc.shinichi.openyoureyes.model.bean.allCategory.AllCategoryBean
-import cc.shinichi.openyoureyes.model.bean.allCategory.AllCategoryBean.Item
+import cc.shinichi.openyoureyes.model.bean.AllCategoryBean
+import cc.shinichi.openyoureyes.model.bean.AllCategoryBean.Item
 import cc.shinichi.openyoureyes.model.entity.AllCategoryEntity
 import cc.shinichi.openyoureyes.ui.adapter.AllCategoryAdapter
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
-import cc.shinichi.openyoureyes.util.log.ALog
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_all_category.progress_loading
 import kotlinx.android.synthetic.main.activity_all_category.rvAllCategory
@@ -77,63 +76,47 @@ class AllCategory : BaseActivity(), Callback {
   }
 
   override fun initData() {
-    Api.getInstance().getAsync(context, Constant.allCategoryUrl, object : ApiListener() {
-      override fun start() {
-        super.start()
-        handler?.sendEmptyMessage(Code.Refreshing)
-      }
-
-      override fun success(string: String?) {
-        super.success(string)
-        val categoryBean = getGson().fromJson(string, AllCategoryBean::class.javaObjectType)
-        if (categoryBean?.itemList != null) {
-          allEntity.clear()
-          for (item in categoryBean.itemList) {
-            allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_Item, item))
+    Api.getInstance()
+        .getAsync(context, Constant.allCategoryUrl, object : ApiListener() {
+          override fun start() {
+            super.start()
+            handler?.sendEmptyMessage(Code.Refreshing)
           }
-          allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_ItemEnd, Item().apply {
-            type = "rectangleCard"
-          }))
 
-          val gridLayoutManager = GridLayoutManager(context, 2)
-          gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-              val type = allEntity[position].item?.type
-              ALog.log(TAG, "type = $type")
-              return when {
-                type.equals("rectangleCard") -> {
-                  2
-                }
-                type.equals("squareCard") -> {
-                  1
-                }
-                else -> {
-                  1
-                }
+          override fun success(string: String?) {
+            super.success(string)
+            val categoryBean = getGson().fromJson(string, AllCategoryBean::class.javaObjectType)
+            if (categoryBean?.itemList != null) {
+              allEntity.clear()
+              for (item in categoryBean.itemList) {
+                allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_Item, item))
               }
+              allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_ItemEnd, Item().apply {
+                type = "rectangleCard"
+              }))
+
+              val gridLayoutManager = GridLayoutManager(context, 2)
+              rvAllCategory.layoutManager = gridLayoutManager
+              adapter = AllCategoryAdapter(context, allEntity)
+              adapter.setEnableLoadMore(false)
+              rvAllCategory.adapter = adapter
             }
           }
-          rvAllCategory.layoutManager = gridLayoutManager
-          adapter = AllCategoryAdapter(context, allEntity)
-          adapter.setEnableLoadMore(false)
-          rvAllCategory.adapter = adapter
-        }
-      }
 
-      override fun error(response: Response<String>?) {
-        super.error(response)
-      }
+          override fun error(response: Response<String>?) {
+            super.error(response)
+          }
 
-      override fun noNet() {
-        super.noNet()
-        toast("无网络")
-      }
+          override fun noNet() {
+            super.noNet()
+            toast("无网络")
+          }
 
-      override fun finish() {
-        super.finish()
-        handler?.sendEmptyMessage(Code.RefreshFinish)
-      }
-    })
+          override fun finish() {
+            super.finish()
+            handler?.sendEmptyMessage(Code.RefreshFinish)
+          }
+        })
   }
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -144,8 +127,9 @@ class AllCategory : BaseActivity(), Callback {
     }
     return true
   }
+
   override fun handleMessage(msg: Message?): Boolean {
-    when(msg?.what) {
+    when (msg?.what) {
       Code.Refreshing -> {
         progress_loading.visibility = View.VISIBLE
       }

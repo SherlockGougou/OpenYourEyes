@@ -14,12 +14,11 @@ import cc.shinichi.openyoureyes.ui.holder.HorizontalScrollCard
 import cc.shinichi.openyoureyes.ui.holder.PictureFollowCard
 import cc.shinichi.openyoureyes.ui.holder.SquareCardCollection
 import cc.shinichi.openyoureyes.ui.holder.TextCard
+import cc.shinichi.openyoureyes.ui.holder.VideoCollectionOfHorizontalScrollCard
 import cc.shinichi.openyoureyes.ui.holder.VideoCollectionWithBrief
 import cc.shinichi.openyoureyes.ui.holder.VideoDetailHeader
 import cc.shinichi.openyoureyes.ui.holder.VideoSmallCard
-import cc.shinichi.openyoureyes.util.log.ALog
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 
 /**
@@ -56,6 +55,7 @@ class HomeDataAdapter(
         HomeDataEntity.TYPE_videoDetailSmallVideo, R.layout.item_video_detail_videosmallcard
     )
     addItemType(HomeDataEntity.TYPE_videoDetailEnd, R.layout.item_video_detail_end)
+    addItemType(HomeDataEntity.TYPE_videoCollectionOfHorizontalScrollCard, R.layout.item_home_videocollectionofhorizontalscrollcard)
   }
 
   override fun convert(
@@ -63,7 +63,6 @@ class HomeDataAdapter(
     entity: HomeDataEntity
   ) {
     val item: Item = entity.getItem() ?: return
-    ALog.log(BaseQuickAdapter.TAG, "itemType=${entity.itemType}")
     when (entity.itemType) {
       HomeDataEntity.TYPE_horizontalScrollCard -> {
         HorizontalScrollCard(super.mContext, helper, entity)
@@ -107,6 +106,9 @@ class HomeDataAdapter(
       }
       HomeDataEntity.TYPE_videoDetailEnd -> {
 
+      }
+      HomeDataEntity.TYPE_videoCollectionOfHorizontalScrollCard -> {
+        VideoCollectionOfHorizontalScrollCard(super.mContext, helper, entity)
       }
     }
   }

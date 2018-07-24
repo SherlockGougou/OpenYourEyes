@@ -5,6 +5,28 @@
     android:orientation="vertical"
     >
   <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_TextCard_header2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/default_margin"
+      android:layout_marginTop="@dimen/margin_20dp"
+      android:text="@string/tv_TextCard_default"
+      android:textColor="@color/black"
+      android:textSize="@dimen/tv_TextCard_header2_size"
+      android:textStyle="bold"
+      />
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_TextCard_header4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/default_margin"
+      android:layout_marginTop="@dimen/margin_20dp"
+      android:text="@string/tv_TextCard_default"
+      android:textColor="@color/black"
+      android:textSize="@dimen/tv_TextCard_header4_size"
+      android:textStyle="bold"
+      />
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
       android:id="@+id/tv_TextCard_header5"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -26,6 +48,18 @@
       android:text="@string/tv_TextCard_default"
       android:textColor="@color/black"
       android:textSize="@dimen/tv_TextCard_footer2_size"
+      android:textStyle="bold"
+      />
+  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+      android:id="@+id/tv_TextCard_footer1"
+      android:layout_width="wrap_content"
+      android:layout_height="@dimen/default_toolbar_height"
+      android:layout_gravity="right"
+      android:drawableEnd="@drawable/ic_action_choose_right"
+      android:gravity="center_vertical"
+      android:text="@string/tv_TextCard_default"
+      android:textColor="@color/black"
+      android:textSize="@dimen/tv_TextCard_footer1_size"
       android:textStyle="bold"
       />
 </LinearLayout>

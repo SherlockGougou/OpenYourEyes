@@ -27,6 +27,7 @@ class HomeDataEntity : MultiItemEntity {
     var TYPE_videoDetailTextCardHeader = 12
     var TYPE_videoDetailSmallVideo = 13
     var TYPE_videoDetailEnd = 14
+    var TYPE_videoCollectionOfHorizontalScrollCard = 15
 
     var horizontalScrollCard = "horizontalScrollCard"
     var textCard = "textCard"
@@ -39,6 +40,7 @@ class HomeDataEntity : MultiItemEntity {
     var autoPlayFollowCard = "autoPlayFollowCard"
     var pictureFollowCard = "pictureFollowCard"
     var banner = "banner"
+    var videoCollectionOfHorizontalScrollCard = "videoCollectionOfHorizontalScrollCard"
 
     // 自定义类型
     var videoDetailHeader = "videoDetailHeader"

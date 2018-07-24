@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    >
+
+  <LinearLayout
+      android:id="@+id/ll_square_collection_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+        android:id="@+id/tv_TextCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginStart="@dimen/default_margin"
+        android:drawableEnd="@drawable/ic_action_choose_right"
+        android:text="@string/tv_TextCard_default"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_TextCard_header5_size"
+        android:textStyle="bold"
+        />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/ll_square_collection_rv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/ll_square_collection_title"
+      >
+    <include
+        layout="@layout/item_home_horizontalscrollcard"
+        />
+  </LinearLayout>
+</RelativeLayout>

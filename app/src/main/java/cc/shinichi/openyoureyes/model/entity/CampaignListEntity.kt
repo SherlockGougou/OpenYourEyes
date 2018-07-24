@@ -1,21 +1,20 @@
 package cc.shinichi.openyoureyes.model.entity
 
-import cc.shinichi.openyoureyes.model.bean.AllCategoryBean
+import cc.shinichi.openyoureyes.model.bean.CampaignListBean
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
-class AllCategoryEntity : MultiItemEntity {
+class CampaignListEntity : MultiItemEntity {
 
   companion object {
     var TYPE_Item = 0
-    var TYPE_ItemEnd = 1
   }
 
   private var itemType: Int = 0
-  var item: AllCategoryBean.Item? = null
+  var item: CampaignListBean.Item? = null
 
   constructor(
     itemType: Int,
-    item: AllCategoryBean.Item?
+    item: CampaignListBean.Item?
   ) {
     this
         .itemType = itemType

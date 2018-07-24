@@ -15,9 +15,7 @@
       app:actualImageScaleType="centerCrop"
       app:placeholderImage="@color/gray_e5"
       app:placeholderImageScaleType="centerCrop"
-      app:roundedCornerRadius="3dp"
-      app:roundingBorderColor="@color/gray_cc"
-      app:roundingBorderWidth="0.1dp"
+      app:roundAsCircle="true"
       />
   <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
       android:id="@+id/tv_category_name"

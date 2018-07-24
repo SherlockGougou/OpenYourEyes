@@ -128,11 +128,14 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
               detailVideo.titleTextView.text = data.title
               // background
               ImageLoader.loadBlur(data.cover?.blurred, imageVideoDetailBg)
-              allHomeDataEntity.add(0, HomeDataEntity(HomeDataEntity.TYPE_videoDetailHeader, Item().apply {
+              allHomeDataEntity.add(
+                  0, HomeDataEntity(HomeDataEntity.TYPE_videoDetailHeader, Item().apply {
                 this.data = data
-              }))
+              })
+              )
               Api.getInstance()
-                  .getAsync(context, Constant.videoDetailRelateUrl + videoId, object : ApiListener() {
+                  .getAsync(
+                      context, Constant.videoDetailRelateUrl + videoId, object : ApiListener() {
                     override fun success(string: String?) {
                       super.success(string)
                       getRelateEntityList(string)

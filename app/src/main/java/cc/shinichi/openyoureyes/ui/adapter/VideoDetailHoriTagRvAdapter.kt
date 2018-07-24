@@ -42,7 +42,8 @@ class VideoDetailHoriTagRvAdapter(
     position: Int
   ) {
     val tag = list?.get(position) ?: return
-    holder.rlTagItemContainer.layoutParams.width = (UIUtil.getPhoneWidth() - UIUtil.dp2px(10) * 4) / 3
+    holder.rlTagItemContainer.layoutParams.width = (UIUtil.getPhoneWidth() - UIUtil.dp2px(10) * 4) /
+        3
     ImageLoader.load(tag.bgPicture, holder.imgTag)
     holder.tvTag.text = "#${tag.name}#"
   }

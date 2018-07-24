@@ -1,6 +1,5 @@
 package cc.shinichi.openyoureyes.ui.fragment
 
-import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -24,14 +23,12 @@ import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.ui.adapter.HomeDataAdapter
-import cc.shinichi.openyoureyes.ui.holder.AutoPlayFollowCard
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.log.ALog
 import cc.shinichi.openyoureyes.widget.MyLoadMoreView
 import com.chad.library.adapter.base.BaseQuickAdapter.RequestLoadMoreListener
 import com.lzy.okgo.model.Response
-import com.shuyu.gsyvideoplayer.GSYVideoManager
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
 
 class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener,
@@ -97,39 +94,6 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
     homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
     recycler_data_list_home.layoutManager = LinearLayoutManager(context)
     recycler_data_list_home.adapter = homeDataAdapter
-    recycler_data_list_home.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-      override fun onScrolled(
-        recyclerView: RecyclerView?,
-        dx: Int,
-        dy: Int
-      ) {
-        super.onScrolled(recyclerView, dx, dy)
-        var firstVisibleItem = 0
-        var lastVisibleItem = 0
-        if (recyclerView?.layoutManager is LinearLayoutManager) {
-          firstVisibleItem =
-              (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-          lastVisibleItem =
-              (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
-
-          //大于0说明有播放
-          if (GSYVideoManager.instance().playPosition >= 0) {
-            //当前播放的位置
-            val position = GSYVideoManager.instance()
-                .playPosition
-            //对应的播放列表TAG
-            if (GSYVideoManager.instance().playTag == AutoPlayFollowCard.TAG && (position < firstVisibleItem || position > lastVisibleItem)) {
-              if (GSYVideoManager.isFullState(context as Activity)) {
-                return
-              }
-              //如果滑出去了上面和下面就是否，和今日头条一样
-              GSYVideoManager.releaseAllVideos()
-              recyclerView.adapter.notifyDataSetChanged()
-            }
-          }
-        }
-      }
-    })
 
     swipe_refresh
         .setOnRefreshListener {
@@ -238,6 +202,9 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
           HomeDataEntity.DynamicInfoCard -> {
             allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_DynamicInfoCard, item))
           }
+          HomeDataEntity.videoCollectionOfHorizontalScrollCard -> {
+            allHomeDataEntityTemp.add(HomeDataEntity(HomeDataEntity.TYPE_videoCollectionOfHorizontalScrollCard, item))
+          }
         }
       }
       if (isRefresh) {
@@ -248,6 +215,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
         handler
             ?.sendEmptyMessageDelayed(Code.RefreshFinish, 500)
       } else {
+        homeDataAdapter?.loadMoreComplete()
         handler?.sendEmptyMessage(Code.LoadMoreSuccess)
       }
     }
@@ -285,7 +253,6 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
         homeDataAdapter?.loadMoreFail()
       }
       Code.LoadMoreSuccess -> {
-        homeDataAdapter?.loadMoreComplete()
         homeDataAdapter?.addData(allHomeDataEntityTemp)
       }
       Code.LoadMoreEnd -> {

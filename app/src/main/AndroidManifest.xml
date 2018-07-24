@@ -49,5 +49,21 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
     </activity>
+    <activity
+        android:name=".ui.activity.CampaignList"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+    </activity>
+    <activity
+        android:name=".ui.activity.AllPgcs"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+    </activity>
+    <activity
+        android:name=".ui.activity.TagCategory"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+    </activity>
   </application>
+
 </manifest>

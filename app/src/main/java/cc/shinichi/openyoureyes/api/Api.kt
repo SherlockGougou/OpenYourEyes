@@ -4,9 +4,7 @@ import android.content.Context
 import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.util.CommonUtil
 import com.lzy.okgo.OkGo
-import com.lzy.okgo.callback.AbsCallback
 import com.lzy.okgo.callback.StringCallback
-import com.lzy.okgo.model.Progress
 import com.lzy.okgo.model.Response
 import com.lzy.okgo.request.base.Request
 

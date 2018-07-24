@@ -16,7 +16,7 @@ import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.widget.decoration.HorRvDecoration
 import com.chad.library.adapter.base.BaseViewHolder
 
-class SquareCardCollection {
+class VideoCollectionOfHorizontalScrollCard {
 
   private var context: Context
   private var helper: BaseViewHolder
@@ -43,9 +43,7 @@ class SquareCardCollection {
     val data = entity.getItem()?.data ?: return
 
     val tv_TextCard = helper.getView<TextView>(R.id.tv_TextCard)
-    val tv_square_subtitle = helper.getView<TextView>(R.id.tv_square_subtitle)
     tv_TextCard.text = data.header?.title
-    tv_square_subtitle.text = data.header?.subTitle
 
     if (UIUtil.isNull(data.header?.actionUrl)) {
       tv_TextCard.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)

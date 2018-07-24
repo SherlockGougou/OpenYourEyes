@@ -28,6 +28,18 @@ object Constant {
   // all category
   const val allCategoryUrl = "http://baobab.kaiyanapp.com/api/v4/categories/all"
 
+  // campaign list
+  const val campaignListUrl = "http://baobab.kaiyanapp.com/api/v3/specialTopics"
+
+  // all pgcs 全部作者
+  const val allPgcsUrl = "http://baobab.kaiyanapp.com/api/v4/pgcs/all"
+
+  // tag tab
+  const val tagTabUrl = "http://baobab.kaiyanapp.com/api/v1/tag/index?id="
+
+  // category tab
+  const val categoryTabUrl = "http://baobab.kaiyanapp.com/api/v4/categories/detail/tab?id="
+
   // defaultSplashImage
   const val defaultSplashImage =
     "http://huafans.dbankcloud.com/pic/2017/02/24/b84c5ff63f91986dc95b9890df26a9a0_bigpicture_01_52.jpg"

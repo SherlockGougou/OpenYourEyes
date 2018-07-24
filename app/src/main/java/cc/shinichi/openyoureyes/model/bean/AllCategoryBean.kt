@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyes.model.bean.allCategory
+package cc.shinichi.openyoureyes.model.bean
 
 import com.google.gson.annotations.SerializedName
 

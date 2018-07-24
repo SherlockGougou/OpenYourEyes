@@ -7,7 +7,6 @@ import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheMode
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor.Level.BASIC
-import com.lzy.okgo.interceptor.HttpLoggingInterceptor.Level.BODY
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit.SECONDS
 import java.util.logging.Level
