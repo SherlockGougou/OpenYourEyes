@@ -7,7 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.constant.SpTag
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
@@ -66,7 +66,7 @@ class Welcome : BaseActivity(), Callback {
     // 加载每日美图，动画时长2秒
     var imagePath = getSp().getString(SpTag.splashNextPageUrl, "")
     if (isNull(imagePath)) {
-      imagePath = Constant.defaultSplashImage
+      imagePath = ApiConstant.defaultSplashImage
     }
     ALog
         .log(TAG, imagePath)

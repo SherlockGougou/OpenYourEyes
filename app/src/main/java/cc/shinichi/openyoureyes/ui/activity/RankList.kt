@@ -18,7 +18,7 @@ import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.model.bean.RankTabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
 import cc.shinichi.openyoureyes.util.UIUtil
@@ -94,7 +94,7 @@ class RankList : BaseActivity(), Callback, OnClickListener {
 
   override fun initData() {
     Api.getInstance()
-        .getAsync(this, Constant.rankListConfigUrl, object : ApiListener() {
+        .getAsync(this, ApiConstant.rankListConfigUrl, object : ApiListener() {
 
           override fun start() {
             super.start()
@@ -133,7 +133,7 @@ class RankList : BaseActivity(), Callback, OnClickListener {
     }
 
     override fun getItem(position: Int): CommonListFragment {
-      if (fragments.size == 0) return CommonListFragment.newInstance(Constant.rankListConfigUrl)
+      if (fragments.size == 0) return CommonListFragment.newInstance(ApiConstant.rankListConfigUrl)
       return fragments[position]
     }
 

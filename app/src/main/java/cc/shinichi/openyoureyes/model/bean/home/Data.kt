@@ -22,6 +22,7 @@ data class Data(
   @SerializedName("subTitle") val subTitle: String? = "",
   @SerializedName("image") val image: String? = "",
   @SerializedName("icon") val icon: String? = "",
+  @SerializedName("iconType") val iconType: String? = "",
   @SerializedName("actionUrl") val actionUrl: String? = "",
   @SerializedName("title") val title: String? = "",
   @SerializedName("description") val description: String? = "",

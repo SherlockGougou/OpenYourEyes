@@ -2,6 +2,7 @@ package cc.shinichi.openyoureyes.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler.Callback
 import android.os.Message
@@ -18,14 +19,16 @@ import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.model.bean.TagCategoryBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
+import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_tag_category.appbarLayout
+import kotlinx.android.synthetic.main.activity_tag_category.collapsing_toolbar_layout
 import kotlinx.android.synthetic.main.activity_tag_category.imgTagCategoryBg
 import kotlinx.android.synthetic.main.activity_tag_category.tabLayout
 import kotlinx.android.synthetic.main.activity_tag_category.toolbar
@@ -83,13 +86,16 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
   }
 
   override fun initView() {
+    StatusBarUtil.setTranslucentImageHeader(this, 0, toolbar)
+    tvTitle.setTextColor(Color.TRANSPARENT)
+    collapsing_toolbar_layout.title = ""
     setSupportActionBar(toolbar)
     actionBar = supportActionBar
     if (actionBar != null) {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       actionBar?.title = ""
     }
     tvTitle.setOnClickListener(this)
@@ -104,16 +110,18 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
         .findViewById(R.id.progress_loading)
 
     appbarLayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-      when {
-        verticalOffset == 0 -> // 展开状态
-          toolbar.alpha = 0f
-        Math.abs(verticalOffset) == appBarLayout.totalScrollRange -> // 折叠状态
-          toolbar.alpha = 1f
-        else -> {
-          // 中间状态
-          val alpha = Math.abs(verticalOffset).toFloat() / appBarLayout.totalScrollRange.toFloat()
-          toolbar.alpha = alpha
-        }
+      if (Math.abs(verticalOffset) >= appBarLayout.totalScrollRange) {
+        // 折叠状态
+        tvTitle.setTextColor(resources.getColor(R.color.black))
+        StatusBarUtil.setDarkStatusBar(this, true)
+        actionBar
+            ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+      } else {
+        // 展开状态
+        tvTitle.setTextColor(Color.TRANSPARENT)
+        StatusBarUtil.setDarkStatusBar(this, false)
+        actionBar
+            ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       }
     }
 
@@ -176,7 +184,7 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
     }
 
     override fun getItem(position: Int): CommonListFragment {
-      if (fragments.size == 0) return CommonListFragment.newInstance(Constant.discoveryUrl)
+      if (fragments.size == 0) return CommonListFragment.newInstance(ApiConstant.discoveryUrl)
       return fragments[position]
     }
 
@@ -219,13 +227,13 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
           var url: String? = ""
           var title: String? = ""
           var des: String? = ""
-          if (tabUrl == Constant.tagTabUrl) {
+          if (tabUrl == ApiConstant.tagTabUrl) {
             url = tabBean?.tagInfo?.headerImage
             title = tabBean?.tagInfo?.name
             des = tabBean?.tagInfo?.tagVideoCount.toString() + "作品 / " +
                 tabBean?.tagInfo?.tagFollowCount.toString() + "关注者 / " +
                 tabBean?.tagInfo?.tagDynamicCount.toString() + "动态"
-          } else if (tabUrl == Constant.categoryTabUrl) {
+          } else if (tabUrl == ApiConstant.categoryTabUrl) {
             url = tabBean?.categoryInfo?.headerImage
             title = tabBean?.categoryInfo?.name
             des = tabBean?.categoryInfo?.description

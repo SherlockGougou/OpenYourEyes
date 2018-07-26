@@ -6,9 +6,13 @@ package cc.shinichi.openyoureyes.constant
  * create at 2018/2/23  16:38
  * description: 开眼视频部分接口
  */
-object Constant {
+object ApiConstant {
   // authorGithub
   const val authorGithub = "https://github.com/SherlockGougou"
+
+  // defaultSplashImage
+  const val defaultSplashImage =
+    "http://huafans.dbankcloud.com/pic/2017/02/24/b84c5ff63f91986dc95b9890df26a9a0_bigpicture_01_52.jpg"
 
   // 接口
   const val configUrl = "http://baobab.kaiyanapp.com/api/v2/configs"
@@ -40,7 +44,6 @@ object Constant {
   // category tab
   const val categoryTabUrl = "http://baobab.kaiyanapp.com/api/v4/categories/detail/tab?id="
 
-  // defaultSplashImage
-  const val defaultSplashImage =
-    "http://huafans.dbankcloud.com/pic/2017/02/24/b84c5ff63f91986dc95b9890df26a9a0_bigpicture_01_52.jpg"
+  // user info
+  const val userInfoUrl = "http://baobab.kaiyanapp.com/api/v5/userInfo/tab?userType=PGC&id="
 }

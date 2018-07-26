@@ -14,7 +14,7 @@ import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.constant.Code
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.constant.SpTag
 import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
@@ -118,7 +118,7 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
 
   private fun getVideoDetailData() {
     Api.getInstance()
-        .getAsync(context, Constant.videoDetailUrl + videoId, object : ApiListener() {
+        .getAsync(context, ApiConstant.videoDetailUrl + videoId, object : ApiListener() {
           override fun success(string: String?) {
             super.success(string)
             val data: Data? = getGson().fromJson(string, Data::class.javaObjectType)
@@ -135,7 +135,7 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
               )
               Api.getInstance()
                   .getAsync(
-                      context, Constant.videoDetailRelateUrl + videoId, object : ApiListener() {
+                      context, ApiConstant.videoDetailRelateUrl + videoId, object : ApiListener() {
                     override fun success(string: String?) {
                       super.success(string)
                       getRelateEntityList(string)

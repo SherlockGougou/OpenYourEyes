@@ -16,7 +16,7 @@ import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.app.AppManager
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.model.bean.CategoryListBean
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.task.TaskGetConfig
@@ -30,6 +30,7 @@ import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
 import kotlinx.android.synthetic.main.activity_home.recycler_category_list
 import kotlinx.android.synthetic.main.activity_home.toolbar_home
+import kotlinx.android.synthetic.main.activity_home.tvTitle
 
 class Home : BaseActivity(), Handler.Callback {
 
@@ -69,13 +70,15 @@ class Home : BaseActivity(), Handler.Callback {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.all_category_img)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_category)
+      actionBar?.title = ""
     }
+    tvTitle.text = "#发现"
 
     val fragmentManager = supportFragmentManager
     val fragmentTransaction = fragmentManager.beginTransaction()
-    commonListFragment = CommonListFragment.newInstance(Constant.discoveryUrl)
-    commonListFragment.setUrl(Constant.discoveryUrl)
+    commonListFragment = CommonListFragment.newInstance(ApiConstant.discoveryUrl)
+    commonListFragment.setUrl(ApiConstant.discoveryUrl)
     fragmentTransaction.replace(R.id.fm_container, commonListFragment)
     fragmentTransaction.commit()
 
@@ -84,7 +87,7 @@ class Home : BaseActivity(), Handler.Callback {
     categoryAdapter
         ?.onItemClickListener = OnItemClickListener { adapter, view, position ->
       when (position) {
-        0 -> IntentUtil.intent2Browser(this, Constant.authorGithub)
+        0 -> IntentUtil.intent2Browser(this, ApiConstant.authorGithub)
         else -> {
           if (adapter?.getItemViewType(position) == CategoryEntity.TYPE_ITEM) {
             if (drawable_layout_home.isDrawerOpen(GravityCompat.START)) {
@@ -103,19 +106,19 @@ class Home : BaseActivity(), Handler.Callback {
                   itemType = "发现"
                   itemTitle = "#发现"
                   itemId = 0
-                  url = Constant.discoveryUrl
+                  url = ApiConstant.discoveryUrl
                 }
                 2 -> {
                   itemType = "推荐"
                   itemTitle = "#推荐"
                   itemId = 0
-                  url = Constant.allRecUrl
+                  url = ApiConstant.allRecUrl
                 }
                 3 -> {
                   itemType = "日报"
                   itemTitle = "#日报"
                   itemId = 0
-                  url = Constant.feedUrl
+                  url = ApiConstant.feedUrl
                 }
               }
             } else {
@@ -124,10 +127,10 @@ class Home : BaseActivity(), Handler.Callback {
               itemId = currentCategoryBean?.data?.follow?.itemId
               itemTitle = currentCategoryBean?.data?.title
               if (itemType.equals("category")) {
-                url = Constant.apiPrefix + itemType + "/" + itemId
+                url = ApiConstant.apiPrefix + itemType + "/" + itemId
               }
             }
-            actionBar?.title = itemTitle
+            tvTitle.text = itemTitle
             commonListFragment.setUrl(url)
           }
         }
@@ -154,7 +157,7 @@ class Home : BaseActivity(), Handler.Callback {
   private fun getCategoryData() {
     Api
         .getInstance()
-        .getAsync(this, Constant.categoryUrl, object : ApiListener() {
+        .getAsync(this, ApiConstant.categoryUrl, object : ApiListener() {
 
           override fun noNet() {
             super.noNet()

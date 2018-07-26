@@ -16,7 +16,7 @@
       app:backgroundImage="@color/gray_e5"
       app:placeholderImage="@color/gray_e5"
       app:placeholderImageScaleType="centerCrop"
-      app:roundedCornerRadius="6dp"
+      app:roundedCornerRadius="3dp"
       />
 
   <cc.shinichi.openyoureyes.widget.CondensedBoldTextView

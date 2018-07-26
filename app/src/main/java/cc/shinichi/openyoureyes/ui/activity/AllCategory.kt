@@ -14,7 +14,7 @@ import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.model.bean.AllCategoryBean
 import cc.shinichi.openyoureyes.model.bean.AllCategoryBean.Item
 import cc.shinichi.openyoureyes.model.entity.AllCategoryEntity
@@ -77,7 +77,7 @@ class AllCategory : BaseActivity(), Callback {
 
   override fun initData() {
     Api.getInstance()
-        .getAsync(context, Constant.allCategoryUrl, object : ApiListener() {
+        .getAsync(context, ApiConstant.allCategoryUrl, object : ApiListener() {
           override fun start() {
             super.start()
             handler?.sendEmptyMessage(Code.Refreshing)

@@ -3,7 +3,7 @@ package cc.shinichi.openyoureyes.task
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.app.App
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.constant.SpTag
 import cc.shinichi.openyoureyes.model.bean.ConfigBean
 import cc.shinichi.openyoureyes.util.log.ALog
@@ -14,7 +14,7 @@ class TaskGetConfig : BaseTask() {
   companion object {
     fun getConfig() {
       Api.getInstance()
-          .getAsync(App.application, Constant.configUrl, object : ApiListener() {
+          .getAsync(App.application, ApiConstant.configUrl, object : ApiListener() {
 
             override fun success(string: String?) {
               try {

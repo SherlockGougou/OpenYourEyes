@@ -13,7 +13,7 @@ import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.constant.Code
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.model.bean.CampaignListBean
 import cc.shinichi.openyoureyes.model.entity.CampaignListEntity
 import cc.shinichi.openyoureyes.ui.adapter.CampaignListAdapter
@@ -85,7 +85,7 @@ class CampaignList : BaseActivity(), Callback, RequestLoadMoreListener {
 
   override fun initData() {
     Api.getInstance()
-        .getAsync(context, Constant.campaignListUrl, object : ApiListener() {
+        .getAsync(context, ApiConstant.campaignListUrl, object : ApiListener() {
           override fun success(string: String?) {
             super.success(string)
             getEntityList(string, true)

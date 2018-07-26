@@ -25,9 +25,21 @@
           app:itemIconTint="@color/black"
           app:navigationIcon="@drawable/ic_action_category"
           app:popupTheme="@style/Theme.AppCompat.Light"
-          app:title="#发现"
+          app:title=""
           app:titleTextColor="@color/black"
           >
+        <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
       </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 

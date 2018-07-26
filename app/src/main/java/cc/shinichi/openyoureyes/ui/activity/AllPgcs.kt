@@ -9,7 +9,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
 import cc.shinichi.openyoureyes.util.UIUtil
 import kotlinx.android.synthetic.main.activity_all_pgcs.toolbar
@@ -57,8 +57,8 @@ class AllPgcs : BaseActivity(), OnClickListener {
 
     val fragmentManager = supportFragmentManager
     val fragmentTransaction = fragmentManager.beginTransaction()
-    commonListFragment = CommonListFragment.newInstance(Constant.allPgcsUrl)
-    commonListFragment.setUrl(Constant.allPgcsUrl)
+    commonListFragment = CommonListFragment.newInstance(ApiConstant.allPgcsUrl)
+    commonListFragment.setUrl(ApiConstant.allPgcsUrl)
     fragmentTransaction.replace(R.id.fm_container, commonListFragment)
     fragmentTransaction.commit()
   }

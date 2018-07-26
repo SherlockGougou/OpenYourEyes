@@ -57,7 +57,7 @@ class DynamicInfoCard {
 
     tv_videosmallcard_time_length.text = UIUtil.getDurationText(data.simpleVideo?.duration)
     tv_reply_time.text = UIUtil.formatDate(data.createDate)
-    tv_like_count.text = "" + data.reply?.likeCount
+    tv_like_count.text = data.reply?.likeCount.toString()
 
     rl_relate_video_info.setOnClickListener {
       IntentUtil.intent2VideoDetail(

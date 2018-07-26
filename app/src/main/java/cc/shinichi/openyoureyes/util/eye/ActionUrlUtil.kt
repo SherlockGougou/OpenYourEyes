@@ -1,7 +1,7 @@
 package cc.shinichi.openyoureyes.util.eye
 
 import android.content.Context
-import cc.shinichi.openyoureyes.constant.Constant
+import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import java.util.regex.Pattern
@@ -56,7 +56,7 @@ object ActionUrlUtil {
       if (matcherIndex.find()) {
         index = matcherIndex.group(1).toInt()
       }
-      IntentUtil.intent2TagCategory(context, Constant.tagTabUrl, id, index)
+      IntentUtil.intent2TagCategory(context, ApiConstant.tagTabUrl, id, index)
       // eyepetizer://category/24/?title=%E6%97%B6%E5%B0%9A
     } else if (action.startsWith("eyepetizer://category")) {
       var id = ""
@@ -73,7 +73,7 @@ object ActionUrlUtil {
       if (matcherIndex.find()) {
         index = matcherIndex.group(1).toInt()
       }
-      IntentUtil.intent2TagCategory(context, Constant.categoryTabUrl, id, index)
+      IntentUtil.intent2TagCategory(context, ApiConstant.categoryTabUrl, id, index)
     }
   }
 }
