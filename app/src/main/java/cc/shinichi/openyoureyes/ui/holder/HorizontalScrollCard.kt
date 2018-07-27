@@ -11,7 +11,7 @@ import cc.shinichi.openyoureyes.ui.adapter.HorRvAdapter
 import cc.shinichi.openyoureyes.widget.decoration.HorRvDecoration
 import com.chad.library.adapter.base.BaseViewHolder
 
-class HorizontalScrollCard {
+class HorizontalScrollCard : BaseHolder {
 
   private var context: Context
   private var helper: BaseViewHolder

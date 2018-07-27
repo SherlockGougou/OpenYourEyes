@@ -1,11 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.UserInfo"
+    android:orientation="vertical"
     >
 
-</android.support.constraint.ConstraintLayout>
+  <android.support.design.widget.AppBarLayout
+      android:id="@+id/appbarLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/collapsingToolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentScrim="@color/white"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        >
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:layout_collapseMode="parallax"
+          >
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgHeaderBg"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:actualImageScaleType="centerCrop"
+            app:overlayImage="@color/all_category_item_bg"
+            app:placeholderImage="@color/gray_e5"
+            app:placeholderImageScaleType="centerCrop"
+            />
+
+        <LinearLayout
+            android:id="@+id/llUserInfoProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgHeaderBg"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_margin"
+            android:paddingStart="@dimen/default_margin"
+            android:paddingTop="@dimen/margin_20dp"
+            >
+          <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+              android:id="@+id/tvUserName"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="工藤一号"
+              android:textColor="@color/black"
+              android:textSize="14sp"
+              android:textStyle="bold"
+              />
+          <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+              android:id="@+id/tvUserBrief"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dp_4"
+              android:text="作品被2333人喜欢"
+              android:textColor="@color/gray"
+              android:textSize="12sp"
+              />
+          <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+              android:id="@+id/tvUserDes"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dp_6"
+              android:text="作品被2333人喜欢"
+              android:textColor="@color/video_detail_deep_gray_text"
+              android:textSize="13sp"
+              />
+        </LinearLayout>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imgUserInfoIcon"
+            android:layout_width="@dimen/userIcon_w_h"
+            android:layout_height="@dimen/userIcon_w_h"
+            android:layout_alignBottom="@+id/imgHeaderBg"
+            android:layout_marginBottom="-10dp"
+            android:layout_marginStart="@dimen/default_margin"
+            app:placeholderImage="@drawable/ic_author"
+            app:placeholderImageScaleType="centerCrop"
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@color/white"
+            app:roundingBorderWidth="2dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/llUserInfoThressNumber"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/llUserInfoProfile"
+            android:background="@color/gray_f5"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/default_margin"
+            android:paddingStart="@dimen/default_margin"
+            android:weightSum="3"
+            >
+
+          <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_weight="1"
+              android:gravity="center"
+              android:orientation="vertical"
+              >
+
+            <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
+                android:id="@+id/tvProductionCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="233"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="作品"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                />
+          </LinearLayout>
+
+          <LinearLayout
+              android:id="@+id/llConcern"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_weight="1"
+              android:gravity="center"
+              android:orientation="vertical"
+              >
+
+            <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
+                android:id="@+id/tvConcernCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2333"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关注"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                />
+          </LinearLayout>
+
+          <LinearLayout
+              android:id="@+id/llFans"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_weight="1"
+              android:gravity="center"
+              android:orientation="vertical"
+              >
+
+            <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
+                android:id="@+id/tvFansCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23333"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="粉丝"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                />
+          </LinearLayout>
+        </LinearLayout>
+      </RelativeLayout>
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/default_toolbar_height"
+          android:layout_below="@+id/appbar_layout"
+          android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+          app:itemIconTint="@color/black"
+          app:layout_collapseMode="pin"
+          app:navigationIcon="@drawable/ic_action_back"
+          app:popupTheme="@style/Theme.AppCompat.Light"
+          app:titleTextColor="@color/black"
+          >
+        <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+      </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_toolbar_height"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+  </android.support.design.widget.AppBarLayout>
+
+  <android.support.v4.view.ViewPager
+      android:id="@+id/viewPager"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      />
+  <include
+      layout="@layout/item_empty_view"/>
+
+</android.support.design.widget.CoordinatorLayout>

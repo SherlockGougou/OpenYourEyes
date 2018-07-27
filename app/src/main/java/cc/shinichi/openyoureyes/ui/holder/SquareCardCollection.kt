@@ -16,7 +16,7 @@ import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.widget.decoration.HorRvDecoration
 import com.chad.library.adapter.base.BaseViewHolder
 
-class SquareCardCollection {
+class SquareCardCollection : BaseHolder {
 
   private var context: Context
   private var helper: BaseViewHolder

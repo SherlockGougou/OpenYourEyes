@@ -9,6 +9,7 @@ import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Tag
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import cc.shinichi.openyoureyes.widget.FZLanTingLTextView
 import com.chad.library.adapter.base.BaseViewHolder
@@ -16,7 +17,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayout
 
-class PictureFollowCard {
+class PictureFollowCard : BaseHolder {
 
   private var context: Context
   private var helper: BaseViewHolder
@@ -65,21 +66,32 @@ class PictureFollowCard {
           ViewGroup.LayoutParams.WRAP_CONTENT
       )
       for (item in tags) {
-        val textView = createTextView(item?.name)
+        val textView = createTextView(item)
         lp.rightMargin = 10
         textView.layoutParams = lp
         flexbox.addView(textView)
       }
     }
+
+    helper.getView<View>(R.id.img_follow_card_user_icon).setOnClickListener {
+      ActionUrlUtil.jump(context, data.header?.actionUrl)
+    }
+
+    helper.getView<View>(R.id.rl_follow_author_container).setOnClickListener {
+      ActionUrlUtil.jump(context, data.header?.actionUrl)
+    }
   }
 
-  private fun createTextView(str: String?): TextView {
+  private fun createTextView(item: Tag?): TextView {
     return FZLanTingLTextView(context).apply {
-      text = str
+      text = item?.name
       setBackgroundResource(R.drawable.tag_item_text_back)
       gravity = Gravity.CENTER
       textSize = 12f
       setTextColor(context.resources.getColor(R.color.blue_2772d0))
+      setOnClickListener {
+        ActionUrlUtil.jump(context, item?.actionUrl)
+      }
     }
   }
 }

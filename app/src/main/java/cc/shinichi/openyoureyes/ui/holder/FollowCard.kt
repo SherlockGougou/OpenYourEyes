@@ -8,11 +8,12 @@ import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
+import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 
-class FollowCard {
+class FollowCard : BaseHolder {
 
   private lateinit var context: Context
   private var helper: BaseViewHolder
@@ -52,6 +53,14 @@ class FollowCard {
           entity.getItem()?.data?.content?.data?.id.toString(),
           data?.content?.data?.cover?.feed
       )
+    }
+
+    helper.getView<View>(R.id.img_follow_card_user_icon).setOnClickListener {
+      ActionUrlUtil.jump(context, data?.header?.actionUrl)
+    }
+
+    helper.getView<View>(R.id.rl_follow_author_container).setOnClickListener {
+      ActionUrlUtil.jump(context, data?.header?.actionUrl)
     }
   }
 }

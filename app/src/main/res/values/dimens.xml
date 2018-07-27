@@ -17,6 +17,7 @@
   <dimen name="tv_TextCard_h">48dp</dimen>
   <dimen name="tv_user_des_h">60dp</dimen>
   <dimen name="progress_loading_w_h">60dp</dimen>
+  <dimen name="userIcon_w_h">60dp</dimen>
   <dimen name="img_category_icon_w_h">50dp</dimen>
   <dimen name="img_videoSmallCard_w">140dp</dimen>
   <dimen name="img_videoSmallCard_h">80dp</dimen>
@@ -24,6 +25,7 @@
   <dimen name="divider_h">0.01dp</dimen>
   <dimen name="dp_10">10dp</dimen>
   <dimen name="dp_12">12dp</dimen>
+  <dimen name="dp_6">6dp</dimen>
   <dimen name="dp_4">4dp</dimen>
   <dimen name="dp_2">2dp</dimen>
   <dimen name="dp_1">1dp</dimen>

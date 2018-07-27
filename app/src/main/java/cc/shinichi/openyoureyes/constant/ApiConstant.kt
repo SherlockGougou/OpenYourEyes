@@ -45,5 +45,5 @@ object ApiConstant {
   const val categoryTabUrl = "http://baobab.kaiyanapp.com/api/v4/categories/detail/tab?id="
 
   // user info
-  const val userInfoUrl = "http://baobab.kaiyanapp.com/api/v5/userInfo/tab?userType=PGC&id="
+  const val userInfoUrl = "http://baobab.kaiyanapp.com/api/v5/userInfo/tab?"
 }

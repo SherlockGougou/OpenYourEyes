@@ -12,7 +12,7 @@ import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import com.chad.library.adapter.base.BaseViewHolder
 
-class TextCard {
+class TextCard : BaseHolder {
 
   private var context: Context
   private var helper: BaseViewHolder

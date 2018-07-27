@@ -7,12 +7,13 @@ import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.ui.adapter.VideoDetailHoriTagRvAdapter
+import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import cc.shinichi.openyoureyes.util.log.ALog
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 
-class VideoDetailHeader {
+class VideoDetailHeader : BaseHolder {
 
   private val TAG = "VideoDetailHeader"
   private var context: Context
@@ -75,5 +76,16 @@ class VideoDetailHeader {
     ImageLoader.load(data.author?.icon, img_user_icon)
     tv_user_name.text = data.author?.name
     tv_user_des.text = data.author?.description
+    val ifPgc = data.author?.ifPgc ?: false
+
+    img_user_icon.setOnClickListener {
+      IntentUtil.intent2UserInfo(context, data.author?.id.toString(), if (ifPgc) "PGC" else "NORMAL", 0)
+    }
+    tv_user_name.setOnClickListener {
+      IntentUtil.intent2UserInfo(context, data.author?.id.toString(), if (ifPgc) "PGC" else "NORMAL", 0)
+    }
+    tv_user_des.setOnClickListener {
+      IntentUtil.intent2UserInfo(context, data.author?.id.toString(), if (ifPgc) "PGC" else "NORMAL", 0)
+    }
   }
 }

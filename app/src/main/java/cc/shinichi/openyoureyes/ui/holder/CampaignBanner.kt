@@ -10,7 +10,7 @@ import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 
-class CampaignBanner {
+class CampaignBanner : BaseHolder {
 
   private var context: Context
   private var helper: BaseViewHolder

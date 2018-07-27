@@ -64,7 +64,10 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
     </activity>
-    <activity android:name=".ui.activity.UserInfo">
+    <activity
+        android:name=".ui.activity.UserInfo"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
     </activity>
   </application>
 

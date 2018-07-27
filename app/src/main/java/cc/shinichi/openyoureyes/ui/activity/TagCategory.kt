@@ -18,9 +18,9 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.ApiConstant
-import cc.shinichi.openyoureyes.model.bean.TagCategoryBean
+import cc.shinichi.openyoureyes.constant.Code
+import cc.shinichi.openyoureyes.model.bean.TabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
 import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.UIUtil
@@ -50,7 +50,7 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
   private lateinit var pagerAdapter: MyPagerAdapter
 
   // data
-  private var tabBean: TagCategoryBean? = null
+  private var tabBean: TabBean? = null
   private lateinit var tabUrl: String
   private lateinit var id: String
   private var index: Int = 0
@@ -86,6 +86,7 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
   }
 
   override fun initView() {
+    StatusBarUtil.setDarkStatusBar(this, false)
     StatusBarUtil.setTranslucentImageHeader(this, 0, toolbar)
     tvTitle.setTextColor(Color.TRANSPARENT)
     collapsing_toolbar_layout.title = ""
@@ -152,7 +153,7 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
 
           override fun success(string: String?) {
             super.success(string)
-            tabBean = getGson().fromJson(string, TagCategoryBean::class.javaObjectType)
+            tabBean = getGson().fromJson(string, TabBean::class.javaObjectType)
             handler?.sendEmptyMessage(Code.RefreshFinish)
           }
 
@@ -171,9 +172,9 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
   class MyPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
 
     private var fragments: MutableList<CommonListFragment> = mutableListOf()
-    private var list: List<TagCategoryBean.TabInfo.Tab?>? = null
+    private var list: List<TabBean.TabInfo.Tab?>? = null
 
-    fun setData(list: List<TagCategoryBean.TabInfo.Tab?>?) {
+    fun setData(list: List<TabBean.TabInfo.Tab?>?) {
       this.list = list
       fragments.clear()
       if (list != null) {

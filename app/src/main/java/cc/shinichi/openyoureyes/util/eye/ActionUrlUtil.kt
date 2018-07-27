@@ -74,6 +74,31 @@ object ActionUrlUtil {
         index = matcherIndex.group(1).toInt()
       }
       IntentUtil.intent2TagCategory(context, ApiConstant.categoryTabUrl, id, index)
+      // eyepetizer://pgc/detail/2171/?title=%E5%BC%80%E7%9C%BC%E7%A7%91%E6%8A%80%E7%B2%BE%E9%80%89&userType=PGC&tabIndex=1
+    } else if (action.startsWith("eyepetizer://pgc/detail/")) {
+      var id = ""
+      var userType = "PGC"
+      var index = 0
+      val pattern: Pattern = Pattern.compile("//pgc/detail/(.*)/\\?")
+      val matcher = pattern.matcher(action)
+      if (matcher.find()) {
+        id = matcher.group(1)
+      }
+
+      // eyepetizer://pgc/detail/2171/?title=%E5%BC%80%E7%9C%BC%E7%A7%91%E6%8A%80%E7%B2%BE%E9%80%89&userType=PGC&tabIndex=1
+      val patternIndex: Pattern = Pattern.compile("tabIndex=(.*)")
+      val matcherIndex = patternIndex.matcher(action)
+      if (matcherIndex.find()) {
+        index = matcherIndex.group(1).toInt()
+      }
+
+      // eyepetizer://pgc/detail/2171/?title=%E5%BC%80%E7%9C%BC%E7%A7%91%E6%8A%80%E7%B2%BE%E9%80%89&userType=PGC&tabIndex=1
+      val patternUserType: Pattern = Pattern.compile("userType=(.*)&tabIndex")
+      val matcherUserType = patternUserType.matcher(action)
+      if (matcherUserType.find()) {
+        userType = matcherUserType.group(1)
+      }
+      IntentUtil.intent2UserInfo(context, id, userType, index)
     }
   }
 }

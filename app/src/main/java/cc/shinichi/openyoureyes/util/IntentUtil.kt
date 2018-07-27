@@ -10,6 +10,7 @@ import cc.shinichi.openyoureyes.ui.activity.CampaignList
 import cc.shinichi.openyoureyes.ui.activity.Home
 import cc.shinichi.openyoureyes.ui.activity.RankList
 import cc.shinichi.openyoureyes.ui.activity.TagCategory
+import cc.shinichi.openyoureyes.ui.activity.UserInfo
 import cc.shinichi.openyoureyes.ui.activity.VideoDetail
 
 /**
@@ -87,5 +88,14 @@ object IntentUtil {
     index: Int
   ) {
     TagCategory.activityStart(context, tabUrl, id, index)
+  }
+
+  fun intent2UserInfo(
+    context: Context,
+    id: String,
+    userType: String,
+    index: Int
+  ) {
+    UserInfo.activityStart(context, id, userType, index)
   }
 }

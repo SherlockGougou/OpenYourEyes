@@ -9,6 +9,7 @@ data class Data(
   @SerializedName("header") val header: Header? = Header(),
   @SerializedName("content") val content: Content? = Content(),
   @SerializedName("itemList") val itemList: List<Item?>? = listOf(),
+  @SerializedName("dataType") val dataType: String? = "",
   @SerializedName("dynamicType") val dynamicType: String? = "",
   @SerializedName("user") val user: User? = User(),
   @SerializedName("mergeNickName") val mergeNickName: String? = "",
@@ -55,5 +56,6 @@ data class Data(
   @SerializedName("descriptionEditor") val descriptionEditor: String? = "",
   @SerializedName("collected") val collected: Boolean? = false,
   @SerializedName("played") val played: Boolean? = false,
+  @SerializedName("briefCard") val briefCard: BriefCard? = BriefCard(),
   @SerializedName("lastViewTime") val lastViewTime: String? = ""
 ) : Parcelable

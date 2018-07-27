@@ -3,16 +3,18 @@ package cc.shinichi.openyoureyes.ui.holder
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
+import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 
-class DynamicInfoCard {
+class DynamicInfoCard : BaseHolder {
 
   private var context: Context
   private var helper: BaseViewHolder
@@ -46,25 +48,92 @@ class DynamicInfoCard {
     val tv_like_count = helper.getView<TextView>(R.id.tv_like_count)
     val rl_relate_video_info = helper.getView<View>(R.id.rl_relate_video_info)
 
+    val rlDynamicFollowCard = helper.getView<RelativeLayout>(R.id.rlDynamicFollowCard)
+    val img_follow_user_icon = helper.getView<SimpleDraweeView>(R.id.img_follow_user_icon)
+    val tv_follow_user_name = helper.getView<TextView>(R.id.tv_follow_user_name)
+    val tv_follow_user_des = helper.getView<TextView>(R.id.tv_follow_user_des)
+
+    val img_like = helper.getView<ImageView>(R.id.img_like)
+
+    val tvHotReply = helper.getView<TextView>(R.id.tvHotReply)
+
     tv_user_des.text = data.text
     tv_user_name.text = data.user?.nickname
     ImageLoader.load(data.user?.avatar, img_user_icon)
-    ImageLoader.load(data.simpleVideo?.cover?.feed, img_videoSmallCard_img)
 
-    tv_dynamic_info_content.text = data.reply?.message
-    tv_videosmallcard_title.text = data.simpleVideo?.title
-    tv_videosmallcard_des.text = "#" + data.simpleVideo?.category
+    val dynamicType = data.dataType
+    if ("DynamicFollowCard".equals(dynamicType, true)) {
+      rl_relate_video_info.Gone()
+      tv_dynamic_info_content.Gone()
+      tvHotReply.Gone()
+      tv_reply_button.Gone()
+      tv_like_count.Gone()
+      img_like.Gone()
 
-    tv_videosmallcard_time_length.text = UIUtil.getDurationText(data.simpleVideo?.duration)
-    tv_reply_time.text = UIUtil.formatDate(data.createDate)
-    tv_like_count.text = data.reply?.likeCount.toString()
+      rlDynamicFollowCard.Visible()
 
-    rl_relate_video_info.setOnClickListener {
-      IntentUtil.intent2VideoDetail(
-          context, entity.getItem()?.data?.simpleVideo?.playUrl,
-          entity.getItem()?.data?.simpleVideo?.id.toString(),
-          data.simpleVideo?.cover?.feed
-      )
+      ImageLoader.load(data.briefCard?.icon, img_follow_user_icon)
+      tv_follow_user_name.text = data.briefCard?.title
+      tv_follow_user_des.text = data.briefCard?.description
+
+      rlDynamicFollowCard.setOnClickListener {
+        ActionUrlUtil.jump(context, data.briefCard?.actionUrl)
+      }
+
+      img_user_icon.setOnClickListener {
+        ActionUrlUtil.jump(context, data.user?.actionUrl)
+      }
+
+      tv_user_name.setOnClickListener {
+        ActionUrlUtil.jump(context, data.user?.actionUrl)
+      }
+
+      tv_user_des.setOnClickListener {
+        ActionUrlUtil.jump(context, data.user?.actionUrl)
+      }
+
+    } else if ("DynamicReplyCard".equals(dynamicType, true)) {
+      rlDynamicFollowCard.Gone()
+
+      rl_relate_video_info.Visible()
+      tv_dynamic_info_content.Visible()
+      tvHotReply.Visible()
+      tv_reply_button.Visible()
+      tv_like_count.Visible()
+      img_like.Visible()
+
+      ImageLoader.load(data.simpleVideo?.cover?.feed, img_videoSmallCard_img)
+      tv_dynamic_info_content.text = data.reply?.message
+      tv_videosmallcard_title.text = data.simpleVideo?.title
+      tv_videosmallcard_des.text = "#" + data.simpleVideo?.category
+
+      tv_videosmallcard_time_length.text = UIUtil.getDurationText(data.simpleVideo?.duration)
+      tv_reply_time.text = UIUtil.formatDate(data.createDate)
+      tv_like_count.text = data.reply?.likeCount.toString()
+
+      rl_relate_video_info.setOnClickListener {
+        IntentUtil.intent2VideoDetail(
+            context, entity.getItem()?.data?.simpleVideo?.playUrl,
+            entity.getItem()?.data?.simpleVideo?.id.toString(),
+            data.simpleVideo?.cover?.feed
+        )
+      }
+
+      tvHotReply.setOnClickListener {
+
+      }
+
+      img_user_icon.setOnClickListener {
+        ActionUrlUtil.jump(context, data.user?.actionUrl)
+      }
+
+      tv_user_name.setOnClickListener {
+        ActionUrlUtil.jump(context, data.user?.actionUrl)
+      }
+
+      tv_user_des.setOnClickListener {
+        ActionUrlUtil.jump(context, data.user?.actionUrl)
+      }
     }
   }
 }

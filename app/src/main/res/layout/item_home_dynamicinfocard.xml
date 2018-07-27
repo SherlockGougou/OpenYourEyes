@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_root_container"
     android:layout_width="match_parent"
@@ -7,6 +7,7 @@
     android:layout_marginLeft="@dimen/default_margin"
     android:layout_marginRight="@dimen/default_margin"
     android:layout_marginTop="@dimen/default_margin"
+    android:orientation="vertical"
     >
 
   <RelativeLayout
@@ -29,9 +30,11 @@
         android:id="@+id/tv_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_marginTop="@dimen/dp_4"
         android:layout_toEndOf="@+id/img_user_icon"
+        android:ellipsize="end"
         android:maxLines="1"
         android:text="这里是用户名"
         android:textColor="@color/black"
@@ -45,8 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/img_user_icon"
         android:layout_marginBottom="@dimen/dp_4"
+        android:layout_marginEnd="50dp"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_toEndOf="@+id/img_user_icon"
+        android:ellipsize="end"
         android:maxLines="1"
         android:text="评论："
         android:textColor="@color/gray"
@@ -54,6 +59,7 @@
         />
 
     <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+        android:id="@+id/tvHotReply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -85,7 +91,6 @@
       android:id="@+id/tv_dynamic_info_content"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/rl_dynamic_info_user_container"
       android:layout_marginStart="@dimen/dp_58"
       android:layout_marginTop="@dimen/default_margin"
       android:ellipsize="end"
@@ -99,7 +104,6 @@
       android:id="@+id/rl_relate_video_info"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/tv_dynamic_info_content"
       android:layout_marginStart="@dimen/dp_58"
       android:layout_marginTop="@dimen/default_margin"
       android:background="@drawable/item_home_dynamic_info_video_bg"
@@ -153,6 +157,7 @@
         android:layout_marginBottom="@dimen/default_margin"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_toEndOf="@+id/img_videoSmallCard_img"
+        android:ellipsize="end"
         android:maxLines="1"
         android:text="这里是小视频描述"
         android:textColor="@color/gray"
@@ -161,10 +166,60 @@
   </RelativeLayout>
 
   <RelativeLayout
+      android:id="@+id/rlDynamicFollowCard"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dp_58"
+      android:layout_marginTop="@dimen/default_margin"
+      android:background="@drawable/item_home_dynamic_info_video_bg"
+      android:padding="@dimen/default_padding"
+      >
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img_follow_user_icon"
+        android:layout_width="@dimen/default_toolbar_height"
+        android:layout_height="@dimen/default_toolbar_height"
+        app:actualImageScaleType="centerCrop"
+        app:placeholderImage="@color/gray_e5"
+        app:placeholderImageScaleType="centerCrop"
+        app:roundedCornerRadius="3dp"
+        />
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+        android:id="@+id/tv_follow_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_toEndOf="@+id/img_follow_user_icon"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="这里是用户名"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        />
+
+    <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+        android:id="@+id/tv_follow_user_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_follow_user_icon"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_toEndOf="@+id/img_follow_user_icon"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="评论："
+        android:textColor="@color/gray"
+        android:textSize="13sp"
+        />
+  </RelativeLayout>
+
+  <RelativeLayout
       android:id="@+id/rl_dynamic_info_like_container"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/rl_relate_video_info"
       android:layout_marginStart="@dimen/dp_58"
       android:layout_marginTop="@dimen/default_margin"
       android:orientation="horizontal"
@@ -201,9 +256,9 @@
         android:id="@+id/tv_like_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/img_like"
         android:text="233"
-        android:layout_centerVertical="true"
         android:textColor="@color/black"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -213,9 +268,8 @@
   <TextView
       android:layout_width="match_parent"
       android:layout_height="@dimen/divider_h"
-      android:layout_below="@+id/rl_dynamic_info_like_container"
       android:layout_marginStart="@dimen/dp_58"
       android:layout_marginTop="@dimen/default_margin"
       android:background="@color/gray_e5"
       />
-</RelativeLayout>
+</LinearLayout>

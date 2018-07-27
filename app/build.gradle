@@ -37,7 +37,7 @@ dependencies {
   implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
   // fresco
-  implementation 'com.facebook.fresco:fresco:1.1.0'
+  implementation 'com.facebook.fresco:fresco:1.10.0'
   // okgo
   implementation 'com.lzy.net:okgo:3.0.4'
   // gson
@@ -48,4 +48,10 @@ dependencies {
   implementation 'com.shuyu:GSYVideoPlayer:5.0.1'
   // Flexbox
   implementation 'com.google.android:flexbox:1.0.0'
+  // bigimageviewpager
+  implementation 'com.github.SherlockGougou:BigImageViewPager:v4_1.2.2'
+  implementation 'com.github.bumptech.glide:glide:4.7.1'
+  implementation 'com.github.bumptech.glide:annotations:4.7.1'
+  annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+  implementation "com.github.bumptech.glide:okhttp3-integration:4.7.1"
 }

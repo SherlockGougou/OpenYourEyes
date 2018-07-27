@@ -4,17 +4,19 @@ import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Item
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.ui.adapter.HorRvAdapter
+import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import cc.shinichi.openyoureyes.widget.decoration.HorRvDecoration
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 
-class VideoCollectionWithBrief {
+class VideoCollectionWithBrief : BaseHolder {
 
   private var context: Context
   private var helper: BaseViewHolder
@@ -46,6 +48,18 @@ class VideoCollectionWithBrief {
     tv_category_name.text = data.header?.title
     tv_category_des.text = data.header?.description
     ImageLoader.load(data.header?.icon, img_category_icon)
+
+    helper.getView<View>(R.id.img_category_icon).setOnClickListener {
+      ActionUrlUtil.jump(context, data.header?.actionUrl)
+    }
+
+    helper.getView<View>(R.id.tv_category_name).setOnClickListener {
+      ActionUrlUtil.jump(context, data.header?.actionUrl)
+    }
+
+    helper.getView<View>(R.id.tv_category_des).setOnClickListener {
+      ActionUrlUtil.jump(context, data.header?.actionUrl)
+    }
 
     val recyclerView = helper.getView<RecyclerView>(R.id.rv_horizontalScrollCard)
     manager = LinearLayoutManager(recyclerView.context)

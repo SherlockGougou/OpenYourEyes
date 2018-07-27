@@ -11,6 +11,7 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.bean.home.Tag
 import cc.shinichi.openyoureyes.ui.adapter.VideoDetailHoriTagRvAdapter.Holder
 import cc.shinichi.openyoureyes.util.UIUtil
+import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import com.facebook.drawee.view.SimpleDraweeView
 
@@ -46,6 +47,10 @@ class VideoDetailHoriTagRvAdapter(
         3
     ImageLoader.load(tag.bgPicture, holder.imgTag)
     holder.tvTag.text = "#${tag.name}#"
+
+    holder.rlTagItemContainer.setOnClickListener {
+      ActionUrlUtil.jump(context, tag.actionUrl)
+    }
   }
 
   class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
