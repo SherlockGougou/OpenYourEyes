@@ -14,7 +14,7 @@ data class User(
   @SerializedName("description") val description: String? = "",
   @SerializedName("area") val area: String? = "",
   @SerializedName("gender") val gender: String? = "",
-  @SerializedName("registDate") val registDate: Long? = 0,
+  @SerializedName("registDate") val registDate: String? = "",
   @SerializedName("releaseDate") val releaseDate: String? = "",
   @SerializedName("actionUrl") val actionUrl: String? = "",
   @SerializedName("followed") val followed: Boolean? = false,
