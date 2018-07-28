@@ -12,8 +12,8 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.ApiConstant
+import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.model.bean.CampaignListBean
 import cc.shinichi.openyoureyes.model.entity.CampaignListEntity
 import cc.shinichi.openyoureyes.ui.adapter.CampaignListAdapter
@@ -64,9 +64,10 @@ class CampaignList : BaseActivity(), Callback, RequestLoadMoreListener {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       actionBar?.title = ""
     }
+    swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
     swipeRefresh.setOnRefreshListener {
       initData()
     }

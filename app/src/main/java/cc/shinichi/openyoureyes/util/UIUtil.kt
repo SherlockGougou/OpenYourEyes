@@ -128,7 +128,7 @@ object UIUtil {
       } else {
         "0$minutes:"
       }) + if (seconds >= 10) {
-        (seconds).toString() + ":"
+        (seconds).toString() + ""
       } else {
         "0$seconds"
       })

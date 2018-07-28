@@ -18,7 +18,7 @@
         android:layout_height="20dp"
         />
 
-    <TextView
+    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
         android:id="@+id/loading_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +27,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/black"
         android:textSize="15sp"
+        android:textStyle="bold"
         />
   </LinearLayout>
 
@@ -37,13 +38,15 @@
       android:visibility="gone"
       >
 
-    <TextView
+    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
         android:id="@+id/tv_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="加载失败，点击重试"
         android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
         />
   </FrameLayout>
 
@@ -58,9 +61,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="---   end   ---"
+        android:text="- The End -"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         />
   </FrameLayout>
 </FrameLayout>

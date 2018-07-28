@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
       android:id="@+id/menu_search"
-      android:icon="@drawable/ic_action_search"
+      android:icon="@drawable/ic_action_search_white"
       android:title="@string/menu_home_search"
-      app:showAsAction="always"/>
+      app:showAsAction="ifRoom"/>
   <item
       android:id="@+id/menu_about"
-      android:icon="@drawable/ic_action_choose_right"
       android:title="@string/about_me"
       app:showAsAction="never"
       />

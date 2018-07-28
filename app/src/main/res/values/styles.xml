@@ -1,41 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="colorAccent">@color/blue_2772d0</item>
-    <item name="colorPrimary">@color/white</item>
-    <item name="colorPrimaryDark">@color/white</item>
-
-    <item name="windowNoTitle">true</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="android:textColorSecondary">@color/white</item>
     <item name="android:windowBackground">@color/white</item>
-
-    <item name="android:textColorPrimary">@color/black</item>
-    <item name="android:textColorSecondary">@color/gray</item>
-    <item name="android:textColorPrimaryInverse">@color/black</item>
-    <item name="android:textColorSecondaryInverse">@color/gray</item>
+    <item name="windowNoTitle">true</item>
   </style>
 
-  <!-- welcome theme. -->
-  <style name="WelcomeTheme" parent="Theme.AppCompat.NoActionBar">
+  <!-- full screen theme. -->
+  <style name="FullScreenTheme" parent="AppTheme">
     <!-- Customize your theme here. -->
-    <item name="windowNoTitle">true</item>
     <item name="android:windowFullscreen">true</item>
   </style>
 
-  <!-- video detail full screen theme. -->
-  <style name="FullScreenTheme" parent="Theme.AppCompat.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
-    <item name="android:windowFullscreen">true</item>
+  <style name="ToolbarPopupTheme" parent="@style/Theme.AppCompat.Light">
+    <!--<item name="android:colorBackground">#000000</item> 也可以设置背景色以及menu中的其他属性-->
+    <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
   </style>
 
-  <!-- tag category detail theme. -->
-  <style name="TagCategoryDetailTheme" parent="Theme.AppCompat.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
+  <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+    <item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
   </style>
 </resources>

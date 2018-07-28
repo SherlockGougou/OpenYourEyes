@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.os.Build.VERSION
-import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.os.Handler.Callback
 import android.os.Message
@@ -14,7 +12,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -76,7 +73,7 @@ class Browser : BaseActivity(), Callback {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       actionBar?.title = ""
     }
     progress_loading = findViewById(R.id.progress_loading)
@@ -96,16 +93,6 @@ class Browser : BaseActivity(), Callback {
     webSettings.defaultTextEncodingName = "utf-8"
 
     webview.webViewClient = object : WebViewClient() {
-
-      override fun shouldOverrideUrlLoading(
-        view: WebView?,
-        request: WebResourceRequest?
-      ): Boolean {
-        if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-          webview.loadUrl(request?.url?.toString())
-        }
-        return true
-      }
 
       override fun shouldOverrideUrlLoading(
         view: WebView,
@@ -156,7 +143,6 @@ class Browser : BaseActivity(), Callback {
   }
 
   override fun onBackPressed() {
-    super.onBackPressed()
     if (webview.canGoBack()) {
       webview.goBack()
       return

@@ -3,7 +3,7 @@ package cc.shinichi.openyoureyes.util
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.text.TextUtils
-import cc.shinichi.openyoureyes.app.AppManager
+import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.util.log.ALog
 
 /**
@@ -31,7 +31,7 @@ object RomUtil {
   private fun isInstalledByPkgName(pkgName: String): Boolean {
     var packageInfo: PackageInfo?
     try {
-      packageInfo = AppManager.getInstance().currentActivity()!!
+      packageInfo = App.application
           .packageManager
           .getPackageInfo(pkgName, 0)
     } catch (e: PackageManager.NameNotFoundException) {

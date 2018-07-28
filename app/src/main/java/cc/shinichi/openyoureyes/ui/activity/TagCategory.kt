@@ -22,7 +22,6 @@ import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.model.bean.TabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
-import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
@@ -86,8 +85,6 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
   }
 
   override fun initView() {
-    StatusBarUtil.setDarkStatusBar(this, false)
-    StatusBarUtil.setTranslucentImageHeader(this, 0, toolbar)
     tvTitle.setTextColor(Color.TRANSPARENT)
     collapsing_toolbar_layout.title = ""
     setSupportActionBar(toolbar)
@@ -113,16 +110,10 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
     appbarLayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
       if (Math.abs(verticalOffset) >= appBarLayout.totalScrollRange) {
         // 折叠状态
-        tvTitle.setTextColor(resources.getColor(R.color.black))
-        StatusBarUtil.setDarkStatusBar(this, true)
-        actionBar
-            ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+        tvTitle.setTextColor(resources.getColor(R.color.white))
       } else {
         // 展开状态
         tvTitle.setTextColor(Color.TRANSPARENT)
-        StatusBarUtil.setDarkStatusBar(this, false)
-        actionBar
-            ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       }
     }
 

@@ -49,7 +49,7 @@ class AllPgcs : BaseActivity(), OnClickListener {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       actionBar?.title = ""
     }
 

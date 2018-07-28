@@ -67,7 +67,7 @@ class PictureFollowCard : BaseHolder {
       )
       for (item in tags) {
         val textView = createTextView(item)
-        lp.rightMargin = 10
+        lp.setMargins(5, 5, 5, 5)
         textView.layoutParams = lp
         flexbox.addView(textView)
       }

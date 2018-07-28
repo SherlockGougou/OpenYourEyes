@@ -78,6 +78,10 @@ object IntentUtil {
     videoId: String?,
     videoCover: String?
   ) {
+    if (UIUtil.isNull(playUrl) || UIUtil.isNull(videoId)) {
+      ToastUtil._short("作品不存在或已被删除！")
+      return
+    }
     VideoDetail.activityStart(context, playUrl, videoId, videoCover)
   }
 

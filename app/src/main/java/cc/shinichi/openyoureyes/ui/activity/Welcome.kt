@@ -7,12 +7,10 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.constant.SpTag
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
-import cc.shinichi.openyoureyes.util.log.ALog
 import kotlinx.android.synthetic.main.activity_welcome.img_day_picture
 
 /**
@@ -64,15 +62,15 @@ class Welcome : BaseActivity(), Callback {
 
   private fun loadImage() {
     // 加载每日美图，动画时长2秒
-    var imagePath = getSp().getString(SpTag.splashNextPageUrl, "")
-    if (isNull(imagePath)) {
-      imagePath = ApiConstant.defaultSplashImage
+    val imagePath = getSp().getString(SpTag.splashNextPageUrl, "")
+    if (!isNull(imagePath)) {
+      ImageLoader
+          .load(imagePath, img_day_picture)
+    } else {
+      ImageLoader
+          .loadResource(R.raw.welcome_bg, img_day_picture)
     }
-    ALog
-        .log(TAG, imagePath)
-    ImageLoader
-        .load(imagePath, img_day_picture)
-    var scaleAnimation = ScaleAnimation(
+    val scaleAnimation = ScaleAnimation(
         1.0f, 1.1f, 1.0f, 1.1f,
         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
     )

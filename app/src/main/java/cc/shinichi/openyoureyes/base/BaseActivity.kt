@@ -9,7 +9,6 @@ import android.widget.Toast
 import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.app.AppManager
 import cc.shinichi.openyoureyes.constant.SpTag
-import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.ToastUtil
 import com.google.gson.Gson
 
@@ -35,8 +34,6 @@ abstract class BaseActivity : AppCompatActivity() {
     AppManager
         .getInstance()
         .addActivity(this)
-    StatusBarUtil
-        .setDarkStatusBar(this, true)
   }
 
   override fun onDestroy() {

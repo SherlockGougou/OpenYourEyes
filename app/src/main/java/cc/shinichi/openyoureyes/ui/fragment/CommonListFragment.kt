@@ -87,6 +87,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
 
     recycler_data_list_home = rootView.findViewById(R.id.recycler_data_list_home)
     swipe_refresh = rootView.findViewById(R.id.swipe_refresh)
+    swipe_refresh.setColorSchemeResources(R.color.colorPrimary)
 
     homeDataAdapter = HomeDataAdapter(context!!, allHomeDataEntity)
     homeDataAdapter?.setEnableLoadMore(true)

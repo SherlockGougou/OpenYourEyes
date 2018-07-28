@@ -16,7 +16,7 @@
     <activity
         android:name=".ui.activity.Welcome"
         android:screenOrientation="portrait"
-        android:theme="@style/WelcomeTheme">
+        android:theme="@style/FullScreenTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -70,5 +70,4 @@
         android:theme="@style/AppTheme">
     </activity>
   </application>
-
 </manifest>

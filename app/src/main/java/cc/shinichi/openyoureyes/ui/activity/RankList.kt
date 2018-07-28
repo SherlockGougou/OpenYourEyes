@@ -17,8 +17,8 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.ApiConstant
+import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.model.bean.RankTabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
 import cc.shinichi.openyoureyes.util.UIUtil
@@ -67,7 +67,7 @@ class RankList : BaseActivity(), Callback, OnClickListener {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       actionBar?.title = ""
     }
 

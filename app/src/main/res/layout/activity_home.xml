@@ -5,7 +5,6 @@
     android:id="@+id/drawable_layout_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     >
 
   <LinearLayout
@@ -23,10 +22,10 @@
           android:layout_height="match_parent"
           android:theme="@style/Theme.AppCompat.Light.NoActionBar"
           app:itemIconTint="@color/black"
-          app:navigationIcon="@drawable/ic_action_category"
-          app:popupTheme="@style/Theme.AppCompat.Light"
+          app:navigationIcon="@drawable/ic_action_category_white"
+          app:popupTheme="@style/ToolbarPopupTheme"
           app:title=""
-          app:titleTextColor="@color/black"
+          app:titleTextColor="@color/white"
           >
         <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
             android:id="@+id/tvTitle"
@@ -36,7 +35,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             />

@@ -10,10 +10,6 @@ object ApiConstant {
   // authorGithub
   const val authorGithub = "https://github.com/SherlockGougou"
 
-  // defaultSplashImage
-  const val defaultSplashImage =
-    "http://huafans.dbankcloud.com/pic/2017/02/24/b84c5ff63f91986dc95b9890df26a9a0_bigpicture_01_52.jpg"
-
   // 接口
   const val configUrl = "http://baobab.kaiyanapp.com/api/v2/configs"
   const val categoryUrl = "http://baobab.kaiyanapp.com/api/v5/category/list"

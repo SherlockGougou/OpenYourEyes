@@ -15,8 +15,8 @@ import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.app.AppManager
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.ApiConstant
+import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.model.bean.CategoryListBean
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.task.TaskGetConfig
@@ -70,7 +70,7 @@ class Home : BaseActivity(), Handler.Callback {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_category)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_category_white)
       actionBar?.title = ""
     }
     tvTitle.text = "#发现"

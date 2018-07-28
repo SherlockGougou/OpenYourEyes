@@ -16,7 +16,7 @@
         android:id="@+id/collapsing_toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:contentScrim="@color/white"
+        app:contentScrim="@color/colorPrimary"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         >
 
@@ -71,9 +71,9 @@
           android:theme="@style/Theme.AppCompat.Light.NoActionBar"
           app:itemIconTint="@color/black"
           app:layout_collapseMode="pin"
-          app:navigationIcon="@drawable/ic_action_back"
-          app:popupTheme="@style/Theme.AppCompat.Light"
-          app:titleTextColor="@color/black"
+          app:navigationIcon="@drawable/ic_action_back_white"
+          app:popupTheme="@style/ToolbarPopupTheme"
+          app:titleTextColor="@color/white"
           >
         <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
             android:id="@+id/tvTitle"
@@ -83,7 +83,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             />
@@ -94,7 +94,10 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_toolbar_height"
+        android:background="@color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextColor="@color/black"
         />
   </android.support.design.widget.AppBarLayout>
 

@@ -13,8 +13,8 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.base.BaseActivity
-import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.ApiConstant
+import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.model.bean.AllCategoryBean
 import cc.shinichi.openyoureyes.model.bean.AllCategoryBean.Item
 import cc.shinichi.openyoureyes.model.entity.AllCategoryEntity
@@ -67,9 +67,10 @@ class AllCategory : BaseActivity(), Callback {
       actionBar
           ?.setDisplayHomeAsUpEnabled(true)
       actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_back)
+          ?.setHomeAsUpIndicator(R.drawable.ic_action_back_white)
       actionBar?.title = ""
     }
+    swipe_refresh.setColorSchemeResources(R.color.colorPrimary)
     swipe_refresh.setOnRefreshListener {
       initData()
     }

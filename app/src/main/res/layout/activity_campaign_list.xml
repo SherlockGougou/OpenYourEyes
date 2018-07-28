@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
     >
 
@@ -20,9 +19,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         app:itemIconTint="@color/black"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:navigationIcon="@drawable/ic_action_back"
-        app:popupTheme="@style/Theme.AppCompat.Light"
-        app:titleTextColor="@color/black"
+        app:navigationIcon="@drawable/ic_action_back_white"
+        app:popupTheme="@style/ToolbarPopupTheme"
+        app:titleTextColor="@color/white"
         >
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
           android:id="@+id/tv_title"
@@ -34,7 +33,7 @@
           android:maxLines="1"
           android:singleLine="true"
           android:text="专题"
-          android:textColor="@color/black"
+          android:textColor="@color/white"
           android:textSize="16sp"
           android:textStyle="bold"
           />

@@ -96,14 +96,21 @@ class DynamicInfoCard : BaseHolder {
       rlDynamicFollowCard.Gone()
 
       rl_relate_video_info.Visible()
-      tv_dynamic_info_content.Visible()
       tvHotReply.Visible()
       tv_reply_button.Visible()
       tv_like_count.Visible()
       img_like.Visible()
+      tv_videosmallcard_time_length.Visible()
+      tv_videosmallcard_des.Visible()
+
+      if (isNull(data.reply?.message)) {
+        tv_dynamic_info_content.Gone()
+      } else {
+        tv_dynamic_info_content.Visible()
+        tv_dynamic_info_content.text = data.reply?.message
+      }
 
       ImageLoader.load(data.simpleVideo?.cover?.feed, img_videoSmallCard_img)
-      tv_dynamic_info_content.text = data.reply?.message
       tv_videosmallcard_title.text = data.simpleVideo?.title
       tv_videosmallcard_des.text = "#" + data.simpleVideo?.category
 
@@ -113,8 +120,8 @@ class DynamicInfoCard : BaseHolder {
 
       rl_relate_video_info.setOnClickListener {
         IntentUtil.intent2VideoDetail(
-            context, entity.getItem()?.data?.simpleVideo?.playUrl,
-            entity.getItem()?.data?.simpleVideo?.id.toString(),
+            context, data.simpleVideo?.playUrl,
+            data.simpleVideo?.id.toString(),
             data.simpleVideo?.cover?.feed
         )
       }
@@ -133,6 +140,142 @@ class DynamicInfoCard : BaseHolder {
 
       tv_user_des.setOnClickListener {
         ActionUrlUtil.jump(context, data.user?.actionUrl)
+      }
+    } else if ("DynamicVideoCard".equals(dynamicType, true)) {
+      val resourceType = data.simpleVideo?.resourceType
+      if ("ugc_picture".equals(resourceType, true)) {
+        rlDynamicFollowCard.Gone()
+        tv_reply_button.Gone()
+
+        tvHotReply.Gone()
+        tv_like_count.Gone()
+        img_like.Gone()
+        tv_videosmallcard_time_length.Gone()
+        tv_videosmallcard_des.Gone()
+
+        rl_relate_video_info.Visible()
+
+        if (isNull(data.reply?.message)) {
+          tv_dynamic_info_content.Gone()
+        } else {
+          tv_dynamic_info_content.Visible()
+          tv_dynamic_info_content.text = data.reply?.message
+        }
+
+        ImageLoader.load(data.simpleVideo?.cover?.feed, img_videoSmallCard_img)
+        tv_videosmallcard_title.text = data.simpleVideo?.title
+
+        tv_reply_time.text = UIUtil.formatDate(data.createDate)
+
+        rl_relate_video_info.setOnClickListener {
+
+        }
+
+        img_user_icon.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+
+        tv_user_name.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+
+        tv_user_des.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+      } else if ("ugc_video".equals(resourceType, true)) {
+        rlDynamicFollowCard.Gone()
+        tv_reply_button.Gone()
+
+        tvHotReply.Gone()
+        tv_like_count.Gone()
+        img_like.Gone()
+        tv_videosmallcard_des.Gone()
+
+        rl_relate_video_info.Visible()
+        tv_videosmallcard_time_length.Visible()
+
+        if (isNull(data.reply?.message)) {
+          tv_dynamic_info_content.Gone()
+        } else {
+          tv_dynamic_info_content.Visible()
+          tv_dynamic_info_content.text = data.reply?.message
+        }
+
+        ImageLoader.load(data.simpleVideo?.cover?.feed, img_videoSmallCard_img)
+        tv_videosmallcard_title.text = data.simpleVideo?.title
+        tv_videosmallcard_time_length.text = UIUtil.getDurationText(data.simpleVideo?.duration)
+
+        tv_reply_time.text = UIUtil.formatDate(data.createDate)
+
+        rl_relate_video_info.setOnClickListener {
+          IntentUtil.intent2VideoDetail(
+              context, data.simpleVideo?.playUrl,
+              data.simpleVideo?.id.toString(),
+              data.simpleVideo?.cover?.feed
+          )
+        }
+
+        img_user_icon.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+
+        tv_user_name.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+
+        tv_user_des.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+      } else if ("video".equals(resourceType, true)) {
+        rlDynamicFollowCard.Gone()
+        tv_reply_button.Gone()
+
+        tvHotReply.Gone()
+        tv_like_count.Gone()
+        img_like.Gone()
+
+        rl_relate_video_info.Visible()
+        tv_videosmallcard_time_length.Visible()
+        tv_videosmallcard_des.Visible()
+
+        if (isNull(data.reply?.message)) {
+          tv_dynamic_info_content.Gone()
+        } else {
+          tv_dynamic_info_content.Visible()
+          tv_dynamic_info_content.text = data.reply?.message
+        }
+
+        ImageLoader.load(data.simpleVideo?.cover?.feed, img_videoSmallCard_img)
+
+        tv_videosmallcard_title.text = data.simpleVideo?.title
+        tv_videosmallcard_des.text = "#" + data.simpleVideo?.category
+
+        tv_videosmallcard_time_length.text = UIUtil.getDurationText(data.simpleVideo?.duration)
+        tv_reply_time.text = UIUtil.formatDate(data.createDate)
+
+        rl_relate_video_info.setOnClickListener {
+          IntentUtil.intent2VideoDetail(
+              context, data.simpleVideo?.playUrl,
+              data.simpleVideo?.id.toString(),
+              data.simpleVideo?.cover?.feed
+          )
+        }
+
+        tvHotReply.setOnClickListener {
+
+        }
+
+        img_user_icon.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+
+        tv_user_name.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
+
+        tv_user_des.setOnClickListener {
+          ActionUrlUtil.jump(context, data.user?.actionUrl)
+        }
       }
     }
   }
