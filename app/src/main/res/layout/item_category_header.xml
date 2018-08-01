@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="-30dp"
     >
 
   <RelativeLayout
@@ -26,7 +27,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         app:placeholderImage="@drawable/ic_author"
         app:placeholderImageScaleType="centerCrop"
         app:roundAsCircle="true"
@@ -41,7 +42,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/author_name"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         />
   </RelativeLayout>
 </RelativeLayout>

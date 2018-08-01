@@ -22,6 +22,7 @@ import cc.shinichi.openyoureyes.constant.ApiConstant
 import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.model.bean.TabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
+import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
@@ -57,6 +58,7 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_tag_category)
+    StatusBarUtil.setStatusBarColor(this, R.color.transparent, R.color.colorPrimary)
 
     initUtil()
     initView()

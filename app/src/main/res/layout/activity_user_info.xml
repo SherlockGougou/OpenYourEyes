@@ -11,6 +11,7 @@
       android:id="@+id/appbarLayout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:theme="@style/AppTheme.AppBarOverlay"
       >
     <android.support.design.widget.CollapsingToolbarLayout
         android:id="@+id/collapsingToolbarLayout"
@@ -194,11 +195,9 @@
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
           android:layout_below="@+id/appbar_layout"
-          android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-          app:itemIconTint="@color/black"
           app:layout_collapseMode="pin"
           app:navigationIcon="@drawable/ic_action_back_white"
-          app:popupTheme="@style/ToolbarPopupTheme"
+          app:popupTheme="@style/AppTheme.PopupOverlay"
           app:titleTextColor="@color/white"
           >
         <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView

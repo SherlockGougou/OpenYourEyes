@@ -6,11 +6,12 @@ import android.os.Handler
 import android.os.Message
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBar
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyes.R.layout
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.app.AppManager
@@ -24,11 +25,12 @@ import cc.shinichi.openyoureyes.ui.adapter.CategoryAdapter
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
 import cc.shinichi.openyoureyes.util.CommonUtil
 import cc.shinichi.openyoureyes.util.IntentUtil
+import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import com.chad.library.adapter.base.BaseQuickAdapter.OnItemClickListener
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
-import kotlinx.android.synthetic.main.activity_home.recycler_category_list
+import kotlinx.android.synthetic.main.activity_home.navigationView
 import kotlinx.android.synthetic.main.activity_home.toolbar_home
 import kotlinx.android.synthetic.main.activity_home.tvTitle
 
@@ -53,9 +55,9 @@ class Home : BaseActivity(), Handler.Callback {
   private lateinit var commonListFragment: CommonListFragment
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    super
-        .onCreate(savedInstanceState)
-    setContentView(layout.activity_home)
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_home)
+    StatusBarUtil.setStatusBarColor(this, R.color.transparent, R.color.colorPrimary)
     context = this
 
     initView()
@@ -65,12 +67,15 @@ class Home : BaseActivity(), Handler.Callback {
 
   override fun initView() {
     setSupportActionBar(toolbar_home)
+    val toggle = ActionBarDrawerToggle(
+        this, drawable_layout_home, toolbar_home, R.string.navigation_drawer_open,
+        R.string.navigation_drawer_close
+    )
+    drawable_layout_home.addDrawerListener(toggle)
+    toggle.syncState()
+
     actionBar = supportActionBar
     if (actionBar != null) {
-      actionBar
-          ?.setDisplayHomeAsUpEnabled(true)
-      actionBar
-          ?.setHomeAsUpIndicator(R.drawable.ic_action_category_white)
       actionBar?.title = ""
     }
     tvTitle.text = "#发现"
@@ -136,8 +141,8 @@ class Home : BaseActivity(), Handler.Callback {
         }
       }
     }
-    recycler_category_list
-        .layoutManager = LinearLayoutManager(context)
+    val recycler_category_list = navigationView.findViewById<RecyclerView>(R.id.design_navigation_view)
+    recycler_category_list.layoutManager = LinearLayoutManager(context)
     recycler_category_list
         .adapter = categoryAdapter
   }
@@ -223,8 +228,7 @@ class Home : BaseActivity(), Handler.Callback {
     } else {
       if (System.currentTimeMillis() - clickTime > 1000) {
         toast("再按一次退出")
-        clickTime = System
-            .currentTimeMillis()
+        clickTime = System.currentTimeMillis()
       } else {
         AppManager
             .getInstance()
@@ -245,7 +249,8 @@ class Home : BaseActivity(), Handler.Callback {
         drawable_layout_home
             .openDrawer(GravityCompat.START)
       }
-      R.id.menu_search -> ""
+      R.id.menu_theme -> ""
+      R.id.menu_about -> ""
     }
     return true
   }

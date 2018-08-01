@@ -11,16 +11,15 @@
       android:id="@+id/appBarLayout"
       android:layout_width="match_parent"
       android:layout_height="@dimen/default_toolbar_height"
+      android:theme="@style/AppTheme.AppBarOverlay"
       >
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_toolbar_height"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        app:itemIconTint="@color/black"
         app:layout_scrollFlags="scroll|enterAlways"
         app:navigationIcon="@drawable/ic_action_back_white"
-        app:popupTheme="@style/ToolbarPopupTheme"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
         app:titleTextColor="@color/white"
         >
       <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
@@ -45,7 +44,6 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_below="@+id/appBarLayout"
-      android:padding="@dimen/dp_1"
       >
 
     <android.support.v7.widget.RecyclerView

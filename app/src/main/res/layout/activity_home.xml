@@ -5,6 +5,7 @@
     android:id="@+id/drawable_layout_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     >
 
   <LinearLayout
@@ -15,15 +16,13 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_toolbar_height"
+        android:theme="@style/AppTheme.AppBarOverlay"
         >
       <android.support.v7.widget.Toolbar
           android:id="@+id/toolbar_home"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-          app:itemIconTint="@color/black"
-          app:navigationIcon="@drawable/ic_action_category_white"
-          app:popupTheme="@style/ToolbarPopupTheme"
+          app:popupTheme="@style/AppTheme.PopupOverlay"
           app:title=""
           app:titleTextColor="@color/white"
           >
@@ -49,10 +48,11 @@
         />
   </LinearLayout>
 
-  <android.support.v7.widget.RecyclerView
-      android:id="@+id/recycler_category_list"
-      android:layout_width="match_parent"
+  <android.support.design.widget.NavigationView
+      android:id="@+id/navigationView"
+      android:layout_width="wrap_content"
       android:layout_height="match_parent"
       android:layout_gravity="start"
+      android:fitsSystemWindows="true"
       />
 </android.support.v4.widget.DrawerLayout>

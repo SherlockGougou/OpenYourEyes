@@ -1,5 +1,7 @@
 <resources>
   <string name="app_name">开眼Kotlin</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
   <string name="menu_home_search">搜索</string>
   <string name="menu_home_more">更多</string>
   <string name="author_name">工藤一号</string>
@@ -11,4 +13,5 @@
   <string name="tv_welcome_chinese">每日精选视频推介，让你大开眼界</string>
   <string name="about_me">关于</string>
   <string name="all_category_title">全部分类</string>
+  <string name="change_theme">更改主题</string>
 </resources>

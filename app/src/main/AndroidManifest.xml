@@ -16,7 +16,7 @@
     <activity
         android:name=".ui.activity.Welcome"
         android:screenOrientation="portrait"
-        android:theme="@style/FullScreenTheme">
+        android:theme="@style/AppTheme.FullScreenTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -26,48 +26,48 @@
     <activity
         android:name=".ui.activity.Home"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
         android:name=".ui.activity.Browser"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
         android:name=".ui.activity.RankList"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
         android:name=".ui.activity.VideoDetail"
         android:configChanges="orientation|keyboardHidden|screenSize"
         android:screenOrientation="portrait"
-        android:theme="@style/FullScreenTheme">
+        android:theme="@style/AppTheme.FullScreenTheme">
     </activity>
     <activity
         android:name=".ui.activity.AllCategory"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
         android:name=".ui.activity.CampaignList"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
         android:name=".ui.activity.AllPgcs"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
         android:name=".ui.activity.TagCategory"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
         android:name=".ui.activity.UserInfo"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
     </activity>
   </application>
 </manifest>

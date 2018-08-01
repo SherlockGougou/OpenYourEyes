@@ -15,6 +15,7 @@
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp"
         >
 
@@ -23,11 +24,9 @@
           android:layout_width="match_parent"
           android:layout_height="@dimen/default_toolbar_height"
           android:layout_below="@+id/appbar_layout"
-          android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-          app:itemIconTint="@color/black"
           app:layout_scrollFlags="scroll|enterAlways"
           app:navigationIcon="@drawable/ic_action_back_white"
-          app:popupTheme="@style/ToolbarPopupTheme"
+          app:popupTheme="@style/AppTheme.PopupOverlay"
           app:titleTextColor="@color/white"
           >
         <cc.shinichi.openyoureyes.widget.LobsterTextView

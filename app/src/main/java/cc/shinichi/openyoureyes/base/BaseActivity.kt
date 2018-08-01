@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.widget.Toast
+import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.app.App
 import cc.shinichi.openyoureyes.app.AppManager
 import cc.shinichi.openyoureyes.constant.SpTag
+import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.ToastUtil
 import com.google.gson.Gson
 
@@ -31,6 +33,7 @@ abstract class BaseActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super
         .onCreate(savedInstanceState)
+    StatusBarUtil.setStatusBarColor(this, R.color.colorPrimary, R.color.colorPrimary)
     AppManager
         .getInstance()
         .addActivity(this)

@@ -12,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -119,6 +120,15 @@ class Browser : BaseActivity(), Callback {
         progress_loading.visibility = View.GONE
       }
     }
+    webview.webChromeClient = object : WebChromeClient() {
+      override fun onReceivedTitle(
+        view: WebView?,
+        title: String?
+      ) {
+        super.onReceivedTitle(view, title)
+        tv_title.text = title
+      }
+    }
   }
 
   override fun initUtil() {
@@ -143,11 +153,11 @@ class Browser : BaseActivity(), Callback {
   }
 
   override fun onBackPressed() {
-    if (webview.canGoBack()) {
-      webview.goBack()
-      return
-    }
-    finish()
+//    if (webview.canGoBack()) {
+//      webview.goBack()
+//      return
+//    }
+    super.onBackPressed()
   }
 
   override fun onDestroy() {

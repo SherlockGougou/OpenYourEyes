@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.VideoDetail"
     >
+
   <com.facebook.drawee.view.SimpleDraweeView
       android:id="@+id/imageVideoDetailBg"
       android:layout_width="match_parent"
