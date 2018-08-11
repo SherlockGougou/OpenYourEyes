@@ -37,12 +37,12 @@ class BriefCard : BaseHolder {
     val tv_category_des = helper.getView<TextView>(R.id.tv_category_des)
 
     if (data.iconType.equals("round")) {
-      img_category_icon.visibility = View.GONE
-      img_category_icon_circle.visibility = View.VISIBLE
+      img_category_icon.Gone()
+      img_category_icon_circle.Visible()
       ImageLoader.load(data.icon, img_category_icon_circle)
     } else {
-      img_category_icon_circle.visibility = View.GONE
-      img_category_icon.visibility = View.VISIBLE
+      img_category_icon_circle.Gone()
+      img_category_icon.Visible()
       ImageLoader.load(data.icon, img_category_icon)
     }
 

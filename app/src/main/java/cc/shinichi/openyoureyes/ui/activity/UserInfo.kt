@@ -212,10 +212,10 @@ class UserInfo : BaseActivity(), Callback, OnClickListener {
   override fun handleMessage(msg: Message?): Boolean {
     when (msg?.what) {
       Code.Refreshing -> {
-        progress_loading.visibility = View.VISIBLE
+        progress_loading.Visible()
       }
       Code.RefreshFail -> {
-        progress_loading.visibility = View.GONE
+        progress_loading.Gone()
       }
       Code.RefreshFinish -> {
         if ("NORMAL".equals(userType, true)) {

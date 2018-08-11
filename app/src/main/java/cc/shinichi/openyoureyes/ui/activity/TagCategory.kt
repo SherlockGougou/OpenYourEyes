@@ -26,6 +26,8 @@ import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_tag_category.appbarLayout
 import kotlinx.android.synthetic.main.activity_tag_category.collapsing_toolbar_layout
@@ -211,10 +213,10 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
   override fun handleMessage(msg: Message?): Boolean {
     when (msg?.what) {
       Code.Refreshing -> {
-        progress_loading.visibility = View.VISIBLE
+        progress_loading.Visible()
       }
       Code.RefreshFail -> {
-        progress_loading.visibility = View.GONE
+        progress_loading.Gone()
       }
       Code.RefreshFinish -> {
         if (tabBean != null && tabBean?.tabInfo?.tabList != null) {

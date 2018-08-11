@@ -1,12 +1,12 @@
 package cc.shinichi.openyoureyes.ui.adapter
 
 import android.content.Context
-import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
@@ -90,8 +90,7 @@ class CategoryAdapter(
           }
           else -> {
             tv_category_des
-                ?.visibility = View
-                .VISIBLE
+                    ?.Visible()
             if (img_category_icon != null) {
               ImageLoader
                   .load(item.info?.data?.icon, img_category_icon)

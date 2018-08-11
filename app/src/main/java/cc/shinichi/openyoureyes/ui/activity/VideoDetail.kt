@@ -86,8 +86,8 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
 
   private fun initView() {
     detailVideo = findViewById(R.id.detailVideo)
-    detailVideo.titleTextView.visibility = View.VISIBLE
-    detailVideo.backButton.visibility = View.VISIBLE
+    detailVideo.titleTextView.Visible()
+    detailVideo.backButton.Visible()
     detailVideo.backButton.setOnClickListener {
       onBackPressed()
     }
@@ -208,13 +208,13 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
   override fun handleMessage(msg: Message?): Boolean {
     when (msg?.what) {
       Code.RefreshFail -> {
-        progressBar.visibility = View.GONE
+        progressBar.Gone()
       }
       Code.Refreshing -> {
-        progressBar.visibility = View.VISIBLE
+        progressBar.Visible()
       }
       Code.RefreshFinish -> {
-        progressBar.visibility = View.GONE
+        progressBar.Gone()
         homeDataAdapter?.setNewData(allHomeDataEntity)
       }
     }

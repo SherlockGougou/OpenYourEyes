@@ -62,9 +62,9 @@ open class AutoPlayFollowCard : BaseHolder {
 
     val tags: List<Tag?>? = data.content?.data?.tags
     if (tags == null) {
-      flexbox.visibility = View.GONE
+      flexbox.Gone()
     } else {
-      flexbox.visibility = View.VISIBLE
+      flexbox.Visible()
       flexbox.flexDirection = FlexDirection.ROW
       flexbox.removeAllViews()
       val lp = FlexboxLayout.LayoutParams(

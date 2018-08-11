@@ -62,10 +62,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
     holder.rl_hor_root.setPadding(0, UIUtil.dp2px(10), 0, UIUtil.dp2px(10))
     when (type) {
       "banner2" -> {
-        holder.tv_follow_time_length.visibility = View.GONE
-        holder.rl_follow_author_container.visibility = View.GONE
-        holder.img_follow_card_user_icon.visibility = View.GONE
-        holder.img_daily_label.visibility = View.GONE
+        holder.tv_follow_time_length.Gone()
+        holder.rl_follow_author_container.Gone()
+        holder.img_follow_card_user_icon.Gone()
+        holder.img_daily_label.Gone()
         ImageLoader.load(item.data?.image, holder.img_follow_card_img)
 
         holder.rl_hor_root.setOnClickListener {
@@ -73,17 +73,17 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         }
       }
       "video" -> {
-        holder.tv_follow_time_length.visibility = View.VISIBLE
-        holder.rl_follow_author_container.visibility = View.VISIBLE
-        holder.img_follow_card_user_icon.visibility = View.GONE
+        holder.tv_follow_time_length.Visible()
+        holder.rl_follow_author_container.Visible()
+        holder.img_follow_card_user_icon.Gone()
         ImageLoader.load(item.data?.cover?.feed, holder.img_follow_card_img)
         holder.tv_follow_card_title.text = item.data?.title
         holder.tv_follow_card_des.text = "#" + item.data?.category
         holder.tv_follow_time_length.text = UIUtil.getDurationText(item.data?.duration)
         if ("DAILY" == item.data?.library) {
-          holder.img_daily_label.visibility = View.VISIBLE
+          holder.img_daily_label.Visible()
         } else {
-          holder.img_daily_label.visibility = View.GONE
+          holder.img_daily_label.Gone()
         }
 
         holder.rl_hor_root.setOnClickListener {
@@ -94,10 +94,10 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         }
       }
       "banner" -> {
-        holder.tv_follow_time_length.visibility = View.GONE
-        holder.rl_follow_author_container.visibility = View.GONE
-        holder.img_follow_card_user_icon.visibility = View.GONE
-        holder.img_daily_label.visibility = View.GONE
+        holder.tv_follow_time_length.Gone()
+        holder.rl_follow_author_container.Gone()
+        holder.img_follow_card_user_icon.Gone()
+        holder.img_daily_label.Gone()
         ImageLoader.load(item.data?.image, holder.img_follow_card_img)
 
         holder.rl_hor_root.setOnClickListener {
@@ -105,9 +105,9 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         }
       }
       "followCard" -> {
-        holder.tv_follow_time_length.visibility = View.VISIBLE
-        holder.rl_follow_author_container.visibility = View.VISIBLE
-        holder.img_follow_card_user_icon.visibility = View.VISIBLE
+        holder.tv_follow_time_length.Visible()
+        holder.rl_follow_author_container.Visible()
+        holder.img_follow_card_user_icon.Visible()
         ImageLoader.load(item.data?.content?.data?.cover?.feed, holder.img_follow_card_img)
         ImageLoader.load(item.data?.content?.data?.author?.icon, holder.img_follow_card_user_icon)
         holder.tv_follow_card_title.text = item.data?.content?.data?.title
@@ -115,9 +115,9 @@ class HorRvAdapter : RecyclerView.Adapter<Holder> {
         holder.tv_follow_time_length.text =
             UIUtil.getDurationText(item.data?.content?.data?.duration)
         if ("DAILY" == item.data?.content?.data?.library) {
-          holder.img_daily_label.visibility = View.VISIBLE
+          holder.img_daily_label.Visible()
         } else {
-          holder.img_daily_label.visibility = View.GONE
+          holder.img_daily_label.Gone()
         }
 
         holder.rl_hor_root.setOnClickListener {

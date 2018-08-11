@@ -22,6 +22,7 @@ import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import cc.shinichi.openyoureyes.util.log.ALog
 import kotlinx.android.synthetic.main.activity_browser.tv_title
 import kotlinx.android.synthetic.main.activity_home.toolbar_home
@@ -109,7 +110,7 @@ class Browser : BaseActivity(), Callback {
         favicon: Bitmap?
       ) {
         super.onPageStarted(view, url, favicon)
-        progress_loading.visibility = View.VISIBLE
+        progress_loading.Visible()
       }
 
       override fun onPageFinished(
@@ -117,7 +118,7 @@ class Browser : BaseActivity(), Callback {
         url: String?
       ) {
         super.onPageFinished(view, url)
-        progress_loading.visibility = View.GONE
+        progress_loading.Gone()
       }
     }
     webview.webChromeClient = object : WebChromeClient() {

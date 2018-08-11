@@ -8,7 +8,6 @@ import android.os.Message
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.GridLayoutManager
 import android.view.MenuItem
-import android.view.View
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
@@ -20,6 +19,8 @@ import cc.shinichi.openyoureyes.model.bean.AllCategoryBean.Item
 import cc.shinichi.openyoureyes.model.entity.AllCategoryEntity
 import cc.shinichi.openyoureyes.ui.adapter.AllCategoryAdapter
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_all_category.progress_loading
 import kotlinx.android.synthetic.main.activity_all_category.rvAllCategory
@@ -132,11 +133,11 @@ class AllCategory : BaseActivity(), Callback {
   override fun handleMessage(msg: Message?): Boolean {
     when (msg?.what) {
       Code.Refreshing -> {
-        progress_loading.visibility = View.VISIBLE
+        progress_loading.Visible()
       }
       Code.RefreshFinish -> {
         swipe_refresh.isRefreshing = false
-        progress_loading.visibility = View.GONE
+        progress_loading.Gone()
       }
     }
     return true

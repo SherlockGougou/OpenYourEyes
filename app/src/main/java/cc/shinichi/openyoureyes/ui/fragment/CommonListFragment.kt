@@ -25,6 +25,8 @@ import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.ui.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import cc.shinichi.openyoureyes.util.log.ALog
 import cc.shinichi.openyoureyes.widget.MyLoadMoreView
 import com.chad.library.adapter.base.BaseQuickAdapter.RequestLoadMoreListener
@@ -268,9 +270,9 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
     when (v?.id) {
       R.id.ll_retry_container -> {
         ll_retry_container
-            .visibility = View.GONE
+            .Gone()
         progress_loading
-            .visibility = View.VISIBLE
+            .Visible()
         getHomeNewData()
       }
     }

@@ -23,6 +23,7 @@ import cc.shinichi.openyoureyes.model.bean.RankTabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_rank_list.tab_layout
 import kotlinx.android.synthetic.main.activity_rank_list.toolbar
@@ -171,13 +172,13 @@ class RankList : BaseActivity(), Callback, OnClickListener {
   override fun handleMessage(msg: Message?): Boolean {
     when (msg?.what) {
       Code.Refreshing -> {
-        progress_loading.visibility = View.VISIBLE
+        progress_loading.Visible()
       }
       Code.RefreshFail -> {
-        progress_loading.visibility = View.GONE
+        progress_loading.Gone()
       }
       Code.RefreshFinish -> {
-        progress_loading.visibility = View.GONE
+        progress_loading.Gone()
         if (rankTabBean != null && rankTabBean?.tabInfo?.tabList != null) {
           pagerAdapter.setData(rankTabBean?.tabInfo?.tabList)
           val count = pagerAdapter.count

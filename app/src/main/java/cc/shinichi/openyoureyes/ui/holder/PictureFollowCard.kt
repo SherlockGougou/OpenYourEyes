@@ -11,6 +11,8 @@ import cc.shinichi.openyoureyes.model.bean.home.Tag
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import cc.shinichi.openyoureyes.widget.FZLanTingLTextView
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
@@ -47,7 +49,7 @@ class PictureFollowCard : BaseHolder {
     val flexbox = helper.getView<FlexboxLayout>(R.id.flexbox)
     val img_follow_card_img = helper.getView<SimpleDraweeView>(R.id.img_follow_card_img)
 
-    tv_follow_time_length.visibility = View.GONE
+    tv_follow_time_length.Gone()
     ImageLoader.load(data.header?.icon, img_follow_card_user_icon)
     ImageLoader.load(data.content?.data?.cover?.feed, img_follow_card_img)
     tv_follow_card_title.text = data.header?.issuerName
@@ -56,9 +58,9 @@ class PictureFollowCard : BaseHolder {
 
     val tags: List<Tag?>? = data.content?.data?.tags
     if (tags == null) {
-      flexbox.visibility = View.GONE
+      flexbox.Gone()
     } else {
-      flexbox.visibility = View.VISIBLE
+      flexbox.Visible()
       flexbox.flexDirection = FlexDirection.ROW
       flexbox.removeAllViews()
       val lp = FlexboxLayout.LayoutParams(
