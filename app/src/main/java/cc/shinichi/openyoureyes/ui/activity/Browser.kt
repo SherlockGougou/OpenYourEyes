@@ -10,7 +10,6 @@ import android.os.Message
 import android.support.v7.app.ActionBar
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
@@ -22,6 +21,7 @@ import cc.shinichi.openyoureyes.base.BaseActivity
 import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
 import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import cc.shinichi.openyoureyes.util.log.ALog
 import kotlinx.android.synthetic.main.activity_browser.tv_title

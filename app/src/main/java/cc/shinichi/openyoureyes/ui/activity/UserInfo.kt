@@ -26,6 +26,8 @@ import cc.shinichi.openyoureyes.util.StatusBarUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_user_info.appbarLayout
 import kotlinx.android.synthetic.main.activity_user_info.collapsingToolbarLayout

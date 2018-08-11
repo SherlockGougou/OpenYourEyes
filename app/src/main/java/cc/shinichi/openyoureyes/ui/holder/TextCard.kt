@@ -2,7 +2,6 @@ package cc.shinichi.openyoureyes.ui.holder
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.view.View
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.app.App
@@ -10,6 +9,8 @@ import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.chad.library.adapter.base.BaseViewHolder
 
 class TextCard : BaseHolder {

@@ -13,6 +13,8 @@ import cc.shinichi.openyoureyes.util.IntentUtil
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import cc.shinichi.openyoureyes.widget.FZLanTingLTextView
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView

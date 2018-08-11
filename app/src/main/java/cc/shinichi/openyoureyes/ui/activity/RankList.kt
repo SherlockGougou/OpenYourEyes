@@ -23,6 +23,7 @@ import cc.shinichi.openyoureyes.model.bean.RankTabBean
 import cc.shinichi.openyoureyes.ui.fragment.CommonListFragment
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
 import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_rank_list.tab_layout

@@ -13,8 +13,8 @@ import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.api.Api
 import cc.shinichi.openyoureyes.api.ApiListener
 import cc.shinichi.openyoureyes.app.App
-import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.ApiConstant
+import cc.shinichi.openyoureyes.constant.Code
 import cc.shinichi.openyoureyes.constant.SpTag
 import cc.shinichi.openyoureyes.model.bean.home.Data
 import cc.shinichi.openyoureyes.model.bean.home.HomeDataBean
@@ -24,6 +24,8 @@ import cc.shinichi.openyoureyes.ui.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.handler.HandlerUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
+import cc.shinichi.openyoureyes.util.kt_extend.Gone
+import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import cc.shinichi.openyoureyes.widget.MyLoadMoreView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.gson.Gson
