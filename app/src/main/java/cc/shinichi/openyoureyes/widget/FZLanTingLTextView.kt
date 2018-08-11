@@ -1,7 +1,6 @@
 package cc.shinichi.openyoureyes.widget
 
 import android.content.Context
-import android.graphics.Typeface
 import android.os.Build.VERSION_CODES
 import android.support.annotation.RequiresApi
 import android.util.AttributeSet
@@ -40,8 +39,10 @@ class FZLanTingLTextView : TextView {
   }
 
   private fun init() {
-    val fonts =
-      Typeface.createFromAsset(App.application.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
-    typeface = fonts
+//    val fonts =
+//      Typeface.createFromAsset(App.application.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
+//    typeface = fonts
+
+    typeface = App.application.getFZLTLightFont()
   }
 }

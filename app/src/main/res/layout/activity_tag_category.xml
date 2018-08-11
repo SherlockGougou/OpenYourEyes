@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     >
 
@@ -11,12 +12,14 @@
       android:id="@+id/appbarLayout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:fitsSystemWindows="true"
       android:theme="@style/AppTheme.AppBarOverlay"
       >
     <android.support.design.widget.CollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:fitsSystemWindows="true"
         app:contentScrim="@color/colorPrimary"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         >
@@ -24,6 +27,7 @@
       <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:fitsSystemWindows="true"
           app:layout_collapseMode="parallax"
           >
 
@@ -88,24 +92,31 @@
             />
       </android.support.v7.widget.Toolbar>
     </android.support.design.widget.CollapsingToolbarLayout>
+  </android.support.design.widget.AppBarLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      >
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_toolbar_height"
         android:background="@color/white"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/black"
         />
-  </android.support.design.widget.AppBarLayout>
 
-  <android.support.v4.view.ViewPager
-      android:id="@+id/viewPager"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </LinearLayout>
+
   <include
       layout="@layout/item_empty_view"/>
 

@@ -1,7 +1,6 @@
 package cc.shinichi.openyoureyes.widget
 
 import android.content.Context
-import android.graphics.Typeface
 import android.os.Build.VERSION_CODES
 import android.support.annotation.RequiresApi
 import android.util.AttributeSet
@@ -40,7 +39,9 @@ class LobsterTextView : TextView {
   }
 
   private fun init() {
-    val fonts = Typeface.createFromAsset(App.application.assets, "fonts/Lobster-1.4.otf")
-    typeface = fonts
+//    val fonts = Typeface.createFromAsset(App.application.assets, "fonts/Lobster-1.4.otf")
+//    typeface = fonts
+
+    typeface = App.application.getLobsterFont()
   }
 }

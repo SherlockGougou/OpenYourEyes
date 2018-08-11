@@ -1,7 +1,6 @@
 package cc.shinichi.openyoureyes.widget
 
 import android.content.Context
-import android.graphics.Typeface
 import android.os.Build.VERSION_CODES
 import android.support.annotation.RequiresApi
 import android.util.AttributeSet
@@ -40,7 +39,9 @@ class CondensedBoldTextView : TextView {
   }
 
   private fun init() {
-    val fonts = Typeface.createFromAsset(App.application.assets, "fonts/DIN-Condensed-Bold.ttf")
-    typeface = fonts
+//    val fonts = Typeface.createFromAsset(App.application.assets, "fonts/DIN-Condensed-Bold.ttf")
+//    typeface = fonts
+
+    typeface = App.application.getCondensedBoldFont()
   }
 }

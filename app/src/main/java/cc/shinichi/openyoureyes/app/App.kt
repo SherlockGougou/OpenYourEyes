@@ -1,6 +1,7 @@
 package cc.shinichi.openyoureyes.app
 
 import android.app.Application
+import android.graphics.Typeface
 import cc.shinichi.openyoureyes.constant.Config
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.lzy.okgo.OkGo
@@ -18,6 +19,12 @@ import java.util.logging.Level
  * description: application
  */
 class App : Application() {
+
+  private lateinit var cB: Typeface
+  private lateinit var cM: Typeface
+  private lateinit var fD: Typeface
+  private lateinit var fL: Typeface
+  private lateinit var lB: Typeface
 
   companion object {
     lateinit var application: App
@@ -53,5 +60,31 @@ class App : Application() {
         .setRetryCount(2)
         .setOkHttpClient(builder.build())
         .init(application)
+
+    cB = Typeface.createFromAsset(App.application.assets, "fonts/DIN-Condensed-Bold.ttf")
+    cM = Typeface.createFromAsset(App.application.assets, "fonts/Futura-CondensedMedium.ttf")
+    fD = Typeface.createFromAsset(App.application.assets, "fonts/FZLanTingHeiS-DB1-GB-Regular.TTF")
+    fL = Typeface.createFromAsset(App.application.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
+    lB = Typeface.createFromAsset(App.application.assets, "fonts/Lobster-1.4.otf")
+  }
+
+  fun getCondensedBoldFont(): Typeface {
+    return cB
+  }
+
+  fun getCondensedMediumFont(): Typeface {
+    return cM
+  }
+
+  fun getFZLTDBFont(): Typeface {
+    return fD
+  }
+
+  fun getFZLTLightFont(): Typeface {
+    return fL
+  }
+
+  fun getLobsterFont(): Typeface {
+    return lB
   }
 }
