@@ -1,10 +1,12 @@
 package cc.shinichi.openyoureyes.ui.adapter
 
 import android.content.Context
+import android.support.v7.widget.RecyclerView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyes.model.entity.CategoryEntity
+import cc.shinichi.openyoureyes.util.UIUtil
 import cc.shinichi.openyoureyes.util.image.ImageLoader
 import cc.shinichi.openyoureyes.util.kt_extend.Visible
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
@@ -35,10 +37,15 @@ class CategoryAdapter(
   ) {
     when (item?.itemType) {
       CategoryEntity.TYPE_HEADER -> {
+        val rl_category_header_container = helper
+                ?.getView<RelativeLayout>(R.id.rl_category_header_container)
+        val headerParams: RecyclerView.LayoutParams = rl_category_header_container?.layoutParams as RecyclerView.LayoutParams
+        headerParams.topMargin = -UIUtil.getPhoneStatusHeight()
+        rl_category_header_container.layoutParams
         val img_author = helper
-            ?.getView<SimpleDraweeView>(R.id.img_author)
+            .getView<SimpleDraweeView>(R.id.img_author)
         val img_author_back = helper
-            ?.getView<SimpleDraweeView>(R.id.img_author_back)
+            .getView<SimpleDraweeView>(R.id.img_author_back)
         if (img_author != null) {
           ImageLoader
               .loadResource(R.drawable.ic_author, img_author)

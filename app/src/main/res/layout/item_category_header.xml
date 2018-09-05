@@ -1,48 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_category_header_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="-30dp"
     >
 
-  <RelativeLayout
-      android:id="@+id/rl_header_container"
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/img_author_back"
       android:layout_width="match_parent"
+      android:layout_height="200dp"
+      app:actualImageScaleType="centerCrop"
+      app:placeholderImage="@color/white"
+      app:placeholderImageScaleType="centerCrop"
+      />
+
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/img_author"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="50dp"
+      app:placeholderImage="@drawable/ic_author"
+      app:placeholderImageScaleType="centerCrop"
+      app:roundAsCircle="true"
+      />
+
+  <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
+      android:id="@+id/tv_author_name"
+      android:layout_width="100dp"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
-      >
-
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/img_author_back"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:actualImageScaleType="centerCrop"
-        app:placeholderImage="@color/white"
-        app:placeholderImageScaleType="centerCrop"
-        />
-
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/img_author"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        app:placeholderImage="@drawable/ic_author"
-        app:placeholderImageScaleType="centerCrop"
-        app:roundAsCircle="true"
-        />
-
-    <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
-        android:id="@+id/tv_author_name"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_author"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/author_name"
-        android:textColor="@color/white"
-        />
-  </RelativeLayout>
+      android:layout_below="@+id/img_author"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="10dp"
+      android:gravity="center"
+      android:text="@string/author_name"
+      android:textColor="@color/white"
+      />
 </RelativeLayout>

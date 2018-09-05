@@ -46,6 +46,11 @@ object UIUtil {
         .y
   }
 
+  fun getPhoneStatusHeight(): Int {
+    return getAppContext().resources.getDimensionPixelSize(
+            getAppContext().resources.getIdentifier("navigation_bar_height", "dimen", "android"))
+  }
+
   fun copy(
     data: String,
     hint: String = "复制成功"

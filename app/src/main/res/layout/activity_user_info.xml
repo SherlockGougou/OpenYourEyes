@@ -219,6 +219,14 @@
             />
       </android.support.v7.widget.Toolbar>
     </android.support.design.widget.CollapsingToolbarLayout>
+  </android.support.design.widget.AppBarLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      >
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
@@ -227,17 +235,7 @@
         android:background="@color/white"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/black"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
-  </android.support.design.widget.AppBarLayout>
-
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      android:fitsSystemWindows="true"
-      >
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
