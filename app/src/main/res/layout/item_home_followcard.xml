@@ -28,7 +28,7 @@
       android:src="@drawable/daily_label"
       />
 
-  <cc.shinichi.openyoureyes.widget.CondensedBoldTextView
+  <cc.shinichi.openyoureyesmvp.mvp.v.widget.CondensedBoldTextView
       android:id="@+id/tv_follow_time_length"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
       android:orientation="vertical"
       >
 
-    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
         android:id="@+id/tv_follow_card_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         />
-    <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
         android:id="@+id/tv_follow_card_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

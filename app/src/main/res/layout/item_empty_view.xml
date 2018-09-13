@@ -20,7 +20,7 @@
         android:src="@drawable/no_net"
         />
 
-    <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
         android:id="@+id/tv_click_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

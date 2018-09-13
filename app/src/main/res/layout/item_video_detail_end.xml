@@ -5,7 +5,7 @@
     android:gravity="center"
     >
 
-  <cc.shinichi.openyoureyes.widget.LobsterTextView
+  <cc.shinichi.openyoureyesmvp.mvp.v.widget.LobsterTextView
       android:id="@+id/tvEnd"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

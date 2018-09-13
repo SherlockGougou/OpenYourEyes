@@ -19,7 +19,7 @@
       app:roundingBorderColor="@color/gray_cc"
       app:roundingBorderWidth="0.1dp"
       />
-  <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
       android:id="@+id/tv_category_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
       android:textColor="@color/black"
       android:textStyle="bold"
       />
-  <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
       android:id="@+id/tv_category_des"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

@@ -10,9 +10,9 @@ import com.lzy.okgo.model.Response
  * description: 网络请求统一回调
  */
 interface IApiListener {
-  fun start()
-  fun success(string: String?)
-  fun error(response: Response<String>?)
-  fun noNet()
-  fun finish()
+    fun start()
+    fun success(string: String?)
+    fun error(response: Response<String>?)
+    fun noNet()
+    fun finish()
 }

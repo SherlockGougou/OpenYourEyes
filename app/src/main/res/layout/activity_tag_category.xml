@@ -48,7 +48,7 @@
             android:orientation="vertical"
             >
 
-          <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+          <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
               android:id="@+id/tvHeaderTitle"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
               android:textColor="@color/white"
               android:textSize="24sp"
               />
-          <cc.shinichi.openyoureyes.widget.FZLanTingLTextView
+          <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
               android:id="@+id/tvHeaderDes"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
           app:popupTheme="@style/AppTheme.PopupOverlay"
           app:titleTextColor="@color/white"
           >
-        <cc.shinichi.openyoureyes.widget.FZLanTingDB1TextView
+        <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
