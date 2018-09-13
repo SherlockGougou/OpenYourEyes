@@ -26,7 +26,7 @@
         app:roundAsCircle="true"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tv_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         android:textStyle="bold"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_user_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         android:textSize="13sp"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tvHotReply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
 
   </RelativeLayout>
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
       android:id="@+id/tv_dynamic_info_content"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         app:roundedCornerRadius="3dp"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.CondensedBoldTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.CondensedBoldTextView
         android:id="@+id/tv_videosmallcard_time_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
         android:textSize="12sp"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tv_videosmallcard_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
         android:textStyle="bold"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_videosmallcard_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
         app:roundedCornerRadius="3dp"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tv_follow_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
         android:textStyle="bold"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_follow_user_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -224,7 +224,7 @@
       android:layout_marginTop="@dimen/default_margin"
       android:orientation="horizontal"
       >
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tv_reply_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -233,7 +233,7 @@
         android:textStyle="bold"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_reply_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -252,7 +252,7 @@
         android:src="@drawable/ic_action_like"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tv_like_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

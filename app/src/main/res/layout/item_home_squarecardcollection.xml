@@ -12,7 +12,7 @@
       android:orientation="vertical"
       >
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.CondensedBoldTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.CondensedBoldTextView
         android:id="@+id/tv_square_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:textStyle="bold"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tv_TextCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

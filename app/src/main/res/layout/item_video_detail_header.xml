@@ -8,7 +8,7 @@
     android:orientation="vertical"
     >
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
       android:id="@+id/tv_video_detail_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
       android:textStyle="bold"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
       android:id="@+id/tv_video_detail_des"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
       android:textSize="12sp"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
       android:id="@+id/tv_video_detail_content"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
       android:weightSum="4"
       >
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_video_action_like"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         />
 
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_video_action_share"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
         android:textSize="12sp"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_video_action_reply"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
         android:textSize="12sp"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_video_action_offline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
         app:roundAsCircle="true"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
         android:id="@+id/tv_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
         android:textStyle="bold"
         />
 
-    <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+    <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
         android:id="@+id/tv_user_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

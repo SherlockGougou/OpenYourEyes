@@ -23,7 +23,7 @@
       android:src="@drawable/eye_loading_icon"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.LobsterTextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.LobsterTextView
       android:id="@+id/tv_welcome_english"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
       android:textColor="@color/white"
       android:textSize="16sp"
       />
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
       android:id="@+id/tv_welcome_chinese"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

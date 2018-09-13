@@ -21,7 +21,7 @@
       app:roundingBorderWidth="0.01dp"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
       android:id="@+id/tvTag"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

@@ -3,15 +3,15 @@ package cc.shinichi.openyoureyesmvp.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.AllCategory
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.AllPgcs
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.Browser
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.CampaignList
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.Home
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.RankList
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.TagCategory
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.UserInfo
-import cc.shinichi.openyoureyesmvp.mvp.v.ui.activity.VideoDetail
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.AllCategory
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.AllPgcs
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.Browser
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.CampaignList
+import cc.shinichi.openyoureyesmvp.mvp.view.home.HomeView
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.RankList
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.TagCategory
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.UserInfo
+import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.VideoDetail
 
 /**
  * @author 工藤
@@ -24,7 +24,7 @@ object IntentUtil {
     fun intent2Home(context: Context) {
         val intent = Intent()
         intent
-                .setClass(context, Home::class.java)
+                .setClass(context, HomeView::class.java)
         context
                 .startActivity(intent)
     }

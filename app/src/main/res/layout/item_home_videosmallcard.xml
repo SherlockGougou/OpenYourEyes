@@ -19,7 +19,7 @@
       app:roundedCornerRadius="3dp"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.CondensedBoldTextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.CondensedBoldTextView
       android:id="@+id/tv_videosmallcard_time_length"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
       android:textSize="14sp"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingDB1TextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
       android:id="@+id/tv_videosmallcard_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
       android:textStyle="bold"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.v.widget.FZLanTingLTextView
+  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
       android:id="@+id/tv_videosmallcard_des"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

@@ -29,7 +29,7 @@
           app:popupTheme="@style/AppTheme.PopupOverlay"
           app:titleTextColor="@color/white"
           >
-        <cc.shinichi.openyoureyesmvp.mvp.v.widget.LobsterTextView
+        <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.LobsterTextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
