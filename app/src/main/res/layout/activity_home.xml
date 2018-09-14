@@ -26,7 +26,7 @@
           app:title=""
           app:titleTextColor="@color/white"
           >
-        <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
+        <cc.shinichi.openyoureyesmvp.widget.FZLanTingDB1TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

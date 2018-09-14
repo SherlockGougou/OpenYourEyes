@@ -3,15 +3,15 @@ package cc.shinichi.openyoureyesmvp.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.AllCategory
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.AllPgcs
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.Browser
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.CampaignList
-import cc.shinichi.openyoureyesmvp.mvp.view.home.HomeView
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.RankList
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.TagCategory
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.UserInfo
-import cc.shinichi.openyoureyesmvp.mvp.view.common.activity.VideoDetail
+import cc.shinichi.openyoureyesmvp.common.activity.AllCategory
+import cc.shinichi.openyoureyesmvp.common.activity.AllPgcs
+import cc.shinichi.openyoureyesmvp.common.activity.Browser
+import cc.shinichi.openyoureyesmvp.common.activity.CampaignList
+import cc.shinichi.openyoureyesmvp.common.activity.RankList
+import cc.shinichi.openyoureyesmvp.common.activity.TagCategory
+import cc.shinichi.openyoureyesmvp.common.activity.UserInfo
+import cc.shinichi.openyoureyesmvp.common.activity.VideoDetail
+import cc.shinichi.openyoureyesmvp.module.home.HomeView
 
 /**
  * @author 工藤

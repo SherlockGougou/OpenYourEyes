@@ -18,7 +18,7 @@
       app:roundAsCircle="true"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
+  <cc.shinichi.openyoureyesmvp.widget.FZLanTingDB1TextView
       android:id="@+id/tv_user_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
       android:textStyle="bold"
       />
 
-  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingLTextView
+  <cc.shinichi.openyoureyesmvp.widget.FZLanTingLTextView
       android:id="@+id/tv_user_des"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

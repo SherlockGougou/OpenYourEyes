@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     >
-  <cc.shinichi.openyoureyesmvp.mvp.view.common.widget.FZLanTingDB1TextView
+  <cc.shinichi.openyoureyesmvp.widget.FZLanTingDB1TextView
       android:id="@+id/tv_TextCard_video_header"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

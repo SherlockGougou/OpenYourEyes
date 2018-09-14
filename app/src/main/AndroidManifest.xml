@@ -14,7 +14,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.Welcome"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.Welcome"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.FullScreenTheme">
       <intent-filter>
@@ -24,48 +24,48 @@
       </intent-filter>
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.home.HomeView"
+        android:name="cc.shinichi.openyoureyesmvp.module.home.HomeView"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.Browser"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.Browser"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.RankList"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.RankList"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.VideoDetail"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.VideoDetail"
         android:configChanges="orientation|keyboardHidden|screenSize"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.FullScreenTheme">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.AllCategory"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.AllCategory"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.CampaignList"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.CampaignList"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.AllPgcs"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.AllPgcs"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.TagCategory"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.TagCategory"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.mvp.view.common.activity.UserInfo"
+        android:name="cc.shinichi.openyoureyesmvp.common.activity.UserInfo"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
