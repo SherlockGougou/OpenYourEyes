@@ -23,9 +23,4 @@ interface IBaseView<T> {
      * 显示网络错误
      */
     fun onShowNetError()
-
-    /**
-     * 设置 presenter
-     */
-    fun setPresenter(presenter: T?)
 }

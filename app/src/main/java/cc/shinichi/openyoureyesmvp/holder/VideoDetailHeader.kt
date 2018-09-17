@@ -5,8 +5,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.adapter.VideoDetailHoriTagRvAdapter
+import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.util.IntentUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.log.ALog

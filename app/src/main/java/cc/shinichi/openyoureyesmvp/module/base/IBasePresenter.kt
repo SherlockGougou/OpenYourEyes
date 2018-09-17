@@ -9,13 +9,5 @@ package cc.shinichi.openyoureyesmvp.module.base
  */
 interface IBasePresenter {
 
-    /**
-     * 刷新数据
-     */
-    fun doRefresh()
-
-    /**
-     * 显示网络错误
-     */
-    fun doShowNetError()
+    fun getData()
 }

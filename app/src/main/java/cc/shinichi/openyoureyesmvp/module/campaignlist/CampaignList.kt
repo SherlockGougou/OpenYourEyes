@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.campaignlist
 
 import android.content.Context
 import android.content.Intent
@@ -9,26 +9,24 @@ import android.support.v7.app.ActionBar
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.api.Api
-import cc.shinichi.openyoureyesmvp.api.ApiListener
-import cc.shinichi.openyoureyesmvp.constant.ApiConstant
+import cc.shinichi.openyoureyesmvp.adapter.CampaignListAdapter
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.CampaignListBean
 import cc.shinichi.openyoureyesmvp.model.entity.CampaignListEntity
-import cc.shinichi.openyoureyesmvp.adapter.CampaignListAdapter
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
-import cc.shinichi.openyoureyesmvp.widget.MyLoadMoreView
+import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
+import cc.shinichi.openyoureyesmvp.widget.MyLoadMoreView
 import com.chad.library.adapter.base.BaseQuickAdapter.RequestLoadMoreListener
-import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_campaign_list.rvCampaignList
 import kotlinx.android.synthetic.main.activity_campaign_list.swipeRefresh
 import kotlinx.android.synthetic.main.activity_campaign_list.toolbar
 
-class CampaignList : BaseActivity(), Callback, RequestLoadMoreListener {
+class CampaignList : BaseActivity(), Callback, RequestLoadMoreListener, ICampaignList.View {
 
     private lateinit var context: Context
+    private lateinit var iCampaignListPresenter: ICampaignList.Presenter
     private var handler: HandlerUtil.HandlerHolder? = null
 
     // view
@@ -82,36 +80,41 @@ class CampaignList : BaseActivity(), Callback, RequestLoadMoreListener {
     override fun initUtil() {
         context = this
         handler = HandlerUtil.HandlerHolder(this)
+        iCampaignListPresenter = CampaignListPresenter(this, this)
     }
 
     fun initData() {
-        Api.getInstance()
-                .getAsync(context, ApiConstant.campaignListUrl, object : ApiListener() {
-                    override fun success(string: String?) {
-                        super.success(string)
-                        getEntityList(string, true)
-                    }
-
-                    override fun error(response: Response<String>?) {
-                        super.error(response)
-                        handler?.sendEmptyMessage(Code.Fail)
-                    }
-
-                    override fun start() {
-                        super.start()
-                        handler?.sendEmptyMessage(Code.Refreshing)
-                    }
-
-                    override fun finish() {
-                        super.finish()
-                        handler?.sendEmptyMessage(Code.RefreshFinish)
-                    }
-                })
+        iCampaignListPresenter.getData()
     }
 
-    private fun getEntityList(
+    override fun loadFail(msg: String) {
+        ToastUtil._long(msg)
+    }
+
+    override fun loadMoreFail(msg: String) {
+        handler?.sendEmptyMessage(Code.LoadMoreFail)
+        if (isNull(msg)) {
+            return
+        }
+        ToastUtil._long(msg)
+    }
+
+    override fun onShowLoading() {
+        handler?.sendEmptyMessage(Code.Refreshing)
+    }
+
+    override fun onHideLoading() {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
+
+    override fun onShowNetError() {
+        ToastUtil._long("网络异常，请检查网络")
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
+
+    override fun getEntityList(
             string: String?,
-            isRefresh: Boolean = false
+            isRefresh: Boolean
     ) {
         val bean = getGson().fromJson(string, CampaignListBean::class.javaObjectType)
         if (bean?.itemList != null) {
@@ -148,7 +151,7 @@ class CampaignList : BaseActivity(), Callback, RequestLoadMoreListener {
 
             }
             Code.Fail -> {
-                toast("加载失败，请重试")
+                ToastUtil._short("加载失败，请重试")
             }
             Code.Refreshing -> {
                 swipeRefresh.isRefreshing = true
@@ -178,20 +181,6 @@ class CampaignList : BaseActivity(), Callback, RequestLoadMoreListener {
             return
         }
         rvCampaignList.stopScroll()
-        Api.getInstance()
-                .getAsync(context, nextPageUrl, object : ApiListener() {
-
-                    override fun noNet() {
-                        handler?.sendEmptyMessage(Code.LoadMoreFail)
-                    }
-
-                    override fun success(string: String?) {
-                        getEntityList(string, false)
-                    }
-
-                    override fun error(response: Response<String>?) {
-                        handler?.sendEmptyMessage(Code.LoadMoreFail)
-                    }
-                })
+        iCampaignListPresenter.getNextPageData(nextPageUrl)
     }
 }

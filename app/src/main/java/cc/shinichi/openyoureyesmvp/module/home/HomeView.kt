@@ -14,15 +14,15 @@ import android.view.MenuItem
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.adapter.CategoryAdapter
 import cc.shinichi.openyoureyesmvp.app.AppManager
-import cc.shinichi.openyoureyesmvp.common.fragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.CategoryListBean
 import cc.shinichi.openyoureyesmvp.model.entity.CategoryEntity
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
-import cc.shinichi.openyoureyesmvp.module.home.IHome.Presenter
+import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.IntentUtil
 import cc.shinichi.openyoureyesmvp.util.StatusBarUtil
+import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import com.chad.library.adapter.base.BaseQuickAdapter.OnItemClickListener
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
@@ -151,32 +151,22 @@ class HomeView : BaseActivity(), Handler.Callback, IHome.View {
     }
 
     fun initData() {
-        homePresenter = HomePresenter(this)
-        homePresenter.getCategory()
+        homePresenter = HomePresenter(this, this)
+        homePresenter.getData()
         homePresenter.getConfig()
     }
 
     override fun onShowLoading() {
+        handler?.sendEmptyMessage(Code.Refreshing)
     }
 
     override fun onHideLoading() {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
     }
 
     override fun onShowNetError() {
-    }
-
-    override fun setPresenter(presenter: Presenter?) {
-        if (null == presenter) {
-            this.homePresenter = HomePresenter(this)
-        }
-    }
-
-    override fun showLoading() {
-
-    }
-
-    override fun dismissLoading() {
-
+        ToastUtil._long("网络异常，请检查网络")
+        handler?.sendEmptyMessage(Code.RefreshFinish)
     }
 
     override fun setData(categoryListBean: CategoryListBean) {
@@ -184,7 +174,7 @@ class HomeView : BaseActivity(), Handler.Callback, IHome.View {
         handler?.sendEmptyMessage(Code.Success)
     }
 
-    override fun loadFail() {
+    override fun loadFail(msg: String) {
         handler?.sendEmptyMessage(Code.Fail)
     }
 
@@ -219,7 +209,7 @@ class HomeView : BaseActivity(), Handler.Callback, IHome.View {
                     .closeDrawer(GravityCompat.START)
         } else {
             if (System.currentTimeMillis() - clickTime > 1000) {
-                toast("再按一次退出")
+                ToastUtil._short("再按一次退出")
                 clickTime = System.currentTimeMillis()
             } else {
                 AppManager
@@ -253,7 +243,7 @@ class HomeView : BaseActivity(), Handler.Callback, IHome.View {
                 setCategoryList()
             }
             Code.Fail -> {
-                toast("加载失败，请重试")
+                ToastUtil._short("加载失败，请重试")
             }
         }
         return true

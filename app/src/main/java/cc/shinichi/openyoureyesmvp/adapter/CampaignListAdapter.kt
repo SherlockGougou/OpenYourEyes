@@ -2,9 +2,9 @@ package cc.shinichi.openyoureyesmvp.adapter
 
 import android.content.Context
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyesmvp.holder.CampaignBanner
 import cc.shinichi.openyoureyesmvp.model.bean.CampaignListBean.Item
 import cc.shinichi.openyoureyesmvp.model.entity.CampaignListEntity
-import cc.shinichi.openyoureyesmvp.holder.CampaignBanner
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 

@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.other
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -151,14 +151,6 @@ class Browser : BaseActivity(), Callback {
         }
         webview.loadUrl(url)
         tv_title.text = title
-    }
-
-    override fun onBackPressed() {
-//    if (webview.canGoBack()) {
-//      webview.goBack()
-//      return
-//    }
-        super.onBackPressed()
     }
 
     override fun onDestroy() {

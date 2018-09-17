@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.video
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.os.Message
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyesmvp.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyesmvp.api.Api
 import cc.shinichi.openyoureyesmvp.api.ApiListener
 import cc.shinichi.openyoureyesmvp.app.App
@@ -20,13 +21,12 @@ import cc.shinichi.openyoureyesmvp.model.bean.home.Data
 import cc.shinichi.openyoureyesmvp.model.bean.home.HomeDataBean
 import cc.shinichi.openyoureyesmvp.model.bean.home.Item
 import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
-import cc.shinichi.openyoureyesmvp.adapter.HomeDataAdapter
-import cc.shinichi.openyoureyesmvp.widget.MyLoadMoreView
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
+import cc.shinichi.openyoureyesmvp.widget.MyLoadMoreView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.gson.Gson
 import com.lzy.okgo.model.Response

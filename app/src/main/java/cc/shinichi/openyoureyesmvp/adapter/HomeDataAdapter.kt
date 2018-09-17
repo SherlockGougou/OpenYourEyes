@@ -3,8 +3,6 @@ package cc.shinichi.openyoureyesmvp.adapter
 import android.content.Context
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.bean.home.Item
-import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.holder.AutoPlayFollowCard
 import cc.shinichi.openyoureyesmvp.holder.Banner
 import cc.shinichi.openyoureyesmvp.holder.BriefCard
@@ -18,6 +16,8 @@ import cc.shinichi.openyoureyesmvp.holder.VideoCollectionOfHorizontalScrollCard
 import cc.shinichi.openyoureyesmvp.holder.VideoCollectionWithBrief
 import cc.shinichi.openyoureyesmvp.holder.VideoDetailHeader
 import cc.shinichi.openyoureyesmvp.holder.VideoSmallCard
+import cc.shinichi.openyoureyesmvp.model.bean.home.Item
+import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 

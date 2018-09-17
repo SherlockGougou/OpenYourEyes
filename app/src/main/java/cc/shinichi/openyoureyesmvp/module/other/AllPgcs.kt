@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.other
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.view.View.OnClickListener
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
-import cc.shinichi.openyoureyesmvp.common.fragment.CommonListFragment
+import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import kotlinx.android.synthetic.main.activity_all_pgcs.toolbar
 import kotlinx.android.synthetic.main.activity_all_pgcs.tv_title

@@ -3,15 +3,15 @@ package cc.shinichi.openyoureyesmvp.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import cc.shinichi.openyoureyesmvp.common.activity.AllCategory
-import cc.shinichi.openyoureyesmvp.common.activity.AllPgcs
-import cc.shinichi.openyoureyesmvp.common.activity.Browser
-import cc.shinichi.openyoureyesmvp.common.activity.CampaignList
+import cc.shinichi.openyoureyesmvp.module.campaignlist.CampaignList
 import cc.shinichi.openyoureyesmvp.common.activity.RankList
 import cc.shinichi.openyoureyesmvp.common.activity.TagCategory
 import cc.shinichi.openyoureyesmvp.common.activity.UserInfo
-import cc.shinichi.openyoureyesmvp.common.activity.VideoDetail
+import cc.shinichi.openyoureyesmvp.module.category.AllCategoryView
 import cc.shinichi.openyoureyesmvp.module.home.HomeView
+import cc.shinichi.openyoureyesmvp.module.other.AllPgcs
+import cc.shinichi.openyoureyesmvp.module.other.Browser
+import cc.shinichi.openyoureyesmvp.module.video.VideoDetail
 
 /**
  * @author 工藤
@@ -57,7 +57,7 @@ object IntentUtil {
     fun intent2AllCategoryList(
             context: Context
     ) {
-        AllCategory.activityStart(context)
+        AllCategoryView.activityStart(context)
     }
 
     fun intent2CampaignList(

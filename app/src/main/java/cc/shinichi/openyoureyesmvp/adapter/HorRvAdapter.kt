@@ -9,8 +9,8 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.bean.home.Item
 import cc.shinichi.openyoureyesmvp.adapter.HorRvAdapter.Holder
+import cc.shinichi.openyoureyesmvp.model.bean.home.Item
 import cc.shinichi.openyoureyesmvp.util.IntentUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil

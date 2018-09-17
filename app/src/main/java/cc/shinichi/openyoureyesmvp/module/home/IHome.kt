@@ -13,25 +13,15 @@ import cc.shinichi.openyoureyesmvp.module.base.IBaseView
  */
 interface IHome {
 
+    interface Presenter : IBasePresenter {
+
+        fun getConfig()
+    }
+
     interface View : IBaseView<Presenter> {
-
-        fun showLoading()
-
-        fun dismissLoading()
 
         fun setData(categoryListBean: CategoryListBean)
 
-        fun loadFail()
-    }
-
-    interface Presenter : IBasePresenter {
-
-        fun getCategory()
-
-        fun getConfig()
-
-        fun getCategoryDataSuccess(categoryListBean: CategoryListBean)
-
-        fun getCategoryDataFail()
+        fun loadFail(msg: String)
     }
 }

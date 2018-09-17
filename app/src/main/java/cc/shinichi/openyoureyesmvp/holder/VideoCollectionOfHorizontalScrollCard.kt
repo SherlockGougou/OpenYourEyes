@@ -7,13 +7,13 @@ import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyesmvp.adapter.HorRvAdapter
 import cc.shinichi.openyoureyesmvp.app.App
 import cc.shinichi.openyoureyesmvp.model.bean.home.Item
 import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
-import cc.shinichi.openyoureyesmvp.adapter.HorRvAdapter
-import cc.shinichi.openyoureyesmvp.widget.decoration.HorRvDecoration
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
+import cc.shinichi.openyoureyesmvp.widget.decoration.HorRvDecoration
 import com.chad.library.adapter.base.BaseViewHolder
 
 class VideoCollectionOfHorizontalScrollCard : BaseHolder {

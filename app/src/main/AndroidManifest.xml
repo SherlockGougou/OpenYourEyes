@@ -14,7 +14,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.Welcome"
+        android:name="cc.shinichi.openyoureyesmvp.app.Welcome"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.FullScreenTheme">
       <intent-filter>
@@ -29,7 +29,7 @@
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.Browser"
+        android:name="cc.shinichi.openyoureyesmvp.module.other.Browser"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
@@ -39,23 +39,23 @@
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.VideoDetail"
+        android:name="cc.shinichi.openyoureyesmvp.module.video.VideoDetail"
         android:configChanges="orientation|keyboardHidden|screenSize"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.FullScreenTheme">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.AllCategory"
+        android:name="cc.shinichi.openyoureyesmvp.module.category.AllCategoryView"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.CampaignList"
+        android:name="cc.shinichi.openyoureyesmvp.module.campaignlist.CampaignList"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.AllPgcs"
+        android:name="cc.shinichi.openyoureyesmvp.module.other.AllPgcs"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>

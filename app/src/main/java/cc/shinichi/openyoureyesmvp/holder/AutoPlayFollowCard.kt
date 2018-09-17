@@ -9,13 +9,13 @@ import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.model.bean.home.Tag
 import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
-import cc.shinichi.openyoureyesmvp.widget.FZLanTingLTextView
 import cc.shinichi.openyoureyesmvp.util.IntentUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
+import cc.shinichi.openyoureyesmvp.widget.FZLanTingLTextView
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.flexbox.FlexDirection

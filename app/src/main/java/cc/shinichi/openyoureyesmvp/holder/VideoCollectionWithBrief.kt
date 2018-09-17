@@ -7,12 +7,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyesmvp.adapter.HorRvAdapter
 import cc.shinichi.openyoureyesmvp.model.bean.home.Item
 import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
-import cc.shinichi.openyoureyesmvp.adapter.HorRvAdapter
-import cc.shinichi.openyoureyesmvp.widget.decoration.HorRvDecoration
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
+import cc.shinichi.openyoureyesmvp.widget.decoration.HorRvDecoration
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 

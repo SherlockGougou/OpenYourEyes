@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.app
 
 import android.os.Bundle
 import android.os.Handler.Callback

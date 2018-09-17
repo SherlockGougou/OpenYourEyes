@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.category
 
 import android.content.Context
 import android.content.Intent
@@ -9,27 +9,25 @@ import android.support.v7.app.ActionBar
 import android.support.v7.widget.GridLayoutManager
 import android.view.MenuItem
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.api.Api
-import cc.shinichi.openyoureyesmvp.api.ApiListener
-import cc.shinichi.openyoureyesmvp.constant.ApiConstant
+import cc.shinichi.openyoureyesmvp.adapter.AllCategoryAdapter
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.AllCategoryBean
 import cc.shinichi.openyoureyesmvp.model.bean.AllCategoryBean.Item
 import cc.shinichi.openyoureyesmvp.model.entity.AllCategoryEntity
-import cc.shinichi.openyoureyesmvp.adapter.AllCategoryAdapter
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
+import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
-import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_all_category.progress_loading
 import kotlinx.android.synthetic.main.activity_all_category.rvAllCategory
 import kotlinx.android.synthetic.main.activity_all_category.swipe_refresh
 import kotlinx.android.synthetic.main.activity_rank_list.toolbar
 
-class AllCategory : BaseActivity(), Callback {
+class AllCategoryView : BaseActivity(), Callback, IAllCategory.View {
 
     private lateinit var context: Context
+    private lateinit var iAllCategoryPresenter: IAllCategory.Presenter
     private var handler: HandlerUtil.HandlerHolder? = null
 
     // view
@@ -51,7 +49,7 @@ class AllCategory : BaseActivity(), Callback {
     companion object {
         fun activityStart(context: Context) {
             val intent = Intent()
-            intent.setClass(context, AllCategory::class.java)
+            intent.setClass(context, AllCategoryView::class.java)
             context.startActivity(intent)
         }
     }
@@ -78,47 +76,44 @@ class AllCategory : BaseActivity(), Callback {
     }
 
     fun initData() {
-        Api.getInstance()
-                .getAsync(context, ApiConstant.allCategoryUrl, object : ApiListener() {
-                    override fun start() {
-                        super.start()
-                        handler?.sendEmptyMessage(Code.Refreshing)
-                    }
+        iAllCategoryPresenter = AllCategoryPresenter(this, this)
+        iAllCategoryPresenter.getData()
+    }
 
-                    override fun success(string: String?) {
-                        super.success(string)
-                        val categoryBean = getGson().fromJson(string, AllCategoryBean::class.javaObjectType)
-                        if (categoryBean?.itemList != null) {
-                            allEntity.clear()
-                            for (item in categoryBean.itemList) {
-                                allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_Item, item))
-                            }
-                            allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_ItemEnd, Item().apply {
-                                type = "rectangleCard"
-                            }))
+    override fun setData(categoryBean: AllCategoryBean) {
+        allEntity.clear()
+        if (categoryBean.itemList != null) {
+            for (item in categoryBean.itemList!!) {
+                allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_Item, item))
+            }
+            allEntity.add(AllCategoryEntity(AllCategoryEntity.TYPE_ItemEnd, Item().apply {
+                type = "rectangleCard"
+            }))
 
-                            val gridLayoutManager = GridLayoutManager(context, 2)
-                            rvAllCategory.layoutManager = gridLayoutManager
-                            adapter = AllCategoryAdapter(context, allEntity)
-                            adapter.setEnableLoadMore(false)
-                            rvAllCategory.adapter = adapter
-                        }
-                    }
+            val gridLayoutManager = GridLayoutManager(context, 2)
+            rvAllCategory.layoutManager = gridLayoutManager
+            adapter = AllCategoryAdapter(context, allEntity)
+            adapter.setEnableLoadMore(false)
+            rvAllCategory.adapter = adapter
+        }
+    }
 
-                    override fun error(response: Response<String>?) {
-                        super.error(response)
-                    }
+    override fun loadFail(msg: String) {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+        ToastUtil._long(msg)
+    }
 
-                    override fun noNet() {
-                        super.noNet()
-                        toast("无网络")
-                    }
+    override fun onShowLoading() {
+        handler?.sendEmptyMessage(Code.Refreshing)
+    }
 
-                    override fun finish() {
-                        super.finish()
-                        handler?.sendEmptyMessage(Code.RefreshFinish)
-                    }
-                })
+    override fun onHideLoading() {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
+
+    override fun onShowNetError() {
+        ToastUtil._long("网络异常，请检查网络")
+        handler?.sendEmptyMessage(Code.RefreshFinish)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

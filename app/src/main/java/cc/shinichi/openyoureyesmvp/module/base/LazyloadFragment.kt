@@ -8,10 +8,8 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import cc.shinichi.openyoureyesmvp.app.App
 import cc.shinichi.openyoureyesmvp.constant.SpTag
-import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import com.google.gson.Gson
 
 abstract class LazyloadFragment : Fragment() {
@@ -19,19 +17,6 @@ abstract class LazyloadFragment : Fragment() {
     open val TAG: String = javaClass.simpleName
     private var gson: Gson? = null
     private var sp: SharedPreferences? = null
-
-    open fun toast(
-            string: String,
-            d: Int = Toast.LENGTH_SHORT
-    ) {
-        if (d == Toast.LENGTH_SHORT) {
-            ToastUtil
-                    ._short(string)
-        } else {
-            ToastUtil
-                    ._long(string)
-        }
-    }
 
     open fun isNull(string: String?): Boolean {
         if (TextUtils.isEmpty(string) || "null" == string || " " == string) {

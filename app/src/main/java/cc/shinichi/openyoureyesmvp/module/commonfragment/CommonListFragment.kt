@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.fragment
+package cc.shinichi.openyoureyesmvp.module.commonfragment
 
 import android.os.Bundle
 import android.os.Handler
@@ -15,27 +15,26 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.api.Api
-import cc.shinichi.openyoureyesmvp.api.ApiListener
+import cc.shinichi.openyoureyesmvp.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.home.HomeDataBean
 import cc.shinichi.openyoureyesmvp.model.bean.home.Item
 import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
-import cc.shinichi.openyoureyesmvp.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyesmvp.module.base.LazyloadFragment
-import cc.shinichi.openyoureyesmvp.widget.MyLoadMoreView
+import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
 import cc.shinichi.openyoureyesmvp.util.log.ALog
+import cc.shinichi.openyoureyesmvp.widget.MyLoadMoreView
 import com.chad.library.adapter.base.BaseQuickAdapter.RequestLoadMoreListener
-import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_home.drawable_layout_home
 
 class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener,
-        RequestLoadMoreListener {
+        RequestLoadMoreListener, ICommonList.View {
 
+    private var iCommonListPresenter: ICommonList.Presenter? = null
     private var handler: HandlerUtil.HandlerHolder? = null
 
     // view
@@ -68,8 +67,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
     }
 
     override fun initTools() {
-        handler = HandlerUtil
-                .HandlerHolder(this)
+        handler = HandlerUtil.HandlerHolder(this)
     }
 
     override fun initViews(
@@ -100,7 +98,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
 
         swipe_refresh
                 .setOnRefreshListener {
-                    getHomeNewData()
+                    iCommonListPresenter?.getHomeNewData(url)
                 }
         return rootView
     }
@@ -108,60 +106,10 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
     override fun setDefaultFragmentTitle(title: String?) {
     }
 
-    override fun initData() {
-        // 获取默认页数据
-        getHomeNewData()
-    }
-
-    fun setUrl(url: String) {
-        this.url = url
-        getHomeNewData()
-    }
-
-    fun getRecyclerView(): RecyclerView {
-        return recycler_data_list_home
-    }
-
-    private fun getHomeNewData() {
-        ALog.log(TAG, "getHomeNewData")
-        if (isNull(url)) {
-            return
-        }
-        ALog.log(TAG, "load url = $url")
-        Api.getInstance()
-                .cancelAll()
-        Api
-                .getInstance()
-                .getAsync(context, url, object : ApiListener() {
-
-                    override fun start() {
-                        super.start()
-                        handler
-                                ?.sendEmptyMessage(Code.Refreshing)
-                    }
-
-                    override fun noNet() {
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
-
-                    override fun success(string: String?) {
-                        getEntityList(string, true)
-                    }
-
-                    override fun error(response: Response<String>?) {
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
-                })
-    }
-
-    private fun getEntityList(
-            string: String?,
-            isRefresh: Boolean = false
-    ) {
-        val bean: HomeDataBean? = getGson().fromJson(string, HomeDataBean::class.javaObjectType)
+    override fun getEntityList(result: String?, isRefresh: Boolean) {
+        val bean: HomeDataBean? = getGson().fromJson(result, HomeDataBean::class.javaObjectType)
         nextPageUrl = bean?.nextPageUrl
         ALog.log(TAG, "getEntityList nextPageUrl = $nextPageUrl")
-
         if (bean?.itemList != null) {
             allHomeDataEntityTemp.clear()
             for (item: Item? in bean.itemList) {
@@ -225,6 +173,52 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
         }
     }
 
+    override fun loadFail(msg: String) {
+        ToastUtil._long(msg)
+    }
+
+    override fun loadMoreFail(msg: String) {
+        handler?.sendEmptyMessage(Code.LoadMoreFail)
+        if (isNull(msg)) {
+            return
+        }
+        ToastUtil._long(msg)
+    }
+
+    override fun onShowLoading() {
+        handler?.sendEmptyMessage(Code.Refreshing)
+    }
+
+    override fun onHideLoading() {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
+
+    override fun onShowNetError() {
+        ToastUtil._long("网络异常，请检查网络")
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
+
+    override fun initData() {
+        // 获取默认页数据
+        if (iCommonListPresenter == null) {
+            iCommonListPresenter = CommonListPresenter(activity, this)
+        }
+        iCommonListPresenter?.getHomeNewData(url)
+    }
+
+    fun setUrl(url: String) {
+        this.url = url
+        // 获取默认页数据
+        if (iCommonListPresenter == null) {
+            iCommonListPresenter = CommonListPresenter(activity, this)
+        }
+        iCommonListPresenter?.getHomeNewData(url)
+    }
+
+    fun getRecyclerView(): RecyclerView {
+        return recycler_data_list_home
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
@@ -243,7 +237,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
             }
             Code.RefreshFail -> {
                 handler?.sendEmptyMessage(Code.RefreshFinish)
-                toast("加载失败，请重试")
+                ToastUtil._short("加载失败，请重试")
             }
             Code.RefreshFinish -> {
                 swipe_refresh
@@ -262,7 +256,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
             Code.LoadMoreEnd -> {
                 homeDataAdapter?.loadMoreEnd()
             }
-            else -> toast("暂无数据")
+            else -> ToastUtil._short("暂无数据")
         }
         return true
     }
@@ -274,7 +268,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
                         .Gone()
                 progress_loading
                         .Visible()
-                getHomeNewData()
+                iCommonListPresenter?.getHomeNewData(url)
             }
         }
     }
@@ -285,20 +279,6 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
             return
         }
         recycler_data_list_home.stopScroll()
-        Api.getInstance()
-                .getAsync(context, nextPageUrl, object : ApiListener() {
-
-                    override fun noNet() {
-                        handler?.sendEmptyMessage(Code.LoadMoreFail)
-                    }
-
-                    override fun success(string: String?) {
-                        getEntityList(string, false)
-                    }
-
-                    override fun error(response: Response<String>?) {
-                        handler?.sendEmptyMessage(Code.LoadMoreFail)
-                    }
-                })
+        iCommonListPresenter?.getNextPageData(nextPageUrl)
     }
 }

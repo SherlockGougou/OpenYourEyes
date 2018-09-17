@@ -20,7 +20,7 @@ import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.RankTabBean
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
-import cc.shinichi.openyoureyesmvp.common.fragment.CommonListFragment
+import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
