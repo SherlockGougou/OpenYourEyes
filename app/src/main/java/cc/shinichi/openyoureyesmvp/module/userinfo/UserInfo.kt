@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.userinfo
 
 import android.content.Context
 import android.content.Intent
@@ -15,20 +15,18 @@ import android.view.View.OnClickListener
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.api.Api
-import cc.shinichi.openyoureyesmvp.api.ApiListener
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.TabBean
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.StatusBarUtil
+import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
-import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_user_info.appbarLayout
 import kotlinx.android.synthetic.main.activity_user_info.collapsingToolbarLayout
 import kotlinx.android.synthetic.main.activity_user_info.imgHeaderBg
@@ -46,9 +44,10 @@ import kotlinx.android.synthetic.main.activity_user_info.tvUserDes
 import kotlinx.android.synthetic.main.activity_user_info.tvUserName
 import kotlinx.android.synthetic.main.activity_user_info.viewPager
 
-class UserInfo : BaseActivity(), Callback, OnClickListener {
+class UserInfo : BaseActivity(), Callback, OnClickListener, IUserInfo.View {
 
     private lateinit var context: Context
+    private lateinit var iuserInfoPresenter: IUserInfo.Presenter
     private var handler: HandlerUtil.HandlerHolder? = null
 
     // view
@@ -131,6 +130,7 @@ class UserInfo : BaseActivity(), Callback, OnClickListener {
 
     override fun initUtil() {
         handler = HandlerUtil.HandlerHolder(this)
+        iuserInfoPresenter = UserInfoPresenter(this, this)
     }
 
     fun initData() {
@@ -138,30 +138,33 @@ class UserInfo : BaseActivity(), Callback, OnClickListener {
         userType = intent.getStringExtra("userType")
         index = intent.getIntExtra("index", 0)
         val url = ApiConstant.userInfoUrl + "userType=$userType&id=$id"
-        Api.getInstance()
-                .getAsync(this, url, object : ApiListener() {
+        iuserInfoPresenter.getData(url)
+    }
 
-                    override fun start() {
-                        super.start()
-                        handler?.sendEmptyMessage(Code.Refreshing)
-                    }
+    override fun setData(tabBean: TabBean?) {
+        this.tabBean = tabBean
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+        handler?.sendEmptyMessage(Code.Success)
+    }
 
-                    override fun success(string: String?) {
-                        super.success(string)
-                        tabBean = getGson().fromJson(string, TabBean::class.javaObjectType)
-                        handler?.sendEmptyMessage(Code.RefreshFinish)
-                    }
+    override fun loadFail(msg: String?) {
+        if (!isNull(msg)) {
+            ToastUtil._short(msg!!)
+        }
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
 
-                    override fun error(response: Response<String>?) {
-                        super.error(response)
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
+    override fun onShowLoading() {
+        handler?.sendEmptyMessage(Code.Refreshing)
+    }
 
-                    override fun noNet() {
-                        super.noNet()
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
-                })
+    override fun onHideLoading() {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
+
+    override fun onShowNetError() {
+        ToastUtil._short("网络异常，请检查网络")
+        handler?.sendEmptyMessage(Code.RefreshFinish)
     }
 
     class MyPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
@@ -220,6 +223,9 @@ class UserInfo : BaseActivity(), Callback, OnClickListener {
                 progress_loading.Gone()
             }
             Code.RefreshFinish -> {
+                progress_loading.Gone()
+            }
+            Code.Success -> {
                 if ("NORMAL".equals(userType, true)) {
                     if (tabBean != null && tabBean?.userInfo != null) {
                         val cover: String? = tabBean?.userInfo?.cover

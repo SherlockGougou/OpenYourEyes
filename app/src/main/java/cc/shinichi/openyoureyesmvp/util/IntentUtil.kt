@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import cc.shinichi.openyoureyesmvp.module.campaignlist.CampaignList
-import cc.shinichi.openyoureyesmvp.common.activity.RankList
-import cc.shinichi.openyoureyesmvp.common.activity.TagCategory
-import cc.shinichi.openyoureyesmvp.common.activity.UserInfo
+import cc.shinichi.openyoureyesmvp.module.ranklist.RankList
+import cc.shinichi.openyoureyesmvp.module.tagcategory.TagCategory
+import cc.shinichi.openyoureyesmvp.module.userinfo.UserInfo
 import cc.shinichi.openyoureyesmvp.module.category.AllCategoryView
 import cc.shinichi.openyoureyesmvp.module.home.HomeView
 import cc.shinichi.openyoureyesmvp.module.other.AllPgcs

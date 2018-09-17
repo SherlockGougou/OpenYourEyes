@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.ranklist
 
 import android.content.Context
 import android.content.Intent
@@ -14,25 +14,24 @@ import android.view.View.OnClickListener
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.api.Api
-import cc.shinichi.openyoureyesmvp.api.ApiListener
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.RankTabBean
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
+import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
-import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_rank_list.tab_layout
 import kotlinx.android.synthetic.main.activity_rank_list.toolbar
 import kotlinx.android.synthetic.main.activity_rank_list.tv_title
 import kotlinx.android.synthetic.main.activity_rank_list.view_pager
 
-class RankList : BaseActivity(), Callback, OnClickListener {
+class RankList : BaseActivity(), Callback, OnClickListener, IRankList.View {
 
+    private lateinit var iRankPresenter: IRankList.Presenter
     private var handler: HandlerUtil.HandlerHolder? = null
 
     // view
@@ -92,33 +91,29 @@ class RankList : BaseActivity(), Callback, OnClickListener {
 
     override fun initUtil() {
         handler = HandlerUtil.HandlerHolder(this)
+        iRankPresenter = RankListPresenter(this, this)
     }
 
     fun initData() {
-        Api.getInstance()
-                .getAsync(this, ApiConstant.rankListConfigUrl, object : ApiListener() {
+        iRankPresenter.getData()
+    }
 
-                    override fun start() {
-                        super.start()
-                        handler?.sendEmptyMessage(Code.Refreshing)
-                    }
+    override fun setData(rankTabBean: RankTabBean?) {
+        this.rankTabBean = rankTabBean
+        handler?.sendEmptyMessage(Code.Success)
+    }
 
-                    override fun success(string: String?) {
-                        super.success(string)
-                        rankTabBean = getGson().fromJson(string, RankTabBean::class.javaObjectType)
-                        handler?.sendEmptyMessage(Code.RefreshFinish)
-                    }
+    override fun onShowLoading() {
+        handler?.sendEmptyMessage(Code.Refreshing)
+    }
 
-                    override fun error(response: Response<String>?) {
-                        super.error(response)
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
+    override fun onHideLoading() {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
 
-                    override fun noNet() {
-                        super.noNet()
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
-                })
+    override fun onShowNetError() {
+        ToastUtil._short("网络异常，请检查网络")
+        handler?.sendEmptyMessage(Code.RefreshFinish)
     }
 
     class MyPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
@@ -180,6 +175,8 @@ class RankList : BaseActivity(), Callback, OnClickListener {
             }
             Code.RefreshFinish -> {
                 progress_loading.Gone()
+            }
+            Code.Success -> {
                 if (rankTabBean != null && rankTabBean?.tabInfo?.tabList != null) {
                     pagerAdapter.setData(rankTabBean?.tabInfo?.tabList)
                     val count = pagerAdapter.count

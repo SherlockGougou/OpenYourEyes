@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.common.activity
+package cc.shinichi.openyoureyesmvp.module.tagcategory
 
 import android.content.Context
 import android.content.Intent
@@ -15,20 +15,18 @@ import android.view.View.OnClickListener
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.api.Api
-import cc.shinichi.openyoureyesmvp.api.ApiListener
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.model.bean.TabBean
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.StatusBarUtil
+import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
-import com.lzy.okgo.model.Response
 import kotlinx.android.synthetic.main.activity_tag_category.appbarLayout
 import kotlinx.android.synthetic.main.activity_tag_category.collapsing_toolbar_layout
 import kotlinx.android.synthetic.main.activity_tag_category.imgTagCategoryBg
@@ -39,9 +37,10 @@ import kotlinx.android.synthetic.main.activity_tag_category.tvHeaderTitle
 import kotlinx.android.synthetic.main.activity_tag_category.tvTitle
 import kotlinx.android.synthetic.main.activity_tag_category.viewPager
 
-class TagCategory : BaseActivity(), Callback, OnClickListener {
+class TagCategory : BaseActivity(), Callback, OnClickListener, ITagCategory.View {
 
     private lateinit var context: Context
+    private lateinit var iTagCategoryPresenter: ITagCategory.Presenter
     private var handler: HandlerUtil.HandlerHolder? = null
 
     // view
@@ -129,6 +128,7 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
 
     override fun initUtil() {
         handler = HandlerUtil.HandlerHolder(this)
+        iTagCategoryPresenter = TagCategoryPresenter(this, this)
     }
 
     fun initData() {
@@ -138,30 +138,34 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
         if (isNull(tabUrl)) {
             onBackPressed()
         }
-        Api.getInstance()
-                .getAsync(this, tabUrl + id, object : ApiListener() {
+        val url = tabUrl + id
+        iTagCategoryPresenter.getData(url)
+    }
 
-                    override fun start() {
-                        super.start()
-                        handler?.sendEmptyMessage(Code.Refreshing)
-                    }
+    override fun setData(tabBean: TabBean?) {
+        this.tabBean = tabBean
+        handler?.sendEmptyMessage(Code.Success)
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
 
-                    override fun success(string: String?) {
-                        super.success(string)
-                        tabBean = getGson().fromJson(string, TabBean::class.javaObjectType)
-                        handler?.sendEmptyMessage(Code.RefreshFinish)
-                    }
+    override fun loadFail(msg: String?) {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+        if (!isNull(msg)) {
+            ToastUtil._short(msg!!)
+        }
+    }
 
-                    override fun error(response: Response<String>?) {
-                        super.error(response)
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
+    override fun onShowLoading() {
+        handler?.sendEmptyMessage(Code.Refreshing)
+    }
 
-                    override fun noNet() {
-                        super.noNet()
-                        handler?.sendEmptyMessage(Code.RefreshFail)
-                    }
-                })
+    override fun onHideLoading() {
+        handler?.sendEmptyMessage(Code.RefreshFinish)
+    }
+
+    override fun onShowNetError() {
+        ToastUtil._short("网络异常，请检查网络")
+        handler?.sendEmptyMessage(Code.RefreshFinish)
     }
 
     class MyPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
@@ -219,6 +223,9 @@ class TagCategory : BaseActivity(), Callback, OnClickListener {
                 progress_loading.Gone()
             }
             Code.RefreshFinish -> {
+                progress_loading.Gone()
+            }
+            Code.Success -> {
                 if (tabBean != null && tabBean?.tabInfo?.tabList != null) {
                     var url: String? = ""
                     var title: String? = ""

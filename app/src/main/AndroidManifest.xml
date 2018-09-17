@@ -34,7 +34,7 @@
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.RankList"
+        android:name="cc.shinichi.openyoureyesmvp.module.ranklist.RankList"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
@@ -60,12 +60,12 @@
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.TagCategory"
+        android:name="cc.shinichi.openyoureyesmvp.module.tagcategory.TagCategory"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name="cc.shinichi.openyoureyesmvp.common.activity.UserInfo"
+        android:name="cc.shinichi.openyoureyesmvp.module.userinfo.UserInfo"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>

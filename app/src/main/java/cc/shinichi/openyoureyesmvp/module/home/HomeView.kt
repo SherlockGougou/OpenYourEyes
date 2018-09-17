@@ -165,7 +165,7 @@ class HomeView : BaseActivity(), Handler.Callback, IHome.View {
     }
 
     override fun onShowNetError() {
-        ToastUtil._long("网络异常，请检查网络")
+        ToastUtil._short("网络异常，请检查网络")
         handler?.sendEmptyMessage(Code.RefreshFinish)
     }
 
