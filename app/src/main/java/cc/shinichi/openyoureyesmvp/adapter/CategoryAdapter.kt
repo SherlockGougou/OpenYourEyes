@@ -1,6 +1,5 @@
 package cc.shinichi.openyoureyesmvp.adapter
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -15,7 +14,6 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
 
 class CategoryAdapter(
-        context: Context,
         data: List<CategoryEntity>
 ) : BaseMultiItemQuickAdapter<CategoryEntity, BaseViewHolder>(data) {
 
@@ -69,7 +67,7 @@ class CategoryAdapter(
                     1 -> {
                         if (img_category_icon != null) {
                             ImageLoader
-                                    .loadResource(R.drawable.ic_launcher, img_category_icon)
+                                    .loadResource(R.drawable.ic_discovery, img_category_icon)
                         }
                         tv_category_name
                                 ?.text = "#发现"
@@ -79,7 +77,7 @@ class CategoryAdapter(
                     2 -> {
                         if (img_category_icon != null) {
                             ImageLoader
-                                    .loadResource(R.drawable.ic_launcher, img_category_icon)
+                                    .loadResource(R.drawable.ic_recommend, img_category_icon)
                         }
                         tv_category_name
                                 ?.text = "#推荐"
@@ -89,7 +87,7 @@ class CategoryAdapter(
                     3 -> {
                         if (img_category_icon != null) {
                             ImageLoader
-                                    .loadResource(R.drawable.ic_launcher, img_category_icon)
+                                    .loadResource(R.drawable.ic_daily, img_category_icon)
                         }
                         tv_category_name
                                 ?.text = "#日报"

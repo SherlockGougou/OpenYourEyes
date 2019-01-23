@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorAccent">#009688</color>
-  <color name="colorPrimary">#009688</color>
-  <color name="colorPrimaryDark">#009688</color>
+  <color name="colorAccent">#E91E63</color>
+  <color name="colorPrimary">#E91E63</color>
+  <color name="colorPrimaryDark">#E91E63</color>
 
   <!--透明色 -->
   <color name="transparent">#00000000</color>

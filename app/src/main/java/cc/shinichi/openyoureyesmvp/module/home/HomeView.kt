@@ -86,7 +86,7 @@ class HomeView : BaseActivity(), Handler.Callback, IHome.View {
         fragmentTransaction.commit()
 
         // category view
-        categoryAdapter = CategoryAdapter(context, allCategoryEntity)
+        categoryAdapter = CategoryAdapter(allCategoryEntity)
         categoryAdapter
                 ?.onItemClickListener = OnItemClickListener { adapter, _, position ->
             when (position) {
