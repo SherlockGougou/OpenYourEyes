@@ -7,14 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.bean.home.Tag
-import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyesmvp.bean.home.Tag
+import cc.shinichi.openyoureyesmvp.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.util.IntentUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
+import cc.shinichi.openyoureyesmvp.util.kt_extend.setTextColorCompat
 import cc.shinichi.openyoureyesmvp.widget.FZLanTingLTextView
 import com.chad.library.adapter.base.BaseViewHolder
 import com.facebook.drawee.view.SimpleDraweeView
@@ -105,7 +106,7 @@ open class AutoPlayFollowCard : BaseHolder {
             setBackgroundResource(R.drawable.tag_item_text_back)
             gravity = Gravity.CENTER
             textSize = 12f
-            setTextColor(context.resources.getColor(R.color.blue_2772d0))
+            setTextColorCompat(R.color.blue_2772d0)
             setOnClickListener {
                 ActionUrlUtil.jump(context, item?.actionUrl)
             }

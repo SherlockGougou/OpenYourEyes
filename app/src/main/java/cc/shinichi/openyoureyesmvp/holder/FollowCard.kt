@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.View
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.bean.home.Data
-import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyesmvp.bean.home.Data
+import cc.shinichi.openyoureyesmvp.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.util.IntentUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil

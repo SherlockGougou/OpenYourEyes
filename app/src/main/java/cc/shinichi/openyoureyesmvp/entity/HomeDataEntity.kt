@@ -1,6 +1,6 @@
-package cc.shinichi.openyoureyesmvp.model.entity
+package cc.shinichi.openyoureyesmvp.entity
 
-import cc.shinichi.openyoureyesmvp.model.bean.home.Item
+import cc.shinichi.openyoureyesmvp.bean.home.Item
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**

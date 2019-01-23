@@ -5,10 +5,11 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.entity.AllCategoryEntity
+import cc.shinichi.openyoureyesmvp.entity.AllCategoryEntity
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
+import cc.shinichi.openyoureyesmvp.util.kt_extend.setTextColorCompat
 import cc.shinichi.openyoureyesmvp.util.log.ALog
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -51,7 +52,7 @@ class AllCategoryAdapter(
             }
             AllCategoryEntity.TYPE_ItemEnd -> {
                 val tvEnd = helper.getView<TextView>(R.id.tvEnd)
-                tvEnd.setTextColor(context.resources.getColor(R.color.black))
+                tvEnd.setTextColorCompat(R.color.black)
             }
         }
     }

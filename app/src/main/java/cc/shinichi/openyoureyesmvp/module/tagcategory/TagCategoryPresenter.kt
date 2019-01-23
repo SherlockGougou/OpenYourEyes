@@ -3,7 +3,7 @@ package cc.shinichi.openyoureyesmvp.module.tagcategory
 import android.content.Context
 import cc.shinichi.openyoureyesmvp.api.Api
 import cc.shinichi.openyoureyesmvp.api.ApiListener
-import cc.shinichi.openyoureyesmvp.model.bean.TabBean
+import cc.shinichi.openyoureyesmvp.bean.TabBean
 import cc.shinichi.openyoureyesmvp.module.tagcategory.ITagCategory.View
 import cc.shinichi.openyoureyesmvp.task.BaseTask.Companion.getGson
 import com.lzy.okgo.model.Response

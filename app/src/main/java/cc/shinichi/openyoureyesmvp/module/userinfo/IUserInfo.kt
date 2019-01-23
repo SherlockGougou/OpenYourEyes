@@ -1,6 +1,6 @@
 package cc.shinichi.openyoureyesmvp.module.userinfo
 
-import cc.shinichi.openyoureyesmvp.model.bean.TabBean
+import cc.shinichi.openyoureyesmvp.bean.TabBean
 import cc.shinichi.openyoureyesmvp.module.base.IBasePresenter
 import cc.shinichi.openyoureyesmvp.module.base.IBaseView
 
@@ -13,12 +13,12 @@ import cc.shinichi.openyoureyesmvp.module.base.IBaseView
  */
 interface IUserInfo {
 
-    interface Presenter: IBasePresenter {
+    interface Presenter : IBasePresenter {
 
         fun getData(url: String?)
     }
 
-    interface View: IBaseView<Presenter> {
+    interface View : IBaseView<Presenter> {
 
         fun setData(tabBean: TabBean?)
 

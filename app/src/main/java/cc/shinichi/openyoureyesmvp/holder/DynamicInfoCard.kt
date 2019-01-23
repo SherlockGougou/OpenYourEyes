@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyesmvp.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.util.IntentUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
@@ -37,7 +37,6 @@ class DynamicInfoCard : BaseHolder {
         val data = entity.getItem()?.data ?: return
 
         val img_user_icon = helper.getView<SimpleDraweeView>(R.id.img_user_icon)
-        val img_action_next_grey = helper.getView<ImageView>(R.id.img_action_next_grey)
         val img_videoSmallCard_img = helper.getView<SimpleDraweeView>(R.id.img_videoSmallCard_img)
         val tv_user_name = helper.getView<TextView>(R.id.tv_user_name)
         val tv_user_des = helper.getView<TextView>(R.id.tv_user_des)

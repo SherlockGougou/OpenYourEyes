@@ -3,8 +3,8 @@ package cc.shinichi.openyoureyesmvp.module.ranklist
 import android.content.Context
 import cc.shinichi.openyoureyesmvp.api.Api
 import cc.shinichi.openyoureyesmvp.api.ApiListener
+import cc.shinichi.openyoureyesmvp.bean.RankTabBean
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
-import cc.shinichi.openyoureyesmvp.model.bean.RankTabBean
 import cc.shinichi.openyoureyesmvp.module.ranklist.IRankList.View
 import cc.shinichi.openyoureyesmvp.task.BaseTask.Companion.getGson
 import com.lzy.okgo.model.Response
@@ -16,10 +16,10 @@ import com.lzy.okgo.model.Response
  * create at 2018/9/17  15:38
  * description:
  */
-class RankListPresenter: IRankList.Presenter {
+class RankListPresenter : IRankList.Presenter {
 
     private val context: Context
-    private val iRankListView : IRankList.View
+    private val iRankListView: IRankList.View
 
     constructor(context: Context, iRankListView: View) {
         this.context = context

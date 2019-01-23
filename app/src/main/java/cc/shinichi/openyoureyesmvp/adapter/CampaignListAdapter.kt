@@ -2,9 +2,8 @@ package cc.shinichi.openyoureyesmvp.adapter
 
 import android.content.Context
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyesmvp.entity.CampaignListEntity
 import cc.shinichi.openyoureyesmvp.holder.CampaignBanner
-import cc.shinichi.openyoureyesmvp.model.bean.CampaignListBean.Item
-import cc.shinichi.openyoureyesmvp.model.entity.CampaignListEntity
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 
@@ -27,7 +26,7 @@ class CampaignListAdapter(
             helper: BaseViewHolder,
             entity: CampaignListEntity
     ) {
-        val item: Item = entity.item ?: return
+        entity.item ?: return
         when (entity.itemType) {
             CampaignListEntity.TYPE_Item -> {
                 CampaignBanner(super.mContext, helper, entity)

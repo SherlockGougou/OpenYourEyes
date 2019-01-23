@@ -1,6 +1,6 @@
-package cc.shinichi.openyoureyesmvp.model.entity
+package cc.shinichi.openyoureyesmvp.entity
 
-import cc.shinichi.openyoureyesmvp.model.bean.CampaignListBean
+import cc.shinichi.openyoureyesmvp.bean.CampaignListBean
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
 class CampaignListEntity : MultiItemEntity {

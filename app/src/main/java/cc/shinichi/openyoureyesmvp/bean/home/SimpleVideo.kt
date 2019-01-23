@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.model.bean.home
+package cc.shinichi.openyoureyesmvp.bean.home
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

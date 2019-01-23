@@ -14,13 +14,13 @@ import cc.shinichi.openyoureyesmvp.adapter.HomeDataAdapter
 import cc.shinichi.openyoureyesmvp.api.Api
 import cc.shinichi.openyoureyesmvp.api.ApiListener
 import cc.shinichi.openyoureyesmvp.app.App
+import cc.shinichi.openyoureyesmvp.bean.home.Data
+import cc.shinichi.openyoureyesmvp.bean.home.HomeDataBean
+import cc.shinichi.openyoureyesmvp.bean.home.Item
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
 import cc.shinichi.openyoureyesmvp.constant.SpTag
-import cc.shinichi.openyoureyesmvp.model.bean.home.Data
-import cc.shinichi.openyoureyesmvp.model.bean.home.HomeDataBean
-import cc.shinichi.openyoureyesmvp.model.bean.home.Item
-import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyesmvp.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
@@ -96,7 +96,7 @@ class VideoDetail : GSYBaseActivityDetail<StandardGSYVideoPlayer>(), Callback {
         detailVideo.layoutParams.height = (((UIUtil.getPhoneWidth().toFloat()) / 16) * 9).toInt()
 
         // recyclerView
-        homeDataAdapter = HomeDataAdapter(context, allHomeDataEntity)
+        homeDataAdapter = HomeDataAdapter(allHomeDataEntity)
         homeDataAdapter?.setEnableLoadMore(false)
         homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
         rv_video_detail.layoutManager = LinearLayoutManager(context)

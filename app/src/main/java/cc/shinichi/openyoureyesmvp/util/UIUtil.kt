@@ -87,7 +87,7 @@ object UIUtil {
 
     fun scrollToTop(recyclerView: RecyclerView) {
         if (recyclerView.layoutManager is LinearLayoutManager) {
-            recyclerView.layoutManager.scrollToPosition(0)
+            (recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(0)
         }
     }
 

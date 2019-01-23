@@ -3,9 +3,9 @@ package cc.shinichi.openyoureyesmvp.task
 import cc.shinichi.openyoureyesmvp.api.Api
 import cc.shinichi.openyoureyesmvp.api.ApiListener
 import cc.shinichi.openyoureyesmvp.app.App
+import cc.shinichi.openyoureyesmvp.bean.ConfigBean
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.SpTag
-import cc.shinichi.openyoureyesmvp.model.bean.ConfigBean
 import cc.shinichi.openyoureyesmvp.util.log.ALog
 import com.lzy.okgo.model.Response
 

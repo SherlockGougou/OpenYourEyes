@@ -9,7 +9,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.adapter.VideoDetailHoriTagRvAdapter.Holder
-import cc.shinichi.openyoureyesmvp.model.bean.home.Tag
+import cc.shinichi.openyoureyesmvp.bean.home.Tag
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader

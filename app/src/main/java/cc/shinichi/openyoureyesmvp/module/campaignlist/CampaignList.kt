@@ -10,9 +10,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.adapter.CampaignListAdapter
+import cc.shinichi.openyoureyesmvp.bean.CampaignListBean
 import cc.shinichi.openyoureyesmvp.constant.Code
-import cc.shinichi.openyoureyesmvp.model.bean.CampaignListBean
-import cc.shinichi.openyoureyesmvp.model.entity.CampaignListEntity
+import cc.shinichi.openyoureyesmvp.entity.CampaignListEntity
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil

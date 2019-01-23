@@ -1,4 +1,4 @@
-package cc.shinichi.openyoureyesmvp.model.bean
+package cc.shinichi.openyoureyesmvp.bean
 
 import com.google.gson.annotations.SerializedName
 

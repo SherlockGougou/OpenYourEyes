@@ -3,8 +3,8 @@ package cc.shinichi.openyoureyesmvp.holder
 import android.content.Context
 import android.view.View
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.bean.CampaignListBean.Item.Data
-import cc.shinichi.openyoureyesmvp.model.entity.CampaignListEntity
+import cc.shinichi.openyoureyesmvp.bean.CampaignListBean.Item.Data
+import cc.shinichi.openyoureyesmvp.entity.CampaignListEntity
 import cc.shinichi.openyoureyesmvp.util.eye.ActionUrlUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import com.chad.library.adapter.base.BaseViewHolder

@@ -1,6 +1,6 @@
 package cc.shinichi.openyoureyesmvp.module.category
 
-import cc.shinichi.openyoureyesmvp.model.bean.AllCategoryBean
+import cc.shinichi.openyoureyesmvp.bean.AllCategoryBean
 import cc.shinichi.openyoureyesmvp.module.base.IBasePresenter
 import cc.shinichi.openyoureyesmvp.module.base.IBaseView
 

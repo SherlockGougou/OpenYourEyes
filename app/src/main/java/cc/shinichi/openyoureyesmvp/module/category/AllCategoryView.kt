@@ -10,10 +10,10 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.MenuItem
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.adapter.AllCategoryAdapter
+import cc.shinichi.openyoureyesmvp.bean.AllCategoryBean
+import cc.shinichi.openyoureyesmvp.bean.AllCategoryBean.Item
 import cc.shinichi.openyoureyesmvp.constant.Code
-import cc.shinichi.openyoureyesmvp.model.bean.AllCategoryBean
-import cc.shinichi.openyoureyesmvp.model.bean.AllCategoryBean.Item
-import cc.shinichi.openyoureyesmvp.model.entity.AllCategoryEntity
+import cc.shinichi.openyoureyesmvp.entity.AllCategoryEntity
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil

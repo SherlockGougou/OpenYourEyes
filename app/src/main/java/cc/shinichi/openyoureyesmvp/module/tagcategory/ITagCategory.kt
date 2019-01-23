@@ -1,6 +1,6 @@
 package cc.shinichi.openyoureyesmvp.module.tagcategory
 
-import cc.shinichi.openyoureyesmvp.model.bean.TabBean
+import cc.shinichi.openyoureyesmvp.bean.TabBean
 import cc.shinichi.openyoureyesmvp.module.base.IBasePresenter
 import cc.shinichi.openyoureyesmvp.module.base.IBaseView
 
@@ -13,7 +13,7 @@ import cc.shinichi.openyoureyesmvp.module.base.IBaseView
  */
 interface ITagCategory {
 
-    interface Presenter: IBasePresenter {
+    interface Presenter : IBasePresenter {
 
         fun getData(url: String?)
     }

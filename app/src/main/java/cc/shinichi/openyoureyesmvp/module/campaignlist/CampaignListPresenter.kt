@@ -14,7 +14,7 @@ import com.lzy.okgo.model.Response
  * create at 2018/9/17  15:01
  * description:
  */
-class CampaignListPresenter: ICampaignList.Presenter {
+class CampaignListPresenter : ICampaignList.Presenter {
 
     private val context: Context
     private val iCampaignListView: ICampaignList.View
@@ -23,7 +23,6 @@ class CampaignListPresenter: ICampaignList.Presenter {
         this.context = context
         this.iCampaignListView = iCampaignListView
     }
-
 
     override fun getData() {
         Api.getInstance()

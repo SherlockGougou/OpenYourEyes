@@ -2,10 +2,10 @@ package cc.shinichi.openyoureyesmvp.module.tagcategory
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler.Callback
 import android.os.Message
+import android.support.design.widget.AppBarLayout.OnOffsetChangedListener
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.ActionBar
@@ -15,9 +15,9 @@ import android.view.View.OnClickListener
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyesmvp.bean.TabBean
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
-import cc.shinichi.openyoureyesmvp.model.bean.TabBean
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.StatusBarUtil
@@ -27,6 +27,7 @@ import cc.shinichi.openyoureyesmvp.util.handler.HandlerUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Gone
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
+import cc.shinichi.openyoureyesmvp.util.kt_extend.setTextColorCompat
 import kotlinx.android.synthetic.main.activity_tag_category.appbarLayout
 import kotlinx.android.synthetic.main.activity_tag_category.collapsing_toolbar_layout
 import kotlinx.android.synthetic.main.activity_tag_category.imgTagCategoryBg
@@ -88,7 +89,7 @@ class TagCategory : BaseActivity(), Callback, OnClickListener, ITagCategory.View
     }
 
     override fun initView() {
-        tvTitle.setTextColor(Color.TRANSPARENT)
+        tvTitle.setTextColorCompat(R.color.transparent)
         collapsing_toolbar_layout.title = ""
         setSupportActionBar(toolbar)
         actionBar = supportActionBar
@@ -110,15 +111,17 @@ class TagCategory : BaseActivity(), Callback, OnClickListener, ITagCategory.View
         progress_loading = emptyView
                 .findViewById(R.id.progress_loading)
 
-        appbarLayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if (Math.abs(verticalOffset) >= appBarLayout.totalScrollRange) {
-                // 折叠状态
-                tvTitle.setTextColor(resources.getColor(R.color.white))
-            } else {
-                // 展开状态
-                tvTitle.setTextColor(Color.TRANSPARENT)
-            }
-        }
+        appbarLayout.addOnOffsetChangedListener(
+                OnOffsetChangedListener { appBarLayout, verticalOffset ->
+                    if (Math.abs(verticalOffset) >= appBarLayout.totalScrollRange) {
+                        // 折叠状态
+                        tvTitle.setTextColorCompat(R.color.white)
+                    } else {
+                        // 展开状态
+                        tvTitle.setTextColorCompat(R.color.transparent)
+                    }
+                }
+        )
 
         // viewpager
         pagerAdapter = MyPagerAdapter(supportFragmentManager)

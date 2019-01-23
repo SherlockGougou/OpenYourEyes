@@ -3,8 +3,8 @@ package cc.shinichi.openyoureyesmvp.module.home
 import android.content.Context
 import cc.shinichi.openyoureyesmvp.api.Api
 import cc.shinichi.openyoureyesmvp.api.ApiListener
+import cc.shinichi.openyoureyesmvp.bean.CategoryListBean
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
-import cc.shinichi.openyoureyesmvp.model.bean.CategoryListBean
 import cc.shinichi.openyoureyesmvp.module.home.IHome.View
 import cc.shinichi.openyoureyesmvp.task.BaseTask
 import cc.shinichi.openyoureyesmvp.task.BaseTask.Companion.getGson

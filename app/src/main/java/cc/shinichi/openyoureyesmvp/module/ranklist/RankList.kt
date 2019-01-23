@@ -14,9 +14,9 @@ import android.view.View.OnClickListener
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
+import cc.shinichi.openyoureyesmvp.bean.RankTabBean
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
-import cc.shinichi.openyoureyesmvp.model.bean.RankTabBean
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.ToastUtil

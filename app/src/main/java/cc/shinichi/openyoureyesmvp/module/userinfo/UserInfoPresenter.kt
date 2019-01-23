@@ -3,7 +3,7 @@ package cc.shinichi.openyoureyesmvp.module.userinfo
 import android.content.Context
 import cc.shinichi.openyoureyesmvp.api.Api
 import cc.shinichi.openyoureyesmvp.api.ApiListener
-import cc.shinichi.openyoureyesmvp.model.bean.TabBean
+import cc.shinichi.openyoureyesmvp.bean.TabBean
 import cc.shinichi.openyoureyesmvp.module.userinfo.IUserInfo.View
 import cc.shinichi.openyoureyesmvp.task.BaseTask.Companion.getGson
 import com.lzy.okgo.model.Response
@@ -15,7 +15,7 @@ import com.lzy.okgo.model.Response
  * create at 2018/9/17  16:07
  * description:
  */
-class UserInfoPresenter: IUserInfo.Presenter {
+class UserInfoPresenter : IUserInfo.Presenter {
 
     private val context: Context
     private val iUserInfoView: IUserInfo.View

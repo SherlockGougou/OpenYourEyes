@@ -5,7 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cc.shinichi.openyoureyes.R
-import cc.shinichi.openyoureyesmvp.model.entity.CategoryEntity
+import cc.shinichi.openyoureyesmvp.app.App
+import cc.shinichi.openyoureyesmvp.entity.CategoryEntity
 import cc.shinichi.openyoureyesmvp.util.UIUtil
 import cc.shinichi.openyoureyesmvp.util.image.ImageLoader
 import cc.shinichi.openyoureyesmvp.util.kt_extend.Visible
@@ -114,10 +115,12 @@ class CategoryAdapter(
                 }
                 if (selestedIndex == position) {
                     helper.getView<RelativeLayout>(R.id.rl_item_root)
-                            ?.setBackgroundColor(super.mContext.resources.getColor(R.color.gray_e5))
+                            ?.setBackgroundColor(
+                                    super.mContext.resources.getColor(R.color.gray_e5, App.application.theme))
                 } else {
                     helper?.getView<RelativeLayout>(R.id.rl_item_root)
-                            ?.setBackgroundColor(super.mContext.resources.getColor(R.color.white))
+                            ?.setBackgroundColor(
+                                    super.mContext.resources.getColor(R.color.white, App.application.theme))
                 }
             }
         }

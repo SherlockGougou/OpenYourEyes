@@ -1,6 +1,9 @@
 package cc.shinichi.openyoureyesmvp.util.kt_extend
 
+import android.os.Build
 import android.view.View
+import android.widget.TextView
+import cc.shinichi.openyoureyesmvp.app.App
 
 /**
  * @author 工藤
@@ -16,4 +19,12 @@ fun View.Gone() {
 
 fun View.Visible() {
     this.visibility = View.VISIBLE
+}
+
+fun TextView.setTextColorCompat(color: Int) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        this.setTextColor(App.application.resources.getColor(color, App.application.theme))
+    } else {
+        this.setTextColor(App.application.resources.getColor(color))
+    }
 }

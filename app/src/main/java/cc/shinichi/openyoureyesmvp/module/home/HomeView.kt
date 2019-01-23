@@ -14,10 +14,10 @@ import android.view.MenuItem
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.adapter.CategoryAdapter
 import cc.shinichi.openyoureyesmvp.app.AppManager
+import cc.shinichi.openyoureyesmvp.bean.CategoryListBean
 import cc.shinichi.openyoureyesmvp.constant.ApiConstant
 import cc.shinichi.openyoureyesmvp.constant.Code
-import cc.shinichi.openyoureyesmvp.model.bean.CategoryListBean
-import cc.shinichi.openyoureyesmvp.model.entity.CategoryEntity
+import cc.shinichi.openyoureyesmvp.entity.CategoryEntity
 import cc.shinichi.openyoureyesmvp.module.base.BaseActivity
 import cc.shinichi.openyoureyesmvp.module.commonfragment.CommonListFragment
 import cc.shinichi.openyoureyesmvp.util.IntentUtil

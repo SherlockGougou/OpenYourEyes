@@ -1,1 +1,1 @@
-include ':app', ':openeyeskotlinmvp'
+include ':app'

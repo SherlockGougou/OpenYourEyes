@@ -1,6 +1,6 @@
 package cc.shinichi.openyoureyesmvp.module.ranklist
 
-import cc.shinichi.openyoureyesmvp.model.bean.RankTabBean
+import cc.shinichi.openyoureyesmvp.bean.RankTabBean
 import cc.shinichi.openyoureyesmvp.module.base.IBasePresenter
 import cc.shinichi.openyoureyesmvp.module.base.IBaseView
 
@@ -13,7 +13,7 @@ import cc.shinichi.openyoureyesmvp.module.base.IBaseView
  */
 interface IRankList {
 
-    interface Presenter: IBasePresenter {
+    interface Presenter : IBasePresenter {
 
     }
 

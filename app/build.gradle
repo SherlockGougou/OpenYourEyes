@@ -4,14 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-  compileSdkVersion 27
-  buildToolsVersion '27.0.3'
+  compileSdkVersion 28
+  buildToolsVersion '28.0.3'
   defaultConfig {
     applicationId "cc.shinichi.openyoureyes"
     minSdkVersion 17
-    targetSdkVersion 27
-    versionCode 1
-    versionName "1.0"
+    targetSdkVersion 28
+    versionCode 200
+    versionName "2.0.0"
   }
   buildTypes {
     release {
@@ -31,11 +31,10 @@ android {
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  implementation 'com.android.support:appcompat-v7:27.1.1'
-  implementation 'com.android.support:recyclerview-v7:27.1.1'
-  implementation 'com.android.support:design:27.1.1'
+  implementation 'com.android.support:appcompat-v7:28.0.0'
+  implementation 'com.android.support:recyclerview-v7:28.0.0'
+  implementation 'com.android.support:design:28.0.0'
   implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-
   // fresco
   implementation 'com.facebook.fresco:fresco:1.10.0'
   // okgo
@@ -43,9 +42,13 @@ dependencies {
   // gson
   implementation 'com.google.code.gson:gson:2.8.5'
   // BRVAH
-  implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+  implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
   // GSYVideoPlayer
-  implementation 'com.shuyu:GSYVideoPlayer:5.0.1'
+  implementation ('com.shuyu:GSYVideoPlayer:6.0.3') {
+    exclude group: 'com.android.support'
+    exclude module: 'appcompat-v7'
+    exclude module: 'support-v4'
+  }
   // Flexbox
   implementation 'com.google.android:flexbox:1.0.0'
 }

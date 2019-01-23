@@ -16,10 +16,10 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import cc.shinichi.openyoureyes.R
 import cc.shinichi.openyoureyesmvp.adapter.HomeDataAdapter
+import cc.shinichi.openyoureyesmvp.bean.home.HomeDataBean
+import cc.shinichi.openyoureyesmvp.bean.home.Item
 import cc.shinichi.openyoureyesmvp.constant.Code
-import cc.shinichi.openyoureyesmvp.model.bean.home.HomeDataBean
-import cc.shinichi.openyoureyesmvp.model.bean.home.Item
-import cc.shinichi.openyoureyesmvp.model.entity.HomeDataEntity
+import cc.shinichi.openyoureyesmvp.entity.HomeDataEntity
 import cc.shinichi.openyoureyesmvp.module.base.LazyloadFragment
 import cc.shinichi.openyoureyesmvp.util.ToastUtil
 import cc.shinichi.openyoureyesmvp.util.UIUtil
@@ -89,7 +89,7 @@ class CommonListFragment : LazyloadFragment(), Handler.Callback, OnClickListener
         swipe_refresh = rootView.findViewById(R.id.swipe_refresh)
         swipe_refresh.setColorSchemeResources(R.color.colorPrimary)
 
-        homeDataAdapter = HomeDataAdapter(context!!, allHomeDataEntity)
+        homeDataAdapter = HomeDataAdapter(allHomeDataEntity)
         homeDataAdapter?.setEnableLoadMore(true)
         homeDataAdapter?.setOnLoadMoreListener(this, recycler_data_list_home)
         homeDataAdapter?.setLoadMoreView(MyLoadMoreView())
